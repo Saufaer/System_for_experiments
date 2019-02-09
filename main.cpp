@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 {
     if (argc == 2)//examin.exe configuration.txt
     {
-        //чтение conf всё с новой строки без пробелов
+        
         std::string confFilename(argv[1]);
         std::ifstream source;
         source.open(confFilename);
@@ -55,9 +55,8 @@ int main(int argc, char* argv[])
             printf("%s ", argv[i]);
         }
         std::cout << std::endl << "Argc Params:" << argc;
-    }//Run classic
-
-
+    }
+    //Run classic
     MPI_Init(&argc, &argv);
     TParameters parameters;
     parameters.Init(argc, argv, true);
