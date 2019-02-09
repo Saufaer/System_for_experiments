@@ -1,0 +1,11 @@
+examin.exe
+-lib
+stronginc3.dll
+-r
+3
+-Eps
+0.002
+-m
+12
+-sip
+points.dat
