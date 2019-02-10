@@ -9,54 +9,61 @@
 #include "isolinesPlotter.h"
 #endif
 // ------------------------------------------------------------------------------------------------
+int TXTConfigReader(int &argc, char** &argv)
+{
+    //read conf with new string without spaces
+    std::string confFilename(argv[1]);
+    std::ifstream source;
+    source.open(confFilename);
+
+    if (!source) return 1;
+    std::vector<std::string> lines;
+    std::string line = "";
+    int num = 0;
+    while (true) {
+        if (source.eof()) break;
+        std::getline(source, line);
+        lines.push_back(line);
+        num++;
+    }
+    source.close();
+
+    const std::vector<std::string> v = lines;
+
+    std::vector< char*> cStrings;
+    int size = num;
+
+    for (int i = 0; i < size; ++i)
+    {
+        char *cstr = new char[v[i].length() + 1];
+        strcpy_s(cstr, v[i].length() + 1, v[i].c_str());
+
+        cStrings.push_back(cstr);
+    }
+    argv = new char *[size + 1];
+    for (int i = 0; i < size; ++i)
+    {
+        argv[i] = cStrings[i];
+    }
+    argc = size;//examin.exe + params in conf
+    std::cout << "Argv Config:";
+
+    for (int i = 0; i < size; ++i)
+    {
+        printf("%s ", argv[i]);
+    }
+    std::cout << std::endl << "Argc Params:" << argc;
+    return 0;
+}
 int main(int argc, char* argv[])
 {
     if (argc == 2)//examin.exe configuration.txt
     {
-        
-        std::string confFilename(argv[1]);
-        std::ifstream source;
-        source.open(confFilename);
-
-        if (!source) return 1;
-        std::vector<std::string> lines;
-        std::string line = "";
-        int num = 0;
-        while (true) {
-            if (source.eof()) break;
-            std::getline(source, line);
-            lines.push_back(line);
-            num++;
-        }
-        source.close();
-
-        const std::vector<std::string> v = lines;
-
-        std::vector< char*> cStrings;
-        int size = num;
-
-        for (int i = 0; i < size; ++i)
-        {
-            char *cstr = new char[v[i].length() + 1];
-            strcpy_s(cstr, v[i].length() + 1, v[i].c_str());
-
-            cStrings.push_back(cstr);
-        }
-        argv = new char *[size + 1];
-        for (int i = 0; i < size; ++i)
-        {
-            argv[i] = cStrings[i];
-        }
-        argc = size;//examin.exe + params in conf
-        std::cout << "Argv Config:";
-
-        for (int i = 0; i < size; ++i)
-        {
-            printf("%s ", argv[i]);
-        }
-        std::cout << std::endl << "Argc Params:" << argc;
+        //Edit argc and argv as config file
+        TXTConfigReader(argc, argv);
     }
     //Run classic
+
     MPI_Init(&argc, &argv);
     TParameters parameters;
     parameters.Init(argc, argv, true);
