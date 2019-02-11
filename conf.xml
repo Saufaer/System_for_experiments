@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+    <par1>examin.exe</par1>
+    <par2>-lib</par2>
+    <par3>stronginc3.dll</par3>
+</exe>
+<?include somedata?>
