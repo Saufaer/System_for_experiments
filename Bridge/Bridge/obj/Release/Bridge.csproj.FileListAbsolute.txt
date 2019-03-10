@@ -1,0 +1,10 @@
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Release\Bridge.exe.config
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Release\Bridge.exe
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Release\Bridge.pdb
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.Form1.resources
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.Properties.Resources.resources
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.csproj.GenerateResource.cache
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.csproj.CoreCompileInputs.cache
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.exe
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.pdb
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Release\Bridge.csprojAssemblyReference.cache
