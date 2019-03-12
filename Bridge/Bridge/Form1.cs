@@ -16,7 +16,7 @@ namespace Bridge
         public Form1()
         {
             InitializeComponent();
-
+            metroComboBox3.SelectedItem = "examin.exe";
         }
         //file location
         string fileLoc = Environment.CurrentDirectory + "/" + "config.xml";
@@ -141,7 +141,7 @@ namespace Bridge
                 File.Move(fileLoc, fileLocMove);
             }
         }
-
+        
         private void metroComboBox3_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Program_name = metroComboBox3.Text;
@@ -167,25 +167,32 @@ namespace Bridge
 
             if (File.Exists(fileLoc)) // if he be
             {
-                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                metroTextBox2.Text = fileLoc;
-                metroGrid1.Rows.Clear();
-                DataSet ds = new DataSet(); // enpty cache
-                ds.ReadXml(fileLoc);
-                foreach (DataRow item in ds.Tables["exe"].Rows)
+                try
                 {
-                    int n = -1;
-                    foreach (object cell in item.ItemArray)
+                    metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                    metroTextBox2.Text = fileLoc;
+                    metroGrid1.Rows.Clear();
+                    DataSet ds = new DataSet(); // enpty cache
+                    ds.ReadXml(fileLoc);
+                    foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
-                        n++;
-                        if (n < item.ItemArray.Length / 2)
+                        int n = -1;
+                        foreach (object cell in item.ItemArray)
                         {
-                            metroGrid1.Rows.Add();
-                            metroGrid1.Rows[n].Cells[0].Value = item["key" + n];
-                            metroGrid1.Rows[n].Cells[1].Value = item["par" + n];
+                            n++;
+                            if (n < item.ItemArray.Length / 2)
+                            {
+                                metroGrid1.Rows.Add();
+                                metroGrid1.Rows[n].Cells[0].Value = item["key" + n];
+                                metroGrid1.Rows[n].Cells[1].Value = item["par" + n];
+                            }
                         }
-                    }
 
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Bad XML file", "Error.");
                 }
             }
             else

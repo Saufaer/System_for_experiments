@@ -38,7 +38,9 @@
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 23;
             this.metroComboBox1.Items.AddRange(new object[] {
-            "-lib"});
+            "-lib",
+            "-r",
+            "-m"});
             this.metroComboBox1.Location = new System.Drawing.Point(43, 110);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(121, 29);
@@ -52,7 +54,9 @@
             this.metroComboBox2.ItemHeight = 23;
             this.metroComboBox2.Items.AddRange(new object[] {
             "stronginc3.dll",
-            "rastrigin.dll"});
+            "rastrigin.dll",
+            "12",
+            "3"});
             this.metroComboBox2.Location = new System.Drawing.Point(181, 110);
             this.metroComboBox2.Name = "metroComboBox2";
             this.metroComboBox2.Size = new System.Drawing.Size(121, 29);
@@ -70,7 +74,7 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // frmAddEditParams
+            // CreateLink
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,7 +82,7 @@
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroComboBox2);
             this.Controls.Add(this.metroComboBox1);
-            this.Name = "frmAddEditParams";
+            this.Name = "CreateLink";
             this.Text = "Link creator";
             this.ResumeLayout(false);
 
