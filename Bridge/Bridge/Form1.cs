@@ -53,17 +53,17 @@ namespace Bridge
 
                         for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
                         {
-                            string tagParSt = "\n  <par" + i + ">";
+                            string tagParSt = "\n  <key" + i + ">";
 
                             string parameter_name = metroGrid1[0, i].Value.ToString();
 
-                            string tagParFin = "</par" + i + ">\n";
+                            string tagParFin = "</key" + i + ">\n";
 
-                            string tagValSt = "   <val" + i + ">";
+                            string tagValSt = "   <par" + i + ">";
 
                             string value = metroGrid1[1, i].Value.ToString();
 
-                            string tagValFin = "</val" + i + ">\n";
+                            string tagValFin = "</par" + i + ">\n";
 
                             body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
                         }
@@ -150,8 +150,8 @@ namespace Bridge
                         if (n < item.ItemArray.Length / 2)
                         {
                             metroGrid1.Rows.Add();
-                            metroGrid1.Rows[n].Cells[0].Value = item["par" + n];
-                            metroGrid1.Rows[n].Cells[1].Value = item["val" + n];
+                            metroGrid1.Rows[n].Cells[0].Value = item["key" + n];
+                            metroGrid1.Rows[n].Cells[1].Value = item["par" + n];
                         }
                     }
 
