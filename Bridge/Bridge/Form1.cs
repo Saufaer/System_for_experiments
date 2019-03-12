@@ -40,33 +40,42 @@ namespace Bridge
         //Write
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            if (File.Exists(fileLoc))
+            try
             {
-                using (StreamWriter SWriter = new StreamWriter(fileLoc))
+                if (File.Exists(fileLoc))
                 {
-                    string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-                    string program_name = " <Prog>" + Program_name + "</Prog>\n";
-                    string body = "";
-                    string end = "</exe>\n<?include somedata?>";
-
-                    for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                    using (StreamWriter SWriter = new StreamWriter(fileLoc))
                     {
-                        string tagParSt = "\n  <par" + i + ">";
+                           string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                        string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                        string body = "";
+                        string end = "</exe>\n<?include somedata?>";
 
-                        string parameter_name = metroGrid1[0, i].Value.ToString();
+                        for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                        {
+                            string tagParSt = "\n  <par" + i + ">";
 
-                        string tagParFin = "</par" + i + ">\n";
+                            string parameter_name = metroGrid1[0, i].Value.ToString();
 
-                        string tagValSt = "   <val" + i + ">";
+                            string tagParFin = "</par" + i + ">\n";
 
-                        string value = metroGrid1[1, i].Value.ToString();
+                            string tagValSt = "   <val" + i + ">";
 
-                        string tagValFin = "</val" + i + ">\n";
+                            string value = metroGrid1[1, i].Value.ToString();
 
-                        body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                            string tagValFin = "</val" + i + ">\n";
+
+                            body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                        }
+                        SWriter.Write(start + program_name + body + end);
                     }
-                    SWriter.Write(start + program_name + body + end);
+                    metroTextBox1.Lines = File.ReadAllLines(fileLoc);
                 }
+                MessageBox.Show("XML файл успешно сохранен.", "Выполнено.");
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно сохранить XML файл.", "Ошибка.");
             }
         }
 
@@ -75,10 +84,7 @@ namespace Bridge
         {
             if (File.Exists(fileLoc))
             {
-                using (TextReader tr = new StreamReader(fileLoc))
-                {
-                    MessageBox.Show(tr.ReadLine());
-                }
+                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
             }
         }
 
@@ -88,6 +94,7 @@ namespace Bridge
             if (File.Exists(fileLoc))
             {
                 File.Delete(fileLoc);
+                metroTextBox1.Text="";
             }
         }
 
@@ -120,9 +127,39 @@ namespace Bridge
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-            using (frmAddEditParams frm = new frmAddEditParams())
+            using (CreateLink form = new CreateLink())
             {
-                frm.ShowDialog();
+                form.ShowDialog();
+            }
+        }
+
+        private void metroButton8_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(fileLoc)) // if he be
+            {
+                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                metroGrid1.Rows.Clear();
+                DataSet ds = new DataSet(); // enpty cache
+                ds.ReadXml(fileLoc);
+                foreach (DataRow item in ds.Tables["exe"].Rows)
+                {
+                    int n = -1;
+                    foreach (object cell in item.ItemArray)
+                    {
+                        n++;
+                        if (n < item.ItemArray.Length / 2)
+                        {
+                            metroGrid1.Rows.Add();
+                            metroGrid1.Rows[n].Cells[0].Value = item["par" + n];
+                            metroGrid1.Rows[n].Cells[1].Value = item["val" + n];
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("XML file not found.", "Error.");
             }
         }
     }

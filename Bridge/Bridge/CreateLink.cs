@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bridge
 {
-    public partial class frmAddEditParams : MetroFramework.Forms.MetroForm
+    public partial class CreateLink : MetroFramework.Forms.MetroForm
     {
-        public frmAddEditParams()
+        public CreateLink()
         {
             InitializeComponent();
         }

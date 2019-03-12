@@ -1,6 +1,6 @@
 ﻿namespace Bridge
 {
-    partial class frmAddEditParams
+    partial class CreateLink
     {
         /// <summary>
         /// Required designer variable.
