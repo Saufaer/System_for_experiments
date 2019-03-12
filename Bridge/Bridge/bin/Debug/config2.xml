@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-lib</key0>
+   <par0>stronginc3.dll</par0>
+
+  <key1>-lib</key1>
+   <par1>stronginc3.dll</par1>
+
+  <key2>-lib</key2>
+   <par2>stronginc3.dll</par2>
+
+  <key3>-lib</key3>
+   <par3>stronginc3.dll</par3>
+
+  <key4>-lib</key4>
+   <par4>stronginc3.dll</par4>
+
+  <key5>-lib</key5>
+   <par5>stronginc3.dll</par5>
+
+  <key6>-lib</key6>
+   <par6>rastrigin.dll</par6>
+
+  <key7>-lib</key7>
+   <par7>rastrigin.dll</par7>
+
+  <key8>-lib</key8>
+   <par8>rastrigin.dll</par8>
+</exe>
+<?include somedata?>

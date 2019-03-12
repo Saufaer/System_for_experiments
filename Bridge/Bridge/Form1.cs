@@ -27,13 +27,31 @@ namespace Bridge
         //Create
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            FileStream fs = null;
-            if (!File.Exists(fileLoc))
-            {
-                using (fs = File.Create(fileLoc))
-                {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|xml files (*.xml)|*.xml|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
 
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    myStream.Close();
                 }
+
+                fileLoc = saveFileDialog1.FileName;
+                using (StreamWriter SWriter = new StreamWriter(fileLoc))
+                {
+                    string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                    string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                    string body = "";
+                    string end = "</exe>\n<?include somedata?>";
+                    SWriter.Write(start + program_name + body + end);
+                }
+                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                metroTextBox2.Text = fileLoc;
+                metroGrid1.Rows.Clear();
             }
         }
 
@@ -46,7 +64,7 @@ namespace Bridge
                 {
                     using (StreamWriter SWriter = new StreamWriter(fileLoc))
                     {
-                           string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                        string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                         string program_name = " <Prog>" + Program_name + "</Prog>\n";
                         string body = "";
                         string end = "</exe>\n<?include somedata?>";
@@ -70,12 +88,13 @@ namespace Bridge
                         SWriter.Write(start + program_name + body + end);
                     }
                     metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                    metroTextBox2.Text = fileLoc;
                 }
-                MessageBox.Show("XML файл успешно сохранен.", "Выполнено.");
+                MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
             }
             catch
             {
-                MessageBox.Show("Невозможно сохранить XML файл.", "Ошибка.");
+                MessageBox.Show("Невозможно изменить XML файл.", "Ошибка.");
             }
         }
 
@@ -85,6 +104,7 @@ namespace Bridge
             if (File.Exists(fileLoc))
             {
                 metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                metroTextBox2.Text = fileLoc;
             }
         }
 
@@ -95,6 +115,8 @@ namespace Bridge
             {
                 File.Delete(fileLoc);
                 metroTextBox1.Text="";
+                metroTextBox2.Text = "";
+                metroGrid1.Rows.Clear();
             }
         }
 
@@ -135,9 +157,18 @@ namespace Bridge
 
         private void metroButton8_Click(object sender, EventArgs e)
         {
+
+            OpenFileDialog OPF = new OpenFileDialog();
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                fileLoc = OPF.FileName;
+            }
+
+
             if (File.Exists(fileLoc)) // if he be
             {
                 metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                metroTextBox2.Text = fileLoc;
                 metroGrid1.Rows.Clear();
                 DataSet ds = new DataSet(); // enpty cache
                 ds.ReadXml(fileLoc);
