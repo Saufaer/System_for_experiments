@@ -16,7 +16,7 @@ namespace Bridge
         public Form1()
         {
             InitializeComponent();
-            
+
         }
         //file location
         string fileLoc = Environment.CurrentDirectory + "/" + "config.xml";
@@ -42,14 +42,30 @@ namespace Bridge
         {
             if (File.Exists(fileLoc))
             {
-                using (StreamWriter sw = new StreamWriter(fileLoc))
+                using (StreamWriter SWriter = new StreamWriter(fileLoc))
                 {
-                    string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-                    string one = " <par1>"+ Program_name +"</par1>\n";
-                    string two = " <par2>"+ metroGrid1[0, 0].Value.ToString() + "</par2>\n";
-                    string three = " <par3>"+ metroGrid1[1, 0].Value.ToString() +"</par3>";
-                    string end = "<?include somedata?>";
-                    sw.Write(start + "\n<exe>\n"+one+two+three+"\n</exe>\n"+ end);
+                    string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                    string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                    string body = "";
+                    string end = "</exe>\n<?include somedata?>";
+
+                    for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                    {
+                        string tagParSt = "\n  <par" + i + ">";
+
+                        string parameter_name = metroGrid1[0, i].Value.ToString();
+
+                        string tagParFin = "</par" + i + ">\n";
+
+                        string tagValSt = "   <val" + i + ">";
+
+                        string value = metroGrid1[1, i].Value.ToString();
+
+                        string tagValFin = "</val" + i + ">\n";
+
+                        body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                    }
+                    SWriter.Write(start + program_name + body + end);
                 }
             }
         }
