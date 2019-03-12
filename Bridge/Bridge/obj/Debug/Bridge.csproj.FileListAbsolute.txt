@@ -12,3 +12,4 @@ D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Debug\MetroFramework.
 D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Debug\MetroFramework.dll
 D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\bin\Debug\MetroFramework.Fonts.dll
 D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
+D:\Учёба 2019\Config Creator\EDITOR\Bridge\Bridge\obj\Debug\Bridge.frmAddEditParams.resources

@@ -16,9 +16,13 @@ namespace Bridge
         public Form1()
         {
             InitializeComponent();
+            
         }
         //file location
         string fileLoc = Environment.CurrentDirectory + "/" + "config.xml";
+        string Program_name;
+
+        public object DataGridView1 { get; internal set; }
 
         //Create
         private void metroButton1_Click(object sender, EventArgs e)
@@ -41,11 +45,11 @@ namespace Bridge
                 using (StreamWriter sw = new StreamWriter(fileLoc))
                 {
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-                    string one = " <par1>examin.exe</par1>";
-                    string two = " <par2>-lib</par2>";
-                    string three = " <par3>stronginc3.dll</par3>";
+                    string one = " <par1>"+ Program_name +"</par1>\n";
+                    string two = " <par2>"+ metroGrid1[0, 0].Value.ToString() + "</par2>\n";
+                    string three = " <par3>"+ metroGrid1[1, 0].Value.ToString() +"</par3>";
                     string end = "<?include somedata?>";
-                    sw.Write(start + "\n<exe>\n"+one+"\n"+two+" \n"+ three+"\n</exe>\n"+end);
+                    sw.Write(start + "\n<exe>\n"+one+two+three+"\n</exe>\n"+ end);
                 }
             }
         }
@@ -90,6 +94,19 @@ namespace Bridge
             if (File.Exists(fileLoc))
             {
                 File.Move(fileLoc, fileLocMove);
+            }
+        }
+
+        private void metroComboBox3_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Program_name = metroComboBox3.Text;
+        }
+
+        private void metroButton7_Click(object sender, EventArgs e)
+        {
+            using (frmAddEditParams frm = new frmAddEditParams())
+            {
+                frm.ShowDialog();
             }
         }
     }
