@@ -19,7 +19,7 @@ namespace Bridge
             metroComboBox3.SelectedItem = "examin.exe";
         }
         //file location
-        string fileLoc = Environment.CurrentDirectory + "/" + "config.xml";
+        string fileLoc = "";
         string Program_name;
 
         public object DataGridView1 { get; internal set; }
@@ -58,88 +58,66 @@ namespace Bridge
         //Write
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            try
+            if (fileLoc != "")
             {
-                if (File.Exists(fileLoc))
+                try
                 {
-                    using (StreamWriter SWriter = new StreamWriter(fileLoc))
+                    if (File.Exists(fileLoc))
                     {
-                        string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-                        string program_name = " <Prog>" + Program_name + "</Prog>\n";
-                        string body = "";
-                        string end = "</exe>\n<?include somedata?>";
-
-                        for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                        using (StreamWriter SWriter = new StreamWriter(fileLoc))
                         {
-                            string tagParSt = "\n  <key" + i + ">";
+                            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                            string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                            string body = "";
+                            string end = "</exe>\n<?include somedata?>";
 
-                            string parameter_name = metroGrid1[0, i].Value.ToString();
+                            for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                            {
+                                string tagParSt = "\n  <key" + i + ">";
 
-                            string tagParFin = "</key" + i + ">\n";
+                                string parameter_name = metroGrid1[0, i].Value.ToString();
 
-                            string tagValSt = "   <par" + i + ">";
+                                string tagParFin = "</key" + i + ">\n";
 
-                            string value = metroGrid1[1, i].Value.ToString();
+                                string tagValSt = "   <par" + i + ">";
 
-                            string tagValFin = "</par" + i + ">\n";
+                                string value = metroGrid1[1, i].Value.ToString();
 
-                            body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                                string tagValFin = "</par" + i + ">\n";
+
+                                body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                            }
+                            SWriter.Write(start + program_name + body + end);
                         }
-                        SWriter.Write(start + program_name + body + end);
+                        metroTextBox1.Lines = File.ReadAllLines(fileLoc);
+                        metroTextBox2.Text = fileLoc;
                     }
-                    metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                    metroTextBox2.Text = fileLoc;
+                    MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
                 }
-                MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
+                catch
+                {
+                    MessageBox.Show("Невозможно изменить XML файл.", "Ошибка.");
+                }
             }
-            catch
-            {
-                MessageBox.Show("Невозможно изменить XML файл.", "Ошибка.");
-            }
+            else { MessageBox.Show("Not selected XML file", "Error."); }
         }
 
-        //Read
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(fileLoc))
-            {
-                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                metroTextBox2.Text = fileLoc;
-            }
-        }
+
 
         //Delete
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            if (File.Exists(fileLoc))
+            if (fileLoc != "")
             {
-                File.Delete(fileLoc);
-                metroTextBox1.Text="";
-                metroTextBox2.Text = "";
-                metroGrid1.Rows.Clear();
+                if (File.Exists(fileLoc))
+                {
+                    File.Delete(fileLoc);
+                    metroTextBox1.Text = "";
+                    metroTextBox2.Text = "";
+                    metroGrid1.Rows.Clear();
+                }
             }
-        }
-
-        //Copy
-        private void metroButton5_Click(object sender, EventArgs e)
-        {
-            string fileLocCopy = Environment.CurrentDirectory + "/" + "config.xml"; ;
-            if (File.Exists(fileLoc))
-            {
-                if (File.Exists(fileLocCopy))
-                    File.Delete(fileLocCopy);
-                File.Copy(fileLoc, fileLocCopy);
-            }
-        }
-
-        //Move
-        private void metroButton6_Click(object sender, EventArgs e)
-        {
-            string fileLocMove = Environment.CurrentDirectory + "/" + "config" + System.DateTime.Now.Ticks + ".xml";
-            if (File.Exists(fileLoc))
-            {
-                File.Move(fileLoc, fileLocMove);
-            }
+            else { MessageBox.Show("Not selected XML file", "Error."); }
         }
         
         private void metroComboBox3_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -149,12 +127,16 @@ namespace Bridge
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-            using (CreateLink form = new CreateLink())
+            if (fileLoc != "")
             {
-                form.ShowDialog();
+                using (CreateLink form = new CreateLink())
+                {
+                    form.ShowDialog();
+                }
             }
+            else { MessageBox.Show("Not selected XML file", "Error."); }
         }
-
+        //Open
         private void metroButton8_Click(object sender, EventArgs e)
         {
 
@@ -199,6 +181,28 @@ namespace Bridge
             {
                 MessageBox.Show("XML file not found.", "Error.");
             }
+        }
+
+        //Copy
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            //string fileLocCopy = Environment.CurrentDirectory + "/" + "config.xml"; ;
+            //if (File.Exists(fileLoc))
+            //{
+            //    if (File.Exists(fileLocCopy))
+            //        File.Delete(fileLocCopy);
+            //    File.Copy(fileLoc, fileLocCopy);
+            //}
+        }
+
+        //Move
+        private void metroButton6_Click(object sender, EventArgs e)
+        {
+            //string fileLocMove = Environment.CurrentDirectory + "/" + "config" + System.DateTime.Now.Ticks + ".xml";
+            //if (File.Exists(fileLoc))
+            //{
+            //    File.Move(fileLoc, fileLocMove);
+            //}
         }
     }
 }
