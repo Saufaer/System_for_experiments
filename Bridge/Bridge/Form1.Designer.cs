@@ -42,12 +42,12 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroButton8 = new MetroFramework.Controls.MetroButton();
             this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parameter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,6 +199,18 @@
             this.metroGrid1.Size = new System.Drawing.Size(542, 542);
             this.metroGrid1.TabIndex = 17;
             // 
+            // Key
+            // 
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            this.Key.Width = 250;
+            // 
+            // Parameter
+            // 
+            this.Parameter.HeaderText = "Parameter";
+            this.Parameter.Name = "Parameter";
+            this.Parameter.Width = 250;
+            // 
             // metroTextBox1
             // 
             // 
@@ -281,18 +293,6 @@
             this.metroLabel3.Size = new System.Drawing.Size(74, 19);
             this.metroLabel3.TabIndex = 22;
             this.metroLabel3.Text = "Current file";
-            // 
-            // Key
-            // 
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            this.Key.Width = 250;
-            // 
-            // Parameter
-            // 
-            this.Parameter.HeaderText = "Parameter";
-            this.Parameter.Name = "Parameter";
-            this.Parameter.Width = 250;
             // 
             // Form1
             // 
