@@ -51,7 +51,7 @@ namespace Bridge
                 }
                 metroTextBox1.Lines = File.ReadAllLines(fileLoc);
                 metroTextBox2.Text = fileLoc;
-                metroGrid1.Rows.Clear();
+                ConfigTable.Rows.Clear();
             }
         }
 
@@ -71,17 +71,17 @@ namespace Bridge
                             string body = "";
                             string end = "</exe>\n<?include somedata?>";
 
-                            for (int i = 0; i < metroGrid1.Rows.Count - 1; i++)
+                            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
                             {
                                 string tagParSt = "\n  <key" + i + ">";
 
-                                string parameter_name = metroGrid1[0, i].Value.ToString();
+                                string parameter_name = ConfigTable[0, i].Value.ToString();
 
                                 string tagParFin = "</key" + i + ">\n";
 
                                 string tagValSt = "   <par" + i + ">";
 
-                                string value = metroGrid1[1, i].Value.ToString();
+                                string value = ConfigTable[1, i].Value.ToString();
 
                                 string tagValFin = "</par" + i + ">\n";
 
@@ -114,7 +114,7 @@ namespace Bridge
                     File.Delete(fileLoc);
                     metroTextBox1.Text = "";
                     metroTextBox2.Text = "";
-                    metroGrid1.Rows.Clear();
+                    ConfigTable.Rows.Clear();
                 }
             }
             else { MessageBox.Show("Not selected XML file", "Error."); }
@@ -153,7 +153,7 @@ namespace Bridge
                 {
                     metroTextBox1.Lines = File.ReadAllLines(fileLoc);
                     metroTextBox2.Text = fileLoc;
-                    metroGrid1.Rows.Clear();
+                    ConfigTable.Rows.Clear();
                     DataSet ds = new DataSet(); // enpty cache
                     ds.ReadXml(fileLoc);
                     foreach (DataRow item in ds.Tables["exe"].Rows)
@@ -164,9 +164,9 @@ namespace Bridge
                             n++;
                             if (n < item.ItemArray.Length / 2)
                             {
-                                metroGrid1.Rows.Add();
-                                metroGrid1.Rows[n].Cells[0].Value = item["key" + n];
-                                metroGrid1.Rows[n].Cells[1].Value = item["par" + n];
+                                ConfigTable.Rows.Add();
+                                ConfigTable.Rows[n].Cells[0].Value = item["key" + n];
+                                ConfigTable.Rows[n].Cells[1].Value = item["par" + n];
                             }
                         }
 
