@@ -51,7 +51,8 @@ namespace Bridge
         {
             ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
             ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
-            DescriptTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
+            //DescriptTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
+            metroLabel5.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
         }
     }
 }
