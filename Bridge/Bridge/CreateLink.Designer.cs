@@ -44,14 +44,15 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTable)).BeginInit();
             this.SuspendLayout();
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(23, 63);
+            this.metroButton1.Location = new System.Drawing.Point(23, 75);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(242, 45);
+            this.metroButton1.Size = new System.Drawing.Size(474, 45);
             this.metroButton1.TabIndex = 10;
             this.metroButton1.Text = "Add link";
             this.metroButton1.UseSelectable = true;
@@ -63,9 +64,9 @@
             // 
             // 
             this.ValueTextBox.CustomButton.Image = null;
-            this.ValueTextBox.CustomButton.Location = new System.Drawing.Point(152, 2);
+            this.ValueTextBox.CustomButton.Location = new System.Drawing.Point(156, 1);
             this.ValueTextBox.CustomButton.Name = "";
-            this.ValueTextBox.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.ValueTextBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.ValueTextBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ValueTextBox.CustomButton.TabIndex = 1;
             this.ValueTextBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -81,7 +82,7 @@
             this.ValueTextBox.SelectionLength = 0;
             this.ValueTextBox.SelectionStart = 0;
             this.ValueTextBox.ShortcutsEnabled = true;
-            this.ValueTextBox.Size = new System.Drawing.Size(180, 30);
+            this.ValueTextBox.Size = new System.Drawing.Size(180, 25);
             this.ValueTextBox.TabIndex = 11;
             this.ValueTextBox.UseSelectable = true;
             this.ValueTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -128,6 +129,10 @@
             // InfoTable
             // 
             this.InfoTable.AllowUserToResizeRows = false;
+            this.InfoTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InfoTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.InfoTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.InfoTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.InfoTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -171,7 +176,7 @@
             this.InfoTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.InfoTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.InfoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InfoTable.Size = new System.Drawing.Size(994, 345);
+            this.InfoTable.Size = new System.Drawing.Size(1018, 399);
             this.InfoTable.TabIndex = 14;
             this.InfoTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InfoTable_CellMouseClick);
             // 
@@ -209,9 +214,9 @@
             // 
             // 
             this.ParNameTextBox.CustomButton.Image = null;
-            this.ParNameTextBox.CustomButton.Location = new System.Drawing.Point(152, 2);
+            this.ParNameTextBox.CustomButton.Location = new System.Drawing.Point(156, 1);
             this.ParNameTextBox.CustomButton.Name = "";
-            this.ParNameTextBox.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.ParNameTextBox.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.ParNameTextBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.ParNameTextBox.CustomButton.TabIndex = 1;
             this.ParNameTextBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -227,7 +232,7 @@
             this.ParNameTextBox.SelectionLength = 0;
             this.ParNameTextBox.SelectionStart = 0;
             this.ParNameTextBox.ShortcutsEnabled = true;
-            this.ParNameTextBox.Size = new System.Drawing.Size(180, 30);
+            this.ParNameTextBox.Size = new System.Drawing.Size(180, 25);
             this.ParNameTextBox.TabIndex = 15;
             this.ParNameTextBox.UseSelectable = true;
             this.ParNameTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -260,11 +265,21 @@
             this.metroLabel3.TabIndex = 18;
             this.metroLabel3.Text = "Общие параметры системы";
             // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(516, 101);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel4.TabIndex = 19;
+            this.metroLabel4.Text = "Current Description";
+            // 
             // CreateLink
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 647);
+            this.ClientSize = new System.Drawing.Size(1042, 647);
+            this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
@@ -295,5 +310,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }

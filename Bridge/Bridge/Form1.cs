@@ -19,7 +19,7 @@ namespace Bridge
             metroComboBox3.SelectedItem = "examin.exe";
         }
         //file location
-        string fileLoc = "";
+        string fileLoc = "a";
         string Program_name;
 
         public object DataGridView1 { get; internal set; }
