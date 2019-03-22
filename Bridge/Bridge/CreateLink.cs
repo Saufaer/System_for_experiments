@@ -12,7 +12,7 @@ namespace Bridge
 {
     public partial class CreateLink : MetroFramework.Forms.MetroForm
     {
-        int size = 9;
+        int size = 55;
         Info InfoData = new Info();
         public CreateLink()
         {
