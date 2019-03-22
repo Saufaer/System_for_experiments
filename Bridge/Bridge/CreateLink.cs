@@ -54,5 +54,29 @@ namespace Bridge
             //DescriptTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
             metroLabel5.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
         }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < InfoTable.RowCount; i++)
+            {
+                
+                InfoTable.Rows[i].Selected = false;
+                for (int j = 0; j < InfoTable.ColumnCount; j++)
+                {
+
+                    if (InfoTable.Rows[i].Cells[j].Value != null)
+                    {
+                        if (InfoTable.Rows[i].Cells[j].Value.ToString().Contains(metroTextBox1.Text))
+                        {
+                            InfoTable.Rows[i].Selected = true;
+                            break;
+
+                        }
+                    }
+                }
+
+            }
+            
+        }
     }
 }
