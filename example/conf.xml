@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-r</key0>
+   <par0>2.4</par0>
+
+  <key1>-Epsilon</key1>
+   <par1>0.002</par1>
+
+  <key2>-m</key2>
+   <par2>12</par2>
+
+  <key3>-libPath</key3>
+   <par3>grishagin.dll </par3>
+</exe>
+<?include somedata?>
