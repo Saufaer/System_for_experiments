@@ -35,10 +35,6 @@
             this.ValueTextBox = new MetroFramework.Controls.MetroTextBox();
             this.metroToolTip1 = new MetroFramework.Components.MetroToolTip();
             this.InfoTable = new MetroFramework.Controls.MetroGrid();
-            this.Par = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valid_Values = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Default_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParNameTextBox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -47,6 +43,10 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.Par = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valid_Values = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Default_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.InfoTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,37 +148,9 @@
             this.InfoTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.InfoTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.InfoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InfoTable.Size = new System.Drawing.Size(1018, 399);
+            this.InfoTable.Size = new System.Drawing.Size(1031, 399);
             this.InfoTable.TabIndex = 14;
             this.InfoTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InfoTable_CellMouseClick);
-            // 
-            // Par
-            // 
-            this.Par.HeaderText = "Parameter";
-            this.Par.Name = "Par";
-            this.Par.ReadOnly = true;
-            this.Par.Width = 150;
-            // 
-            // Valid_Values
-            // 
-            this.Valid_Values.HeaderText = "Valid Values";
-            this.Valid_Values.Name = "Valid_Values";
-            this.Valid_Values.ReadOnly = true;
-            this.Valid_Values.Width = 150;
-            // 
-            // Default_value
-            // 
-            this.Default_value.HeaderText = "Default value";
-            this.Default_value.Name = "Default_value";
-            this.Default_value.ReadOnly = true;
-            this.Default_value.Width = 150;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 500;
             // 
             // ParNameTextBox
             // 
@@ -217,7 +189,7 @@
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.Location = new System.Drawing.Point(24, 141);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(119, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(123, 19);
             this.metroLabel1.TabIndex = 16;
             this.metroLabel1.Text = "Current parameter";
             // 
@@ -306,11 +278,39 @@
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
+            // Par
+            // 
+            this.Par.HeaderText = "Parameter";
+            this.Par.Name = "Par";
+            this.Par.ReadOnly = true;
+            this.Par.Width = 180;
+            // 
+            // Valid_Values
+            // 
+            this.Valid_Values.HeaderText = "Valid Values";
+            this.Valid_Values.Name = "Valid_Values";
+            this.Valid_Values.ReadOnly = true;
+            this.Valid_Values.Width = 150;
+            // 
+            // Default_value
+            // 
+            this.Default_value.HeaderText = "Default value";
+            this.Default_value.Name = "Default_value";
+            this.Default_value.ReadOnly = true;
+            this.Default_value.Width = 150;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 500;
+            // 
             // CreateLink
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 647);
+            this.ClientSize = new System.Drawing.Size(1055, 647);
             this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroTextBox1);
             this.Controls.Add(this.metroLabel5);
@@ -335,10 +335,6 @@
         private MetroFramework.Controls.MetroTextBox ValueTextBox;
         private MetroFramework.Components.MetroToolTip metroToolTip1;
         private MetroFramework.Controls.MetroGrid InfoTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Par;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valid_Values;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Default_value;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private MetroFramework.Controls.MetroTextBox ParNameTextBox;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
@@ -347,5 +343,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private MetroFramework.Controls.MetroButton metroButton2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Par;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valid_Values;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Default_value;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }

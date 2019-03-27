@@ -19,7 +19,6 @@ D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\bi
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.Design.dll
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.dll
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.Fonts.dll
-D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Form1.resources
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Properties.Resources.resources
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
@@ -28,3 +27,17 @@ D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\ob
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.exe
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.pdb
 D:\Учёба 2019\Config Creator\EDITOR\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.CreateLink.resources
+D:\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.exe.config
+D:\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.exe
+D:\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.pdb
+D:\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.dll
+D:\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.Fonts.dll
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Form1.resources
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.CreateLink.resources
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Properties.Resources.resources
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CoreCompileInputs.cache
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.exe
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.pdb
+D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache

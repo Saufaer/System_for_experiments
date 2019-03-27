@@ -59,35 +59,5 @@ namespace Bridge.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MetroFramework {
-            get {
-                object obj = ResourceManager.GetObject("MetroFramework", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MetroFramework_Design {
-            get {
-                object obj = ResourceManager.GetObject("MetroFramework_Design", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] MetroFramework_Fonts {
-            get {
-                object obj = ResourceManager.GetObject("MetroFramework_Fonts", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

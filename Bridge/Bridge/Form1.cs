@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System;
+using System.Diagnostics;
 namespace Bridge
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
@@ -19,7 +20,7 @@ namespace Bridge
             metroComboBox3.SelectedItem = "examin.exe";
         }
         //file location
-        string fileLoc = "a";
+        string fileLoc = "";
         string Program_name;
 
         public object DataGridView1 { get; internal set; }
@@ -147,14 +148,14 @@ namespace Bridge
             }
 
 
-            if (File.Exists(fileLoc)) // if he be
+            if (File.Exists(fileLoc)) 
             {
                 try
                 {
                     metroTextBox1.Lines = File.ReadAllLines(fileLoc);
                     metroTextBox2.Text = fileLoc;
                     ConfigTable.Rows.Clear();
-                    DataSet ds = new DataSet(); // enpty cache
+                    DataSet ds = new DataSet();
                     ds.ReadXml(fileLoc);
                     foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
@@ -203,6 +204,14 @@ namespace Bridge
             //{
             //    File.Move(fileLoc, fileLocMove);
             //}
+        }
+
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+           string ConfigName = new DirectoryInfo(fileLoc).Name;
+
+            Process.Start("cmd.exe", "/k "+ Program_name +" "+ConfigName);
         }
     }
 }
