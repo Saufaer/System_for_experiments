@@ -41,3 +41,17 @@ D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
 D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.exe
 D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.pdb
 D:\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\bin\Debug\Bridge.exe.config
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\bin\Debug\Bridge.exe
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\bin\Debug\Bridge.pdb
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\bin\Debug\MetroFramework.dll
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.Form1.resources
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.CreateLink.resources
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.Properties.Resources.resources
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.csproj.CoreCompileInputs.cache
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.exe
+C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-master\Bridge\Bridge\obj\Debug\Bridge.pdb

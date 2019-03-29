@@ -209,9 +209,13 @@ namespace Bridge
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-           string ConfigName = new DirectoryInfo(fileLoc).Name;
+            if (fileLoc!="")
+            {
+                string ConfigName = new DirectoryInfo(fileLoc).Name;
 
-            Process.Start("cmd.exe", "/k "+ Program_name +" "+ConfigName);
+                Process.Start("cmd.exe", "/k " + Program_name + " " + ConfigName);
+            }
+            else { MessageBox.Show("Not selected XML file", "Error."); }
         }
     }
 }
