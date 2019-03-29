@@ -1,7 +1,5 @@
-## For merging .exe and .dll's to single .exe need use command:
+###ƒополнительно к сборке:
+### ƒл€ сли€ни€ .exe и .dll в единый .exe можно воспльзоватьс€ утилитой ILMerge, с помощью команды (пример):
 ILMerge.exe Bridge.exe MetroFramework.Design.dll MetroFramework.dll MetroFramework.Fonts.dll /out:d:BridgeM.exe /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0"
-
-## you can put a target .exe in: 
+### предварительно поместив целевой .exe в директорию: 
                                                   ..\System_for_experiments\Bridge\ILMerge 
-
-## and to do this
