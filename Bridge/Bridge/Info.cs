@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bridge
 {
-    class Info
+    public class Info
     {
-        public string[] ParameterArr;
-        public string[] ValidValuesArr;
-        public string[] DefaultValuesArr;
-        public string[] DescriptionArr;
+        public String[] ParameterArr;
+        public String[] ValidValuesArr;
+        public String[] DefaultValuesArr;
+        public String[] DescriptionArr;
         public Info()
         {
-            ParameterArr = new string[55]
+            ParameterArr = new String[55]
      {
 "-NumPoints",
 "-StepPrintMessages",
@@ -72,7 +72,7 @@ namespace Bridge
 "-GKLS_global_dist",
 "-GKLS_global_radius"
      };
-            ValidValuesArr = new string[55]
+            ValidValuesArr = new String[55]
             {
 ">0",
 ">0",
@@ -130,7 +130,7 @@ namespace Bridge
 ">0",
 ">0"
             };
-            DefaultValuesArr = new string[55] {
+            DefaultValuesArr = new String[55] {
 "1",
 "1000",
 "StandartMethod",
@@ -187,7 +187,7 @@ namespace Bridge
 "0.9" ,
 "0.33"
         };
-            DescriptionArr = new string[55] {
+            DescriptionArr = new String[55] {
 "число точек испытания, порождаемых \r\n методом за одну итерацию",
 "через сколько итераций печатать \r\n в консоли сообщение о текущем количестве итераций",
 "тип используемого метода",

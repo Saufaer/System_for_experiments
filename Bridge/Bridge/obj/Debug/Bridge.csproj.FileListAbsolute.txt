@@ -58,14 +58,14 @@ C:\Users\Oleg\Desktop\System_for_experiments-master\System_for_experiments-maste
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.exe.config
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.exe
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.pdb
+D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.Design.dll
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.dll
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Debug\MetroFramework.Fonts.dll
-D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Form1.resources
-D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.CreateLink.resources
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Properties.Resources.resources
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CoreCompileInputs.cache
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.exe
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.pdb
+D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache

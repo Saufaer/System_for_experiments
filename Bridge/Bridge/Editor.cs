@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 namespace Bridge
 {
-    public partial class Form1 : MetroFramework.Forms.MetroForm
+    public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        string fileLoc = "";
-        string Program_name;
-        int size = 55;
-        Info InfoData = new Info();
-        public Form1()
+        public void InitTable()
         {
-            InitializeComponent();
-            metroComboBox3.SelectedItem = "examin.exe";
-            Program_name = metroComboBox3.SelectedItem.ToString();
+            int size = 55;
+
             InfoTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             for (int k = 0; k < 4; k++)
             {
@@ -32,19 +29,42 @@ namespace Bridge
             {
                 InfoTable.Rows.Add(InfoData.ParameterArr[i], InfoData.ValidValuesArr[i], InfoData.DefaultValuesArr[i], InfoData.DescriptionArr[i]);
             }
+            EditorTabControl.SelectedIndex = 0;
         }
-        //file location
- 
 
-        public object DataGridView1 { get; internal set; }
-
-
-
-
-        //Open
-        private void metroButton8_Click(object sender, EventArgs e)
+        private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
+            ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
+            LabelDecription.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
+        }
 
+
+        public void Search()
+        {
+            for (int i = 0; i < InfoTable.RowCount; i++)
+            {
+
+                InfoTable.Rows[i].Selected = false;
+                for (int j = 0; j < InfoTable.ColumnCount; j++)
+                {
+
+                    if (InfoTable.Rows[i].Cells[j].Value != null)
+                    {
+                        if (InfoTable.Rows[i].Cells[j].Value.ToString().Contains(TextBoxSearch.Text))
+                        {
+                            InfoTable.Rows[i].Selected = true;
+                            break;
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public void OpenXML()
+        {
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
@@ -52,12 +72,12 @@ namespace Bridge
             }
 
 
-            if (File.Exists(fileLoc)) 
+            if (File.Exists(fileLoc))
             {
                 try
                 {
-                    metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                    metroTextBox2.Text = fileLoc;
+                    TextBoxXML.Lines = File.ReadAllLines(fileLoc);
+                    TextBoxPath.Text = fileLoc;
                     ConfigTable.Rows.Clear();
                     DataSet ds = new DataSet();
                     ds.ReadXml(fileLoc);
@@ -87,23 +107,7 @@ namespace Bridge
                 MessageBox.Show("XML file not found.", "Error.");
             }
         }
-
-
-
-
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-            if (fileLoc!="")
-            {
-                string ConfigName = new DirectoryInfo(fileLoc).Name;
-
-                Process.Start("cmd.exe", "/k " + Program_name + " " + ConfigName);
-            }
-            else { MessageBox.Show("Not selected XML file", "Error."); }
-        }
-        string parameter;
-        string value;
-        private void metroButton2_Click_1(object sender, EventArgs e)
+        public void WriteConfing()
         {
             if (fileLoc != "")
             {
@@ -136,9 +140,10 @@ namespace Bridge
                             }
                             SWriter.Write(start + program_name + body + end);
                         }
-                        metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                        metroTextBox2.Text = fileLoc;
+                        TextBoxXML.Lines = File.ReadAllLines(fileLoc);
+                        TextBoxPath.Text = fileLoc;
                     }
+                    EditorTabControl.SelectedIndex = 0;
                     MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
                 }
                 catch
@@ -149,7 +154,7 @@ namespace Bridge
             else { MessageBox.Show("Not selected XML file", "Error."); }
         }
 
-        private void metroButton1_Click_1(object sender, EventArgs e)
+        public void CreateXML()
         {
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -173,32 +178,31 @@ namespace Bridge
                     string end = "</exe>\n<?include somedata?>";
                     SWriter.Write(start + program_name + body + end);
                 }
-                metroTextBox1.Lines = File.ReadAllLines(fileLoc);
-                metroTextBox2.Text = fileLoc;
+                TextBoxXML.Lines = File.ReadAllLines(fileLoc);
+                TextBoxPath.Text = fileLoc;
                 ConfigTable.Rows.Clear();
             }
-
         }
 
-        private void metroButton4_Click_1(object sender, EventArgs e)
+        public void DeleteXML()
         {
             if (fileLoc != "")
             {
                 if (File.Exists(fileLoc))
                 {
                     File.Delete(fileLoc);
-                    metroTextBox1.Text = "";
-                    metroTextBox2.Text = "";
+                    TextBoxXML.Text = "";
+                    TextBoxPath.Text = "";
                     ConfigTable.Rows.Clear();
                 }
             }
             else { MessageBox.Show("Not selected XML file", "Error."); }
         }
 
-        private void metroButton10_Click_1(object sender, EventArgs e)
+        public void AddLinkToConf()
         {
-            value = ValueTextBox.Text;
-            parameter = ParNameTextBox.Text;
+            String value = ValueTextBox.Text;
+            String parameter = ParNameTextBox.Text;
 
             if ((value != "") && (parameter != ""))
             {
@@ -207,39 +211,5 @@ namespace Bridge
             else { MessageBox.Show("Key and parameter must be specified.", "Error."); }
         }
 
-        private void InfoTable_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
-            ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
-            //DescriptTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
-            metroLabel9.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
-        }
-
-        private void metroButton9_Click_1(object sender, EventArgs e)
-        {
-            for (int i = 0; i < InfoTable.RowCount; i++)
-            {
-
-                InfoTable.Rows[i].Selected = false;
-                for (int j = 0; j < InfoTable.ColumnCount; j++)
-                {
-
-                    if (InfoTable.Rows[i].Cells[j].Value != null)
-                    {
-                        if (InfoTable.Rows[i].Cells[j].Value.ToString().Contains(metroTextBox4.Text))
-                        {
-                            InfoTable.Rows[i].Selected = true;
-                            break;
-
-                        }
-                    }
-                }
-
-            }
-
-        }
     }
-
-
-   
 }
