@@ -68,19 +68,19 @@ namespace Bridge
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
-                fileLoc = OPF.FileName;
+                Config_path = OPF.FileName;
             }
 
 
-            if (File.Exists(fileLoc))
+            if (File.Exists(Config_path))
             {
                 try
                 {
-                    TextBoxXML.Lines = File.ReadAllLines(fileLoc);
-                    TextBoxPath.Text = fileLoc;
+                    TextBoxXML.Lines = File.ReadAllLines(Config_path);
+                    TextBoxPath.Text = Config_path;
                     ConfigTable.Rows.Clear();
                     DataSet ds = new DataSet();
-                    ds.ReadXml(fileLoc);
+                    ds.ReadXml(Config_path);
                     foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
                         int n = -1;
@@ -109,13 +109,13 @@ namespace Bridge
         }
         public void WriteConfing()
         {
-            if (fileLoc != "")
+            if (Config_path != "")
             {
                 try
                 {
-                    if (File.Exists(fileLoc))
+                    if (File.Exists(Config_path))
                     {
-                        using (StreamWriter SWriter = new StreamWriter(fileLoc))
+                        using (StreamWriter SWriter = new StreamWriter(Config_path))
                         {
                             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                             string program_name = " <Prog>" + Program_name + "</Prog>\n";
@@ -140,8 +140,8 @@ namespace Bridge
                             }
                             SWriter.Write(start + program_name + body + end);
                         }
-                        TextBoxXML.Lines = File.ReadAllLines(fileLoc);
-                        TextBoxPath.Text = fileLoc;
+                        TextBoxXML.Lines = File.ReadAllLines(Config_path);
+                        TextBoxPath.Text = Config_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
                     MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
@@ -169,8 +169,8 @@ namespace Bridge
                     myStream.Close();
                 }
 
-                fileLoc = saveFileDialog1.FileName;
-                using (StreamWriter SWriter = new StreamWriter(fileLoc))
+                Config_path = saveFileDialog1.FileName;
+                using (StreamWriter SWriter = new StreamWriter(Config_path))
                 {
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                     string program_name = " <Prog>" + Program_name + "</Prog>\n";
@@ -178,19 +178,19 @@ namespace Bridge
                     string end = "</exe>\n<?include somedata?>";
                     SWriter.Write(start + program_name + body + end);
                 }
-                TextBoxXML.Lines = File.ReadAllLines(fileLoc);
-                TextBoxPath.Text = fileLoc;
+                TextBoxXML.Lines = File.ReadAllLines(Config_path);
+                TextBoxPath.Text = Config_path;
                 ConfigTable.Rows.Clear();
             }
         }
 
         public void DeleteXML()
         {
-            if (fileLoc != "")
+            if (Config_path != "")
             {
-                if (File.Exists(fileLoc))
+                if (File.Exists(Config_path))
                 {
-                    File.Delete(fileLoc);
+                    File.Delete(Config_path);
                     TextBoxXML.Text = "";
                     TextBoxPath.Text = "";
                     ConfigTable.Rows.Clear();

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-isCriteriaScaling</key0>
+   <par0>false</par0>
+</exe>
+<?include somedata?>

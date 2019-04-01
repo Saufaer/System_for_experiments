@@ -13,8 +13,11 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public String fileLoc = "";
-        public String Program_name;
+        public String Config_path = "";
+        public String Program_name = "";
+
+        public String ChosenXML = "";
+        public String ChosenProgram = "";
 
         public Info InfoData = new Info();
         public MainClass()
@@ -27,11 +30,6 @@ namespace Bridge
             Program_name = ComboBoxProgName.SelectedItem.ToString();
         }
 
-        //Run
-        private void Run_Click(object sender, EventArgs e)
-        {
-           Run_exp(fileLoc, Program_name);
-        }
 
         //Open
         private void OpenXMLbutton_Click(object sender, EventArgs e)
@@ -67,6 +65,23 @@ namespace Bridge
         private void SearchInfo_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+
+        //Run
+        private void Run_Click(object sender, EventArgs e)
+        {
+            Run_exp(ChosenXML, ChosenProgram);
+        }
+
+        private void ButtonChoseTargetXML_Click(object sender, EventArgs e)
+        {
+            ChoseXML();
+        }
+
+        private void ButtonChoseProgram_Click(object sender, EventArgs e)
+        {
+            ChoseProgram();
         }
     }
 

@@ -40,6 +40,10 @@
             this.Run = new MetroFramework.Controls.MetroButton();
             this.MainTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.TextBoxChosenProgram = new MetroFramework.Controls.MetroTextBox();
+            this.ButtonChoseProgram = new MetroFramework.Controls.MetroButton();
+            this.TextBoxChosenXML = new MetroFramework.Controls.MetroTextBox();
+            this.ButtonChoseTargetXML = new MetroFramework.Controls.MetroButton();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.EditorTabControl = new MetroFramework.Controls.MetroTabControl();
@@ -53,10 +57,6 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.ParNameTextBox = new MetroFramework.Controls.MetroTextBox();
             this.InfoTable = new MetroFramework.Controls.MetroGrid();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueTextBox = new MetroFramework.Controls.MetroTextBox();
             this.AddLink = new MetroFramework.Controls.MetroButton();
             this.TextBoxPath = new MetroFramework.Controls.MetroTextBox();
@@ -67,6 +67,10 @@
             this.Delete = new MetroFramework.Controls.MetroButton();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.Create = new MetroFramework.Controls.MetroButton();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -113,7 +117,7 @@
             this.Run.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.Run.Location = new System.Drawing.Point(3, 3);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(51, 37);
+            this.Run.Size = new System.Drawing.Size(51, 29);
             this.Run.TabIndex = 23;
             this.Run.Text = "Старт";
             this.Run.UseSelectable = true;
@@ -129,24 +133,112 @@
             this.MainTabControl.Location = new System.Drawing.Point(23, 63);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 1;
-            this.MainTabControl.Size = new System.Drawing.Size(1272, 600);
+            this.MainTabControl.Size = new System.Drawing.Size(1505, 600);
             this.MainTabControl.TabIndex = 25;
             this.MainTabControl.UseSelectable = true;
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.TextBoxChosenProgram);
+            this.metroTabPage3.Controls.Add(this.ButtonChoseProgram);
+            this.metroTabPage3.Controls.Add(this.TextBoxChosenXML);
+            this.metroTabPage3.Controls.Add(this.ButtonChoseTargetXML);
             this.metroTabPage3.Controls.Add(this.Run);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1264, 558);
+            this.metroTabPage3.Size = new System.Drawing.Size(1497, 558);
             this.metroTabPage3.TabIndex = 0;
             this.metroTabPage3.Text = "Проведение экспериментов";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // TextBoxChosenProgram
+            // 
+            // 
+            // 
+            // 
+            this.TextBoxChosenProgram.CustomButton.Image = null;
+            this.TextBoxChosenProgram.CustomButton.Location = new System.Drawing.Point(453, 1);
+            this.TextBoxChosenProgram.CustomButton.Name = "";
+            this.TextBoxChosenProgram.CustomButton.Size = new System.Drawing.Size(45, 45);
+            this.TextBoxChosenProgram.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBoxChosenProgram.CustomButton.TabIndex = 1;
+            this.TextBoxChosenProgram.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBoxChosenProgram.CustomButton.UseSelectable = true;
+            this.TextBoxChosenProgram.CustomButton.Visible = false;
+            this.TextBoxChosenProgram.Lines = new string[0];
+            this.TextBoxChosenProgram.Location = new System.Drawing.Point(269, 58);
+            this.TextBoxChosenProgram.MaxLength = 32767;
+            this.TextBoxChosenProgram.Multiline = true;
+            this.TextBoxChosenProgram.Name = "TextBoxChosenProgram";
+            this.TextBoxChosenProgram.PasswordChar = '\0';
+            this.TextBoxChosenProgram.ReadOnly = true;
+            this.TextBoxChosenProgram.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TextBoxChosenProgram.SelectedText = "";
+            this.TextBoxChosenProgram.SelectionLength = 0;
+            this.TextBoxChosenProgram.SelectionStart = 0;
+            this.TextBoxChosenProgram.ShortcutsEnabled = true;
+            this.TextBoxChosenProgram.Size = new System.Drawing.Size(499, 47);
+            this.TextBoxChosenProgram.TabIndex = 33;
+            this.TextBoxChosenProgram.UseSelectable = true;
+            this.TextBoxChosenProgram.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBoxChosenProgram.WaterMarkFont = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // ButtonChoseProgram
+            // 
+            this.ButtonChoseProgram.Location = new System.Drawing.Point(101, 58);
+            this.ButtonChoseProgram.Name = "ButtonChoseProgram";
+            this.ButtonChoseProgram.Size = new System.Drawing.Size(162, 29);
+            this.ButtonChoseProgram.TabIndex = 32;
+            this.ButtonChoseProgram.Text = "Выбрать исполнителя";
+            this.ButtonChoseProgram.UseSelectable = true;
+            this.ButtonChoseProgram.Click += new System.EventHandler(this.ButtonChoseProgram_Click);
+            // 
+            // TextBoxChosenXML
+            // 
+            // 
+            // 
+            // 
+            this.TextBoxChosenXML.CustomButton.Image = null;
+            this.TextBoxChosenXML.CustomButton.Location = new System.Drawing.Point(453, 1);
+            this.TextBoxChosenXML.CustomButton.Name = "";
+            this.TextBoxChosenXML.CustomButton.Size = new System.Drawing.Size(45, 45);
+            this.TextBoxChosenXML.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBoxChosenXML.CustomButton.TabIndex = 1;
+            this.TextBoxChosenXML.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBoxChosenXML.CustomButton.UseSelectable = true;
+            this.TextBoxChosenXML.CustomButton.Visible = false;
+            this.TextBoxChosenXML.Lines = new string[0];
+            this.TextBoxChosenXML.Location = new System.Drawing.Point(269, 3);
+            this.TextBoxChosenXML.MaxLength = 32767;
+            this.TextBoxChosenXML.Multiline = true;
+            this.TextBoxChosenXML.Name = "TextBoxChosenXML";
+            this.TextBoxChosenXML.PasswordChar = '\0';
+            this.TextBoxChosenXML.ReadOnly = true;
+            this.TextBoxChosenXML.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.TextBoxChosenXML.SelectedText = "";
+            this.TextBoxChosenXML.SelectionLength = 0;
+            this.TextBoxChosenXML.SelectionStart = 0;
+            this.TextBoxChosenXML.ShortcutsEnabled = true;
+            this.TextBoxChosenXML.Size = new System.Drawing.Size(499, 47);
+            this.TextBoxChosenXML.TabIndex = 31;
+            this.TextBoxChosenXML.UseSelectable = true;
+            this.TextBoxChosenXML.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBoxChosenXML.WaterMarkFont = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // ButtonChoseTargetXML
+            // 
+            this.ButtonChoseTargetXML.Location = new System.Drawing.Point(101, 3);
+            this.ButtonChoseTargetXML.Name = "ButtonChoseTargetXML";
+            this.ButtonChoseTargetXML.Size = new System.Drawing.Size(162, 29);
+            this.ButtonChoseTargetXML.TabIndex = 24;
+            this.ButtonChoseTargetXML.Text = "Выбрать конфигурацию";
+            this.ButtonChoseTargetXML.UseSelectable = true;
+            this.ButtonChoseTargetXML.Click += new System.EventHandler(this.ButtonChoseTargetXML_Click);
             // 
             // metroTabPage4
             // 
@@ -166,7 +258,7 @@
             this.metroTabPage4.HorizontalScrollbarSize = 10;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1264, 558);
+            this.metroTabPage4.Size = new System.Drawing.Size(1497, 558);
             this.metroTabPage4.TabIndex = 1;
             this.metroTabPage4.Text = "Создание файла конфигурации";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -185,16 +277,13 @@
             // 
             // EditorTabControl
             // 
-            this.EditorTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EditorTabControl.Controls.Add(this.metroTabPage1);
             this.EditorTabControl.Controls.Add(this.metroTabPage2);
             this.EditorTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.EditorTabControl.Location = new System.Drawing.Point(530, 55);
             this.EditorTabControl.Name = "EditorTabControl";
-            this.EditorTabControl.SelectedIndex = 0;
-            this.EditorTabControl.Size = new System.Drawing.Size(731, 523);
+            this.EditorTabControl.SelectedIndex = 1;
+            this.EditorTabControl.Size = new System.Drawing.Size(962, 523);
             this.EditorTabControl.TabIndex = 32;
             this.EditorTabControl.UseSelectable = true;
             // 
@@ -206,7 +295,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(723, 481);
+            this.metroTabPage1.Size = new System.Drawing.Size(954, 481);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Содержимое файла";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -222,7 +311,7 @@
             // 
             // 
             this.TextBoxXML.CustomButton.Image = null;
-            this.TextBoxXML.CustomButton.Location = new System.Drawing.Point(251, 1);
+            this.TextBoxXML.CustomButton.Location = new System.Drawing.Point(483, 1);
             this.TextBoxXML.CustomButton.Name = "";
             this.TextBoxXML.CustomButton.Size = new System.Drawing.Size(453, 453);
             this.TextBoxXML.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -242,7 +331,7 @@
             this.TextBoxXML.SelectionLength = 0;
             this.TextBoxXML.SelectionStart = 0;
             this.TextBoxXML.ShortcutsEnabled = true;
-            this.TextBoxXML.Size = new System.Drawing.Size(705, 455);
+            this.TextBoxXML.Size = new System.Drawing.Size(937, 455);
             this.TextBoxXML.TabIndex = 18;
             this.TextBoxXML.UseSelectable = true;
             this.TextBoxXML.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -264,7 +353,7 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(723, 481);
+            this.metroTabPage2.Size = new System.Drawing.Size(954, 481);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Редактирование";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -427,37 +516,9 @@
             this.InfoTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.InfoTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.InfoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InfoTable.Size = new System.Drawing.Size(702, 368);
+            this.InfoTable.Size = new System.Drawing.Size(955, 368);
             this.InfoTable.TabIndex = 36;
             this.InfoTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InfoTable_CellMouseClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Параметр";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 180;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Допустимое значение";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Значение по умолчанию";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Описание";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 500;
             // 
             // ValueTextBox
             // 
@@ -579,7 +640,7 @@
             this.ConfigTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ConfigTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ConfigTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ConfigTable.Size = new System.Drawing.Size(521, 459);
+            this.ConfigTable.Size = new System.Drawing.Size(754, 459);
             this.ConfigTable.TabIndex = 29;
             // 
             // Key
@@ -641,11 +702,39 @@
             this.Create.UseSelectable = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Параметр";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Допустимое значение";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Значение по умолчанию";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Описание";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 400;
+            // 
             // MainClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1299, 686);
+            this.ClientSize = new System.Drawing.Size(1542, 686);
             this.Controls.Add(this.MainTabControl);
             this.Name = "MainClass";
             this.MainTabControl.ResumeLayout(false);
@@ -681,10 +770,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroTextBox ParNameTextBox;
         private MetroFramework.Controls.MetroGrid InfoTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private MetroFramework.Controls.MetroTextBox ValueTextBox;
         private MetroFramework.Controls.MetroButton AddLink;
         private MetroFramework.Controls.MetroTextBox TextBoxPath;
@@ -696,6 +781,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn par;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroButton ButtonChoseTargetXML;
+        private MetroFramework.Controls.MetroTextBox TextBoxChosenXML;
+        private MetroFramework.Controls.MetroButton ButtonChoseProgram;
+        private MetroFramework.Controls.MetroTextBox TextBoxChosenProgram;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
 

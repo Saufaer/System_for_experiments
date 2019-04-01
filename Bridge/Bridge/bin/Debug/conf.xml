@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-Epsilon</key0>
+   <par0>0.002</par0>
+
+  <key1>-rEps</key1>
+   <par1>0.01</par1>
+
+  <key2>-m</key2>
+   <par2>12</par2>
+
+  <key3>-r</key3>
+   <par3>2.4</par3>
+
+  <key4>-libPath</key4>
+   <par4>grishagin.dll</par4>
+
+  <key5>-NumOfTaskLevels</key5>
+   <par5>2</par5>
+</exe>
+<?include somedata?>
