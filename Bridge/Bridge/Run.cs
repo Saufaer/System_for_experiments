@@ -52,9 +52,16 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
             }
-            String date = DateTime.Now.ToString("dd.MM.yyyy HH-mm-ss");
+
+            String newPath = Directory.GetCurrentDirectory()+ "\\Experiments";
+            String date = DateTime.Now.ToString("dd.MM.yyyy [HH-mm-ss]");
+            if (!Directory.Exists(Path.Combine(newPath, date)))
+            {
+                Directory.CreateDirectory(Path.Combine(newPath, date));
+            }
+           
             String OutFileName = date;
-            StreamWriter file = new StreamWriter(currentPath+ "\\Experiments\\"+ OutFileName + ".txt");
+            StreamWriter file = new StreamWriter(newPath+ "\\"+ OutFileName + "\\Log.txt");
             file.Write(res);
             //закрыть для сохранения данных
             file.Close();

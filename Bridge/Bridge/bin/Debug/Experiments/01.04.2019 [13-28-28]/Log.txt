@@ -86,6 +86,6 @@ Global optimum FOUND!
 NumberOfTrials = 143
 Number of calculations function 0 of = 143
 
-Solve time = 0.061773
+Solve time = 0.057590
 
 
