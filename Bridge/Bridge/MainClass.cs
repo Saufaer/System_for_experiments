@@ -27,7 +27,6 @@ namespace Bridge
             InitTable();
 
             ComboBoxProgName.SelectedItem = "examin.exe";
-            Program_name = ComboBoxProgName.SelectedItem.ToString();
         }
 
 
@@ -83,6 +82,13 @@ namespace Bridge
         {
             ChoseProgram();
         }
+
+        private void CreateXMLDefault_Click(object sender, EventArgs e)
+        {
+            CreateXMLDefault();
+        }
+
+
     }
 
 }

@@ -38,7 +38,10 @@ namespace Bridge
             ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
             LabelDecription.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
         }
-
+        private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program_name = ComboBoxProgName.SelectedItem.ToString();
+        }
 
         public void Search()
         {
@@ -156,6 +159,10 @@ namespace Bridge
 
         public void CreateXML()
         {
+
+
+
+
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|xml files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -177,11 +184,44 @@ namespace Bridge
                     string body = "";
                     string end = "</exe>\n<?include somedata?>";
                     SWriter.Write(start + program_name + body + end);
+
                 }
                 TextBoxXML.Lines = File.ReadAllLines(Config_path);
                 TextBoxPath.Text = Config_path;
                 ConfigTable.Rows.Clear();
             }
+        }
+
+        public void CreateXMLDefault()
+        {
+            String currentPath = Directory.GetCurrentDirectory();
+            if (!Directory.Exists(Path.Combine(currentPath, "Config files")))
+            {
+                Directory.CreateDirectory(Path.Combine(currentPath, "Config files"));
+            }
+
+            String newPath = Directory.GetCurrentDirectory() + "\\Config files";
+            String date = DateTime.Now.ToString("dd.MM.yyyy [HH-mm-ss]");
+            if (!Directory.Exists(Path.Combine(newPath, date)))
+            {
+                Directory.CreateDirectory(Path.Combine(newPath, date));
+            }
+
+            String OutFileName = date;
+            String FinalPath = newPath + "\\" + OutFileName + "\\Config.xml";
+            StreamWriter file = new StreamWriter(FinalPath);
+
+            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+            string program_name = " <Prog>" + Program_name + "</Prog>\n";
+            string body = "";
+            string end = "</exe>\n<?include somedata?>";
+            file.Write(start + program_name + body + end);
+            //закрыть для сохранения данных
+            file.Close();
+
+            TextBoxXML.Lines = File.ReadAllLines(FinalPath);
+            TextBoxPath.Text = FinalPath;
+            ConfigTable.Rows.Clear();
         }
 
         public void DeleteXML()
