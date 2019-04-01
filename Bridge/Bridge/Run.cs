@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-
+using System.Threading;
 namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
@@ -23,7 +23,20 @@ namespace Bridge
             {
                 String ConfigName = new DirectoryInfo(_Config_path).Name;
                 String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
-                Process.Start("cmd.exe", "/k " + ProgramName + " " + ConfigName);
+
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+
+                    Arguments = "/c " + ProgramName + " " + ConfigName,
+                    // '/c' is close cmd after run
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false
+                };
+              
+                String result = Process.Start(psi).StandardOutput.ReadToEnd();
+                TextBoxOutLog.Text = result;
+
             }
             else { MessageBox.Show("Not selected XML or EXE file", "Error."); }
         }
