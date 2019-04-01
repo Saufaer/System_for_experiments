@@ -2,7 +2,7 @@
 <exe>
  <Prog>examin.exe</Prog>
 
-  <key0>-isCriteriaScaling</key0>
-   <par0>false</par0>
+  <key0>-libPath</key0>
+   <par0>grishagin.dll</par0>
 </exe>
 <?include somedata?>
