@@ -34,13 +34,34 @@ namespace Bridge
                     UseShellExecute = false
                 };
               
-                String result = Process.Start(psi).StandardOutput.ReadToEnd();
+                string result = Process.Start(psi).StandardOutput.ReadToEnd();
+                AddExperiment(result);
                 TextBoxOutLog.Text = result;
+               
 
             }
-            else { MessageBox.Show("Not selected XML or EXE file", "Error."); }
+            else {
+                MessageBox.Show("Not selected XML or EXE file", "Error.");
+            }
         }
 
+        public void AddExperiment(string res)
+        {
+            String currentPath = Directory.GetCurrentDirectory();
+            if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
+            {
+                Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
+            }
+            String date = DateTime.Now.ToString("dd.MM.yyyy HH-mm-ss");
+            String OutFileName = date;
+            StreamWriter file = new StreamWriter(currentPath+ "\\Experiments\\"+ OutFileName + ".txt");
+            file.Write(res);
+            //закрыть для сохранения данных
+            file.Close();
+
+
+
+        }
 
         public void ChoseXML()
         {
