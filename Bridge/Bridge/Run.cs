@@ -75,8 +75,29 @@ namespace Bridge
             file.Write(res);
             //закрыть для сохранения данных
             file.Close();
+
+            UpdateExpJournal();
         }
 
+
+        public void UpdateExpJournal()
+        {
+            GridJournal.Rows.Clear();
+
+            string ConfPath = "conf";
+            string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
+            DirectoryInfo dir = new DirectoryInfo(LogPath);
+            // dir.Create();
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo f in dirs)
+            {
+
+
+                GridJournal.Rows.Add(f.CreationTime, f.FullName, ConfPath);
+            }
+
+
+        }
         public void ChoseXML()
         {
             if (LastXML != "")

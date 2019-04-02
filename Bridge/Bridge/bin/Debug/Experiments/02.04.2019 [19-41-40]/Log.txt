@@ -1,4 +1,4 @@
-Argv Config:examin.exe -TypeMethod StandartMethod 
+Argv Config:examin.exe -TypeCalculation OMP 
 Argc Params:3
 DOUBLE PRECISION
 
@@ -76,6 +76,6 @@ Global optimum FOUND!
 NumberOfTrials = 33
 Number of calculations function 0 of = 33
 
-Solve time = 0.000136
+Solve time = 0.000149
 
 
