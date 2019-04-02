@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <exe>
  <Prog>examin.exe</Prog>
- <comment>
- </comment>
+
+  <key0>-Epsilon</key0>
+   <par0>0.01</par0>
+
 </exe>
 <?include somedata?>

@@ -89,20 +89,13 @@ namespace Bridge
                         foreach (object cell in item.ItemArray)
                         {
                             n++;
-                            if (n < (item.ItemArray.Length / 2) - 1)
+                            if (n < (item.ItemArray.Length / 2))
                             {
                                 ConfigTable.Rows.Add();
                                 ConfigTable.Rows[n].Cells[0].Value = item["key" + n];
                                 ConfigTable.Rows[n].Cells[1].Value = item["par" + n];
                             }
-                            //if (n == (item.ItemArray.Length / 2) - 1)
-                            //{
-                            
-                            //    ConfigTable.Rows.Add();
-                                
-                            //    ConfigTable.Rows[n].Cells[0].Value = "Сomment";
-                            //    ConfigTable.Rows[n].Cells[1].Value = item["description"];
-                            //}
+
                         }
 
                     }
@@ -130,12 +123,10 @@ namespace Bridge
                             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                             string program_name = " <Prog>" + Program_name + "</Prog>\n";
                             string body = "";
-                            //string Comment = "";
-
                             string end = "\n</exe>\n<?include somedata?>";
 
 
-                            for (int i = 0; i < ConfigTable.Rows.Count - 2; i++)
+                            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
                             {
                                 string tagParSt = "\n  <key" + i + ">";
 
@@ -151,10 +142,9 @@ namespace Bridge
 
                                 body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
 
-                                //Comment = " <description>\n" + ConfigTable[1, i+1].Value.ToString() + "\n </description>";
                             }
                             
-                            SWriter.Write(start + program_name + body  /*+ Comment*/ + end);
+                            SWriter.Write(start + program_name + body + end);
                         }
                         TextBoxXML.Lines = File.ReadAllLines(Config_path);
                         TextBoxPath.Text = Config_path;
@@ -196,9 +186,8 @@ namespace Bridge
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                     string program_name = " <Prog>" + Program_name + "</Prog>\n";
                     string body = "";
-                    //string Comment = " <description>\n" + TextBoxComment.Text + "\n </description>";
                     string end = "\n</exe>\n<?include somedata?>";
-                    SWriter.Write(start + program_name + body/* + Comment*/ + end);
+                    SWriter.Write(start + program_name + body + end);
 
                 }
                 TextBoxXML.Lines = File.ReadAllLines(Config_path);
@@ -229,9 +218,8 @@ namespace Bridge
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                 string program_name = " <Prog>" + Program_name + "</Prog>\n";
                 string body = "";
-                //string Comment = " <description>\n" + TextBoxComment.Text + "\n </description>";
                 string end = "\n</exe>\n<?include somedata?>";
-                file.Write(start + program_name + body /* + Comment*/ + end);
+                file.Write(start + program_name + body  + end);
               
                 file.Close();
             }
