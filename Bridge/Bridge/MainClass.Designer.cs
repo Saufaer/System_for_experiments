@@ -54,7 +54,6 @@
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.SearchInfo = new MetroFramework.Controls.MetroButton();
             this.TextBoxSearch = new MetroFramework.Controls.MetroTextBox();
-            this.LabelDecription = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.ParNameTextBox = new MetroFramework.Controls.MetroTextBox();
@@ -73,6 +72,7 @@
             this.Delete = new MetroFramework.Controls.MetroButton();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.Create = new MetroFramework.Controls.MetroButton();
+            this.TextBoxComment = new MetroFramework.Controls.MetroTextBox();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroTabPage4.SuspendLayout();
@@ -389,9 +389,9 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.TextBoxComment);
             this.metroTabPage2.Controls.Add(this.SearchInfo);
             this.metroTabPage2.Controls.Add(this.TextBoxSearch);
-            this.metroTabPage2.Controls.Add(this.LabelDecription);
             this.metroTabPage2.Controls.Add(this.metroLabel12);
             this.metroTabPage2.Controls.Add(this.metroLabel13);
             this.metroTabPage2.Controls.Add(this.ParNameTextBox);
@@ -412,7 +412,7 @@
             // 
             // SearchInfo
             // 
-            this.SearchInfo.Location = new System.Drawing.Point(570, 22);
+            this.SearchInfo.Location = new System.Drawing.Point(594, 3);
             this.SearchInfo.Name = "SearchInfo";
             this.SearchInfo.Size = new System.Drawing.Size(48, 30);
             this.SearchInfo.TabIndex = 44;
@@ -436,7 +436,7 @@
             this.TextBoxSearch.CustomButton.Visible = false;
             this.TextBoxSearch.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.TextBoxSearch.Lines = new string[0];
-            this.TextBoxSearch.Location = new System.Drawing.Point(615, 22);
+            this.TextBoxSearch.Location = new System.Drawing.Point(639, 3);
             this.TextBoxSearch.MaxLength = 32767;
             this.TextBoxSearch.Name = "TextBoxSearch";
             this.TextBoxSearch.PasswordChar = '\0';
@@ -450,19 +450,6 @@
             this.TextBoxSearch.UseSelectable = true;
             this.TextBoxSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBoxSearch.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // LabelDecription
-            // 
-            this.LabelDecription.AutoSize = true;
-            this.LabelDecription.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.LabelDecription.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.LabelDecription.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LabelDecription.Location = new System.Drawing.Point(351, 55);
-            this.LabelDecription.Name = "LabelDecription";
-            this.LabelDecription.Size = new System.Drawing.Size(62, 15);
-            this.LabelDecription.Style = MetroFramework.MetroColorStyle.Black;
-            this.LabelDecription.TabIndex = 42;
-            this.LabelDecription.Text = "Описание";
             // 
             // metroLabel12
             // 
@@ -718,7 +705,7 @@
             this.ConfigTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.ConfigTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ConfigTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ConfigTable.Size = new System.Drawing.Size(754, 459);
+            this.ConfigTable.Size = new System.Drawing.Size(525, 459);
             this.ConfigTable.TabIndex = 29;
             // 
             // Key
@@ -781,6 +768,37 @@
             this.Create.UseSelectable = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
+            // TextBoxComment
+            // 
+            // 
+            // 
+            // 
+            this.TextBoxComment.CustomButton.Image = null;
+            this.TextBoxComment.CustomButton.Location = new System.Drawing.Point(343, 2);
+            this.TextBoxComment.CustomButton.Name = "";
+            this.TextBoxComment.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.TextBoxComment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextBoxComment.CustomButton.TabIndex = 1;
+            this.TextBoxComment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextBoxComment.CustomButton.UseSelectable = true;
+            this.TextBoxComment.CustomButton.Visible = false;
+            this.TextBoxComment.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.TextBoxComment.Lines = new string[0];
+            this.TextBoxComment.Location = new System.Drawing.Point(154, 58);
+            this.TextBoxComment.MaxLength = 32767;
+            this.TextBoxComment.Name = "TextBoxComment";
+            this.TextBoxComment.PasswordChar = '\0';
+            this.TextBoxComment.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBoxComment.SelectedText = "";
+            this.TextBoxComment.SelectionLength = 0;
+            this.TextBoxComment.SelectionStart = 0;
+            this.TextBoxComment.ShortcutsEnabled = true;
+            this.TextBoxComment.Size = new System.Drawing.Size(371, 30);
+            this.TextBoxComment.TabIndex = 45;
+            this.TextBoxComment.UseSelectable = true;
+            this.TextBoxComment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextBoxComment.WaterMarkFont = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // MainClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -816,7 +834,6 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroButton SearchInfo;
         private MetroFramework.Controls.MetroTextBox TextBoxSearch;
-        private MetroFramework.Controls.MetroLabel LabelDecription;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroTextBox ParNameTextBox;
@@ -842,6 +859,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private MetroFramework.Controls.MetroButton CreateDefault;
         private MetroFramework.Controls.MetroTextBox TextBoxOutLog;
+        private MetroFramework.Controls.MetroTextBox TextBoxComment;
     }
 }
 

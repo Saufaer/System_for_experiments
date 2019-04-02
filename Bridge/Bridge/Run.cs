@@ -16,7 +16,9 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        
+
+        String LastXML = "";
+
         public void Run_exp(String _Config_path, String _ChosenProgram)
         {
             if ((_Config_path != "")&&(_ChosenProgram !=""))
@@ -38,12 +40,7 @@ namespace Bridge
                     string result = Process.Start(psi).StandardOutput.ReadToEnd();
                     AddExperiment(result);
                     TextBoxOutLog.Text = result;
-                    String ConfName = new DirectoryInfo(_Config_path).Name;
-                    String FileToDel = Directory.GetCurrentDirectory() + "\\" + ConfName;
-                    if (File.Exists(FileToDel))
-                    {
-                        File.Delete(FileToDel);
-                    }
+                    LastXML = _Config_path;
                 }
                 else
                 {
@@ -51,7 +48,8 @@ namespace Bridge
                 }
 
             }
-            else {
+            else
+            {
 
                 MetroFramework.MetroMessageBox.Show(this,"Not selected XML or EXE file", "Error.");
             }
@@ -84,7 +82,15 @@ namespace Bridge
 
         public void ChoseXML()
         {
-           
+            if (LastXML != "")
+            {
+                String ConfName = new DirectoryInfo(LastXML).Name;
+                String FileToDel = Directory.GetCurrentDirectory() + "\\" + ConfName;
+                if (File.Exists(FileToDel))
+                {
+                    File.Delete(FileToDel);
+                }
+            }
 
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
@@ -93,7 +99,10 @@ namespace Bridge
             }
             String ConfigName = new DirectoryInfo(ChosenXML).Name;
             String TempConfPath = Directory.GetCurrentDirectory() + "\\" + ConfigName;
-            File.Copy(ChosenXML, TempConfPath);
+            if (!File.Exists(TempConfPath))
+            {
+                File.Copy(ChosenXML, TempConfPath);
+            }
             ChosenXML = TempConfPath;
             if (File.Exists(ChosenXML))
             {

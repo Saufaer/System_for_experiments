@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-Epsilon</key0>
+   <par0>0.02</par0>
+ <description>Some simple file
+ </description>
+</exe>
+<?include somedata?>

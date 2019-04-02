@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-TypeMethod</key0>
+   <par0>StandartMethod</par0>
+
+  <key1>-TypeCalculation</key1>
+   <par1>OMP</par1>
+
+  <key2>-TypeCalculation</key2>
+   <par2>OMP</par2>
+ <description>
+ afssdg
+ </description>
+</exe>
+<?include somedata?>

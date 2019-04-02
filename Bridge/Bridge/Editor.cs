@@ -36,7 +36,6 @@ namespace Bridge
         {
             ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
             ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
-            LabelDecription.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[3].Value);
         }
         private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,12 +89,20 @@ namespace Bridge
                         foreach (object cell in item.ItemArray)
                         {
                             n++;
-                            if (n < item.ItemArray.Length / 2)
+                            if (n < (item.ItemArray.Length / 2) - 1)
                             {
                                 ConfigTable.Rows.Add();
                                 ConfigTable.Rows[n].Cells[0].Value = item["key" + n];
                                 ConfigTable.Rows[n].Cells[1].Value = item["par" + n];
                             }
+                            //if (n == (item.ItemArray.Length / 2) - 1)
+                            //{
+                            
+                            //    ConfigTable.Rows.Add();
+                                
+                            //    ConfigTable.Rows[n].Cells[0].Value = "Сomment";
+                            //    ConfigTable.Rows[n].Cells[1].Value = item["description"];
+                            //}
                         }
 
                     }
@@ -123,9 +130,12 @@ namespace Bridge
                             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                             string program_name = " <Prog>" + Program_name + "</Prog>\n";
                             string body = "";
-                            string end = "</exe>\n<?include somedata?>";
+                            //string Comment = "";
 
-                            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
+                            string end = "\n</exe>\n<?include somedata?>";
+
+
+                            for (int i = 0; i < ConfigTable.Rows.Count - 2; i++)
                             {
                                 string tagParSt = "\n  <key" + i + ">";
 
@@ -140,14 +150,18 @@ namespace Bridge
                                 string tagValFin = "</par" + i + ">\n";
 
                                 body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+
+                                //Comment = " <description>\n" + ConfigTable[1, i+1].Value.ToString() + "\n </description>";
                             }
-                            SWriter.Write(start + program_name + body + end);
+                            
+                            SWriter.Write(start + program_name + body  /*+ Comment*/ + end);
                         }
                         TextBoxXML.Lines = File.ReadAllLines(Config_path);
                         TextBoxPath.Text = Config_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
-                    MetroFramework.MetroMessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+                    MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+                    //  MetroFramework.MetroMessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
                 }
                 catch
                 {
@@ -182,8 +196,9 @@ namespace Bridge
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                     string program_name = " <Prog>" + Program_name + "</Prog>\n";
                     string body = "";
-                    string end = "</exe>\n<?include somedata?>";
-                    SWriter.Write(start + program_name + body + end);
+                    //string Comment = " <description>\n" + TextBoxComment.Text + "\n </description>";
+                    string end = "\n</exe>\n<?include somedata?>";
+                    SWriter.Write(start + program_name + body/* + Comment*/ + end);
 
                 }
                 TextBoxXML.Lines = File.ReadAllLines(Config_path);
@@ -214,16 +229,12 @@ namespace Bridge
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                 string program_name = " <Prog>" + Program_name + "</Prog>\n";
                 string body = "";
-                string end = "</exe>\n<?include somedata?>";
-                file.Write(start + program_name + body + end);
+                //string Comment = " <description>\n" + TextBoxComment.Text + "\n </description>";
+                string end = "\n</exe>\n<?include somedata?>";
+                file.Write(start + program_name + body /* + Comment*/ + end);
+              
                 file.Close();
             }
-
-
-           // file.Write(start + program_name + body + end);
-            //закрыть для сохранения данных
-           
-
             TextBoxXML.Lines = File.ReadAllLines(FinalPath);
             TextBoxPath.Text = FinalPath;
             ConfigTable.Rows.Clear();

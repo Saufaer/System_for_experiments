@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>Сomment</key0>
+   <par0>
+Siomasfdfhbg
+ </par0>
+ <description>
+
+ </description>
+</exe>
+<?include somedata?>
