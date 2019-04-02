@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ <exp>
+
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\02.04.2019 [22-25-28]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configure_02.04.19_[21-28-01].xml
+</confPath>
+
+ </exp>
+
+ <exp>
+
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\02.04.2019 [22-25-34]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configure_02.04.19_[21-28-01].xml
+</confPath>
+
+ </exp>
+
+ <exp>
+
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\02.04.2019 [22-25-39]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configure_02.04.19_[21-28-01].xml
+</confPath>
+
+ </exp>
+
+<?include somedata?>

@@ -65,3 +65,17 @@ D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Relea
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.pdb
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.Design.dll
 D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.MainClass.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.exe.config
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.exe
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.pdb
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.Design.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.Fonts.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csprojAssemblyReference.cache
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.MainClass.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.Properties.Resources.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.GenerateResource.cache
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.CoreCompileInputs.cache
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.CopyComplete
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.exe
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.pdb

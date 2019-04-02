@@ -17,7 +17,7 @@ namespace Bridge
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
 
-        String LastXML = "";
+        String TempXML = "";
 
         public void Run_exp(String _Config_path, String _ChosenProgram)
         {
@@ -38,9 +38,12 @@ namespace Bridge
                         UseShellExecute = false
                     };
                     string result = Process.Start(psi).StandardOutput.ReadToEnd();
-                    AddExperiment(result);
+                    AddExperiment(result, _Config_path);
+
+                    
+
                     TextBoxOutLog.Text = result;
-                    LastXML = _Config_path;
+                    
                 }
                 else
                 {
@@ -50,12 +53,11 @@ namespace Bridge
             }
             else
             {
-
                 MetroFramework.MetroMessageBox.Show(this,"Not selected XML or EXE file", "Error.");
             }
         }
 
-        public void AddExperiment(string res)
+        public void AddExperiment(string res, string _Config_path)
         {
             String currentPath = Directory.GetCurrentDirectory();
             if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
@@ -71,43 +73,29 @@ namespace Bridge
             }
            
             String OutFileName = date;
-            StreamWriter file = new StreamWriter(newPath+ "\\"+ OutFileName + "\\Log.txt");
+            String LogPath = newPath + "\\" + OutFileName + "\\Log.txt";
+            StreamWriter file = new StreamWriter(LogPath);
+            file.Write("Config Path:\n" + _Config_path+ "\n");
             file.Write(res);
             //закрыть для сохранения данных
             file.Close();
 
+          
+
             UpdateExpJournal();
-        }
 
-
-        public void UpdateExpJournal()
-        {
-            GridJournal.Rows.Clear();
-
-            string ConfPath = "conf";
-            string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
-            DirectoryInfo dir = new DirectoryInfo(LogPath);
-            // dir.Create();
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            foreach (DirectoryInfo f in dirs)
-            {
-
-
-                GridJournal.Rows.Add(f.CreationTime, f.FullName, ConfPath);
-            }
 
 
         }
+
+
+       
         public void ChoseXML()
         {
-            if (LastXML != "")
+            UpdateExpJournal();
+            if (File.Exists(TempXML))
             {
-                String ConfName = new DirectoryInfo(LastXML).Name;
-                String FileToDel = Directory.GetCurrentDirectory() + "\\" + ConfName;
-                if (File.Exists(FileToDel))
-                {
-                    File.Delete(FileToDel);
-                }
+                File.Delete(TempXML);
             }
 
             OpenFileDialog OPF = new OpenFileDialog();
@@ -115,13 +103,16 @@ namespace Bridge
             {
                 ChosenXML = OPF.FileName;
             }
-            String ConfigName = new DirectoryInfo(ChosenXML).Name;
-            String TempConfPath = Directory.GetCurrentDirectory() + "\\" + ConfigName;
-            if (!File.Exists(TempConfPath))
+            if (File.Exists(ChosenXML))
             {
-                File.Copy(ChosenXML, TempConfPath);
+                String ConfigName = new DirectoryInfo(ChosenXML).Name;
+                TempXML  = Directory.GetCurrentDirectory() + "\\" + ConfigName;
+                if (!File.Exists(TempXML))
+                {
+                    File.Copy(ChosenXML, TempXML);
+                }
+                ChosenXML = TempXML;
             }
-            ChosenXML = TempConfPath;
             if (File.Exists(ChosenXML))
             {
                 TextBoxChosenXML.Text = ChosenXML;
@@ -135,13 +126,12 @@ namespace Bridge
 
         public void ChoseProgram()
         {
+            UpdateExpJournal();
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
                 ChosenProgram = OPF.FileName;
             }
-
-
             if (File.Exists(ChosenProgram))
             {
                 TextBoxChosenProgram.Text = ChosenProgram;

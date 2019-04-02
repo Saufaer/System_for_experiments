@@ -65,6 +65,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Info.cs" />
+    <Compile Include="Journal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainClass.cs">
       <SubType>Form</SubType>
     </Compile>

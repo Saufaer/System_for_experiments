@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<exe>
- <Prog>examin.exe</Prog>
-
-  <key0>-TypeProcess</key0>
-   <par0>SynchronousProces</par0>
-
-</exe>
-<?include somedata?>

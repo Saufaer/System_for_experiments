@@ -96,20 +96,12 @@ namespace Bridge
            SaveAs();
         }
 
-        private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void MainClass_FormClosed(object sender, FormClosedEventArgs e)
         {
-            String name = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[0].Value);
-            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[1].Value);
-            string filePath = path + "\\Log.txt";
-            if (File.Exists(filePath))
+            if (File.Exists(TempXML))
             {
-                StreamReader file = new StreamReader(filePath);
-                string lines = file.ReadToEnd();
-                TextBoxOutLog.Text = lines;
-            }   
-                //DirectoryInfo dir = new DirectoryInfo(path);
-                // FileInfo[] XMLFiles = dir.GetFiles("*.xml", SearchOption.AllDirectories);
-
+                File.Delete(TempXML);
+            }
         }
     }
 

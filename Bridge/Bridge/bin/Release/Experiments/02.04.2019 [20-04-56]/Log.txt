@@ -1,0 +1,4 @@
+Argv Config:examin.exe 
+Argc Params:1
+DOUBLE PRECISION
+Error during problem initialization

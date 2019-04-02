@@ -1,5 +1,7 @@
-Argv Config:examin.exe -TypeCalculation OMP -TypeMethod StandartMethod 
-Argc Params:5
+Config Path:
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configure_02.04.19_[21-28-01].xml
+Argv Config:examin.exe 
+Argc Params:1
 DOUBLE PRECISION
 
 Need MPI processes - 1
@@ -76,6 +78,6 @@ Global optimum FOUND!
 NumberOfTrials = 33
 Number of calculations function 0 of = 33
 
-Solve time = 0.000141
+Solve time = 0.000198
 
 
