@@ -75,9 +75,6 @@ namespace Bridge
             file.Write(res);
             //закрыть для сохранения данных
             file.Close();
-
-
-
         }
 
         public void ChoseXML()

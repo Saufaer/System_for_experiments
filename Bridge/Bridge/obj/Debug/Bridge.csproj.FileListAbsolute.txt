@@ -82,3 +82,4 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bri
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.CopyComplete
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.exe
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.pdb
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache

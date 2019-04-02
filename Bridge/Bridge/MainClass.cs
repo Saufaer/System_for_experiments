@@ -89,7 +89,10 @@ namespace Bridge
             CreateXMLDefault();
         }
 
-
+        private void ButtonSaveAs_Click(object sender, EventArgs e)
+        {
+           SaveAs();
+        }
     }
 
 }

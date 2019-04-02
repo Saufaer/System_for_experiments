@@ -1,6 +1,5 @@
-Argv Config:examin.exe -Epsilon 0.02 Some simple file
-  
-Argc Params:4
+Argv Config:examin.exe -TypeCalculation OMP -TypeMethod StandartMethod 
+Argc Params:5
 DOUBLE PRECISION
 
 Need MPI processes - 1
@@ -23,9 +22,9 @@ Dimension = 1
 r = 2.300000
 rEps = 0.010000
 rs = 2.300000_2.300000_2.300000_2.300000
-Eps = 0.020000
+Eps = 0.010000_0.010000_0.010000_0.010000
 Comment = 000
-Epsilon = 0.020000
+Epsilon = 0.010000
 M = 1.000000
 m = 10
 deviceCount = -1
@@ -65,8 +64,8 @@ ProcRank = 0
 
 
 ProcLevel = 0
-Iteration = 27 
-Point = 27 
+Iteration = 34 
+Point = 34 
 min = 0.005668 
 x[0] = -0.005345 
 
@@ -74,9 +73,9 @@ Value difference  = 0.005668
 Coordinates max difference = 0.005345 
 Global optimum FOUND!
 
-NumberOfTrials = 26
-Number of calculations function 0 of = 26
+NumberOfTrials = 33
+Number of calculations function 0 of = 33
 
-Solve time = 0.000148
+Solve time = 0.000145
 
 

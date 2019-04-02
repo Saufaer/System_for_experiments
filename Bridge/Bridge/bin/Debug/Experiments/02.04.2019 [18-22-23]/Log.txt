@@ -1,4 +1,4 @@
-Argv Config:examin.exe -Epsilon 0.01 
+Argv Config:examin.exe -TypeCalculation OMP 
 Argc Params:3
 DOUBLE PRECISION
 
@@ -22,7 +22,7 @@ Dimension = 1
 r = 2.300000
 rEps = 0.010000
 rs = 2.300000_2.300000_2.300000_2.300000
-Eps = 0.010000
+Eps = 0.010000_0.010000_0.010000_0.010000
 Comment = 000
 Epsilon = 0.010000
 M = 1.000000
@@ -76,6 +76,6 @@ Global optimum FOUND!
 NumberOfTrials = 33
 Number of calculations function 0 of = 33
 
-Solve time = 0.000171
+Solve time = 0.000146
 
 

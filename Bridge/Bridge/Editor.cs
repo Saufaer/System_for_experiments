@@ -110,6 +110,34 @@ namespace Bridge
                 MessageBox.Show("XML file not found.", "Error.");
             }
         }
+
+        public void Writter(StreamWriter SW)
+        {
+            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+            string program_name = " <Prog>" + Program_name + "</Prog>\n";
+            string body = "";
+            string end = "\n</exe>\n<?include somedata?>";
+
+            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
+            {
+                string tagParSt = "\n  <key" + i + ">";
+
+                string parameter_name = ConfigTable[0, i].Value.ToString();
+
+                string tagParFin = "</key" + i + ">\n";
+
+                string tagValSt = "   <par" + i + ">";
+
+                string value = ConfigTable[1, i].Value.ToString();
+
+                string tagValFin = "</par" + i + ">\n";
+
+                body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+            }
+            SW.Write(start + program_name + body + end);
+            SW.Close();
+
+        }
         public void WriteConfing()
         {
             if (Config_path != "")
@@ -118,40 +146,16 @@ namespace Bridge
                 {
                     if (File.Exists(Config_path))
                     {
-                        using (StreamWriter SWriter = new StreamWriter(Config_path))
+                        using (StreamWriter SW = new StreamWriter(Config_path))
                         {
-                            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-                            string program_name = " <Prog>" + Program_name + "</Prog>\n";
-                            string body = "";
-                            string end = "\n</exe>\n<?include somedata?>";
-
-
-                            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
-                            {
-                                string tagParSt = "\n  <key" + i + ">";
-
-                                string parameter_name = ConfigTable[0, i].Value.ToString();
-
-                                string tagParFin = "</key" + i + ">\n";
-
-                                string tagValSt = "   <par" + i + ">";
-
-                                string value = ConfigTable[1, i].Value.ToString();
-
-                                string tagValFin = "</par" + i + ">\n";
-
-                                body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
-
-                            }
-                            
-                            SWriter.Write(start + program_name + body + end);
+                            Writter(SW);
                         }
                         TextBoxXML.Lines = File.ReadAllLines(Config_path);
                         TextBoxPath.Text = Config_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
                     MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
-                    //  MetroFramework.MetroMessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+
                 }
                 catch
                 {
@@ -166,21 +170,19 @@ namespace Bridge
 
         public void CreateXML()
         {
-
             Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|xml files (*.xml)|*.xml|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
+            SaveFileDialog SF = new SaveFileDialog();
+            SF.Filter = "xml files (*.xml)|*.xml";
+            SF.FilterIndex = 2;
+            SF.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (SF.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                if ((myStream = SF.OpenFile()) != null)
                 {
                     myStream.Close();
                 }
-
-                Config_path = saveFileDialog1.FileName;
+                Config_path = SF.FileName;
                 using (StreamWriter SWriter = new StreamWriter(Config_path))
                 {
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
@@ -188,7 +190,6 @@ namespace Bridge
                     string body = "";
                     string end = "\n</exe>\n<?include somedata?>";
                     SWriter.Write(start + program_name + body + end);
-
                 }
                 TextBoxXML.Lines = File.ReadAllLines(Config_path);
                 TextBoxPath.Text = Config_path;
@@ -207,8 +208,8 @@ namespace Bridge
             }
 
             String date = DateTime.Now.ToString("_dd.MM.yy_[HH-mm-ss]");
-            String OutFileName = "Configure"+date;
-            String FinalPath = currentPath  + "\\Configurations" + "\\" + OutFileName + ".xml";
+            String OutFileName = "Configure" + date;
+            String FinalPath = currentPath + "\\Configurations" + "\\" + OutFileName + ".xml";
             Config_path = FinalPath;
 
 
@@ -219,8 +220,8 @@ namespace Bridge
                 string program_name = " <Prog>" + Program_name + "</Prog>\n";
                 string body = "";
                 string end = "\n</exe>\n<?include somedata?>";
-                file.Write(start + program_name + body  + end);
-              
+                file.Write(start + program_name + body + end);
+
                 file.Close();
             }
             TextBoxXML.Lines = File.ReadAllLines(FinalPath);
@@ -242,7 +243,7 @@ namespace Bridge
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Not selected XML file", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Ошибка.");
             }
         }
 
@@ -250,7 +251,6 @@ namespace Bridge
         {
             String value = ValueTextBox.Text;
             String parameter = ParNameTextBox.Text;
-
             if ((value != "") && (parameter != ""))
             {
                 ConfigTable.Rows.Add(parameter, value);
@@ -260,6 +260,40 @@ namespace Bridge
                 MetroFramework.MetroMessageBox.Show(this, "Key and parameter must be specified.", "Error.");
             }
         }
+        public void SaveAs()
+        {
+            if (Config_path != "")
+            {
+                StreamWriter SW;
+                SaveFileDialog SF = new SaveFileDialog();
+                SF.FileName = Config_path;
+                SF.FileName = "";
+                SF.Filter = "xml files (*.xml)|*.xml";
+                if (SF.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        if (File.Exists(Config_path))
+                        {
+                            using (SW = new StreamWriter(SF.FileName))
+                            {
+                                Writter(SW);
+                            }
+                        }
+                        MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
+                    }
+                    catch
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.");
+                    }
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Ошибка.");
+            }
+        }
+
 
     }
 }
