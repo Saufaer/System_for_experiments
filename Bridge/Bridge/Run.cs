@@ -24,24 +24,36 @@ namespace Bridge
                 String ConfigName = new DirectoryInfo(_Config_path).Name;
                 String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
 
-                var psi = new ProcessStartInfo
+                if (File.Exists(_Config_path))
                 {
-                    FileName = "cmd.exe",
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
 
-                    Arguments = "/c " + ProgramName + " " + ConfigName,
-                    // '/c' is close cmd after run
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false
-                };
-              
-                string result = Process.Start(psi).StandardOutput.ReadToEnd();
-                AddExperiment(result);
-                TextBoxOutLog.Text = result;
-               
+                        Arguments = "/c " + ProgramName + " " + ConfigName,
+                        // '/c' is close cmd after run
+                        RedirectStandardOutput = true,
+                        UseShellExecute = false
+                    };
+                    string result = Process.Start(psi).StandardOutput.ReadToEnd();
+                    AddExperiment(result);
+                    TextBoxOutLog.Text = result;
+                    String ConfName = new DirectoryInfo(_Config_path).Name;
+                    String FileToDel = Directory.GetCurrentDirectory() + "\\" + ConfName;
+                    if (File.Exists(FileToDel))
+                    {
+                        File.Delete(FileToDel);
+                    }
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Not temp XML or EXE file", "Error.");
+                }
 
             }
             else {
-                MessageBox.Show("Not selected XML or EXE file", "Error.");
+
+                MetroFramework.MetroMessageBox.Show(this,"Not selected XML or EXE file", "Error.");
             }
         }
 
@@ -72,20 +84,24 @@ namespace Bridge
 
         public void ChoseXML()
         {
+           
+
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
                 ChosenXML = OPF.FileName;
             }
-
-
+            String ConfigName = new DirectoryInfo(ChosenXML).Name;
+            String TempConfPath = Directory.GetCurrentDirectory() + "\\" + ConfigName;
+            File.Copy(ChosenXML, TempConfPath);
+            ChosenXML = TempConfPath;
             if (File.Exists(ChosenXML))
             {
                 TextBoxChosenXML.Text = ChosenXML;
             }
             else
             {
-                MessageBox.Show("XML file not found.", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, "XML file not found.", "Error.");
             }
         }
 
@@ -105,7 +121,7 @@ namespace Bridge
             }
             else
             {
-                MessageBox.Show(".exe file not found.", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, ".exe file not found.", "Error.");
             }
         }
     }

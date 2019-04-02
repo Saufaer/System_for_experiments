@@ -147,21 +147,21 @@ namespace Bridge
                         TextBoxPath.Text = Config_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
-                    MessageBox.Show("XML файл успешно изменен.", "Выполнено.");
+                    MetroFramework.MetroMessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
                 }
                 catch
                 {
-                    MessageBox.Show("Невозможно изменить XML файл.", "Ошибка.");
+                    MetroFramework.MetroMessageBox.Show(this, "Невозможно изменить XML файл.", "Ошибка.");
                 }
             }
-            else { MessageBox.Show("Not selected XML file", "Error."); }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Not selected XML file", "Error.");
+            }
         }
 
         public void CreateXML()
         {
-
-
-
 
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -194,30 +194,35 @@ namespace Bridge
 
         public void CreateXMLDefault()
         {
+
             String currentPath = Directory.GetCurrentDirectory();
-            if (!Directory.Exists(Path.Combine(currentPath, "Config files")))
+
+            if (!Directory.Exists(Path.Combine(currentPath, "Configurations")))
             {
-                Directory.CreateDirectory(Path.Combine(currentPath, "Config files"));
+                Directory.CreateDirectory(Path.Combine(currentPath, "Configurations"));
             }
 
-            String newPath = Directory.GetCurrentDirectory() + "\\Config files";
-            String date = DateTime.Now.ToString("dd.MM.yyyy [HH-mm-ss]");
-            if (!Directory.Exists(Path.Combine(newPath, date)))
+            String date = DateTime.Now.ToString("_dd.MM.yy_[HH-mm-ss]");
+            String OutFileName = "Configure"+date;
+            String FinalPath = currentPath  + "\\Configurations" + "\\" + OutFileName + ".xml";
+            Config_path = FinalPath;
+
+
+
+            using (StreamWriter file = new StreamWriter(FinalPath))
             {
-                Directory.CreateDirectory(Path.Combine(newPath, date));
+                string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
+                string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                string body = "";
+                string end = "</exe>\n<?include somedata?>";
+                file.Write(start + program_name + body + end);
+                file.Close();
             }
 
-            String OutFileName = date;
-            String FinalPath = newPath + "\\" + OutFileName + "\\Config.xml";
-            StreamWriter file = new StreamWriter(FinalPath);
 
-            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-            string program_name = " <Prog>" + Program_name + "</Prog>\n";
-            string body = "";
-            string end = "</exe>\n<?include somedata?>";
-            file.Write(start + program_name + body + end);
+           // file.Write(start + program_name + body + end);
             //закрыть для сохранения данных
-            file.Close();
+           
 
             TextBoxXML.Lines = File.ReadAllLines(FinalPath);
             TextBoxPath.Text = FinalPath;
@@ -236,7 +241,10 @@ namespace Bridge
                     ConfigTable.Rows.Clear();
                 }
             }
-            else { MessageBox.Show("Not selected XML file", "Error."); }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Not selected XML file", "Error.");
+            }
         }
 
         public void AddLinkToConf()
@@ -248,7 +256,10 @@ namespace Bridge
             {
                 ConfigTable.Rows.Add(parameter, value);
             }
-            else { MessageBox.Show("Key and parameter must be specified.", "Error."); }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Key and parameter must be specified.", "Error.");
+            }
         }
 
     }
