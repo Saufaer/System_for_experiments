@@ -75,14 +75,17 @@ namespace Bridge
             String OutFileName = date;
             String LogPath = newPath + "\\" + OutFileName + "\\Log.txt";
             StreamWriter file = new StreamWriter(LogPath);
-            file.Write("Config Path:\n" + _Config_path+ "\n");
+            //   file.Write("Config Path:\n" + _Config_path + "\n");
+            file.WriteLine("Config Path:");
+            file.WriteLine(_Config_path);
+            
             file.Write(res);
             //закрыть для сохранения данных
             file.Close();
 
           
 
-            UpdateExpJournal();
+           UpdateExpJournal();
 
 
 

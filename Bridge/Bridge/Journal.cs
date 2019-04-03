@@ -19,35 +19,39 @@ namespace Bridge
 
         public void UpdateExpJournal()
         {
+
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
-            string journalPath = expPath + "\\Journal.xml";
-            
-            if (File.Exists(journalPath))
+            if (Directory.Exists(expPath))
             {
-                File.WriteAllText(journalPath, string.Empty);
-            }
-            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
-            string end = "\n</journal>\n<?include somedata?>\n";
-            System.IO.File.AppendAllText(journalPath, start);
-            GridJournal.Rows.Clear();
+                string journalPath = expPath + "\\Journal.xml";
+
+                    File.WriteAllText(journalPath, string.Empty);
+                
+
+                string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
+                string end = "\n</journal>\n<?include somedata?>\n";
+                System.IO.File.AppendAllText(journalPath, start);
+                GridJournal.Rows.Clear();
 
 
-            string ConfPath = "";
-            string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
-            if (Directory.Exists(LogPath))
-            {
-                int k = 0;
-                DirectoryInfo dir = new DirectoryInfo(LogPath);
-                DirectoryInfo[] dirs = dir.GetDirectories();
-                foreach (DirectoryInfo f in dirs)
+                string ConfPath = "";
+                string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
+                if (Directory.Exists(LogPath))
                 {
-                    string[] readText = System.IO.File.ReadAllLines(f.FullName + "\\Log.txt");
-                    ConfPath = readText[1];//строка в логе , содержащая путь конфига
-                    AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                    GridJournal.Rows.Add(f.CreationTime, f.Name, ConfPath);
-                    k++;
+                    int k = 0;
+                    DirectoryInfo dir = new DirectoryInfo(LogPath);
+                    DirectoryInfo[] dirs = dir.GetDirectories();
+                    foreach (DirectoryInfo f in dirs)
+                    {
+                        string[] readText = System.IO.File.ReadAllLines(f.FullName + "\\Log.txt");
+                        ConfPath = readText[1];//строка в логе , содержащая путь конфига
+                        String ConfigName = new DirectoryInfo(ConfPath).Name;
+                        AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                        GridJournal.Rows.Add(f.CreationTime, f.Name, f.FullName, ConfigName);
+                        k++;
+                    }
+                    System.IO.File.AppendAllText(journalPath, end);
                 }
-                System.IO.File.AppendAllText(journalPath, end);
             }
         }
 
@@ -66,13 +70,20 @@ namespace Bridge
         private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             String name = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[0].Value);
-            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[1].Value);
+            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[2].Value);
             string filePath = path + "\\Log.txt";
             if (File.Exists(filePath))
             {
+                TextBoxOutLog.Clear();
+                //string[] readText = System.IO.File.ReadAllLines(filePath);
                 StreamReader file = new StreamReader(filePath);
-                string lines = file.ReadToEnd();
+                 string lines = file.ReadToEnd();
                 TextBoxOutLog.Text = lines;
+                //for (int i = 0; i < readText.Length; i++)
+                //{
+                //    TextBoxOutLog.Text += "\n"+readText[i]+ "\n";
+                //}
+                
             }
 
 
