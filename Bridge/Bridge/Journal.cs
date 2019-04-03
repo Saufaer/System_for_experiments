@@ -26,8 +26,8 @@ namespace Bridge
             {
                 File.WriteAllText(journalPath, string.Empty);
             }
-            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-            string end = "\n<?include somedata?>\n";
+            string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
+            string end = "\n</journal>\n<?include somedata?>\n";
             System.IO.File.AppendAllText(journalPath, start);
             GridJournal.Rows.Clear();
 
@@ -36,27 +36,30 @@ namespace Bridge
             string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
             if (Directory.Exists(LogPath))
             {
+                int k = 0;
                 DirectoryInfo dir = new DirectoryInfo(LogPath);
                 DirectoryInfo[] dirs = dir.GetDirectories();
                 foreach (DirectoryInfo f in dirs)
                 {
                     string[] readText = System.IO.File.ReadAllLines(f.FullName + "\\Log.txt");
                     ConfPath = readText[1];//строка в логе , содержащая путь конфига
-                   AddExpRecord(ConfPath, f.FullName + "\\Log.txt");
-                    GridJournal.Rows.Add(f.CreationTime, f.FullName, ConfPath);
+                    AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                    GridJournal.Rows.Add(f.CreationTime, f.Name, ConfPath);
+                    k++;
                 }
                 System.IO.File.AppendAllText(journalPath, end);
             }
         }
 
-        public void AddExpRecord(string confPath, string LogPath)
+        public void AddExpRecord(int num,string confPath, string LogPath,string date)
         {
-            string experiment_Path = "\n <exp>\n\n<expPath>\n" + LogPath + "\n</expPath>\n";
-            string configuration_Path = " <confPath>\n" + confPath + "\n</confPath>\n\n </exp>\n";
+            string date_exp = "\n <exp" + num + ">\n\n<date>\n" + date + "\n</date>";
+            string experiment_Path = "\n<expPath>\n" + LogPath + "\n</expPath>\n";
+            string configuration_Path = " <confPath>\n" + confPath + "\n</confPath>\n\n </exp" + num + ">\n";
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
             string journalPath = expPath + "\\Journal.xml";
 
-                System.IO.File.AppendAllText(journalPath,  experiment_Path + configuration_Path  );
+                System.IO.File.AppendAllText(journalPath, date_exp + experiment_Path + configuration_Path  );
 
         }
 
