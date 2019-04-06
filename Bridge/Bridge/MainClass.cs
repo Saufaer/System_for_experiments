@@ -13,11 +13,12 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public String Config_path = "";
-        public String Program_name = "";
+        public String gConfig_path = "";
+        public String gProgram_name = "";
 
-        public String ChosenXML = "";
-        public String ChosenProgram = "";
+        public String gChosenXML = "";
+        public String gTempChosenXML = "";
+        public String gChosenProgram = "";
 
         public Info InfoData = new Info();
         public MainClass()
@@ -72,7 +73,7 @@ namespace Bridge
         //Run
         private void Run_Click(object sender, EventArgs e)
         {
-            Run_exp(ChosenXML, ChosenProgram);
+            Run_exp(gTempChosenXML, gChosenXML, gChosenProgram);
         }
 
         private void ButtonChoseTargetXML_Click(object sender, EventArgs e)

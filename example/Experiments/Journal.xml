@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+06.04.2019 17:55:20
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [17-55-20]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configure_06.04.19_[17-54-03].xml
+</confPath>
+
+ </exp0>
+
+ <exp1>
+
+<date>
+06.04.2019 17:55:48
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [17-55-48]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configure_06.04.19_[17-54-03].xml
+</confPath>
+
+ </exp1>
+
+</journal>
+<?include somedata?>

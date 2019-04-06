@@ -25,7 +25,7 @@ namespace Bridge
             {
                 string journalPath = expPath + "\\Journal.xml";
 
-                    File.WriteAllText(journalPath, string.Empty);
+                File.WriteAllText(journalPath, string.Empty);
                 
 
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
@@ -34,21 +34,74 @@ namespace Bridge
                 GridJournal.Rows.Clear();
 
 
-                string ConfPath = "";
                 string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
-                if (Directory.Exists(LogPath))
+                if (Directory.Exists(LogPath)&& Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
                 {
                     int k = 0;
                     DirectoryInfo dir = new DirectoryInfo(LogPath);
                     DirectoryInfo[] dirs = dir.GetDirectories();
                     foreach (DirectoryInfo f in dirs)
                     {
-                        string[] readText = System.IO.File.ReadAllLines(f.FullName + "\\Log.txt");
-                        ConfPath = readText[1];//строка в логе , содержащая путь конфига
-                        String ConfigName = new DirectoryInfo(ConfPath).Name;
-                        AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                        GridJournal.Rows.Add(f.CreationTime, f.Name, f.FullName, ConfigName);
-                        k++;
+                        if (File.Exists(f.FullName + "\\Log.txt"))
+                        {
+                            string confP = f.FullName + "\\ConfPath.txt";
+                            if (File.Exists(confP))
+                            {
+                                string[] readText = System.IO.File.ReadAllLines(confP);
+                                string ConfPath = readText[0];
+                             
+                                if (File.Exists(ConfPath))
+                                {
+                                    String ConfigName = new DirectoryInfo(ConfPath).Name;
+                                    AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                    GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ConfPath, ConfigName);
+                                    k++;
+                                }
+                                else
+                                {
+                                    AddExpRecord(k, "Confuguration not found", f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                    GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Файл не найден");
+                                    k++;
+                                }
+                            }
+                            else
+                            {
+                                AddExpRecord(k, "Confuguration path not saved", f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Не сохранен путь");
+                                k++;
+                            }
+                        }
+                        else
+                        {
+                            string confP = f.FullName + "\\ConfPath.txt";
+                            if (File.Exists(confP))
+                            {
+                                string[] readText = System.IO.File.ReadAllLines(confP);
+                                string ConfPath = readText[0];
+
+                                if (File.Exists(ConfPath))
+                                {
+                                    String ConfigName = new DirectoryInfo(ConfPath).Name;
+                                    AddExpRecord(k, ConfPath, "Файл не найден", f.CreationTime.ToString());
+                                    GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", ConfPath, ConfigName);
+                                    k++;
+                                }
+                                else
+                                {
+                                    AddExpRecord(k, "Confuguration not found", "Файл не найден", f.CreationTime.ToString());
+                                    GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", "not", "Файл не найден");
+                                    k++;
+                                }
+                            }
+                            else
+                            {
+                                AddExpRecord(k, "Confuguration path not saved", "Файл не найден", f.CreationTime.ToString());
+                                GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", "not", "Не сохранен путь");
+                                k++;
+                            }
+                        }
+                        
+                        
                     }
                     System.IO.File.AppendAllText(journalPath, end);
                 }
@@ -69,20 +122,18 @@ namespace Bridge
 
         private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            String name = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[0].Value);
-            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[2].Value);
+            String name = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[2].Value);
+            FileName.Text = name;
+            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[1].Value);
             string filePath = path + "\\Log.txt";
             if (File.Exists(filePath))
             {
                 TextBoxOutLog.Clear();
-                //string[] readText = System.IO.File.ReadAllLines(filePath);
+                
                 StreamReader file = new StreamReader(filePath);
                  string lines = file.ReadToEnd();
                 TextBoxOutLog.Text = lines;
-                //for (int i = 0; i < readText.Length; i++)
-                //{
-                //    TextBoxOutLog.Text += "\n"+readText[i]+ "\n";
-                //}
+
                 
             }
 

@@ -19,45 +19,42 @@ namespace Bridge
 
         String TempXML = "";
 
-        public void Run_exp(String _Config_path, String _ChosenProgram)
+        public void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram)
         {
+            String _Config_path = _Temp_Config_path;
             if ((_Config_path != "")&&(_ChosenProgram !=""))
             {
-                String ConfigName = new DirectoryInfo(_Config_path).Name;
-                String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
-
-                if (File.Exists(_Config_path))
+                if ((File.Exists(_Config_path)) && (File.Exists(_ChosenProgram)))
                 {
-                    var psi = new ProcessStartInfo
-                    {
-                        FileName = "cmd.exe",
+                    String CurConfigName = new DirectoryInfo(_Config_path).Name;
+                    String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
 
-                        Arguments = "/c " + ProgramName + " " + ConfigName,
-                        // '/c' is close cmd after run
-                        RedirectStandardOutput = true,
-                        UseShellExecute = false
-                    };
-                    string result = Process.Start(psi).StandardOutput.ReadToEnd();
-                    AddExperiment(result, _Config_path);
+                   
+                        var psi = new ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
 
-                    
+                            Arguments = "/c " + ProgramName + " " + CurConfigName,
+                            // '/c' is close cmd after run
+                            RedirectStandardOutput = true,
+                            UseShellExecute = false
+                        };
+                        string result = Process.Start(psi).StandardOutput.ReadToEnd();
+                        AddExperiment(result, _Source_Config_path);
 
-                    TextBoxOutLog.Text = result;
-                    
+                        TextBoxOutLog.Text = result;
+
+                   
                 }
-                else
-                {
-                    MetroFramework.MetroMessageBox.Show(this, "Not temp XML or EXE file", "Error.");
-                }
-
+                else MetroFramework.MetroMessageBox.Show(this, "XML или EXE не найден", "Оповещение");
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this,"Not selected XML or EXE file", "Error.");
+                MetroFramework.MetroMessageBox.Show(this,"Не выбран XML или EXE ", "Оповещение");
             }
         }
 
-        public void AddExperiment(string res, string _Config_path)
+        public void AddExperiment(string res, string _Source_Config_path)
         {
             String currentPath = Directory.GetCurrentDirectory();
             if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
@@ -65,27 +62,29 @@ namespace Bridge
                 Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
             }
 
-            String newPath = Directory.GetCurrentDirectory()+ "\\Experiments";
+            String ExpNewPath = Directory.GetCurrentDirectory()+ "\\Experiments";
             String date = DateTime.Now.ToString("dd.MM.yyyy [HH-mm-ss]");
-            if (!Directory.Exists(Path.Combine(newPath, date)))
+            if (!Directory.Exists(Path.Combine(ExpNewPath, date)))
             {
-                Directory.CreateDirectory(Path.Combine(newPath, date));
+                Directory.CreateDirectory(Path.Combine(ExpNewPath, date));
             }
+
+
            
             String OutFileName = date;
-            String LogPath = newPath + "\\" + OutFileName + "\\Log.txt";
+            String LogPath = ExpNewPath + "\\" + OutFileName + "\\Log.txt";
             StreamWriter file = new StreamWriter(LogPath);
-            //   file.Write("Config Path:\n" + _Config_path + "\n");
-            file.WriteLine("Config Path:");
-            file.WriteLine(_Config_path);
-            
             file.Write(res);
-            //закрыть для сохранения данных
             file.Close();
 
-          
+            String ConfPath = ExpNewPath + "\\" + OutFileName + "\\ConfPath.txt";
+            StreamWriter ConfFile = new StreamWriter(ConfPath);
 
-           UpdateExpJournal();
+            
+            ConfFile.WriteLine(_Source_Config_path);
+            ConfFile.Close();
+
+            UpdateExpJournal();
 
 
 
@@ -95,7 +94,6 @@ namespace Bridge
        
         public void ChoseXML()
         {
-            UpdateExpJournal();
             if (File.Exists(TempXML))
             {
                 File.Delete(TempXML);
@@ -104,44 +102,51 @@ namespace Bridge
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
-                ChosenXML = OPF.FileName;
+                gChosenXML = OPF.FileName;
             }
-            if (File.Exists(ChosenXML))
+            if (File.Exists(gChosenXML))
             {
-                String ConfigName = new DirectoryInfo(ChosenXML).Name;
+                String ConfigName = new DirectoryInfo(gChosenXML).Name;
                 TempXML  = Directory.GetCurrentDirectory() + "\\" + ConfigName;
                 if (!File.Exists(TempXML))
                 {
-                    File.Copy(ChosenXML, TempXML);
+                    File.Copy(gChosenXML, TempXML);
                 }
-                ChosenXML = TempXML;
+                gTempChosenXML = TempXML;
             }
-            if (File.Exists(ChosenXML))
+            if (File.Exists(gChosenXML))
             {
-                TextBoxChosenXML.Text = ChosenXML;
+                TextBoxChosenXML.Text = gChosenXML;
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "XML file not found.", "Error.");
+                if (!File.Exists(gChosenXML))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение");
+                }
+                   
             }
         }
 
 
         public void ChoseProgram()
         {
-            UpdateExpJournal();
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
-                ChosenProgram = OPF.FileName;
+                gChosenProgram = OPF.FileName;
             }
-            if (File.Exists(ChosenProgram))
+            if (File.Exists(gChosenProgram) )
             {
-                TextBoxChosenProgram.Text = ChosenProgram;
+                TextBoxChosenProgram.Text = gChosenProgram;
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, ".exe file not found.", "Error.");
+             if(gChosenProgram != "")
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "EXE не найден.", "Оповещение");
+                }
+                
             }
         }
     }

@@ -39,7 +39,7 @@ namespace Bridge
         }
         private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Program_name = ComboBoxProgName.SelectedItem.ToString();
+            gProgram_name = ComboBoxProgName.SelectedItem.ToString();
         }
 
         public void Search()
@@ -70,19 +70,19 @@ namespace Bridge
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
             {
-                Config_path = OPF.FileName;
+                gConfig_path = OPF.FileName;
             }
 
 
-            if (File.Exists(Config_path))
+            if (File.Exists(gConfig_path))
             {
                 try
                 {
-                    TextBoxXML.Lines = File.ReadAllLines(Config_path);
-                    TextBoxPath.Text = Config_path;
+                    TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
+                    TextBoxPath.Text = gConfig_path;
                     ConfigTable.Rows.Clear();
                     DataSet ds = new DataSet();
-                    ds.ReadXml(Config_path);
+                    ds.ReadXml(gConfig_path);
                     foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
                         int n = -1;
@@ -114,7 +114,7 @@ namespace Bridge
         public void Writter(StreamWriter SW)
         {
             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-            string program_name = " <Prog>" + Program_name + "</Prog>\n";
+            string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
             string body = "";
             string end = "\n</exe>\n<?include somedata?>";
 
@@ -140,18 +140,18 @@ namespace Bridge
         }
         public void WriteConfing()
         {
-            if (Config_path != "")
+            if (gConfig_path != "")
             {
                 try
                 {
-                    if (File.Exists(Config_path))
+                    if (File.Exists(gConfig_path))
                     {
-                        using (StreamWriter SW = new StreamWriter(Config_path))
+                        using (StreamWriter SW = new StreamWriter(gConfig_path))
                         {
                             Writter(SW);
                         }
-                        TextBoxXML.Lines = File.ReadAllLines(Config_path);
-                        TextBoxPath.Text = Config_path;
+                        TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
+                        TextBoxPath.Text = gConfig_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
                     MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
@@ -182,17 +182,17 @@ namespace Bridge
                 {
                     myStream.Close();
                 }
-                Config_path = SF.FileName;
-                using (StreamWriter SWriter = new StreamWriter(Config_path))
+                gConfig_path = SF.FileName;
+                using (StreamWriter SWriter = new StreamWriter(gConfig_path))
                 {
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-                    string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                    string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
                     string body = "";
                     string end = "\n</exe>\n<?include somedata?>";
                     SWriter.Write(start + program_name + body + end);
                 }
-                TextBoxXML.Lines = File.ReadAllLines(Config_path);
-                TextBoxPath.Text = Config_path;
+                TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
+                TextBoxPath.Text = gConfig_path;
                 ConfigTable.Rows.Clear();
             }
         }
@@ -210,14 +210,14 @@ namespace Bridge
             String date = DateTime.Now.ToString("_dd.MM.yy_[HH-mm-ss]");
             String OutFileName = "Configure" + date;
             String FinalPath = currentPath + "\\Configurations" + "\\" + OutFileName + ".xml";
-            Config_path = FinalPath;
+            gConfig_path = FinalPath;
 
 
 
             using (StreamWriter file = new StreamWriter(FinalPath))
             {
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
-                string program_name = " <Prog>" + Program_name + "</Prog>\n";
+                string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
                 string body = "";
                 string end = "\n</exe>\n<?include somedata?>";
                 file.Write(start + program_name + body + end);
@@ -231,11 +231,11 @@ namespace Bridge
 
         public void DeleteXML()
         {
-            if (Config_path != "")
+            if (gConfig_path != "")
             {
-                if (File.Exists(Config_path))
+                if (File.Exists(gConfig_path))
                 {
-                    File.Delete(Config_path);
+                    File.Delete(gConfig_path);
                     TextBoxXML.Text = "";
                     TextBoxPath.Text = "";
                     ConfigTable.Rows.Clear();
@@ -262,18 +262,18 @@ namespace Bridge
         }
         public void SaveAs()
         {
-            if (Config_path != "")
+            if (gConfig_path != "")
             {
                 StreamWriter SW;
                 SaveFileDialog SF = new SaveFileDialog();
-                SF.FileName = Config_path;
+                SF.FileName = gConfig_path;
                 SF.FileName = "";
                 SF.Filter = "xml files (*.xml)|*.xml";
                 if (SF.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        if (File.Exists(Config_path))
+                        if (File.Exists(gConfig_path))
                         {
                             using (SW = new StreamWriter(SF.FileName))
                             {
