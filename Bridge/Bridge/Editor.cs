@@ -207,13 +207,10 @@ namespace Bridge
                 Directory.CreateDirectory(Path.Combine(currentPath, "Configurations"));
             }
 
-            String date = DateTime.Now.ToString("_dd.MM.yy_[HH-mm-ss]");
+            String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy");
             String OutFileName = "Configure" + date;
             String FinalPath = currentPath + "\\Configurations" + "\\" + OutFileName + ".xml";
             gConfig_path = FinalPath;
-
-
-
             using (StreamWriter file = new StreamWriter(FinalPath))
             {
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";

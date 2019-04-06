@@ -88,13 +88,12 @@ namespace Bridge
 
         private void CreateXMLDefault_Click(object sender, EventArgs e)
         {
-            
             CreateXMLDefault();
         }
 
         private void ButtonSaveAs_Click(object sender, EventArgs e)
         {
-           SaveAs();
+            SaveAs();
         }
 
         private void MainClass_FormClosed(object sender, FormClosedEventArgs e)

@@ -1,4 +1,0 @@
-Argv Config:examin.exe -TypeCalculation OMP -DimInTaskLevel 2_0_0_0 
-Argc Params:5
-DOUBLE PRECISION
-Error during problem initialization

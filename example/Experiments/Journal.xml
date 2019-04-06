@@ -4,13 +4,13 @@
  <exp0>
 
 <date>
-06.04.2019 17:55:20
+06.04.2019 19:00:34
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [17-55-20]\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [19-00-34]\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configure_06.04.19_[17-54-03].xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure_06.04.19_[17-54-03].xml
 </confPath>
 
  </exp0>
@@ -18,16 +18,58 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configure_06.04.19_
  <exp1>
 
 <date>
-06.04.2019 17:55:48
+06.04.2019 19:00:39
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [17-55-48]\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [19-00-39]\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configure_06.04.19_[17-54-03].xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure_06.04.19_[18-59-44].xml
 </confPath>
 
  </exp1>
+
+ <exp2>
+
+<date>
+06.04.2019 19:00:41
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [19-00-41]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure_06.04.19_[17-54-19].xml
+</confPath>
+
+ </exp2>
+
+ <exp3>
+
+<date>
+06.04.2019 19:00:43
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [19-00-43]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure_06.04.19_[18-58-01].xml
+</confPath>
+
+ </exp3>
+
+ <exp4>
+
+<date>
+06.04.2019 19:00:45
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\06.04.2019 [19-00-45]\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure_06.04.19_[17-54-03].xml
+</confPath>
+
+ </exp4>
 
 </journal>
 <?include somedata?>

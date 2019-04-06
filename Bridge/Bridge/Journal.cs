@@ -16,26 +16,19 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-
         public void UpdateExpJournal()
         {
-
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
             if (Directory.Exists(expPath))
             {
                 string journalPath = expPath + "\\Journal.xml";
-
                 File.WriteAllText(journalPath, string.Empty);
-                
-
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
                 string end = "\n</journal>\n<?include somedata?>\n";
                 System.IO.File.AppendAllText(journalPath, start);
                 GridJournal.Rows.Clear();
-
-
                 string LogPath = Directory.GetCurrentDirectory() + "\\Experiments";
-                if (Directory.Exists(LogPath)&& Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+                if (Directory.Exists(LogPath) && Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
                 {
                     int k = 0;
                     DirectoryInfo dir = new DirectoryInfo(LogPath);
@@ -49,7 +42,7 @@ namespace Bridge
                             {
                                 string[] readText = System.IO.File.ReadAllLines(confP);
                                 string ConfPath = readText[0];
-                             
+
                                 if (File.Exists(ConfPath))
                                 {
                                     String ConfigName = new DirectoryInfo(ConfPath).Name;
@@ -100,24 +93,20 @@ namespace Bridge
                                 k++;
                             }
                         }
-                        
-                        
                     }
                     System.IO.File.AppendAllText(journalPath, end);
                 }
             }
         }
 
-        public void AddExpRecord(int num,string confPath, string LogPath,string date)
+        public void AddExpRecord(int num, string confPath, string LogPath, string date)
         {
             string date_exp = "\n <exp" + num + ">\n\n<date>\n" + date + "\n</date>";
             string experiment_Path = "\n<expPath>\n" + LogPath + "\n</expPath>\n";
             string configuration_Path = " <confPath>\n" + confPath + "\n</confPath>\n\n </exp" + num + ">\n";
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
             string journalPath = expPath + "\\Journal.xml";
-
-                System.IO.File.AppendAllText(journalPath, date_exp + experiment_Path + configuration_Path  );
-
+            System.IO.File.AppendAllText(journalPath, date_exp + experiment_Path + configuration_Path);
         }
 
         private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -129,15 +118,16 @@ namespace Bridge
             if (File.Exists(filePath))
             {
                 TextBoxOutLog.Clear();
-                
                 StreamReader file = new StreamReader(filePath);
-                 string lines = file.ReadToEnd();
+                string lines = file.ReadToEnd();
                 TextBoxOutLog.Text = lines;
-
-                
             }
 
-
+           
+            //using (Results Res = new Results())
+            //{
+            //    Res.ShowDialog();
+            //}
         }
     }
 }

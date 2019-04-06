@@ -1,4 +1,0 @@
-Argv Config:examin.exe -stopCondition Accuracy 
-Argc Params:3
-DOUBLE PRECISION
-Error during problem initialization
