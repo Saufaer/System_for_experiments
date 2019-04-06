@@ -16,6 +16,7 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
+        public DataGridViewCellMouseEventArgs e;
         public void UpdateExpJournal()
         {
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
@@ -108,12 +109,13 @@ namespace Bridge
             string journalPath = expPath + "\\Journal.xml";
             System.IO.File.AppendAllText(journalPath, date_exp + experiment_Path + configuration_Path);
         }
-
-        private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        
+        private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
-            String name = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[2].Value);
+            e = _e;
+            String name = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[2].Value);
             FileName.Text = name;
-            String path = Convert.ToString(GridJournal.Rows[e.RowIndex].Cells[1].Value);
+            String path = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[1].Value);
             string filePath = path + "\\Log.txt";
             if (File.Exists(filePath))
             {
@@ -124,10 +126,26 @@ namespace Bridge
             }
 
            
-            //using (Results Res = new Results())
-            //{
-            //    Res.ShowDialog();
-            //}
+
+        }
+       
+        private void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
+        {
+            e = _e;
+            using (Results Res = new Results(e))
+            {
+                Res.ShowDialog();
+                
+            }
+        }
+
+        private void results_Click(object sender, EventArgs _e)
+        {
+            using (Results Res = new Results(e))
+            {
+                Res.ShowDialog();
+
+            }
         }
     }
 }

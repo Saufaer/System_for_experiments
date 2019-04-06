@@ -183,5 +183,33 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Con
 
  </exp12>
 
+ <exp13>
+
+<date>
+06.04.2019 21:34:23
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\[21-34-23]_06.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[19-19-31]_06.04.19.xml
+</confPath>
+
+ </exp13>
+
+ <exp14>
+
+<date>
+06.04.2019 21:45:22
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\[21-45-22]_06.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure_06.04.19_[18-26-15].xml
+</confPath>
+
+ </exp14>
+
 </journal>
 <?include somedata?>

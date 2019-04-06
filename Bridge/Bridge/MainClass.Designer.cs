@@ -43,8 +43,14 @@
             this.Run = new MetroFramework.Controls.MetroButton();
             this.MainTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.results = new MetroFramework.Controls.MetroButton();
             this.FileName = new MetroFramework.Controls.MetroTextBox();
             this.GridJournal = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allConfPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.confName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextBoxOutLog = new MetroFramework.Controls.MetroTextBox();
             this.TextBoxChosenProgram = new MetroFramework.Controls.MetroTextBox();
             this.ButtonChoseProgram = new MetroFramework.Controls.MetroButton();
@@ -78,11 +84,6 @@
             this.Delete = new MetroFramework.Controls.MetroButton();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.Create = new MetroFramework.Controls.MetroButton();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.allConfPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.confName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridJournal)).BeginInit();
@@ -152,6 +153,7 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.results);
             this.metroTabPage3.Controls.Add(this.FileName);
             this.metroTabPage3.Controls.Add(this.GridJournal);
             this.metroTabPage3.Controls.Add(this.TextBoxOutLog);
@@ -172,6 +174,16 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // results
+            // 
+            this.results.Location = new System.Drawing.Point(749, 148);
+            this.results.Name = "results";
+            this.results.Size = new System.Drawing.Size(75, 23);
+            this.results.TabIndex = 47;
+            this.results.Text = "Результаты";
+            this.results.UseSelectable = true;
+            this.results.Click += new System.EventHandler(this.results_Click);
+            // 
             // FileName
             // 
             // 
@@ -187,7 +199,7 @@
             this.FileName.CustomButton.UseSelectable = true;
             this.FileName.CustomButton.Visible = false;
             this.FileName.Lines = new string[0];
-            this.FileName.Location = new System.Drawing.Point(793, 3);
+            this.FileName.Location = new System.Drawing.Point(944, 3);
             this.FileName.MaxLength = 32767;
             this.FileName.Name = "FileName";
             this.FileName.PasswordChar = '\0';
@@ -256,6 +268,42 @@
             this.GridJournal.Size = new System.Drawing.Size(725, 368);
             this.GridJournal.TabIndex = 45;
             this.GridJournal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseClick);
+            this.GridJournal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseDoubleClick);
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Дата проведения";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 180;
+            // 
+            // expPath
+            // 
+            this.expPath.HeaderText = "ExpPath";
+            this.expPath.Name = "expPath";
+            this.expPath.ReadOnly = true;
+            this.expPath.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Эксперимент";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 250;
+            // 
+            // allConfPath
+            // 
+            this.allConfPath.HeaderText = "confPath";
+            this.allConfPath.Name = "allConfPath";
+            this.allConfPath.ReadOnly = true;
+            this.allConfPath.Visible = false;
+            // 
+            // confName
+            // 
+            this.confName.HeaderText = "Конфигурация";
+            this.confName.Name = "confName";
+            this.confName.ReadOnly = true;
+            this.confName.Width = 250;
             // 
             // TextBoxOutLog
             // 
@@ -263,7 +311,7 @@
             // 
             // 
             this.TextBoxOutLog.CustomButton.Image = null;
-            this.TextBoxOutLog.CustomButton.Location = new System.Drawing.Point(211, 1);
+            this.TextBoxOutLog.CustomButton.Location = new System.Drawing.Point(60, 1);
             this.TextBoxOutLog.CustomButton.Name = "";
             this.TextBoxOutLog.CustomButton.Size = new System.Drawing.Size(487, 487);
             this.TextBoxOutLog.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -272,7 +320,7 @@
             this.TextBoxOutLog.CustomButton.UseSelectable = true;
             this.TextBoxOutLog.CustomButton.Visible = false;
             this.TextBoxOutLog.Lines = new string[0];
-            this.TextBoxOutLog.Location = new System.Drawing.Point(793, 39);
+            this.TextBoxOutLog.Location = new System.Drawing.Point(944, 39);
             this.TextBoxOutLog.MaxLength = 32767;
             this.TextBoxOutLog.Multiline = true;
             this.TextBoxOutLog.Name = "TextBoxOutLog";
@@ -283,7 +331,7 @@
             this.TextBoxOutLog.SelectionLength = 0;
             this.TextBoxOutLog.SelectionStart = 0;
             this.TextBoxOutLog.ShortcutsEnabled = true;
-            this.TextBoxOutLog.Size = new System.Drawing.Size(699, 489);
+            this.TextBoxOutLog.Size = new System.Drawing.Size(548, 489);
             this.TextBoxOutLog.TabIndex = 44;
             this.TextBoxOutLog.UseSelectable = true;
             this.TextBoxOutLog.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -442,7 +490,7 @@
             this.EditorTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.EditorTabControl.Location = new System.Drawing.Point(530, 55);
             this.EditorTabControl.Name = "EditorTabControl";
-            this.EditorTabControl.SelectedIndex = 1;
+            this.EditorTabControl.SelectedIndex = 0;
             this.EditorTabControl.Size = new System.Drawing.Size(962, 523);
             this.EditorTabControl.TabIndex = 32;
             this.EditorTabControl.UseSelectable = true;
@@ -877,41 +925,6 @@
             this.Create.UseSelectable = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Дата проведения";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 180;
-            // 
-            // expPath
-            // 
-            this.expPath.HeaderText = "ExpPath";
-            this.expPath.Name = "expPath";
-            this.expPath.ReadOnly = true;
-            this.expPath.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Эксперимент";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 250;
-            // 
-            // allConfPath
-            // 
-            this.allConfPath.HeaderText = "confPath";
-            this.allConfPath.Name = "allConfPath";
-            this.allConfPath.ReadOnly = true;
-            this.allConfPath.Visible = false;
-            // 
-            // confName
-            // 
-            this.confName.HeaderText = "Конфигурация";
-            this.confName.Name = "confName";
-            this.confName.ReadOnly = true;
-            this.confName.Width = 250;
-            // 
             // MainClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -975,13 +988,14 @@
         private MetroFramework.Controls.MetroButton CreateDefault;
         private MetroFramework.Controls.MetroTextBox TextBoxOutLog;
         private MetroFramework.Controls.MetroButton ButtonSaveAs;
-        private MetroFramework.Controls.MetroGrid GridJournal;
+        public MetroFramework.Controls.MetroGrid GridJournal;
         private MetroFramework.Controls.MetroTextBox FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn expPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn allConfPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn confName;
+        private MetroFramework.Controls.MetroButton results;
     }
 }
 
