@@ -114,15 +114,15 @@ namespace Bridge
         {
             e = _e;
             String name = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[2].Value);
-            FileName.Text = name;
+            //FileName.Text = name;
             String path = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[1].Value);
             string filePath = path + "\\Log.txt";
             if (File.Exists(filePath))
             {
-                TextBoxOutLog.Clear();
+                //TextBoxOutLog.Clear();
                 StreamReader file = new StreamReader(filePath);
                 string lines = file.ReadToEnd();
-                TextBoxOutLog.Text = lines;
+                //TextBoxOutLog.Text = lines;
             }
 
            

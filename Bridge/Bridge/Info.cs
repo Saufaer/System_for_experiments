@@ -14,8 +14,10 @@ namespace Bridge
         public String[] DescriptionArr;
         public Info()
         {
-            ParameterArr = new String[55]
+            ParameterArr = new String[57]
      {
+"-Separator",
+"-HELP",
 "-NumPoints",
 "-StepPrintMessages",
 "-TypeMethod",
@@ -66,14 +68,16 @@ namespace Bridge
 "-numberOfLamda",
 "-isCriteriaScaling",
 "-itrEps",
-"- isLoadFirstPointFromFile",
+"-isLoadFirstPointFromFile",
 "-FirstPointFilePath",
 "-func_num",
 "-GKLS_global_dist",
 "-GKLS_global_radius"
      };
-            ValidValuesArr = new String[55]
+            ValidValuesArr = new String[57]
             {
+"любая строка без пробелов, не может быть \".\"",
+"не имеет(без аргумента)",
 ">0",
 ">0",
 "перечисление ETypeMethod \r\n или число от 0 до 8",
@@ -130,7 +134,9 @@ namespace Bridge
 ">0",
 ">0"
             };
-            DefaultValuesArr = new String[55] {
+            DefaultValuesArr = new String[57] {
+                "_",
+                " ",
 "1",
 "1000",
 "StandartMethod",
@@ -187,7 +193,9 @@ namespace Bridge
 "0.9" ,
 "0.33"
         };
-            DescriptionArr = new String[55] {
+            DescriptionArr = new String[57] {
+                "разделитель элементов массива",
+                "указывает, нужно ли выводить справку",
 "число точек испытания, порождаемых " +
 "\r\n методом за одну итерацию",
 "через сколько итераций печатать \r\n в консоли сообщение \r\nо текущем количестве итераций",

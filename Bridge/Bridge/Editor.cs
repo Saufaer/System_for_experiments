@@ -17,7 +17,7 @@ namespace Bridge
     {
         public void InitTable()
         {
-            int size = 55;
+            int size = 57;
 
             InfoTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             for (int k = 0; k < 4; k++)
@@ -37,6 +37,12 @@ namespace Bridge
             ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
             ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
         }
+
+        private void InfoTable_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            AddLinkToConf();
+        }
+
         private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
         {
             gProgram_name = ComboBoxProgName.SelectedItem.ToString();

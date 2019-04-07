@@ -28,12 +28,14 @@ namespace Bridge
         
         private void PrintTables()
         {
-            String EXname = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[2].Value);
-            NameLog.Text = EXname;
+            
+           
             String EXpath = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[1].Value);
             string EXfilePath = EXpath + "\\Log.txt";
             if (File.Exists(EXfilePath))
             {
+                NameLog.Clear();
+                NameLog.Text = EXpath;
                 textBoxLog.Clear();
                 StreamReader file = new StreamReader(EXfilePath);
                 string lines = file.ReadToEnd();
@@ -52,14 +54,16 @@ namespace Bridge
 
             }
 
-                String CONFname = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[4].Value);
-            ConfName.Text = CONFname;
+               
+           
             String CONFpath = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[3].Value);
-            string CONFfilePath = CONFpath;
-            if (File.Exists(CONFfilePath))
+            
+            if (File.Exists(CONFpath))
             {
+                ConfName.Clear();
+                ConfName.Text = CONFpath;
                 textBoxConf.Clear();
-                textBoxConf.Lines = File.ReadAllLines(CONFfilePath);
+                textBoxConf.Lines = File.ReadAllLines(CONFpath);
             }
         }
     }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<exe>
- <Prog>examin.exe</Prog>
-
-  <key0>-IsPrintFile</key0>
-   <par0>true</par0>
-
-</exe>
-<?include somedata?>

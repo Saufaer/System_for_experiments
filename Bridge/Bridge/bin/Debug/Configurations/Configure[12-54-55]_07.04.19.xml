@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-HELP</key0>
+   <par0> </par0>
+
+  <key1>-Separator</key1>
+   <par1>_</par1>
+
+</exe>
+<?include somedata?>

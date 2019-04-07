@@ -16,7 +16,17 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        String TempXML = "";
+        public String TempXML = "";
+        public String MpiCommand = "";
+
+        public void SetMpiRun()
+        {
+            if (CheckMpiCom.Checked)
+            {
+                 MpiCommand = "mpiexec -n "+TextMpiComm.Text ;
+            }
+        }
+
         public void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram)
         {
             String _Config_path = _Temp_Config_path;
@@ -25,11 +35,13 @@ namespace Bridge
                 if ((File.Exists(_Config_path)) && (File.Exists(_ChosenProgram)))
                 {
                     String CurConfigName = new DirectoryInfo(_Config_path).Name;
-                    String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
+                    //String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
+                    String ProgramName = "examin.exe";
+                    SetMpiRun();
                     var psi = new ProcessStartInfo
                     {
                         FileName = "cmd.exe",
-                        Arguments = "/c " + ProgramName + " " + CurConfigName,
+                        Arguments = "/c " + MpiCommand + " " + ProgramName + " " + CurConfigName,
                         // '/c' is close cmd after run
                         RedirectStandardOutput = true,
                         UseShellExecute = false
@@ -130,7 +142,7 @@ namespace Bridge
             }
             if (File.Exists(gChosenProgram))
             {
-                TextBoxChosenProgram.Text = gChosenProgram;
+                  TextBoxChosenProgram.Text = gChosenProgram;
             }
             else
             {
