@@ -19,7 +19,7 @@ namespace Bridge
         public String gChosenXML = "";
         public String gTempChosenXML = "";
         public String gChosenProgram = "examin.exe";
-        
+       
         public Info InfoData = new Info();
         public MainClass()
         {

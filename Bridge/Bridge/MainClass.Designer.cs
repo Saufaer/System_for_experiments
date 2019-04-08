@@ -49,6 +49,7 @@
             this.TextBoxChosenXML = new MetroFramework.Controls.MetroTextBox();
             this.ButtonChoseProgram = new MetroFramework.Controls.MetroButton();
             this.MpiPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.CheckMpiCom = new System.Windows.Forms.CheckBox();
             this.TextMpiComm = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.results = new MetroFramework.Controls.MetroButton();
@@ -86,7 +87,7 @@
             this.Delete = new MetroFramework.Controls.MetroButton();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.Create = new MetroFramework.Controls.MetroButton();
-            this.CheckMpiCom = new System.Windows.Forms.CheckBox();
+            this.SearchResLabel = new MetroFramework.Controls.MetroLabel();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.ChosePanel.SuspendLayout();
@@ -151,7 +152,7 @@
             this.MainTabControl.Controls.Add(this.metroTabPage4);
             this.MainTabControl.Location = new System.Drawing.Point(23, 63);
             this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.SelectedIndex = 1;
             this.MainTabControl.Size = new System.Drawing.Size(1505, 600);
             this.MainTabControl.TabIndex = 25;
             this.MainTabControl.UseSelectable = true;
@@ -294,6 +295,16 @@
             this.MpiPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.MpiPanel1.VerticalScrollbarSize = 10;
             // 
+            // CheckMpiCom
+            // 
+            this.CheckMpiCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CheckMpiCom.Location = new System.Drawing.Point(3, 4);
+            this.CheckMpiCom.Name = "CheckMpiCom";
+            this.CheckMpiCom.Size = new System.Drawing.Size(217, 33);
+            this.CheckMpiCom.TabIndex = 53;
+            this.CheckMpiCom.Text = "Использовать mpiexec -n ";
+            this.CheckMpiCom.UseVisualStyleBackColor = true;
+            // 
             // TextMpiComm
             // 
             // 
@@ -350,6 +361,7 @@
             // 
             // GridJournal
             // 
+            this.GridJournal.AllowUserToDeleteRows = false;
             this.GridJournal.AllowUserToResizeRows = false;
             this.GridJournal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -565,6 +577,7 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.SearchResLabel);
             this.metroTabPage2.Controls.Add(this.SearchInfo);
             this.metroTabPage2.Controls.Add(this.TextBoxSearch);
             this.metroTabPage2.Controls.Add(this.metroLabel12);
@@ -587,9 +600,9 @@
             // 
             // SearchInfo
             // 
-            this.SearchInfo.Location = new System.Drawing.Point(594, 3);
+            this.SearchInfo.Location = new System.Drawing.Point(542, 3);
             this.SearchInfo.Name = "SearchInfo";
-            this.SearchInfo.Size = new System.Drawing.Size(48, 30);
+            this.SearchInfo.Size = new System.Drawing.Size(100, 30);
             this.SearchInfo.TabIndex = 44;
             this.SearchInfo.Text = "Поиск";
             this.SearchInfo.UseSelectable = true;
@@ -601,7 +614,7 @@
             // 
             // 
             this.TextBoxSearch.CustomButton.Image = null;
-            this.TextBoxSearch.CustomButton.Location = new System.Drawing.Point(282, 2);
+            this.TextBoxSearch.CustomButton.Location = new System.Drawing.Point(256, 2);
             this.TextBoxSearch.CustomButton.Name = "";
             this.TextBoxSearch.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.TextBoxSearch.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -620,7 +633,7 @@
             this.TextBoxSearch.SelectionLength = 0;
             this.TextBoxSearch.SelectionStart = 0;
             this.TextBoxSearch.ShortcutsEnabled = true;
-            this.TextBoxSearch.Size = new System.Drawing.Size(310, 30);
+            this.TextBoxSearch.Size = new System.Drawing.Size(284, 30);
             this.TextBoxSearch.TabIndex = 43;
             this.TextBoxSearch.UseSelectable = true;
             this.TextBoxSearch.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -680,6 +693,7 @@
             // 
             // InfoTable
             // 
+            this.InfoTable.AllowUserToDeleteRows = false;
             this.InfoTable.AllowUserToResizeRows = false;
             this.InfoTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -944,15 +958,15 @@
             this.Create.UseSelectable = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
-            // CheckMpiCom
+            // SearchResLabel
             // 
-            this.CheckMpiCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CheckMpiCom.Location = new System.Drawing.Point(3, 4);
-            this.CheckMpiCom.Name = "CheckMpiCom";
-            this.CheckMpiCom.Size = new System.Drawing.Size(217, 33);
-            this.CheckMpiCom.TabIndex = 53;
-            this.CheckMpiCom.Text = "Использовать mpiexec -n ";
-            this.CheckMpiCom.UseVisualStyleBackColor = true;
+            this.SearchResLabel.AutoSize = true;
+            this.SearchResLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.SearchResLabel.Location = new System.Drawing.Point(639, 36);
+            this.SearchResLabel.Name = "SearchResLabel";
+            this.SearchResLabel.Size = new System.Drawing.Size(118, 19);
+            this.SearchResLabel.TabIndex = 45;
+            this.SearchResLabel.Text = "Результат поиска";
             // 
             // MainClass
             // 
@@ -1031,6 +1045,7 @@
         private MetroFramework.Controls.MetroPanel MpiPanel1;
         private MetroFramework.Controls.MetroPanel ChosePanel;
         private System.Windows.Forms.CheckBox CheckMpiCom;
+        private MetroFramework.Controls.MetroLabel SearchResLabel;
     }
 }
 

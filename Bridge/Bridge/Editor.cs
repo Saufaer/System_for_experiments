@@ -47,28 +47,52 @@ namespace Bridge
         {
             gProgram_name = ComboBoxProgName.SelectedItem.ToString();
         }
-
+        public int i = 0;
         public void Search()
         {
-            for (int i = 0; i < InfoTable.RowCount; i++)
-            {
-
-                InfoTable.Rows[i].Selected = false;
-                for (int j = 0; j < InfoTable.ColumnCount; j++)
+                int count = 0;
+                for (int k = 0; k < InfoTable.RowCount; k++)
                 {
-
-                    if (InfoTable.Rows[i].Cells[j].Value != null)
+                    for (int j = 0; j < InfoTable.ColumnCount; j++)
                     {
-                        if (InfoTable.Rows[i].Cells[j].Value.ToString().Contains(TextBoxSearch.Text))
+                        if (InfoTable.Rows[k].Cells[j].Value != null)
                         {
-                            InfoTable.Rows[i].Selected = true;
-                            break;
-
+                        if(InfoTable.Rows[k].Cells[j].Value.ToString().IndexOf(TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                           // if (InfoTable.Rows[k].Cells[j].Value.ToString().Contains(TextBoxSearch.Text))
+                            {
+                                count++;
+                                break;
+                            }
                         }
                     }
                 }
+                SearchResLabel.Text = "Найдено соответствий: " + count.ToString();
 
+
+            for (; i < InfoTable.RowCount - 1;)
+            {
+                for (int j = 0; j < InfoTable.ColumnCount; j++)
+                {
+                    if (InfoTable.Rows[i].Cells[j].Value != null)
+                    {
+                        if (InfoTable.Rows[i].Cells[j].Value.ToString().IndexOf(TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            InfoTable.CurrentCell = InfoTable[0, i];
+                            if (i < InfoTable.RowCount - 2)
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                i = 0;
+                            }
+                            return;
+                        }
+                    }
+                }
+                i++;
             }
+            i = 0;
         }
 
         public void OpenXML()
