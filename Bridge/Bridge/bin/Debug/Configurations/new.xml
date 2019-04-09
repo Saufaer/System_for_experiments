@@ -21,7 +21,10 @@
    <par5>false</par5>
 
   <key6>-iterPointsSavePath</key6>
-   <par6> </par6>
+   <par6></par6>
+
+  <key7>-Separator</key7>
+   <par7>_</par7>
 
 </exe>
 <?include somedata?>

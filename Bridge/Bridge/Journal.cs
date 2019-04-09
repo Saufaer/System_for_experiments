@@ -112,31 +112,32 @@ namespace Bridge
         
         private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
-            e = _e;
-            String name = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[2].Value);
-            //FileName.Text = name;
-            String path = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[1].Value);
-            string filePath = path + "\\Log.txt";
-            if (File.Exists(filePath))
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
             {
-                //TextBoxOutLog.Clear();
-                StreamReader file = new StreamReader(filePath);
-                string lines = file.ReadToEnd();
-                //TextBoxOutLog.Text = lines;
+                e = _e;
+                String name = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[2].Value);
+                String path = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[1].Value);
+                string filePath = path + "\\Log.txt";
+                if (File.Exists(filePath))
+                {
+                    StreamReader file = new StreamReader(filePath);
+                    string lines = file.ReadToEnd();
+                }
             }
-
-           
-
         }
        
         private void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
-            e = _e;
-            using (Results Res = new Results(e))
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
             {
-                Res.ShowDialog();
-                
+                e = _e;
+                using (Results Res = new Results(e))
+                {
+                    Res.ShowDialog();
+
+                }
             }
+            
         }
 
         private void results_Click(object sender, EventArgs _e)

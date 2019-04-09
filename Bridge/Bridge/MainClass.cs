@@ -38,7 +38,7 @@ namespace Bridge
         //Open
         private void OpenXMLbutton_Click(object sender, EventArgs e)
         {
-            OpenXML();
+            OpenXML(true);
         }
 
         //Write
@@ -68,7 +68,7 @@ namespace Bridge
         //SearchInfo
         private void SearchInfo_Click(object sender, EventArgs e)
         {
-            Search();
+            Search(InfoTable, TextBoxSearch, SearchResLabel);
         }
 
 
@@ -96,6 +96,7 @@ namespace Bridge
         private void ButtonSaveAs_Click(object sender, EventArgs e)
         {
             SaveAs();
+            OpenXML(false);
         }
 
         private void MainClass_FormClosed(object sender, FormClosedEventArgs e)
@@ -106,7 +107,10 @@ namespace Bridge
             }
         }
 
-
+        private void SearchButton2_Click(object sender, EventArgs e)
+        {
+            Search(GridJournal, SearchTextBox2, ResLabel2);
+        }
     }
 
 }

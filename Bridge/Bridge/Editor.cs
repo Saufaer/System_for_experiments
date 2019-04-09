@@ -34,13 +34,20 @@ namespace Bridge
 
         private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
-            ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
+            if((e.ColumnIndex != -1)&&(e.RowIndex != -1))
+            {
+                ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
+                ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
+            }
+           
         }
 
         private void InfoTable_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            AddLinkToConf();
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                AddLinkToConf();
+            }
         }
 
         private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,16 +55,16 @@ namespace Bridge
             gProgram_name = ComboBoxProgName.SelectedItem.ToString();
         }
         public int i = 0;
-        public void Search()
+        public void Search(MetroFramework.Controls.MetroGrid Table, MetroFramework.Controls.MetroTextBox _TextBoxSearch,MetroFramework.Controls.MetroLabel ResLabel)
         {
                 int count = 0;
-                for (int k = 0; k < InfoTable.RowCount; k++)
+                for (int k = 0; k < Table.RowCount; k++)
                 {
-                    for (int j = 0; j < InfoTable.ColumnCount; j++)
+                    for (int j = 0; j < Table.ColumnCount; j++)
                     {
-                        if (InfoTable.Rows[k].Cells[j].Value != null)
+                        if (Table.Rows[k].Cells[j].Value != null)
                         {
-                        if(InfoTable.Rows[k].Cells[j].Value.ToString().IndexOf(TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        if(Table.Rows[k].Cells[j].Value.ToString().IndexOf(_TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                            // if (InfoTable.Rows[k].Cells[j].Value.ToString().Contains(TextBoxSearch.Text))
                             {
                                 count++;
@@ -66,19 +73,19 @@ namespace Bridge
                         }
                     }
                 }
-                SearchResLabel.Text = "Найдено соответствий: " + count.ToString();
+                ResLabel.Text = "Найдено соответствий: " + count.ToString();
 
 
-            for (; i < InfoTable.RowCount - 1;)
+            for (; i < Table.RowCount ;)
             {
-                for (int j = 0; j < InfoTable.ColumnCount; j++)
+                for (int j = 0; j < Table.ColumnCount; j++)
                 {
-                    if (InfoTable.Rows[i].Cells[j].Value != null)
+                    if (Table.Rows[i].Cells[j].Value != null)
                     {
-                        if (InfoTable.Rows[i].Cells[j].Value.ToString().IndexOf(TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        if (Table.Rows[i].Cells[j].Value.ToString().IndexOf(_TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            InfoTable.CurrentCell = InfoTable[0, i];
-                            if (i < InfoTable.RowCount - 2)
+                            Table.CurrentCell = Table[0, i];
+                            if (i < Table.RowCount - 2)
                             {
                                 i++;
                             }
@@ -95,14 +102,16 @@ namespace Bridge
             i = 0;
         }
 
-        public void OpenXML()
+        public void OpenXML(bool needDialog)
         {
-            OpenFileDialog OPF = new OpenFileDialog();
-            if (OPF.ShowDialog() == DialogResult.OK)
+            if (needDialog)
             {
-                gConfig_path = OPF.FileName;
+                OpenFileDialog OPF = new OpenFileDialog();
+                if (OPF.ShowDialog() == DialogResult.OK)
+                {
+                    gConfig_path = OPF.FileName;
+                }
             }
-
 
             if (File.Exists(gConfig_path))
             {
@@ -289,7 +298,7 @@ namespace Bridge
         }
         public void SaveAs()
         {
-            if (gConfig_path != "")
+            if (File.Exists(gConfig_path))
             {
                 StreamWriter SW;
                 SaveFileDialog SF = new SaveFileDialog();
@@ -304,6 +313,7 @@ namespace Bridge
                         {
                             using (SW = new StreamWriter(SF.FileName))
                             {
+                                gConfig_path = SF.FileName;
                                 Writter(SW);
                             }
                         }
