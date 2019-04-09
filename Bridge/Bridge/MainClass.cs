@@ -81,6 +81,11 @@ namespace Bridge
             Run_exp(gTempChosenXML, gChosenXML, gChosenProgram);
         }
 
+        private void CreateTempConf_Click(object sender, EventArgs e)
+        {
+            Run_Combo();
+
+        }
         private void ButtonChoseTargetXML_Click(object sender, EventArgs e)
         {
             ChoseXML();
@@ -116,6 +121,18 @@ namespace Bridge
         }
 
 
+
+
+
+        private void ButOpenConfList_Click(object sender, EventArgs e)
+        {
+            ReadConfsInDir(TextBoxChosenDirXML.Text);
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
