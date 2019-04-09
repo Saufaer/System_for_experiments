@@ -72,7 +72,7 @@ namespace Bridge
                         PR.EnableRaisingEvents = true;
                         PR.Exited += new EventHandler(myProcess_Exited);
                         PR.Start();
-               
+                        PR.WaitForExit();
                     }
                     catch (Exception ex)
                     {
@@ -80,17 +80,18 @@ namespace Bridge
                         return;
                     }
                     // Wait for Exited event, but not more than 30 seconds.
-                    const int SleepAmount = 100;
-                    while (!eventHandled)
-                    {
-                        elapsedTime += SleepAmount;
-                        if (elapsedTime > 30000)
-                        {
-                            break;
-                        }
 
-                        Thread.Sleep(SleepAmount);
-                    }
+                    //const int SleepAmount = 100;
+                    //while (!eventHandled)
+                    //{
+                    //    elapsedTime += SleepAmount;
+                    //    if (elapsedTime > 30000)
+                    //    {
+                    //        break;
+                    //    }
+
+                    //    Thread.Sleep(SleepAmount);
+                    //}
 
                     //string result = PR.StandardOutput.ReadToEnd();
                    // AddExperiment(result, _Source_Config_path);
@@ -161,25 +162,30 @@ namespace Bridge
             }
 
         }
-        public void FinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        public async void FinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
         {
 
             for (int i = 0; i < k; i++)
             {
 
                 Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram);
-              //  AddExperiment(Results[i], ActiveConfs[i]);
+                
+                //  AddExperiment(Results[i], ActiveConfs[i]);
                 if (File.Exists(TempComboXML[i]))
                 {
                     File.Delete(TempComboXML[i]);
                 }
             
             }
+            
             for (int i = 0; i < k; i++)
             {
                 //MetroFramework.MetroMessageBox.Show(this,  Results[i]);
                 AddExperiment(Results[i], ActiveConfs[i]);
+                await System.Threading.Tasks.Task.Delay(1000);
+
             }
+            UpdateExpJournal();
 
             TempComboXML.Clear();
             ActiveConfs.Clear();
@@ -190,6 +196,7 @@ namespace Bridge
         {
             FinRun(k, ActiveConfs, TempComboXML);
         }
+
         public void AddExperiment(string res, string _Source_Config_path)
         {
             String currentPath = Directory.GetCurrentDirectory();
@@ -201,15 +208,21 @@ namespace Bridge
             String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy");
             if (!Directory.Exists(Path.Combine(ExpNewPath, date)))
             {
+                
                 Directory.CreateDirectory(Path.Combine(ExpNewPath, date));
             }
-
+            
             String OutFileName = date;
             String EXP = ExpNewPath + "\\" + OutFileName;
             String LogPath = EXP + "\\Log.txt";
-            StreamWriter file = new StreamWriter(LogPath);
-            file.Write(res);
-            file.Close();
+            using (StreamWriter Resfile = new StreamWriter(LogPath))
+            {
+                Resfile.Write(res);
+                Resfile.Flush();
+                Resfile.Close();
+            }
+            
+
 
             String ConfPath = ExpNewPath + "\\" + OutFileName + "\\ConfPath.txt";
             StreamWriter ConfFile = new StreamWriter(ConfPath);
@@ -222,11 +235,11 @@ namespace Bridge
                 String TempOptim = Directory.GetCurrentDirectory() + "\\" + "optim.dat";
                 String OptimLoc = EXP + "\\" + "optim.dat";
                 File.Copy(TempOptim, OptimLoc);
-
                 File.Delete(TempOptim);
             }
 
-            UpdateExpJournal();
+          
+            //Thread.Sleep(1000);
         }
 
 
