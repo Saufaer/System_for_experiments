@@ -16,7 +16,7 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public DataGridViewCellMouseEventArgs e;
+        public DataGridViewCellMouseEventArgs e = null;
         public void UpdateExpJournal()
         {
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
@@ -96,6 +96,8 @@ namespace Bridge
                         }
                     }
                     System.IO.File.AppendAllText(journalPath, end);
+                    GridJournal.CurrentCell = GridJournal[0, 0];
+                    GridJournal.Rows[0].Cells[0].Selected = false;
                 }
             }
         }
@@ -140,12 +142,14 @@ namespace Bridge
             
         }
 
-        private void results_Click(object sender, EventArgs _e)
+        private void ResultsButton_Click(object sender, EventArgs _e)
         {
-            using (Results Res = new Results(e))
+            if (e != null)
             {
-                Res.ShowDialog();
-
+                using (Results Res = new Results(e))
+                {
+                    Res.ShowDialog();
+                }
             }
         }
     }

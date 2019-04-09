@@ -94,6 +94,8 @@ namespace Bridge
             }
 
             UpdateExpJournal();
+
+
         }
 
 
@@ -132,6 +134,52 @@ namespace Bridge
             }
         }
 
+        public void ChoseDirXML()
+        {
+            if (File.Exists(TempXML))
+            {
+                File.Delete(TempXML);
+            }
+
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            if (FBD.ShowDialog() == DialogResult.OK)
+            {
+                gChosenDirXML = FBD.SelectedPath;
+            }
+
+         
+            if (Directory.Exists(gChosenDirXML))
+            {
+                String ConfigDirName = new DirectoryInfo(gChosenDirXML).Name;
+                //TempXML = Directory.GetCurrentDirectory() + "\\" + ConfigName;
+                //if (!File.Exists(TempXML))
+                //{
+                //    File.Copy(gChosenXML, TempXML);
+                //}
+                //gTempChosenXML = TempXML;
+            }
+            if (Directory.Exists(gChosenDirXML))
+            {
+                TextBoxChosenDirXML.Text = gChosenDirXML;
+            }
+            else
+            {
+                if (!Directory.Exists(gChosenDirXML))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение");
+                }
+            }
+        }
+        public void ReadConfsInDir(String DirPath)
+        {
+          //  FileInfo f = new FileInfo(DirPath);
+           // FileInfo[] dirs =f.Get;
+        }
+
+        private void ChoseDirConfBut_Click(object sender, EventArgs e)
+        {
+            ChoseDirXML();
+        }
 
         public void ChoseProgram()
         {

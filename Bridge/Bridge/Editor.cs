@@ -28,8 +28,12 @@ namespace Bridge
             for (int i = 0; i < size; i++)
             {
                 InfoTable.Rows.Add(InfoData.ParameterArr[i], InfoData.ValidValuesArr[i], InfoData.DefaultValuesArr[i], InfoData.DescriptionArr[i]);
+
             }
             EditorTabControl.SelectedIndex = 0;
+
+            InfoTable.CurrentCell = InfoTable[0, 0];
+            InfoTable.Rows[0].Cells[0].Selected = false;
         }
 
         private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

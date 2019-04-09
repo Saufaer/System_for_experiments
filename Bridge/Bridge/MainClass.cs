@@ -17,6 +17,7 @@ namespace Bridge
         public String gProgram_name = "";
 
         public String gChosenXML = "";
+        public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
         public String gTempChosenXML = "";
         public String gChosenProgram = "examin.exe";
        
@@ -32,6 +33,8 @@ namespace Bridge
             UpdateExpJournal();
 
             TextBoxChosenProgram.Text = gChosenProgram;
+            TextBoxChosenDirXML.Text = gChosenDirXML;
+
         }
 
 
@@ -111,6 +114,8 @@ namespace Bridge
         {
             Search(GridJournal, SearchTextBox2, ResLabel2);
         }
+
+
     }
 
 }
