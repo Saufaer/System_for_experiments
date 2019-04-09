@@ -20,7 +20,7 @@ namespace Bridge
         public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
         public String gTempChosenXML = "";
         public String gChosenProgram = "examin.exe";
-       
+        MyProgressBar mpb;
         public Info InfoData = new Info();
         public MainClass()
         {
@@ -35,6 +35,14 @@ namespace Bridge
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
 
+            mpb = new MyProgressBar();
+            mpb.ValueChanged += mpb_ValueChanged;
+            this.Controls.Add(mpb);
+           mpb.Location = new System.Drawing.Point(1123, 24);
+           mpb.Name = "metroProgressBar1";
+           mpb.Size = new System.Drawing.Size(279, 35);
+           mpb.Step = 1;
+            mpb.TabIndex = 26;
         }
 
 
@@ -81,11 +89,7 @@ namespace Bridge
             Run_exp(gTempChosenXML, gChosenXML, gChosenProgram);
         }
 
-        private void CreateTempConf_Click(object sender, EventArgs e)
-        {
-            Run_Combo();
 
-        }
         private void ButtonChoseTargetXML_Click(object sender, EventArgs e)
         {
             ChoseXML();
@@ -129,10 +133,7 @@ namespace Bridge
             ReadConfsInDir(TextBoxChosenDirXML.Text);
         }
 
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 
 }
