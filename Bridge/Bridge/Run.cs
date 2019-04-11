@@ -22,20 +22,39 @@ namespace Bridge
         public List<string> Results = new List<string>();
         public List<string> ActiveConfs = new List<string>();
         public List<string> TempComboXML = new List<string>();
+
+        public List<bool> MpiList = new List<bool>();
         public int ComboSize = 0;
 
-        public void SetMpiRun()
+        public void SetMpiRun(bool _UseMpi, bool _SingleStart)
         {
-            if (CheckMpiCom.Checked)
+            if (_SingleStart)
             {
-                 MpiCommand = "mpiexec -n "+TextMpiComm.Text ;
+                if (CheckMpiCom.Checked)
+                {
+                    MpiCommand = "mpiexec -n " + TextMpiComm.Text;
+                }
+            }
+            else
+            {
+
+            
+
+            if (_UseMpi == true)
+            {
+                MpiCommand = "mpiexec -n " + TextMpiComm.Text;
+            }
+            else
+                {
+                MpiCommand = "";
+            }
             }
         }
 
 
 
 
-        public void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram)
+        public void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
         {
             String _Config_path = _Temp_Config_path;
             if ((_Config_path != "") && (_ChosenProgram != ""))
@@ -45,7 +64,8 @@ namespace Bridge
                     String CurConfigName = new DirectoryInfo(_Config_path).Name;
                     //String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
                     String ProgramName = "examin.exe";
-                    SetMpiRun();
+                    
+                    SetMpiRun(UseMpi, SingleStart);
 
                     var psi = new ProcessStartInfo
                     {
@@ -53,14 +73,27 @@ namespace Bridge
                         Arguments = "/c " + MpiCommand + " " + ProgramName + " " + CurConfigName,
                         // '/c' is close cmd after run
                         RedirectStandardOutput = true,
-                        UseShellExecute = false
-                    };
-                    Process PR = new Process();
-
+                        UseShellExecute = false,
+                        WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
+                        CreateNoWindow = true
+                };
+                   
+                    if (SingleStart)
+                    {
+                        string result = Process.Start(psi).StandardOutput.ReadToEnd();
+                        AddExperiment(result, _Source_Config_path);
+                        UpdateExpJournal();
+                        
+                    }
+                    else
+                    {
+                        Process PR = new Process();
                         PR.StartInfo = psi;
                         PR.EnableRaisingEvents = true;
                         PR.Start();
-                     Results.Add(PR.StandardOutput.ReadToEnd());
+                        Results.Add(PR.StandardOutput.ReadToEnd());
+                    }
+                   
                 }
                 else MetroFramework.MetroMessageBox.Show(this, "XML или EXE не найден", "Оповещение");
             }
@@ -80,7 +113,11 @@ namespace Bridge
                 if (Convert.ToInt32(ConfigList.Rows[i].Cells[2].Value) == 1)
                 {
                     ActiveConfs.Add(ConfigList.Rows[i].Cells[1].Value.ToString());
+                    MpiList.Add(Convert.ToBoolean(ConfigList.Rows[i].Cells[3].Value));
+                   
                 }
+                
+
             }
             ComboSize = 0;
             foreach (String SingleConf in ActiveConfs)
@@ -96,113 +133,50 @@ namespace Bridge
                     }
                     gTempChosenXML = TempXML;
                 }
-                if (File.Exists(gChosenXML))
+
+                TempComboXML.Add(gTempChosenXML);
+                ComboSize++;
+
+                gTempChosenXML = TextBoxChosenXML.Text;
+            }
+
+        }
+        public void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        {
+            ProgressBarJour.Value = 0;
+                for (int i = 0; i < ComboSize; i++)
                 {
-                    TextBoxChosenXML.Text = gChosenXML;
+                
+                Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i],false);
+
+                AddExperiment(Results[i], ActiveConfs[i]);
+             
+                 TaskEx.Delay(1000).Wait();
+
+                if (i == ComboSize - 1)
+                {
+                    ProgressBarJour.Value = 100;
                 }
                 else
                 {
-                    if (!File.Exists(gChosenXML))
-                    {
-                        MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение");
-                    }
+                    ProgressBarJour.Value += 100 / ComboSize;
                 }
-                TempComboXML.Add(gTempChosenXML);
-                ComboSize++;
-                
-            }
-
-        }
-        public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
-        {
 
 
-
-            mpb.Value = 0;
-                for (int i = 0; i < ComboSize; i++)
-                {
-
-                    Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram);
-
-                    
-                    if (File.Exists(TempComboXML[i]))
+                if (File.Exists(TempComboXML[i]))
                     {
                         File.Delete(TempComboXML[i]);
                     }
-
-                }
-   
-            
-                for (int i = 0; i < ComboSize; i++)
-                {
-                    
-                    AddExperiment(Results[i], ActiveConfs[i]);
-                    await System.Threading.Tasks.Task.Delay(1000);
-                    if (i == ComboSize - 1)
-                    {
-                    mpb.Value = 100;
-                    }
-                    else
-                    {
-                    mpb.Value += 100 / ComboSize;
-                    }
-                }
                 UpdateExpJournal();
-                TempComboXML.Clear();
-                ActiveConfs.Clear();
-                ComboSize = 0;
+            }
+
+            RunComboFin.Enabled = true;
+            TempComboXML.Clear();
+            ActiveConfs.Clear();
+            MpiList.Clear();
+            ComboSize = 0;
 
         }
-        private void RunComboFin_Click(object sender, EventArgs e)
-        {
-
-            CreateTempConfigs();
-            if (ComboSize != 0)
-            {
-                RunComboFin.Enabled = false;
-                ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
-            }
-
-
-        }
-        void mpb_ValueChanged(object sender, MyProgressBar.ProgressBarChangedEventArgs e)
-        {
-            if(mpb.Value == 100)
-            {
-                RunComboFin.Enabled = true;
-            }
-            
-        }
-
-
-        class MyProgressBar : ProgressBar
-        {
-            public new int Value
-            {
-                get { return base.Value; }
-                set
-                {
-                    base.Value = value;
-                    OnValueChanged(new ProgressBarChangedEventArgs() { Value = value });
-                    Invalidate();
-                }
-            }
-            public event EventHandler<ProgressBarChangedEventArgs> ValueChanged;
-            protected virtual void OnValueChanged(ProgressBarChangedEventArgs e)
-            {
-                EventHandler<ProgressBarChangedEventArgs> handler = ValueChanged;
-                if (handler != null)
-                    handler(this, e);
-            }
-            public class ProgressBarChangedEventArgs
-            {
-                public int Value { get; set; }
-            }
-        }
-        
-
-        
-
         public void AddExperiment(string res, string _Source_Config_path)
         {
             String currentPath = Directory.GetCurrentDirectory();
@@ -214,26 +188,29 @@ namespace Bridge
             String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy");
             if (!Directory.Exists(Path.Combine(ExpNewPath, date)))
             {
-                
                 Directory.CreateDirectory(Path.Combine(ExpNewPath, date));
             }
             
             String OutFileName = date;
             String EXP = ExpNewPath + "\\" + OutFileName;
             String LogPath = EXP + "\\Log.txt";
+
+            //лог
             using (StreamWriter Resfile = new StreamWriter(LogPath))
             {
                 Resfile.Write(res);
-                Resfile.Flush();
                 Resfile.Close();
             }
             
 
-
+            //путь конфига
             String ConfPath = ExpNewPath + "\\" + OutFileName + "\\ConfPath.txt";
-            StreamWriter ConfFile = new StreamWriter(ConfPath);
-            ConfFile.WriteLine(_Source_Config_path);
-            ConfFile.Close();
+            using (StreamWriter ConfFile = new StreamWriter(ConfPath))
+            {
+                ConfFile.WriteLine(_Source_Config_path);
+                ConfFile.Close();
+            }
+               
 
             //отправка точек в соответствующую папку
            if(File.Exists(Directory.GetCurrentDirectory() + "\\" + "optim.dat"))
@@ -243,9 +220,6 @@ namespace Bridge
                 File.Copy(TempOptim, OptimLoc);
                 File.Delete(TempOptim);
             }
-
-          
-            //Thread.Sleep(1000);
         }
 
 
@@ -271,6 +245,7 @@ namespace Bridge
                 }
                 gTempChosenXML = TempXML;
             }
+           
             if (File.Exists(gChosenXML))
             {
                 TextBoxChosenXML.Text = gChosenXML;
@@ -296,8 +271,6 @@ namespace Bridge
             {
                 gChosenDirXML = FBD.SelectedPath;
             }
-
-         
             if (Directory.Exists(gChosenDirXML))
             {
                 String ConfigDirName = new DirectoryInfo(gChosenDirXML).Name;
@@ -322,9 +295,7 @@ namespace Bridge
                 
                 String ConfigName = "";
                 String[] files = Directory.GetFiles(DirPath, "*.xml");
-           
-                    
-                    
+
                     for (int i = 0; i < files.Length; i++)
                     {
                         ConfigList.Rows.Add();
@@ -333,7 +304,6 @@ namespace Bridge
                         ConfigList.Rows[i].Cells[1].Value = files[i];
                         ConfigList.Rows[i].Cells[2].Value = 0;
                         ConfigList.Rows[i].Cells[3].Value = 0;
-
                 }
                 
             }
@@ -343,27 +313,31 @@ namespace Bridge
             }
             
         }
-        
-       
 
 
-        private void ConfigList_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        public DataGridViewCellEventArgs cell_e = null;
+        private void ConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
-            if (e.ColumnIndex == 2)
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
             {
-                if (Convert.ToInt32(ConfigList.CurrentRow.Cells[e.ColumnIndex].Value) == 0)
-                    ConfigList.CurrentRow.Cells[e.ColumnIndex].Value = 1;
-                else
-                    ConfigList.CurrentRow.Cells[e.ColumnIndex].Value = 0;
-            }
-            if (e.ColumnIndex == 3)
-            {
-                if (Convert.ToInt32(ConfigList.CurrentRow.Cells[e.ColumnIndex].Value) == 0)
-                    ConfigList.CurrentRow.Cells[e.ColumnIndex].Value = 1;
-                else
-                    ConfigList.CurrentRow.Cells[e.ColumnIndex].Value = 0;
-            }
+                cell_e = _e;
 
+                if (cell_e.ColumnIndex == 2)
+                {
+                    if (Convert.ToInt32(ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
+                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
+                    else
+                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
+                }
+                if (cell_e.ColumnIndex == 3)
+                {
+                    if (Convert.ToInt32(ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
+                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
+                    else
+                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
+                }
+            }
         }
 
 

@@ -68,7 +68,6 @@ D:\Учёба 2019\Config Creator\System_for_experiments\Bridge\Bridge\obj\Relea
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.exe.config
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.exe
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Bridge.pdb
-D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.Design.dll
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.dll
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\MetroFramework.Fonts.dll
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csprojAssemblyReference.cache
@@ -79,3 +78,17 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\B
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.CopyComplete
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.exe
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.pdb
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.Results.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.Extensions.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.IO.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.Runtime.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.Threading.Tasks.dll
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.Extensions.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.IO.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.Runtime.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.Threading.Tasks.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.App.config

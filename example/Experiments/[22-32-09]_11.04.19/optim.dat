@@ -1,0 +1,45 @@
+Iteration = 2
+min = 6.949830 
+x[0] = -0.200000 
+
+M[0] = 1.000000 
+NumberOfTrials = 1
+Solve time = 0.000038 
+
+
+Iteration = 9
+min = 0.190024 
+x[0] = -0.030997 
+
+M[0] = 159.992966 
+NumberOfTrials = 8
+Solve time = 0.010631 
+
+
+Iteration = 21
+min = 0.075035 
+x[0] = 0.019460 
+
+M[0] = 225.906308 
+NumberOfTrials = 20
+Solve time = 0.014488 
+
+
+Iteration = 27
+min = 0.005668 
+x[0] = -0.005345 
+
+M[0] = 236.141033 
+NumberOfTrials = 26
+Solve time = 0.018504 
+
+
+Iteration = 34
+min = 0.005668 
+x[0] = -0.005345 
+
+M[0] = 238.687877 
+NumberOfTrials = 33
+Solve time = 0.021571 
+
+

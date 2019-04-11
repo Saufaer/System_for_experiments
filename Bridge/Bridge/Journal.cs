@@ -152,5 +152,19 @@ namespace Bridge
                 }
             }
         }
+        private void RunComboFin_Click(object sender, EventArgs e)
+        {
+
+            CreateTempConfigs();
+            if (ComboSize != 0)
+            {
+
+                  RunComboFin.Enabled = false;
+                ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
+            }
+
+
+        }
+       
     }
 }
