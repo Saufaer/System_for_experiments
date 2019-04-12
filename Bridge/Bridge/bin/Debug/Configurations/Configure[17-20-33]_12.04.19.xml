@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<exe>
- <Prog>examin.exe</Prog>
-
-  <key0>-IsPlot</key0>
-   <par0>flase</par0>
-
-</exe>
-<?include somedata?>

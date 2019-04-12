@@ -4,13 +4,13 @@
  <exp0>
 
 <date>
-12.04.2019 17:14:44
+12.04.2019 18:54:03
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-14-44]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-03]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
 </confPath>
 
  </exp0>
@@ -18,13 +18,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEp
  <exp1>
 
 <date>
-12.04.2019 17:14:45
+12.04.2019 18:54:05
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-14-45]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-05]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[18-05-34]_12.04.19.xml
 </confPath>
 
  </exp1>
@@ -32,13 +32,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edit
  <exp2>
 
 <date>
-12.04.2019 17:14:46
+12.04.2019 18:54:08
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-14-46]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-08]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[18-50-54]_12.04.19.xml
 </confPath>
 
  </exp2>
@@ -46,13 +46,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\prin
  <exp3>
 
 <date>
-12.04.2019 17:14:47
+12.04.2019 18:54:11
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-14-47]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-11]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
 </confPath>
 
  </exp3>
@@ -60,13 +60,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Prin
  <exp4>
 
 <date>
-12.04.2019 17:15:14
+12.04.2019 18:54:14
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-14]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-14]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
 </confPath>
 
  </exp4>
@@ -74,13 +74,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEp
  <exp5>
 
 <date>
-12.04.2019 17:15:15
+12.04.2019 18:54:16
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-15]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-16]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
 </confPath>
 
  </exp5>
@@ -88,13 +88,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edit
  <exp6>
 
 <date>
-12.04.2019 17:15:16
+12.04.2019 18:54:19
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-16]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-19]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
 </confPath>
 
  </exp6>
@@ -102,13 +102,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\prin
  <exp7>
 
 <date>
-12.04.2019 17:15:18
+12.04.2019 18:54:22
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-18]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-22]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Ed_m.xml
 </confPath>
 
  </exp7>
@@ -116,13 +116,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Prin
  <exp8>
 
 <date>
-12.04.2019 17:15:54
+12.04.2019 18:54:24
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-54]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-24]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\noPlot.xml
 </confPath>
 
  </exp8>
@@ -130,13 +130,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp9>
 
 <date>
-12.04.2019 17:15:55
+12.04.2019 18:54:27
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-15-55]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-27]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\NoPrint.xml
 </confPath>
 
  </exp9>
@@ -144,13 +144,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp10>
 
 <date>
-12.04.2019 17:16:25
+12.04.2019 18:54:30
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-16-25]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-30]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\notOut.xml
 </confPath>
 
  </exp10>
@@ -158,13 +158,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp11>
 
 <date>
-12.04.2019 17:16:26
+12.04.2019 18:54:33
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-16-26]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-33]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\One.xml
 </confPath>
 
  </exp11>
@@ -172,13 +172,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp12>
 
 <date>
-12.04.2019 17:17:10
+12.04.2019 18:54:35
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-17-10]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-35]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
 </confPath>
 
  </exp12>
@@ -186,13 +186,13 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp13>
 
 <date>
-12.04.2019 17:18:19
+12.04.2019 18:54:38
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-18-19]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-38]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
 </confPath>
 
  </exp13>
@@ -200,478 +200,16 @@ D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Conf
  <exp14>
 
 <date>
-12.04.2019 17:18:27
+12.04.2019 18:54:41
 </date>
 <expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-18-27]_12.04.19\Log.txt
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[18-54-41]_12.04.19\Log.txt
 </expPath>
  <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Two.xml
 </confPath>
 
  </exp14>
-
- <exp15>
-
-<date>
-12.04.2019 17:18:46
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-18-46]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp15>
-
- <exp16>
-
-<date>
-12.04.2019 17:18:56
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-18-56]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp16>
-
- <exp17>
-
-<date>
-12.04.2019 17:28:39
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-28-39]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp17>
-
- <exp18>
-
-<date>
-12.04.2019 17:28:40
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-28-40]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
-</confPath>
-
- </exp18>
-
- <exp19>
-
-<date>
-12.04.2019 17:28:58
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-28-58]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp19>
-
- <exp20>
-
-<date>
-12.04.2019 17:29:00
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-00]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
-</confPath>
-
- </exp20>
-
- <exp21>
-
-<date>
-12.04.2019 17:29:01
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-01]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
-</confPath>
-
- </exp21>
-
- <exp22>
-
-<date>
-12.04.2019 17:29:02
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-02]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
-</confPath>
-
- </exp22>
-
- <exp23>
-
-<date>
-12.04.2019 17:29:04
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-04]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
-</confPath>
-
- </exp23>
-
- <exp24>
-
-<date>
-12.04.2019 17:29:30
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-30]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp24>
-
- <exp25>
-
-<date>
-12.04.2019 17:29:31
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-31]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
-</confPath>
-
- </exp25>
-
- <exp26>
-
-<date>
-12.04.2019 17:29:49
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-29-49]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp26>
-
- <exp27>
-
-<date>
-12.04.2019 17:30:15
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-30-15]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
-</confPath>
-
- </exp27>
-
- <exp28>
-
-<date>
-12.04.2019 17:30:22
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[17-30-22]_12.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[17-18-09]_12.04.19.xml
-</confPath>
-
- </exp28>
-
- <exp29>
-
-<date>
-11.04.2019 21:56:03
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[21-56-03]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
-</confPath>
-
- </exp29>
-
- <exp30>
-
-<date>
-11.04.2019 22:28:26
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-26]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
-</confPath>
-
- </exp30>
-
- <exp31>
-
-<date>
-11.04.2019 22:28:27
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-27]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
-</confPath>
-
- </exp31>
-
- <exp32>
-
-<date>
-11.04.2019 22:28:28
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-28]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
-</confPath>
-
- </exp32>
-
- <exp33>
-
-<date>
-11.04.2019 22:28:29
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-29]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
-</confPath>
-
- </exp33>
-
- <exp34>
-
-<date>
-11.04.2019 22:28:38
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-38]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
-</confPath>
-
- </exp34>
-
- <exp35>
-
-<date>
-11.04.2019 22:28:39
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-39]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
-</confPath>
-
- </exp35>
-
- <exp36>
-
-<date>
-11.04.2019 22:28:40
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-40]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
-</confPath>
-
- </exp36>
-
- <exp37>
-
-<date>
-11.04.2019 22:28:42
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-28-42]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
-</confPath>
-
- </exp37>
-
- <exp38>
-
-<date>
-11.04.2019 22:30:29
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-30-29]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
-</confPath>
-
- </exp38>
-
- <exp39>
-
-<date>
-11.04.2019 22:30:30
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-30-30]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
-</confPath>
-
- </exp39>
-
- <exp40>
-
-<date>
-11.04.2019 22:32:09
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-32-09]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
-</confPath>
-
- </exp40>
-
- <exp41>
-
-<date>
-11.04.2019 22:32:10
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-32-10]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
-</confPath>
-
- </exp41>
-
- <exp42>
-
-<date>
-11.04.2019 22:35:23
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-23]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[21-54-36]_11.04.19.xml
-</confPath>
-
- </exp42>
-
- <exp43>
-
-<date>
-11.04.2019 22:35:24
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-24]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\Configure[22-31-08]_11.04.19.xml
-</confPath>
-
- </exp43>
-
- <exp44>
-
-<date>
-11.04.2019 22:35:26
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-26]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\edEps.xml
-</confPath>
-
- </exp44>
-
- <exp45>
-
-<date>
-11.04.2019 22:35:27
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-27]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\editR.xml
-</confPath>
-
- </exp45>
-
- <exp46>
-
-<date>
-11.04.2019 22:35:28
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-28]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\printOpt1.xml
-</confPath>
-
- </exp46>
-
- <exp47>
-
-<date>
-11.04.2019 22:35:29
-</date>
-<expPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[22-35-29]_11.04.19\Log.txt
-</expPath>
- <confPath>
-D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\PrintOpt2.xml
-</confPath>
-
- </exp47>
 
 </journal>
 <?include somedata?>

@@ -160,6 +160,7 @@ namespace Bridge
             {
 
                   RunComboFin.Enabled = false;
+                TextMpiComm.Enabled = false;
                 ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
             }
 

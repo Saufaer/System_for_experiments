@@ -77,10 +77,11 @@ namespace Bridge
                    
                     if (SingleStart)
                     {
+                        ProgressBarJour.Value = 0;
                         string result = Process.Start(psi).StandardOutput.ReadToEnd();
                         AddExperiment(result, _Source_Config_path, UseMpi);
                         UpdateExpJournal();
-                        
+                        ProgressBarJour.Value = 100;
                     }
                     else
                     {
@@ -169,6 +170,7 @@ namespace Bridge
             }
 
             RunComboFin.Enabled = true;
+            TextMpiComm.Enabled = true;
             TempComboXML.Clear();
             ActiveConfs.Clear();
             MpiList.Clear();
@@ -345,7 +347,7 @@ namespace Bridge
             }
             else
             {
-                MessageBox.Show("Указанная директория не найдена.", "Ошибка.");
+                MessageBox.Show("Указанная директория не найдена.", "Оповещение");
             }
             
         }
@@ -359,20 +361,14 @@ namespace Bridge
             {
                 cell_e = _e;
 
-                if (cell_e.ColumnIndex == 2)
+                if ((cell_e.ColumnIndex == 2)|| (cell_e.ColumnIndex == 3))
                 {
                     if (Convert.ToInt32(ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
                         ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
                     else
                         ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
                 }
-                if (cell_e.ColumnIndex == 3)
-                {
-                    if (Convert.ToInt32(ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
-                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
-                    else
-                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
-                }
+                
             }
         }
 
