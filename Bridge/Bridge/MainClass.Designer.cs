@@ -46,6 +46,7 @@
             this.Run = new MetroFramework.Controls.MetroButton();
             this.MainTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.ProgressBarJour = new MetroFramework.Controls.MetroProgressBar();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.TextBoxChosenDirXML = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -108,7 +109,6 @@
             this.Delete = new MetroFramework.Controls.MetroButton();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.Create = new MetroFramework.Controls.MetroButton();
-            this.ProgressBarJour = new MetroFramework.Controls.MetroProgressBar();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -203,6 +203,13 @@
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // ProgressBarJour
+            // 
+            this.ProgressBarJour.Location = new System.Drawing.Point(1275, 32);
+            this.ProgressBarJour.Name = "ProgressBarJour";
+            this.ProgressBarJour.Size = new System.Drawing.Size(131, 23);
+            this.ProgressBarJour.TabIndex = 61;
             // 
             // metroPanel3
             // 
@@ -635,7 +642,7 @@
             // ResultsButton
             // 
             this.ResultsButton.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.ResultsButton.Location = new System.Drawing.Point(693, 30);
+            this.ResultsButton.Location = new System.Drawing.Point(693, 7);
             this.ResultsButton.Name = "ResultsButton";
             this.ResultsButton.Size = new System.Drawing.Size(150, 29);
             this.ResultsButton.TabIndex = 47;
@@ -1267,13 +1274,6 @@
             this.Create.Text = "Создать";
             this.Create.UseSelectable = true;
             this.Create.Click += new System.EventHandler(this.Create_Click);
-            // 
-            // ProgressBarJour
-            // 
-            this.ProgressBarJour.Location = new System.Drawing.Point(1275, 32);
-            this.ProgressBarJour.Name = "ProgressBarJour";
-            this.ProgressBarJour.Size = new System.Drawing.Size(131, 23);
-            this.ProgressBarJour.TabIndex = 61;
             // 
             // MainClass
             // 

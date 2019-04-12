@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exe>
+ <Prog>examin.exe</Prog>
+
+  <key0>-IsPlot</key0>
+   <par0>true</par0>
+
+  <key1>-MapProcInLevel</key1>
+   <par1>1_1_1_1</par1>
+
+  <key2>-localAlpha</key2>
+   <par2>15</par2>
+
+  <key3>-IsPrintFile</key3>
+   <par3>true</par3>
+
+</exe>
+<?include somedata?>

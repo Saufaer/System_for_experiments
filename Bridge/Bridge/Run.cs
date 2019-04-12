@@ -37,9 +37,6 @@ namespace Bridge
             }
             else
             {
-
-            
-
             if (_UseMpi == true)
             {
                 MpiCommand = "mpiexec -n " + TextMpiComm.Text;
@@ -81,7 +78,7 @@ namespace Bridge
                     if (SingleStart)
                     {
                         string result = Process.Start(psi).StandardOutput.ReadToEnd();
-                        AddExperiment(result, _Source_Config_path);
+                        AddExperiment(result, _Source_Config_path, UseMpi);
                         UpdateExpJournal();
                         
                     }
@@ -141,7 +138,7 @@ namespace Bridge
             }
 
         }
-        public void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
         {
             ProgressBarJour.Value = 0;
                 for (int i = 0; i < ComboSize; i++)
@@ -149,9 +146,10 @@ namespace Bridge
                 
                 Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i],false);
 
-                AddExperiment(Results[i], ActiveConfs[i]);
+                AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
              
-                 TaskEx.Delay(1000).Wait();
+                 //TaskEx.Delay(2200).Wait();
+                await TaskEx.Delay(2500);
 
                 if (i == ComboSize - 1)
                 {
@@ -177,7 +175,7 @@ namespace Bridge
             ComboSize = 0;
 
         }
-        public void AddExperiment(string res, string _Source_Config_path)
+        public void AddExperiment(string res, string _Source_Config_path,bool useMpi)
         {
             String currentPath = Directory.GetCurrentDirectory();
             if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
@@ -219,6 +217,44 @@ namespace Bridge
                 String OptimLoc = EXP + "\\" + "optim.dat";
                 File.Copy(TempOptim, OptimLoc);
                 File.Delete(TempOptim);
+            }
+
+           //линии уровня
+           if(useMpi)
+            {
+                for (int i = 0; i < Convert.ToInt32(TextMpiComm.Text); i++)
+                {
+                    if (i == 0)
+                    {
+                        if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "ExaMin.png"))
+                        {
+                            String TempPic = Directory.GetCurrentDirectory() + "\\" + "ExaMin.png";
+                            String PicLoc = EXP + "\\" + "ExaMin.png";
+                            File.Copy(TempPic, PicLoc);
+                            File.Delete(TempPic);
+                        }
+                    }
+                    else
+                    {
+                        if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "ExaMin_" + i + ".png"))
+                        {
+                            String TempPic = Directory.GetCurrentDirectory() + "\\" + "ExaMin_" + i + ".png";
+                            String PicLoc = EXP + "\\" + "ExaMin_" + i + ".png";
+                            File.Copy(TempPic, PicLoc);
+                            File.Delete(TempPic);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "ExaMin.png"))
+                {
+                    String TempPic = Directory.GetCurrentDirectory() + "\\" + "ExaMin.png";
+                    String PicLoc = EXP + "\\" + "ExaMin.png";
+                    File.Copy(TempPic, PicLoc);
+                    File.Delete(TempPic);
+                }
             }
         }
 
