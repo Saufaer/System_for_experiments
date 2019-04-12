@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <string>
 #include "pugixml.hpp"
 
 void ToCharArr(std::vector<std::string> &lines,int &num, int &argc, char** &argv)
@@ -34,7 +35,7 @@ void ToCharArr(std::vector<std::string> &lines,int &num, int &argc, char** &argv
 
 }
 
-int Count(pugi::xml_node_iterator& begin, pugi::xml_node_iterator& end) {
+int Count(pugi::xml_node_iterator  begin, pugi::xml_node_iterator  end) {
     int r = -1;
     while (begin != end) {
         ++r;
@@ -43,7 +44,7 @@ int Count(pugi::xml_node_iterator& begin, pugi::xml_node_iterator& end) {
     return r;
 }
 
-void IterateNode(pugi::xml_node& root, std::vector<std::string> &lines, int &num, int offset = 0) {
+void IterateNode(pugi::xml_node root, std::vector<std::string> &lines, int &num, int offset = 0) {
     
     for (pugi::xml_node node : root.children()) {
         int i = offset;
@@ -64,13 +65,17 @@ void IterateNode(pugi::xml_node& root, std::vector<std::string> &lines, int &num
 
 int XMLConfigReader(int &argc, char** &argv)
 {
-    pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(argv[1]);
+	if (toString(argv[1]) != "-HELP")
+	{
+		pugi::xml_document doc;
+		pugi::xml_parse_result result = doc.load_file(argv[1]);
 
-    std::vector<std::string> lines;
-    int num = 0;
-    IterateNode(doc.child("exe"),lines,num);
-    ToCharArr(lines, num,argc,argv);
+		std::vector<std::string> lines;
+		int num = 0;
+		IterateNode(doc.child("exe"), lines, num);
+		ToCharArr(lines, num, argc, argv);
+	}
+    
     return 0;
 }
 
