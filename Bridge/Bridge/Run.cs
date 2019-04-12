@@ -149,8 +149,8 @@ namespace Bridge
 
                 AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
              
-                 //TaskEx.Delay(2200).Wait();
-                await TaskEx.Delay(2500);
+                // TaskEx.Delay(1200).Wait();
+               await TaskEx.Delay(2500);
 
                 if (i == ComboSize - 1)
                 {
@@ -171,6 +171,14 @@ namespace Bridge
 
             RunComboFin.Enabled = true;
             TextMpiComm.Enabled = true;
+            ButtonChoseTargetXML.Enabled = true;
+            ButtonChoseProgram.Enabled = true;
+            Run.Enabled = true;
+            ButOpenConfList.Enabled = true;
+            ChoseDirConfBut.Enabled = true;
+            TextBoxChosenDirXML.Enabled = true;
+            TextBoxChosenProgram.Enabled = true;
+            TextBoxChosenXML.Enabled = true;
             TempComboXML.Clear();
             ActiveConfs.Clear();
             MpiList.Clear();

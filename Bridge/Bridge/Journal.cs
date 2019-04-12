@@ -161,6 +161,14 @@ namespace Bridge
 
                   RunComboFin.Enabled = false;
                 TextMpiComm.Enabled = false;
+                ButtonChoseTargetXML.Enabled = false;
+                ButtonChoseProgram.Enabled = false;
+                Run.Enabled = false;
+                ButOpenConfList.Enabled = false;
+                ChoseDirConfBut.Enabled = false;
+                TextBoxChosenDirXML.Enabled = false;
+                TextBoxChosenProgram.Enabled = false;
+                TextBoxChosenXML.Enabled = false;
                 ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
             }
 
