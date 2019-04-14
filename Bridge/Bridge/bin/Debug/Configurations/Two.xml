@@ -14,5 +14,8 @@
   <key3>-rEps</key3>
    <par3>0.02</par3>
 
+  <key4>-Dimension</key4>
+   <par4>2</par4>
+
 </exe>
 <?include somedata?>

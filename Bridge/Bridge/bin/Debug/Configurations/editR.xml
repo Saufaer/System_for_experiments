@@ -8,5 +8,8 @@
   <key1>-rs </key1>
    <par1>2.4_2.4_2.4_2.4</par1>
 
+  <key2>-Dimension</key2>
+   <par2>2</par2>
+
 </exe>
 <?include somedata?>

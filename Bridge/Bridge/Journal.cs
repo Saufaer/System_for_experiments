@@ -17,6 +17,9 @@ namespace Bridge
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
         public DataGridViewCellMouseEventArgs e = null;
+
+      
+
         public void UpdateExpJournal()
         {
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";

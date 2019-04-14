@@ -11,5 +11,8 @@
   <key2>-m</key2>
    <par2>12</par2>
 
+  <key3>-Dimension</key3>
+   <par3>2</par3>
+
 </exe>
 <?include somedata?>

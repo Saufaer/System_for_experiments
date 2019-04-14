@@ -8,5 +8,8 @@
   <key1>-Epsilon</key1>
    <par1>0.014</par1>
 
+  <key2>-Dimension</key2>
+   <par2>2</par2>
+
 </exe>
 <?include somedata?>

@@ -93,11 +93,12 @@ namespace Bridge
                     }
                    
                 }
-                else MetroFramework.MetroMessageBox.Show(this, "XML или EXE не найден", "Оповещение");
+                else MetroFramework.MetroMessageBox.Show(this, "XML или EXE не найден", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Не выбран XML или EXE ", "Оповещение");
+                
+                MetroFramework.MetroMessageBox.Show(this, "Не выбран XML или EXE ", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -145,9 +146,10 @@ namespace Bridge
             ProgressBarJour.Value = 0;
                 for (int i = 0; i < ComboSize; i++)
                 {
+                comboT = i+1;
                 Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
                 AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
-                comboT--;
+                
             
 
                 if (i == ComboSize - 1)
@@ -166,7 +168,7 @@ namespace Bridge
                     }
                 UpdateExpJournal();
             }
-            
+          
 
             RunComboFin.Enabled = true;
             TextMpiComm.Enabled = true;
@@ -205,7 +207,7 @@ namespace Bridge
                 
             }
             String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments";
-            String date = "{" + (comboT).ToString() +"}_" + DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy") ;
+            String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy")+"_{" + (comboT).ToString() + "}";
             if (!Directory.Exists(Path.Combine(ExpNewPath, date )))
             {
                 Directory.CreateDirectory(Path.Combine(ExpNewPath, date));
@@ -308,7 +310,7 @@ namespace Bridge
             {
                 if (!File.Exists(gChosenXML))
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение");
+                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -337,7 +339,7 @@ namespace Bridge
             {
                 if (!Directory.Exists(gChosenDirXML))
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение");
+                    MetroFramework.MetroMessageBox.Show(this, "XML не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -363,7 +365,7 @@ namespace Bridge
             }
             else
             {
-                MessageBox.Show("Указанная директория не найдена.", "Оповещение");
+                MetroFramework.MetroMessageBox.Show(this, "Указанная директория не найдена.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }
@@ -412,7 +414,7 @@ namespace Bridge
             {
                 if (gChosenProgram != "")
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "EXE не найден.", "Оповещение");
+                    MetroFramework.MetroMessageBox.Show(this, "EXE не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

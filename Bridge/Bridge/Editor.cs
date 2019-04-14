@@ -145,12 +145,13 @@ namespace Bridge
                 }
                 catch
                 {
-                    MessageBox.Show("Bad XML file", "Error.");
+                    MetroFramework.MetroMessageBox.Show(this, "Некорректный XML файл.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
                 }
             }
             else
             {
-                MessageBox.Show("XML file not found.", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, "XML файл не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -197,17 +198,20 @@ namespace Bridge
                         TextBoxPath.Text = gConfig_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
-                    MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+                    if (ConfigTable.Rows.Count > 1)
+                    {
+                        MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+                    }
 
                 }
                 catch
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "Невозможно изменить XML файл.", "Ошибка.");
+                    MetroFramework.MetroMessageBox.Show(this, "Невозможно изменить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Not selected XML file", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, "XML файл не выбран", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -283,7 +287,7 @@ namespace Bridge
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Ошибка.");
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -297,7 +301,7 @@ namespace Bridge
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Key and parameter must be specified.", "Error.");
+                MetroFramework.MetroMessageBox.Show(this, "Параметр и его значение должны быть указаны.", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         public void SaveAs()
@@ -325,13 +329,13 @@ namespace Bridge
                     }
                     catch
                     {
-                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.");
+                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Ошибка.");
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
