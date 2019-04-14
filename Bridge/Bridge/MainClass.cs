@@ -26,8 +26,6 @@ namespace Bridge
         {
             InitializeComponent();
 
-           
-
             InitTable();
 
             ComboBoxProgName.SelectedItem = "examin.exe";
@@ -36,8 +34,6 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-
-            //ProgressBarJour.ValueChanged += ProgressBarJour_ValueChanged;
 
         }
 
@@ -120,63 +116,13 @@ namespace Bridge
             Search(GridJournal, SearchTextBox2, ResLabel2);
         }
 
-
-
-
-
         private void ButOpenConfList_Click(object sender, EventArgs e)
         {
             ReadConfsInDir(TextBoxChosenDirXML.Text);
         }
 
-        private void ConfigList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
-        {
-            
-            
-        }
 
-      
-      
-
-        private void GridConfAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (GridConfAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 0;
-                }
-            }
-        }
-
-        private void MPIAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (MPIAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 0;
-                }
-            }
-        }
+       
     }
 
 }

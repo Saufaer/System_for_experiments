@@ -473,7 +473,7 @@
             this.ConfigList.Size = new System.Drawing.Size(511, 317);
             this.ConfigList.TabIndex = 55;
             this.ConfigList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConfigList_CellClick);
-            this.ConfigList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ConfigList_ColumnHeaderMouseClick);
+            
             // 
             // dataGridViewTextBoxColumn6
             // 

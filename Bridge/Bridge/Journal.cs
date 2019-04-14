@@ -131,7 +131,7 @@ namespace Bridge
             }
         }
        
-        private void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
+        private  void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
             if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
             {
@@ -139,13 +139,11 @@ namespace Bridge
                 using (Results Res = new Results(e))
                 {
                     Res.ShowDialog();
-
                 }
             }
-            
         }
 
-        private void ResultsButton_Click(object sender, EventArgs _e)
+        private  void ResultsButton_Click(object sender, EventArgs _e)
         {
             if (e != null)
             {
@@ -177,6 +175,45 @@ namespace Bridge
 
 
         }
-       
+        private void GridConfAllCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (GridConfAllCheckBox1.Checked)
+            {
+
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[2].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[2].Value = 0;
+                }
+            }
+        }
+
+        private void MPIAllCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (MPIAllCheckBox1.Checked)
+            {
+
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[3].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[3].Value = 0;
+                }
+            }
+        }
+
     }
 }
