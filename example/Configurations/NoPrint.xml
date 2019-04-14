@@ -17,5 +17,8 @@
   <key4>-Dimension</key4>
    <par4>2</par4>
 
+  <key5>-libPath</key5>
+   <par5>grishagin.dll</par5>
+
 </exe>
 <?include somedata?>

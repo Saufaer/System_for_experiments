@@ -14,14 +14,8 @@
   <key3>-rEps</key3>
    <par3>0.02</par3>
 
-  <key4>-m</key4>
-   <par4>11</par4>
-
-  <key5>-Dimension</key5>
-   <par5>2</par5>
-
-  <key6>-libPath</key6>
-   <par6>stronginc3.dll</par6>
+  <key4>-libPath</key4>
+   <par4>stronginc3.dll</par4>
 
 </exe>
 <?include somedata?>
