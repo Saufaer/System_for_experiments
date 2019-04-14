@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+12.04.2019 20:14:26
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Experiments\[20-14-26]_12.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\example\Configurations\One.xml
+</confPath>
+
+ </exp0>
+
+</journal>
+<?include somedata?>

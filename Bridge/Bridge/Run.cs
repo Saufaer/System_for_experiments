@@ -25,7 +25,7 @@ namespace Bridge
 
         public List<bool> MpiList = new List<bool>();
         public int ComboSize = 0;
-
+        public int comboT = 0;
         public void SetMpiRun(bool _UseMpi, bool _SingleStart)
         {
             if (_SingleStart)
@@ -37,7 +37,7 @@ namespace Bridge
             }
             else
             {
-            if (_UseMpi == true)
+            if (_UseMpi)
             {
                 MpiCommand = "mpiexec -n " + TextMpiComm.Text;
             }
@@ -118,6 +118,7 @@ namespace Bridge
 
             }
             ComboSize = 0;
+            comboT = 0;
             foreach (String SingleConf in ActiveConfs)
             {
                 gChosenXML = SingleConf;
@@ -134,23 +135,20 @@ namespace Bridge
 
                 TempComboXML.Add(gTempChosenXML);
                 ComboSize++;
-
+                comboT++;
                 gTempChosenXML = TextBoxChosenXML.Text;
             }
 
         }
-        public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        public  void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
         {
             ProgressBarJour.Value = 0;
                 for (int i = 0; i < ComboSize; i++)
                 {
-                
-                Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i],false);
-
+                Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
                 AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
-             
-                // TaskEx.Delay(1200).Wait();
-               await TaskEx.Delay(2500);
+                comboT--;
+            
 
                 if (i == ComboSize - 1)
                 {
@@ -168,6 +166,7 @@ namespace Bridge
                     }
                 UpdateExpJournal();
             }
+            
 
             RunComboFin.Enabled = true;
             TextMpiComm.Enabled = true;
@@ -179,58 +178,65 @@ namespace Bridge
             TextBoxChosenDirXML.Enabled = true;
             TextBoxChosenProgram.Enabled = true;
             TextBoxChosenXML.Enabled = true;
+
+            Results.Clear();
             TempComboXML.Clear();
             ActiveConfs.Clear();
             MpiList.Clear();
-            ComboSize = 0;
 
-        }
-        public void AddExperiment(string res, string _Source_Config_path,bool useMpi)
+            ComboSize = 0;
+            comboT = 0;
+            MpiCommand = "";
+            TempXML = "";
+
+
+
+   
+
+    }
+       
+        public  void AddExperiment(string res, string _Source_Config_path,bool useMpi)
         {
             String currentPath = Directory.GetCurrentDirectory();
+            
             if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
             {
-                Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
+                 Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
+                
             }
             String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments";
-            String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy");
-            if (!Directory.Exists(Path.Combine(ExpNewPath, date)))
+            String date = "{" + (comboT).ToString() +"}_" + DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy") ;
+            if (!Directory.Exists(Path.Combine(ExpNewPath, date )))
             {
                 Directory.CreateDirectory(Path.Combine(ExpNewPath, date));
             }
             
             String OutFileName = date;
-            String EXP = ExpNewPath + "\\" + OutFileName;
+            String EXP = ExpNewPath + "\\" + OutFileName ;
             String LogPath = EXP + "\\Log.txt";
 
             //лог
-            using (StreamWriter Resfile = new StreamWriter(LogPath))
-            {
-                Resfile.Write(res);
-                Resfile.Close();
-            }
-            
+
+            System.IO.File.AppendAllText(LogPath, res);
 
             //путь конфига
             String ConfPath = ExpNewPath + "\\" + OutFileName + "\\ConfPath.txt";
-            using (StreamWriter ConfFile = new StreamWriter(ConfPath))
-            {
-                ConfFile.WriteLine(_Source_Config_path);
-                ConfFile.Close();
-            }
-               
+            System.IO.File.AppendAllText(ConfPath, _Source_Config_path);
 
+
+           
             //отправка точек в соответствующую папку
-           if(File.Exists(Directory.GetCurrentDirectory() + "\\" + "optim.dat"))
+           if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "optim.dat"))
             {
                 String TempOptim = Directory.GetCurrentDirectory() + "\\" + "optim.dat";
                 String OptimLoc = EXP + "\\" + "optim.dat";
+               
                 File.Copy(TempOptim, OptimLoc);
                 File.Delete(TempOptim);
             }
-
+           
            //линии уровня
-           if(useMpi)
+           if (useMpi)
             {
                 for (int i = 0; i < Convert.ToInt32(TextMpiComm.Text); i++)
                 {
@@ -266,6 +272,8 @@ namespace Bridge
                     File.Delete(TempPic);
                 }
             }
+          
+
         }
 
 

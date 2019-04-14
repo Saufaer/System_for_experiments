@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+14.04.2019 15:38:51
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{0}_[15-38-51]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Ed_m.xml
+</confPath>
+
+ </exp0>
+
+ <exp1>
+
+<date>
+14.04.2019 16:07:28
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{10}_[16-07-28]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[17-18-09]_12.04.19.xml
+</confPath>
+
+ </exp1>
+
+ <exp2>
+
+<date>
+14.04.2019 15:31:33
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{1}_[15-31-33]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Two.xml
+</confPath>
+
+ </exp2>
+
+ <exp3>
+
+<date>
+14.04.2019 15:31:51
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{1}_[15-31-51]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Two.xml
+</confPath>
+
+ </exp3>
+
+ <exp4>
+
+<date>
+14.04.2019 15:32:25
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{1}_[15-32-25]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Two.xml
+</confPath>
+
+ </exp4>
+
+ <exp5>
+
+<date>
+14.04.2019 16:07:31
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{1}_[16-07-31]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Two.xml
+</confPath>
+
+ </exp5>
+
+ <exp6>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{2}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\printOpt1.xml
+</confPath>
+
+ </exp6>
+
+ <exp7>
+
+<date>
+14.04.2019 15:31:50
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{2}_[15-31-50]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\PrintOpt2.xml
+</confPath>
+
+ </exp7>
+
+ <exp8>
+
+<date>
+14.04.2019 15:32:24
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{2}_[15-32-24]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\PrintOpt2.xml
+</confPath>
+
+ </exp8>
+
+ <exp9>
+
+<date>
+14.04.2019 16:07:30
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{2}_[16-07-30]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\printOpt1.xml
+</confPath>
+
+ </exp9>
+
+ <exp10>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{3}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\notOut.xml
+</confPath>
+
+ </exp10>
+
+ <exp11>
+
+<date>
+14.04.2019 15:31:50
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{3}_[15-31-50]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\printOpt1.xml
+</confPath>
+
+ </exp11>
+
+ <exp12>
+
+<date>
+14.04.2019 15:32:24
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{3}_[15-32-24]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\printOpt1.xml
+</confPath>
+
+ </exp12>
+
+ <exp13>
+
+<date>
+14.04.2019 16:07:30
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{3}_[16-07-30]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\One.xml
+</confPath>
+
+ </exp13>
+
+ <exp14>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{4}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\noPlot.xml
+</confPath>
+
+ </exp14>
+
+ <exp15>
+
+<date>
+14.04.2019 15:31:50
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{4}_[15-31-50]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\notOut.xml
+</confPath>
+
+ </exp15>
+
+ <exp16>
+
+<date>
+14.04.2019 15:32:24
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{4}_[15-32-24]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\notOut.xml
+</confPath>
+
+ </exp16>
+
+ <exp17>
+
+<date>
+14.04.2019 16:07:30
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{4}_[16-07-30]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\noPlot.xml
+</confPath>
+
+ </exp17>
+
+ <exp18>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{5}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\edEps.xml
+</confPath>
+
+ </exp18>
+
+ <exp19>
+
+<date>
+14.04.2019 15:31:50
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{5}_[15-31-50]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\noPlot.xml
+</confPath>
+
+ </exp19>
+
+ <exp20>
+
+<date>
+14.04.2019 15:32:24
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{5}_[15-32-24]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\noPlot.xml
+</confPath>
+
+ </exp20>
+
+ <exp21>
+
+<date>
+14.04.2019 16:07:29
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{5}_[16-07-29]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Ed_m.xml
+</confPath>
+
+ </exp21>
+
+ <exp22>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{6}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[21-54-36]_11.04.19.xml
+</confPath>
+
+ </exp22>
+
+ <exp23>
+
+<date>
+14.04.2019 15:31:50
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{6}_[15-31-50]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\edEps.xml
+</confPath>
+
+ </exp23>
+
+ <exp24>
+
+<date>
+14.04.2019 15:32:23
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{6}_[15-32-23]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\edEps.xml
+</confPath>
+
+ </exp24>
+
+ <exp25>
+
+<date>
+14.04.2019 16:07:29
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{6}_[16-07-29]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\editR.xml
+</confPath>
+
+ </exp25>
+
+ <exp26>
+
+<date>
+14.04.2019 15:31:32
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{7}_[15-31-32]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[17-18-09]_12.04.19.xml
+</confPath>
+
+ </exp26>
+
+ <exp27>
+
+<date>
+14.04.2019 15:31:49
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{7}_[15-31-49]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[21-54-36]_11.04.19.xml
+</confPath>
+
+ </exp27>
+
+ <exp28>
+
+<date>
+14.04.2019 15:32:23
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{7}_[15-32-23]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[21-54-36]_11.04.19.xml
+</confPath>
+
+ </exp28>
+
+ <exp29>
+
+<date>
+14.04.2019 16:07:29
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{7}_[16-07-29]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[22-31-08]_11.04.19.xml
+</confPath>
+
+ </exp29>
+
+ <exp30>
+
+<date>
+14.04.2019 15:31:49
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{8}_[15-31-49]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[18-05-34]_12.04.19.xml
+</confPath>
+
+ </exp30>
+
+ <exp31>
+
+<date>
+14.04.2019 15:32:23
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{8}_[15-32-23]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[18-05-34]_12.04.19.xml
+</confPath>
+
+ </exp31>
+
+ <exp32>
+
+<date>
+14.04.2019 16:07:29
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{8}_[16-07-29]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[18-50-54]_12.04.19.xml
+</confPath>
+
+ </exp32>
+
+ <exp33>
+
+<date>
+14.04.2019 15:31:49
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{9}_[15-31-49]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[17-18-09]_12.04.19.xml
+</confPath>
+
+ </exp33>
+
+ <exp34>
+
+<date>
+14.04.2019 15:32:23
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{9}_[15-32-23]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[17-18-09]_12.04.19.xml
+</confPath>
+
+ </exp34>
+
+ <exp35>
+
+<date>
+14.04.2019 16:07:29
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\{9}_[16-07-29]_14.04.19\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[18-05-34]_12.04.19.xml
+</confPath>
+
+ </exp35>
+
+</journal>
+<?include somedata?>
