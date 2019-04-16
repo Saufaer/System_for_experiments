@@ -34,7 +34,7 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-
+           
         }
 
 
@@ -120,7 +120,6 @@ namespace Bridge
         {
             ReadConfsInDir(TextBoxChosenDirXML.Text);
         }
-
 
        
     }

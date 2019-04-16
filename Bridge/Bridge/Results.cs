@@ -65,7 +65,9 @@ namespace Bridge
                 textBoxConf.Clear();
                 textBoxConf.Lines = File.ReadAllLines(CONFpath);
             }
-
+            try
+            {
+            
             String PicLoc = EXpath + "\\Examin.png";
             if (File.Exists(PicLoc))
             {
@@ -91,6 +93,11 @@ namespace Bridge
                 textBoxLog.Left = textBoxLog.Location.X - 300;
                 textBoxConf.Left = textBoxConf.Location.X - 300;
                 TextOptimPath.Left = TextOptimPath.Location.X - 300;
+            }
+            }
+            catch
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Изображение повреждено.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)

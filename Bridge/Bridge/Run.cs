@@ -26,6 +26,7 @@ namespace Bridge
         public List<bool> MpiList = new List<bool>();
         public int ComboSize = 0;
         public int comboT = 0;
+        public bool Stop = false;
         public void SetMpiRun(bool _UseMpi, bool _SingleStart)
         {
             if (_SingleStart)
@@ -50,8 +51,21 @@ namespace Bridge
 
 
 
+        public Process PR;
 
-        public void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
+        public void SingleStartFunc(ProcessStartInfo _psi, String _Source_Config_path, bool UseMpi)
+        {
+            StopButton.Enabled = true;
+            PR = new Process();
+            PR.StartInfo = _psi;
+            PR.EnableRaisingEvents = true;
+            PR.Start();
+            string result = PR.StandardOutput.ReadToEnd();
+            AddExperiment(result, _Source_Config_path, UseMpi);
+            UpdateExpJournal();
+            StopButton.Enabled = false;
+        }
+        public async void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
         {
             String _Config_path = _Temp_Config_path;
             if ((_Config_path != "") && (_ChosenProgram != ""))
@@ -64,7 +78,7 @@ namespace Bridge
                     
                     SetMpiRun(UseMpi, SingleStart);
 
-                    var psi = new ProcessStartInfo
+                    ProcessStartInfo psi = new ProcessStartInfo
                     {
                         FileName = "cmd.exe",
                         Arguments = "/c " + MpiCommand + " " + ProgramName + " " + CurConfigName,
@@ -77,19 +91,20 @@ namespace Bridge
                    
                     if (SingleStart)
                     {
+                        
                         ProgressBarJour.Value = 0;
-                        string result = Process.Start(psi).StandardOutput.ReadToEnd();
-                        AddExperiment(result, _Source_Config_path, UseMpi);
-                        UpdateExpJournal();
+                         await TaskEx.Run(() => SingleStartFunc(psi, _Source_Config_path, UseMpi)); 
                         ProgressBarJour.Value = 100;
+                        
                     }
                     else
                     {
-                        Process PR = new Process();
+                        PR = new Process();
                         PR.StartInfo = psi;
                         PR.EnableRaisingEvents = true;
                         PR.Start();
                         Results.Add(PR.StandardOutput.ReadToEnd());
+                     
                     }
                    
                 }
@@ -103,8 +118,8 @@ namespace Bridge
         }
 
 
-        
-        public  void CreateTempConfigs()
+
+        public void CreateTempConfigs()
         {
            
             for (int i = 0; i < ConfigList.RowCount; i++)
@@ -141,35 +156,36 @@ namespace Bridge
             }
 
         }
-        public  void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+       
+
+       private void StopFunc()
         {
-            ProgressBarJour.Value = 0;
-                for (int i = 0; i < ComboSize; i++)
+            if (PR != null)
+            {
+                try
                 {
-                comboT = i+1;
-                Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
-                AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
-                
-            
-
-                if (i == ComboSize - 1)
-                {
-                    ProgressBarJour.Value = 100;
+                    PR.Kill();
+                    PR.WaitForExit();
                 }
-                else
+                catch
                 {
-                    ProgressBarJour.Value += 100 / ComboSize;
-                }
-
-
-                if (File.Exists(TempComboXML[i]))
-                    {
-                        File.Delete(TempComboXML[i]);
-                    }
-                UpdateExpJournal();
+//это значит, что процесс уже завершился, но ни кто не успел это отследить
+                } 
             }
-          
+            Process[] ProcessesExamin = System.Diagnostics.Process.GetProcessesByName("examin");
+            foreach (Process pr in ProcessesExamin)
+            {
+                if (pr.HasExited == false)
+                {
+                    pr.Kill();
+                    pr.WaitForExit();
+                }
+            }
 
+            StopButton.Enabled = false;
+
+
+            Stop = true;
             RunComboFin.Enabled = true;
             TextMpiComm.Enabled = true;
             ButtonChoseTargetXML.Enabled = true;
@@ -181,19 +197,87 @@ namespace Bridge
             TextBoxChosenProgram.Enabled = true;
             TextBoxChosenXML.Enabled = true;
 
-            Results.Clear();
-            TempComboXML.Clear();
-            ActiveConfs.Clear();
-            MpiList.Clear();
+            for (int i = 0; i < ComboSize; i++)
+            {
+                if (File.Exists(TempComboXML[i]))
+                {
+                    File.Delete(TempComboXML[i]);
+                }
+            }
+        }
 
-            ComboSize = 0;
-            comboT = 0;
-            MpiCommand = "";
-            TempXML = "";
-
-
-
+        private void StopButton_Click(object sender, EventArgs e)
+        {
+            StopFunc();
+        }
+        
+        
    
+    public void AWFunc(int i, List<string> ActiveConfs, List<string> TempComboXML)
+        {
+            Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
+            AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
+        }
+
+        public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        {
+            StopButton.Enabled = true;
+            Stop = false;
+            ProgressBarJour.Value = 0;
+            for (int i = 0; i < ComboSize; i++)
+            {
+                if (!Stop)
+                {
+                    if (i == ComboSize - 1)
+                    {
+                        ProgressBarJour.Value = 100;
+                    }
+                    else
+                    {
+                        ProgressBarJour.Value += 100 / ComboSize;
+                    }
+
+                    comboT = i + 1;
+                    String ShortName = new DirectoryInfo(TempComboXML[i]).Name;
+                    ProcessTextBox.Text = ShortName;
+                    await TaskEx.Run(() => AWFunc(i, ActiveConfs, TempComboXML));
+                    // AWFunc(i, ActiveConfs, TempComboXML);
+
+                   
+
+
+                    if (File.Exists(TempComboXML[i]))
+                    {
+                        File.Delete(TempComboXML[i]);
+                    }
+                   
+
+                }
+                
+            }
+            UpdateExpJournal();
+            
+
+            RunComboFin.Enabled = true;
+                TextMpiComm.Enabled = true;
+                ButtonChoseTargetXML.Enabled = true;
+                ButtonChoseProgram.Enabled = true;
+                Run.Enabled = true;
+                ButOpenConfList.Enabled = true;
+                ChoseDirConfBut.Enabled = true;
+                TextBoxChosenDirXML.Enabled = true;
+                TextBoxChosenProgram.Enabled = true;
+                TextBoxChosenXML.Enabled = true;
+
+                Results.Clear();
+                TempComboXML.Clear();
+                ActiveConfs.Clear();
+                MpiList.Clear();
+
+                ComboSize = 0;
+                comboT = 0;
+                MpiCommand = "";
+                TempXML = "";
 
     }
        
