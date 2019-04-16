@@ -61,7 +61,7 @@ namespace Bridge
             PR.EnableRaisingEvents = true;
             PR.Start();
             string result = PR.StandardOutput.ReadToEnd();
-            AddExperiment(result, _Source_Config_path, UseMpi);
+            AddExperiment(result, _Source_Config_path, UseMpi,true);
             UpdateExpJournal();
             StopButton.Enabled = false;
         }
@@ -73,6 +73,27 @@ namespace Bridge
                 if ((File.Exists(_Config_path)) && (File.Exists(_ChosenProgram)))
                 {
                     String CurConfigName = new DirectoryInfo(_Config_path).Name;
+                    String CommandLine = "";
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(CurConfigName);
+                    foreach (DataRow item in ds.Tables["exe"].Rows)
+                    {
+                        int n = -1;
+                        foreach (object cell in item.ItemArray)
+                        {
+                            n++;
+                            if (n < (item.ItemArray.Length / 2))
+                            {
+                                CommandLine+= item["key" + n];
+                                CommandLine += " ";
+                                CommandLine += item["par" + n];
+                                CommandLine += " ";
+                            }
+
+                        }
+
+                    }
+
                     //String ProgramName = new DirectoryInfo(_ChosenProgram).Name;
                     String ProgramName = "examin.exe";
                     
@@ -81,21 +102,21 @@ namespace Bridge
                     ProcessStartInfo psi = new ProcessStartInfo
                     {
                         FileName = "cmd.exe",
-                        Arguments = "/c " + MpiCommand + " " + ProgramName + " " + CurConfigName,
+                        Arguments = "/c " + MpiCommand + " " + ProgramName + " " + CommandLine,
                         // '/c' is close cmd after run
                         RedirectStandardOutput = true,
                         UseShellExecute = false,
                         WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden,
                         CreateNoWindow = true
-                };
-                   
+                    };
+
                     if (SingleStart)
                     {
-                        
+
                         ProgressBarJour.Value = 0;
-                         await TaskEx.Run(() => SingleStartFunc(psi, _Source_Config_path, UseMpi)); 
+                        await TaskEx.Run(() => SingleStartFunc(psi, _Source_Config_path, UseMpi));
                         ProgressBarJour.Value = 100;
-                        
+
                     }
                     else
                     {
@@ -104,7 +125,7 @@ namespace Bridge
                         PR.EnableRaisingEvents = true;
                         PR.Start();
                         Results.Add(PR.StandardOutput.ReadToEnd());
-                     
+
                     }
                    
                 }
@@ -197,12 +218,34 @@ namespace Bridge
             TextBoxChosenProgram.Enabled = true;
             TextBoxChosenXML.Enabled = true;
 
+            
             for (int i = 0; i < ComboSize; i++)
             {
                 if (File.Exists(TempComboXML[i]))
                 {
                     File.Delete(TempComboXML[i]);
                 }
+            }
+
+            for (int i = 0; i < Convert.ToInt32(TextMpiComm.Text); i++)
+            {
+                if (i == 0)
+                {
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "ExaMin.png"))
+                    {
+                        String TempPic = Directory.GetCurrentDirectory() + "\\" + "ExaMin.png";
+                        File.Delete(TempPic);
+                    }
+                }
+                else
+                {
+                    if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "ExaMin_" + i + ".png"))
+                    {
+                        String TempPic = Directory.GetCurrentDirectory() + "\\" + "ExaMin_" + i + ".png";
+                        File.Delete(TempPic);
+                    }
+                }
+
             }
         }
 
@@ -216,7 +259,7 @@ namespace Bridge
     public void AWFunc(int i, List<string> ActiveConfs, List<string> TempComboXML)
         {
             Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
-            AddExperiment(Results[i], ActiveConfs[i], MpiList[i]);
+            AddExperiment(Results[i], ActiveConfs[i], MpiList[i],false);
         }
 
         public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
@@ -242,9 +285,6 @@ namespace Bridge
                     ProcessTextBox.Text = ShortName;
                     await TaskEx.Run(() => AWFunc(i, ActiveConfs, TempComboXML));
                     // AWFunc(i, ActiveConfs, TempComboXML);
-
-                   
-
 
                     if (File.Exists(TempComboXML[i]))
                     {
@@ -281,7 +321,7 @@ namespace Bridge
 
     }
        
-        public  void AddExperiment(string res, string _Source_Config_path,bool useMpi)
+        public  void AddExperiment(string res, string _Source_Config_path,bool useMpi,bool SingleStart)
         {
             String currentPath = Directory.GetCurrentDirectory();
             
