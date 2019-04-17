@@ -20,7 +20,9 @@ namespace Bridge
         public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
         public String gTempChosenXML = "";
         public String gChosenProgram = "examin.exe";
-        
+
+        public int SeriesNumber = 0 ;
+
         public Info InfoData = new Info();
         public MainClass()
         {
@@ -78,6 +80,7 @@ namespace Bridge
         //Run
         private void Run_Click(object sender, EventArgs e)
         {
+            SeriesNumber++;
             Run_exp(gTempChosenXML, gChosenXML, gChosenProgram, CheckMpiCom.Checked,true);
         }
 

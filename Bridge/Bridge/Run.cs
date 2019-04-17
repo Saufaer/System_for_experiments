@@ -61,12 +61,16 @@ namespace Bridge
             PR.EnableRaisingEvents = true;
             PR.Start();
             string result = PR.StandardOutput.ReadToEnd();
-            AddExperiment(result, _Source_Config_path, UseMpi,true);
-            UpdateExpJournal();
+            String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy") + "_{" + (comboT).ToString() + "}";
+            AddExperiment(date,result, _Source_Config_path, UseMpi,true);
+              UpdateExpJournal();
+
+           
             StopButton.Enabled = false;
         }
         public async void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
         {
+            
             String _Config_path = _Temp_Config_path;
             if ((_Config_path != "") && (_ChosenProgram != ""))
             {
@@ -256,17 +260,20 @@ namespace Bridge
         
         
    
-    public void AWFunc(int i, List<string> ActiveConfs, List<string> TempComboXML)
+    public void AWFunc(String date,int i, List<string> ActiveConfs, List<string> TempComboXML)
         {
             Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
-            AddExperiment(Results[i], ActiveConfs[i], MpiList[i],false);
+           
+            AddExperiment(date, Results[i], ActiveConfs[i], MpiList[i],false);
         }
 
         public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
         {
+            SeriesNumber++;
             StopButton.Enabled = true;
             Stop = false;
             ProgressBarJour.Value = 0;
+            String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy");
             for (int i = 0; i < ComboSize; i++)
             {
                 if (!Stop)
@@ -283,7 +290,8 @@ namespace Bridge
                     comboT = i + 1;
                     String ShortName = new DirectoryInfo(TempComboXML[i]).Name;
                     ProcessTextBox.Text = ShortName;
-                    await TaskEx.Run(() => AWFunc(i, ActiveConfs, TempComboXML));
+                   
+                    await TaskEx.Run(() => AWFunc(date,i, ActiveConfs, TempComboXML));
                     // AWFunc(i, ActiveConfs, TempComboXML);
 
                     if (File.Exists(TempComboXML[i]))
@@ -321,7 +329,7 @@ namespace Bridge
 
     }
        
-        public  void AddExperiment(string res, string _Source_Config_path,bool useMpi,bool SingleStart)
+        public void AddExperiment(String SeriesDate,string res, string _Source_Config_path,bool useMpi,bool SingleStart)
         {
             String currentPath = Directory.GetCurrentDirectory();
             
@@ -330,7 +338,12 @@ namespace Bridge
                  Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
                 
             }
-            String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments";
+            if (!Directory.Exists(Path.Combine(currentPath+ "\\Experiments", "Series"+ SeriesDate + "{" + SeriesNumber + "}")))
+            {
+                Directory.CreateDirectory(Path.Combine(currentPath + "\\Experiments", "Series"+ SeriesDate + "{" + SeriesNumber + "}"));
+
+            }
+            String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments" + "\\Series"+ SeriesDate+"{" + SeriesNumber + "}";
             String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy")+"_{" + (comboT).ToString() + "}";
             if (!Directory.Exists(Path.Combine(ExpNewPath, date )))
             {

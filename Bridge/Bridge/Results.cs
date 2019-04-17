@@ -15,24 +15,24 @@ using System.Threading;
 
 namespace Bridge
 {
-    public partial class Results : MetroFramework.Forms.MetroForm
+    public partial class Results :  MetroFramework.Forms.MetroForm 
     {
         public DataGridViewCellMouseEventArgs e;
 
 
-        public Results(DataGridViewCellMouseEventArgs _e)
+        public Results(DataGridViewCellMouseEventArgs _eRes)
         {
             InitializeComponent();
-            e = _e;
+            e = _eRes;
             PrintTables();
         }
-        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
+        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["Series"];
 
         private void PrintTables()
         {
 
 
-            String EXpath = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[1].Value);
+            String EXpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[1].Value);
             string EXfilePath = EXpath + "\\Log.txt";
             if (File.Exists(EXfilePath))
             {
@@ -56,7 +56,7 @@ namespace Bridge
 
 
 
-            String CONFpath = Convert.ToString(((MainClass)f).GridJournal.Rows[e.RowIndex].Cells[3].Value);
+            String CONFpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[3].Value);
 
             if (File.Exists(CONFpath))
             {
