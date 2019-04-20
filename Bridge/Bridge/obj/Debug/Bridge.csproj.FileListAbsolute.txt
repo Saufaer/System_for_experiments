@@ -97,3 +97,4 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bri
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Bridge.pdb
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Series.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.SettingsRun.resources

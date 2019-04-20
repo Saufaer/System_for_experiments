@@ -529,10 +529,23 @@ namespace Bridge
                     else
                         ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
                 }
-                
+                if(cell_e.ColumnIndex == 4)
+                {
+                    SettingsRun(_e);
+                }
             }
+
         }
 
+        public void SettingsRun(DataGridViewCellEventArgs _e)
+        {
+            string ConfigFullName = ConfigList.Rows[_e.RowIndex].Cells[1].Value.ToString();
+         //   MetroFramework.MetroMessageBox.Show(this, ConfigFullName, "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            using (SettingsRun Settings = new SettingsRun(_e, ConfigFullName))
+            {
+                Settings.ShowDialog();
+            }
+        }
 
 
 
