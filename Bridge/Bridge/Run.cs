@@ -363,17 +363,23 @@ namespace Bridge
             System.IO.File.AppendAllText(ConfPath, _Source_Config_path);
 
 
-           
+
             //отправка точек в соответствующую папку
-           if (File.Exists(Directory.GetCurrentDirectory() + "\\" + "optim.dat"))
-            {
-                String TempOptim = Directory.GetCurrentDirectory() + "\\" + "optim.dat";
-                String OptimLoc = EXP + "\\" + "optim.dat";
-               
-                File.Copy(TempOptim, OptimLoc);
-                File.Delete(TempOptim);
-            }
            
+            string [] fileName = System.IO.Directory.GetFiles(Directory.GetCurrentDirectory(), "*.dat");
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                if (File.Exists(fileName[i]))
+                {
+                    string Datname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
+                     
+                    String TempOptim = fileName[i];
+                    String OptimLoc = EXP + "\\" + Datname + ".dat";
+
+                    File.Copy(TempOptim, OptimLoc);
+                    File.Delete(TempOptim);
+                }
+            }
            //линии уровня
            if (useMpi)
             {

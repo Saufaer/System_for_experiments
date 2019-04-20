@@ -23,5 +23,8 @@
   <key6>-libPath</key6>
    <par6>stronginc3.dll</par6>
 
+  <key7>-iterPointsSavePath</key7>
+   <par7>ttt.dat</par7>
+
 </exe>
 <?include somedata?>

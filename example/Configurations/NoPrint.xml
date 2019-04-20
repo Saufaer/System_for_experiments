@@ -20,5 +20,8 @@
   <key5>-libPath</key5>
    <par5>grishagin.dll</par5>
 
+  <key6>-iterPointsSavePath</key6>
+   <par6>uuyt.dat</par6>
+
 </exe>
 <?include somedata?>

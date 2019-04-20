@@ -17,5 +17,8 @@
   <key4>-libPath</key4>
    <par4>stronginc3.dll</par4>
 
+  <key5>-iterPointsSavePath</key5>
+   <par5>point.dat</par5>
+
 </exe>
 <?include somedata?>

@@ -1,0 +1,165 @@
+
+DOUBLE PRECISION
+
+Need MPI processes - 1
+Separator = _
+IsPrintHelpWithoutArguments = false
+IsStartWithoutArguments = true
+ConfigPath = 
+HELP = false
+IsPlot = false
+IsCalculateNumPoint = false
+NumPoints = 1
+StepPrintMessages = 1000
+TypeMethod = StandartMethod
+TypeCalculation = OMP
+TypeProcess = SynchronousProcess
+NumThread = 1
+SizeInBlock = 32
+IsPrintFile = false
+Dimension = 5
+r = 2.300000
+rEps = 0.010000
+rs = 2.300000_2.300000_2.300000_2.300000
+Eps = 0.010000_0.010000_0.010000_0.010000
+Comment = 000
+Epsilon = 0.010000
+M = 1.000000
+m = 10
+deviceCount = -1
+MapType = mpBase
+NumOfTaskLevels = 1
+DimInTaskLevel = 5_0_0_0
+ChildInProcLevel = 0_0_0_0
+MapInLevel = 1_1_1_1
+MapProcInLevel = 1_1_1_1
+MaxNumOfPoints = 7000000_1000000_1000000_1000000
+IsSetDevice = false
+deviceIndex = -1
+localVerificationType = None
+localMix = 0
+localAlpha = 15
+sepS = Off
+rndS = false
+libPath = stronginc5.dll
+libConfigPath = 
+stopCondition = Accuracy
+iterPointsSavePath = 
+printAdvancedInfo = false
+disablePrintParameters = false
+logFileNamePrefix = examin_log
+calculationsArray = -1_-1
+TypeSolver = SingleSearch
+DimInTask = 0_0_0_0
+Lamda = -1.000000
+rLamda = -1
+numberOfLamda = 50
+isCriteriaScaling = false
+itrEps = 0
+isLoadFirstPointFromFile = false
+FirstPointFilePath = 
+ProcRank = 0
+
+
+process 0, iteration 1000 
+process 0, iteration 2000 
+process 0, iteration 3000 
+process 0, iteration 4000 
+process 0, iteration 5000 
+process 0, iteration 6000 
+process 0, iteration 7000 
+process 0, iteration 8000 
+process 0, iteration 9000 
+process 0, iteration 10000 
+process 0, iteration 11000 
+process 0, iteration 12000 
+process 0, iteration 13000 
+process 0, iteration 14000 
+process 0, iteration 15000 
+process 0, iteration 16000 
+process 0, iteration 17000 
+process 0, iteration 18000 
+process 0, iteration 19000 
+process 0, iteration 20000 
+process 0, iteration 21000 
+process 0, iteration 22000 
+process 0, iteration 23000 
+process 0, iteration 24000 
+process 0, iteration 25000 
+process 0, iteration 26000 
+process 0, iteration 27000 
+process 0, iteration 28000 
+process 0, iteration 29000 
+process 0, iteration 30000 
+process 0, iteration 31000 
+process 0, iteration 32000 
+process 0, iteration 33000 
+process 0, iteration 34000 
+process 0, iteration 35000 
+process 0, iteration 36000 
+process 0, iteration 37000 
+process 0, iteration 38000 
+process 0, iteration 39000 
+process 0, iteration 40000 
+process 0, iteration 41000 
+process 0, iteration 42000 
+process 0, iteration 43000 
+process 0, iteration 44000 
+process 0, iteration 45000 
+process 0, iteration 46000 
+process 0, iteration 47000 
+process 0, iteration 48000 
+process 0, iteration 49000 
+process 0, iteration 50000 
+process 0, iteration 51000 
+process 0, iteration 52000 
+process 0, iteration 53000 
+process 0, iteration 54000 
+process 0, iteration 55000 
+process 0, iteration 56000 
+process 0, iteration 57000 
+process 0, iteration 58000 
+process 0, iteration 59000 
+process 0, iteration 60000 
+process 0, iteration 61000 
+process 0, iteration 62000 
+process 0, iteration 63000 
+process 0, iteration 64000 
+process 0, iteration 65000 
+process 0, iteration 66000 
+process 0, iteration 67000 
+process 0, iteration 68000 
+process 0, iteration 69000 
+process 0, iteration 70000 
+process 0, iteration 71000 
+process 0, iteration 72000 
+process 0, iteration 73000 
+process 0, iteration 74000 
+process 0, iteration 75000 
+process 0, iteration 76000 
+process 0, iteration 77000 
+process 0, iteration 78000 
+process 0, iteration 79000 
+process 0, iteration 80000 
+process 0, iteration 81000 
+process 0, iteration 82000 
+process 0, iteration 83000 
+process 0, iteration 84000 
+process 0, iteration 85000 
+process 0, iteration 86000 
+process 0, iteration 87000 
+process 0, iteration 88000 
+process 0, iteration 89000 
+process 0, iteration 90000 
+process 0, iteration 91000 
+process 0, iteration 92000 
+process 0, iteration 93000 
+process 0, iteration 94000 
+process 0, iteration 95000 
+process 0, iteration 96000 
+process 0, iteration 97000 
+process 0, iteration 98000 
+process 0, iteration 99000 
+process 0, iteration 100000 
+process 0, iteration 101000 
+proce

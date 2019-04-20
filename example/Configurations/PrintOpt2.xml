@@ -14,5 +14,8 @@
   <key3>-Dimension</key3>
    <par3>2</par3>
 
+  <key4>-iterPointsSavePath</key4>
+   <par4> vbn.dat</par4>
+
 </exe>
 <?include somedata?>

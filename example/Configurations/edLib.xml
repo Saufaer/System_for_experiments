@@ -17,5 +17,8 @@
   <key4>-libPath</key4>
    <par4>grishagin.dll</par4>
 
+  <key5>-iterPointsSavePath</key5>
+   <par5> hhh.dat</par5>
+
 </exe>
 <?include somedata?>

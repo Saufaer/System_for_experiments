@@ -44,17 +44,24 @@ namespace Bridge
                 textBoxLog.Text = lines;
             }
 
-            String OptimPath = EXpath + "\\optim.dat";
-
-
-            if (File.Exists(OptimPath))
+            string[] fileName = System.IO.Directory.GetFiles(EXpath, "*.dat");
+            if (fileName.Length != 0)
             {
-                OptimName.Text = OptimPath;
-                TextOptimPath.Clear();
-                TextOptimPath.Lines = File.ReadAllLines(OptimPath);
+                if (File.Exists(fileName[0]))
+                {
+                    string Datname = System.IO.Path.GetFileNameWithoutExtension(@fileName[0]);
+
+                    String OptimPath = EXpath + "\\" + Datname + ".dat";
+
+
+                    if (File.Exists(OptimPath))
+                    {
+                        OptimName.Text = OptimPath;
+                        TextOptimPath.Clear();
+                        TextOptimPath.Lines = File.ReadAllLines(OptimPath);
+                    }
+                }
             }
-
-
 
             String CONFpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[3].Value);
 
