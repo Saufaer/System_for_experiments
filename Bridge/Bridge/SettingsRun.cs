@@ -122,11 +122,11 @@ namespace Bridge
 
         public void CreateSerialSettingConf()
         {
-            
+            string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
             List<string[]> bigSubstr = new List<string[]>();
-            List<bool> IsSerFlag = new List<bool>();
-            List<bool> StopFlag = new List<bool>();
+            List<bool> IsSerFlag = new List<bool>();//все расширения
+            List<bool> StopFlag = new List<bool>();//текущее для одной серии
             for (int i = 0; i < WordsList.Count; i++)
             {
                 if (WordsList[i].Length > 1)
@@ -158,24 +158,29 @@ namespace Bridge
                     }
                 }
 
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "SerialConfig"+i)))
+                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory()+ "\\Configurations\\Serials", ShortConfFilename+"_" +i)))
                 {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "SerialConfig"+i));
 
+                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i), true);
+                  
                 }
-                
+                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i)))
+                {
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i));
+                }
                 {
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\SerialConfig" + i + "\\conf" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\conf" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
                 }
                 
             }
-                
-            
-            
+            bigSubstr.Clear();
+            StopFlag.Clear();
+            IsSerFlag.Clear();
+
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {

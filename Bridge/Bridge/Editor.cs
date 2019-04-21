@@ -155,8 +155,9 @@ namespace Bridge
             }
         }
 
-        public void Writter(StreamWriter SW)
+        public void Writter(String _gConfig_path)
         {
+            
             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
             string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
             string body = "";
@@ -178,8 +179,8 @@ namespace Bridge
 
                 body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
             }
-            SW.Write(start + program_name + body + end);
-            SW.Close();
+            System.IO.File.AppendAllText(_gConfig_path, start + program_name + body + end);
+      
 
         }
         public void WriteConfing()
@@ -190,10 +191,10 @@ namespace Bridge
                 {
                     if (File.Exists(gConfig_path))
                     {
-                        using (StreamWriter SW = new StreamWriter(gConfig_path))
-                        {
-                            Writter(SW);
-                        }
+                     
+                            System.IO.File.WriteAllText(@gConfig_path, string.Empty);
+                            Writter(gConfig_path);
+                        
                         TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
                         TextBoxPath.Text = gConfig_path;
                     }
@@ -230,14 +231,13 @@ namespace Bridge
                     myStream.Close();
                 }
                 gConfig_path = SF.FileName;
-                using (StreamWriter SWriter = new StreamWriter(gConfig_path))
-                {
+     
                     string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                     string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
                     string body = "";
                     string end = "\n</exe>\n<?include somedata?>";
-                    SWriter.Write(start + program_name + body + end);
-                }
+                    System.IO.File.AppendAllText(gConfig_path, start + program_name + body + end);
+            
                 TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
                 TextBoxPath.Text = gConfig_path;
                 ConfigTable.Rows.Clear();
@@ -258,16 +258,15 @@ namespace Bridge
             String OutFileName = "Configure" + date;
             String FinalPath = currentPath + "\\Configurations" + "\\" + OutFileName + ".xml";
             gConfig_path = FinalPath;
-            using (StreamWriter file = new StreamWriter(FinalPath))
-            {
+
                 string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
                 string program_name = " <Prog>" + gProgram_name + "</Prog>\n";
                 string body = "";
                 string end = "\n</exe>\n<?include somedata?>";
-                file.Write(start + program_name + body + end);
 
-                file.Close();
-            }
+                System.IO.File.AppendAllText(FinalPath, start + program_name + body + end);
+
+            
             TextBoxXML.Lines = File.ReadAllLines(FinalPath);
             TextBoxPath.Text = FinalPath;
             ConfigTable.Rows.Clear();
@@ -308,7 +307,7 @@ namespace Bridge
         {
             if (File.Exists(gConfig_path))
             {
-                StreamWriter SW;
+              
                 SaveFileDialog SF = new SaveFileDialog();
                 SF.FileName = gConfig_path;
                 SF.FileName = "";
@@ -319,11 +318,11 @@ namespace Bridge
                     {
                         if (File.Exists(gConfig_path))
                         {
-                            using (SW = new StreamWriter(SF.FileName))
-                            {
+                          
                                 gConfig_path = SF.FileName;
-                                Writter(SW);
-                            }
+                                
+                                Writter(gConfig_path);
+                            
                         }
                         MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
                     }
