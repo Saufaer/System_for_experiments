@@ -1464,7 +1464,7 @@
         private MetroFramework.Controls.MetroLabel ResLabel2;
         private MetroFramework.Controls.MetroTextBox SearchTextBox2;
         private MetroFramework.Controls.MetroButton ChoseDirConfBut;
-        private MetroFramework.Controls.MetroTextBox TextBoxChosenDirXML;
+        public MetroFramework.Controls.MetroTextBox TextBoxChosenDirXML;
         private MetroFramework.Controls.MetroButton ButOpenConfList;
         public MetroFramework.Controls.MetroGrid ConfigList;
         private MetroFramework.Controls.MetroButton RunComboFin;

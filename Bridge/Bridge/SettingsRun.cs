@@ -179,6 +179,7 @@ namespace Bridge
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Serials"))
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
@@ -189,11 +190,13 @@ namespace Bridge
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo file in dirs)
             {
+                
                 string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
                 for (int i = 0; i < fileName.Length; i++)
                 {
                     if (File.Exists(fileName[i]))
                     {
+
                         string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
                       //  MetroFramework.MetroMessageBox.Show(this, fileName[i], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
@@ -209,15 +212,15 @@ namespace Bridge
                         
                     }
                 }
-
+               
             }
 
-            
-
-
-
 
             
+
+
+
+
 
 
         }
