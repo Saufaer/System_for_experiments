@@ -125,6 +125,7 @@ namespace Bridge
             string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
             List<string[]> bigSubstr = new List<string[]>();
+            
             List<bool> IsSerFlag = new List<bool>();//все расширения
             List<bool> StopFlag = new List<bool>();//текущее для одной серии
             for (int i = 0; i < WordsList.Count; i++)
@@ -140,7 +141,7 @@ namespace Bridge
                 }
             }
 
-          
+           
             for (int i = 0; i < bigSubstr.Count; i++)
             {
                 StopFlag.Clear();
@@ -157,33 +158,31 @@ namespace Bridge
                         break;
                     }
                 }
-
-                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory()+ "\\Configurations\\Serials", ShortConfFilename+"_" +i)))
+                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i)))
                 {
-
                     Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i), true);
-                  
                 }
                 if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i)))
                 {
                     Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i));
                 }
-                {
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\"+ShortConfFilename + i+"_"+ j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
-                }
-                
             }
             bigSubstr.Clear();
             StopFlag.Clear();
             IsSerFlag.Clear();
-
+            WordsList.Clear();
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Serials"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
+            }
             CreateSerialSettingConf();
 
             DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
@@ -201,9 +200,13 @@ namespace Bridge
                         //  rowToAdd.Visible = false;
                         rowToAdd.Cells[0].Value = Shortname+".xml";
                         rowToAdd.Cells[1].Value = fileName[i];
-                        rowToAdd.Cells[2].Value = 0;
+                        rowToAdd.Cells[2].Value = 1;
                         rowToAdd.Cells[3].Value = 0;
-                        ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
+                        ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
+
+                     // ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
+                      //  ((MainClass)f).ConfigList.Rows[((MainClass)f).ConfigList.Rows.Count-1].Visible = false;
+                        
                     }
                 }
 
