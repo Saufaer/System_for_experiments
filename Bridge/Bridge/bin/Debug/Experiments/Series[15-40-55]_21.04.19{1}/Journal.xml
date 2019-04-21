@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+21.04.2019 15:40:55
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[15-40-55]_21.04.19{1}\[15-40-55]_21.04.19_{1}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Serials\edEps_1\conf12.xml
+</confPath>
+
+ </exp0>
+
+ <exp1>
+
+<date>
+21.04.2019 15:40:55
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[15-40-55]_21.04.19{1}\[15-40-55]_21.04.19_{2}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Serials\edEps_1\conf11.xml
+</confPath>
+
+ </exp1>
+
+ <exp2>
+
+<date>
+21.04.2019 15:40:55
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[15-40-55]_21.04.19{1}\[15-40-55]_21.04.19_{3}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Serials\edEps_1\conf10.xml
+</confPath>
+
+ </exp2>
+
+ <exp3>
+
+<date>
+21.04.2019 15:40:56
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[15-40-55]_21.04.19{1}\[15-40-56]_21.04.19_{4}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Serials\edEps_0\conf01.xml
+</confPath>
+
+ </exp3>
+
+ <exp4>
+
+<date>
+21.04.2019 15:40:56
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[15-40-55]_21.04.19{1}\[15-40-56]_21.04.19_{5}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Serials\edEps_0\conf00.xml
+</confPath>
+
+ </exp4>
+
+</journal>
+<?include somedata?>

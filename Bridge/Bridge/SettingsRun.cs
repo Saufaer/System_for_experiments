@@ -171,7 +171,7 @@ namespace Bridge
                 {
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\conf" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\"+ShortConfFilename + i+"_"+ j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
                 }
@@ -185,7 +185,38 @@ namespace Bridge
         private void metroButton1_Click(object sender, EventArgs e)
         {
             CreateSerialSettingConf();
-           
+
+            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo file in dirs)
+            {
+                string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    if (File.Exists(fileName[i]))
+                    {
+                        string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
+                      //  MetroFramework.MetroMessageBox.Show(this, fileName[i], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
+                        //  rowToAdd.Visible = false;
+                        rowToAdd.Cells[0].Value = Shortname+".xml";
+                        rowToAdd.Cells[1].Value = fileName[i];
+                        rowToAdd.Cells[2].Value = 0;
+                        rowToAdd.Cells[3].Value = 0;
+                        ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
+                    }
+                }
+
+            }
+
+            
+
+
+
+
+            
+
+
         }
     }
 }

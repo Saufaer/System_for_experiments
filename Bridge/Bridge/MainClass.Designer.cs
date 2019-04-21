@@ -1466,7 +1466,7 @@
         private MetroFramework.Controls.MetroButton ChoseDirConfBut;
         private MetroFramework.Controls.MetroTextBox TextBoxChosenDirXML;
         private MetroFramework.Controls.MetroButton ButOpenConfList;
-        private MetroFramework.Controls.MetroGrid ConfigList;
+        public MetroFramework.Controls.MetroGrid ConfigList;
         private MetroFramework.Controls.MetroButton RunComboFin;
         private MetroFramework.Controls.MetroPanel metroPanel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
