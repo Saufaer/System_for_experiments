@@ -84,13 +84,13 @@ namespace Bridge
             }
         }
 
-        public void SerialWritter(StreamWriter SW,int k)
+        public void SerialWritter(string _SerialConfigPath,int k, List<bool> _StopFlag)
         {
             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
             string program_name = " <Prog>" + ((MainClass)f).gProgram_name + "</Prog>\n";
             string body = "";
             string end = "\n</exe>\n<?include somedata?>";
-
+            
             for (int i = 0; i < SettingsConfigTable.Rows.Count - 1; i++)
             {
                 string tagParSt = "\n  <key" + i + ">";
@@ -100,39 +100,87 @@ namespace Bridge
                 string tagParFin = "</key" + i + ">\n";
 
                 string tagValSt = "   <par" + i + ">";
+                string value = "";
+                if (_StopFlag[i])
+                {
+                     value = WordsList[i][k];//SettingsConfigTable[1, i].Value.ToString();
+                }
+                else
+                {
+                    value = WordsList[i][0];
+                }
 
-                string value = WordsList[i][k];//SettingsConfigTable[1, i].Value.ToString();
 
                 string tagValFin = "</par" + i + ">\n";
 
                 body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
             }
-            SW.Write(start + program_name + body + end);
-            SW.Close();
+            System.IO.File.AppendAllText(_SerialConfigPath, start + program_name + body + end);
+
 
         }
 
         public void CreateSerialSettingConf()
         {
             
+            ReadStrValues();
+            List<string[]> bigSubstr = new List<string[]>();
+            List<bool> IsSerFlag = new List<bool>();
+            List<bool> StopFlag = new List<bool>();
+            for (int i = 0; i < WordsList.Count; i++)
+            {
+                if (WordsList[i].Length > 1)
+                {
+                    bigSubstr.Add(WordsList[i]);
+                    IsSerFlag.Add(true);
+                }
+                else
+                {
+                    IsSerFlag.Add(false);
+                }
+            }
+
+          
+            for (int i = 0; i < bigSubstr.Count; i++)
+            {
+                StopFlag.Clear();
+                for (int k = 0; k < WordsList.Count; k++)
+                {
+                    StopFlag.Add(false);
+                }
+                for (int l = 0; l < WordsList.Count; l++)
+                {
+                    if (IsSerFlag[l])
+                    {
+                        StopFlag[l] = true;
+                        IsSerFlag[l] = false;
+                        break;
+                    }
+                }
+
+                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "SerialConfig"+i)))
+                {
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "SerialConfig"+i));
+
+                }
+                
+                {
+                    for (int j = 0; j < bigSubstr[i].Length; j++)
+                    {
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\SerialConfig" + i + "\\conf" + j + ".xml";
+                        SerialWritter(SerialConfigPath, j, StopFlag);
+                    }
+                }
+                
+            }
+                
+            
+            
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            CreateSerialSettingConf();
            
-            ReadStrValues();
-
-            metroLabel1.Text = "";
-            for (int i = 0; i < WordsList.Count; i++)
-            {
-                metroLabel1.Text += "\n";
-                for (int j = 0; j < WordsList[i].Length; j++)
-                {
-                    metroLabel1.Text += WordsList[i][j];
-
-
-                   // MetroFramework.MetroMessageBox.Show(this, WordsList[i][j], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
         }
     }
 }
