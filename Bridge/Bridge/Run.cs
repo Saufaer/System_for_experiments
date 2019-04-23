@@ -543,7 +543,7 @@ namespace Bridge
         
             using (SettingsRun Settings = new SettingsRun(_e, ConfigFullName))
             {
-                Settings.ShowDialog();
+                 Settings.ShowDialog();
             }
         }
 

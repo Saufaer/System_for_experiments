@@ -132,13 +132,13 @@ namespace Bridge
                         foreach (object cell in item.ItemArray)
                         {
                             n++;
-                            if (n < (item.ItemArray.Length / 2))
+                            if (n < (item.ItemArray.Length / 2 ))
                             {
                                 ConfigTable.Rows.Add();
                                 ConfigTable.Rows[n].Cells[0].Value = item["key" + n];
                                 ConfigTable.Rows[n].Cells[1].Value = item["par" + n];
                             }
-
+                           
                         }
 
                     }
@@ -163,7 +163,7 @@ namespace Bridge
             string body = "";
             string end = "\n</exe>\n<?include somedata?>";
 
-            for (int i = 0; i < ConfigTable.Rows.Count - 1; i++)
+            for (int i = 0; i < ConfigTable.Rows.Count -1; i++)
             {
                 string tagParSt = "\n  <key" + i + ">";
 

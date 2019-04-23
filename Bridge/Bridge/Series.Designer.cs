@@ -45,9 +45,7 @@
             this.SeriesGridJournal.AllowUserToAddRows = false;
             this.SeriesGridJournal.AllowUserToDeleteRows = false;
             this.SeriesGridJournal.AllowUserToResizeRows = false;
-            this.SeriesGridJournal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SeriesGridJournal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.SeriesGridJournal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.SeriesGridJournal.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SeriesGridJournal.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -79,7 +77,7 @@
             this.SeriesGridJournal.EnableHeadersVisualStyles = false;
             this.SeriesGridJournal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SeriesGridJournal.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SeriesGridJournal.Location = new System.Drawing.Point(252, 63);
+            this.SeriesGridJournal.Location = new System.Drawing.Point(9, 63);
             this.SeriesGridJournal.Name = "SeriesGridJournal";
             this.SeriesGridJournal.ReadOnly = true;
             this.SeriesGridJournal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -93,7 +91,7 @@
             this.SeriesGridJournal.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.SeriesGridJournal.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.SeriesGridJournal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SeriesGridJournal.Size = new System.Drawing.Size(799, 545);
+            this.SeriesGridJournal.Size = new System.Drawing.Size(744, 624);
             this.SeriesGridJournal.TabIndex = 46;
             this.SeriesGridJournal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SeriesGridJournal_CellMouseClick);
             this.SeriesGridJournal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SeriesGridJournal_CellMouseDoubleClick);
@@ -137,10 +135,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1275, 684);
+            this.ClientSize = new System.Drawing.Size(776, 710);
             this.Controls.Add(this.SeriesGridJournal);
             this.Name = "Series";
-            this.Text = "Series";
+            this.Text = "Результаты серии";
             ((System.ComponentModel.ISupportInitialize)(this.SeriesGridJournal)).EndInit();
             this.ResumeLayout(false);
 

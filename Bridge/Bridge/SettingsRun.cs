@@ -24,21 +24,21 @@ namespace Bridge
             InitializeComponent();
             eSet = _e;
             ConfigFullName = _ConfigFullName;
-            CreateSettingsTable();
+            CreateSettingsTable(SettingsConfigTable,ConfigFullName);
         }
         System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
-        public void CreateSettingsTable()
+        public void CreateSettingsTable(MetroFramework.Controls.MetroGrid Table ,string _ConfigFullName)
         {
             
 
-                 if (File.Exists(ConfigFullName))
+                 if (File.Exists(_ConfigFullName))
             {
                 try
                 {
 
-                    SettingsConfigTable.Rows.Clear();
+                    Table.Rows.Clear();
                     DataSet ds = new DataSet();
-                    ds.ReadXml(ConfigFullName);
+                    ds.ReadXml(_ConfigFullName);
                     foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
                         int n = -1;
@@ -47,9 +47,9 @@ namespace Bridge
                             n++;
                             if (n < (item.ItemArray.Length / 2))
                             {
-                                SettingsConfigTable.Rows.Add();
-                                SettingsConfigTable.Rows[n].Cells[0].Value = item["key" + n];
-                                SettingsConfigTable.Rows[n].Cells[1].Value = item["par" + n];
+                                Table.Rows.Add();
+                                Table.Rows[n].Cells[0].Value = item["key" + n];
+                                Table.Rows[n].Cells[1].Value = item["par" + n];
                             }
 
                         }
@@ -120,7 +120,7 @@ namespace Bridge
 
         }
 
-        public string CreateSerialSettingConf()
+        public string CreateSeriesettingConf()
         {
             string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
@@ -141,13 +141,13 @@ namespace Bridge
                 }
             }
 
-            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename)))
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
             {
-                Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename), true);
+                Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename), true);
             }
-            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename)))
+            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
             {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename));
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename));
             }
             for (int i = 0; i < bigSubstr.Count; i++)
             {
@@ -167,17 +167,17 @@ namespace Bridge
                 }
               
 
-                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
+                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
-                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i), true);
+                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i), true);
                 }
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
+                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
                 }
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
             }
@@ -190,13 +190,13 @@ namespace Bridge
         private void metroButton1_Click(object sender, EventArgs e)
         {
             ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Serials"))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
             {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
             }
-           string _ShortConfFilename = CreateSerialSettingConf();
+           string _ShortConfFilename = CreateSeriesettingConf();
             SettingConfigList.Rows.Clear();
-           DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\"+ _ShortConfFilename);
+           DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\"+ _ShortConfFilename);
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo file in dirs)
             {
@@ -208,13 +208,16 @@ namespace Bridge
                     {
 
                         string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
-                      //  MetroFramework.MetroMessageBox.Show(this, fileName[i], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //  MetroFramework.MetroMessageBox.Show(this, fileName[i], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
                         //  rowToAdd.Visible = false;
-                        rowToAdd.Cells[0].Value = Shortname+".xml";
-                        rowToAdd.Cells[1].Value = fileName[i];
-                        rowToAdd.Cells[2].Value = 1;
-                        rowToAdd.Cells[3].Value = 0;
+                        rowToAdd.Cells[0].Value = Shortname +".xml";//short name
+                        rowToAdd.Cells[1].Value = fileName[i];//full name
+                        rowToAdd.Cells[2].Value = 1;//use
+                        rowToAdd.Cells[3].Value = 0;//mpi
+
+
+
                         SettingConfigList.Rows.Add(rowToAdd);
                         // ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
 
@@ -233,23 +236,22 @@ namespace Bridge
             {
                 if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
                 {
-                    DataGridViewRow rowToAdd = (DataGridViewRow)SettingConfigList.Rows[i].Clone();
-                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString() + ".xml";
-                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();
-                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;
-                    rowToAdd.Cells[3].Value = SettingConfigList.Rows[i].Cells[3].Value;
+                    DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
+                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString() ;//short name
+                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();//full name
+                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;//use
+                    rowToAdd.Cells[3].Value = 0;//mpi
+                  
                     ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
 
                 }
 
 
             }
+           // this.Close();
         }
         
-        private void SettingConfigList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
-        {
-           
-        }
+   
         public DataGridViewCellEventArgs cell_e = null;
         private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
@@ -266,7 +268,9 @@ namespace Bridge
                 }
                 if (cell_e.ColumnIndex == 4)
                 {
-                    //  SettingsRun(_e);
+
+                    CreateSettingsTable(metroGrid1, SettingConfigList.CurrentRow.Cells[1].Value.ToString());
+                   
                 }
             }
         }
