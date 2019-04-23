@@ -36,7 +36,7 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-           
+            metroTabControl1.SelectTab(Base);
         }
 
 
@@ -112,6 +112,16 @@ namespace Bridge
             {
                 File.Delete(TempXML);
             }
+            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo file in dirs)
+            {
+                if (Directory.Exists(file.FullName))
+                {
+                    Directory.Delete(file.FullName, true);
+                }
+
+            }
         }
 
         private void SearchButton2_Click(object sender, EventArgs e)
@@ -123,8 +133,9 @@ namespace Bridge
         {
             ReadConfsInDir(TextBoxChosenDirXML.Text);
         }
+        public DataGridViewCellEventArgs Set_cell_e = null;
 
-
+       
     }
 
 }

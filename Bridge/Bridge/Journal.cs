@@ -42,100 +42,17 @@ namespace Bridge
                     {
                         GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name);
                         k++;
-
-
-
-                        //if (File.Exists(f.FullName + "\\Log.txt"))
-                        //{
-                        //    string confP = f.FullName + "\\ConfPath.txt";
-                        //    if (File.Exists(confP))
-                        //    {
-                        //        string[] readText = System.IO.File.ReadAllLines(confP);
-                        //        string ConfPath = readText[0];
-
-                        //        if (File.Exists(ConfPath))
-                        //        {
-                        //            String ConfigName = new DirectoryInfo(ConfPath).Name;
-                        //            AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                        //            GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ConfPath, ConfigName);
-                        //            k++;
-                        //        }
-                        //        else
-                        //        {
-                        //            AddExpRecord(k, "Confuguration not found", f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                        //            GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Файл не найден");
-                        //            k++;
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        AddExpRecord(k, "Confuguration path not saved", f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                        //        GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Не сохранен путь");
-                        //        k++;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    string confP = f.FullName + "\\ConfPath.txt";
-                        //    if (File.Exists(confP))
-                        //    {
-                        //        string[] readText = System.IO.File.ReadAllLines(confP);
-                        //        string ConfPath = readText[0];
-
-                        //        if (File.Exists(ConfPath))
-                        //        {
-                        //            String ConfigName = new DirectoryInfo(ConfPath).Name;
-                        //            AddExpRecord(k, ConfPath, "Файл не найден", f.CreationTime.ToString());
-                        //            GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", ConfPath, ConfigName);
-                        //            k++;
-                        //        }
-                        //        else
-                        //        {
-                        //            AddExpRecord(k, "Confuguration not found", "Файл не найден", f.CreationTime.ToString());
-                        //            GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", "not", "Файл не найден");
-                        //            k++;
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        AddExpRecord(k, "Confuguration path not saved", "Файл не найден", f.CreationTime.ToString());
-                        //        GridJournal.Rows.Add(f.CreationTime, "not", "Файл не найден", "not", "Не сохранен путь");
-                        //        k++;
-                        //    }
-                        //}
                     }
-                   // System.IO.File.AppendAllText(journalPath, end);
+                
                     GridJournal.CurrentCell = GridJournal[0, 0];
                     GridJournal.Rows[0].Cells[0].Selected = false;
                 }
             }
         }
 
-        //public void AddExpRecord(int num, string confPath, string LogPath, string date)
-        //{
-        //    string date_exp = "\n <exp" + num + ">\n\n<date>\n" + date + "\n</date>";
-        //    string experiment_Path = "\n<expPath>\n" + LogPath + "\n</expPath>\n";
-        //    string configuration_Path = " <confPath>\n" + confPath + "\n</confPath>\n\n </exp" + num + ">\n";
-        //    string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
-        //    string journalPath = expPath + "\\Journal.xml";
-        //    System.IO.File.AppendAllText(journalPath, date_exp + experiment_Path + configuration_Path);
-        //}
+      
         
-        private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
-        {
-            //if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
-            //{
-            //    e = _e;
-            //    String name = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[2].Value);
-            //    String path = Convert.ToString(GridJournal.Rows[_e.RowIndex].Cells[1].Value);
-            //    string filePath = path + "\\Log.txt";
-            //    if (File.Exists(filePath))
-            //    {
-            //        StreamReader file = new StreamReader(filePath);
-            //        string lines = file.ReadToEnd();
-            //    }
-            //}
-        }
+       
        
         private  void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
@@ -181,45 +98,7 @@ namespace Bridge
 
 
         }
-        private void GridConfAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (GridConfAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 0;
-                }
-            }
-        }
-
-        private void MPIAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (MPIAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 0;
-                }
-            }
-        }
+        
 
     }
 }

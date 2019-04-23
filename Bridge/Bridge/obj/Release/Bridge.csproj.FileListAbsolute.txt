@@ -93,3 +93,4 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\S
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Release\System.Threading.Tasks.xml
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.csproj.App.config
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.Series.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Release\Bridge.SettingsRun.resources

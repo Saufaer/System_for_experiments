@@ -140,7 +140,7 @@ namespace Bridge
                     IsSerFlag.Add(false);
                 }
             }
-
+          
             if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
             {
                 Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename), true);
@@ -177,7 +177,7 @@ namespace Bridge
                 }
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\gen_" + ShortConfFilename+"_" + i + "_" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
             }
@@ -187,69 +187,7 @@ namespace Bridge
             WordsList.Clear();
             return ShortConfFilename;
         }
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
-            }
-           string _ShortConfFilename = CreateSeriesettingConf();
-            SettingConfigList.Rows.Clear();
-           DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\"+ _ShortConfFilename);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            foreach (DirectoryInfo file in dirs)
-            {
-                
-                string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
-                for (int i = 0; i < fileName.Length; i++)
-                {
-                    if (File.Exists(fileName[i]))
-                    {
-
-                        string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
-                        //  MetroFramework.MetroMessageBox.Show(this, fileName[i], "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
-                        //  rowToAdd.Visible = false;
-                        rowToAdd.Cells[0].Value = Shortname +".xml";//short name
-                        rowToAdd.Cells[1].Value = fileName[i];//full name
-                        rowToAdd.Cells[2].Value = 1;//use
-                        rowToAdd.Cells[3].Value = 0;//mpi
-
-
-
-                        SettingConfigList.Rows.Add(rowToAdd);
-                        // ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
-
-                        // ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
-                        //  ((MainClass)f).ConfigList.Rows[((MainClass)f).ConfigList.Rows.Count-1].Visible = false;
-
-                    }
-                }
-               
-            }
-        }
-
-        private void metroButton2_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < SettingConfigList.RowCount; i++)
-            {
-                if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
-                {
-                    DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
-                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString() ;//short name
-                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();//full name
-                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;//use
-                    rowToAdd.Cells[3].Value = 0;//mpi
-                  
-                    ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
-
-                }
-
-
-            }
-           // this.Close();
-        }
+       
         
    
         public DataGridViewCellEventArgs cell_e = null;
@@ -273,6 +211,120 @@ namespace Bridge
                    
                 }
             }
+        }
+      
+        private void AddSerToRun()
+        {
+            
+            ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+            }
+            string _ShortConfFilename = CreateSeriesettingConf();
+            SettingConfigList.Rows.Clear();
+            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + _ShortConfFilename);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo file in dirs)
+            {
+
+                string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    if (File.Exists(fileName[i]))
+                    {
+
+                        string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
+                       
+                        DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
+                      
+                        rowToAdd.Cells[0].Value = Shortname + ".xml";//short name
+                        rowToAdd.Cells[1].Value = fileName[i];//full name
+                        rowToAdd.Cells[2].Value = 1;//use
+                        rowToAdd.Cells[3].Value = 0;//mpi
+                        SettingConfigList.Rows.Add(rowToAdd);
+
+                    }
+                }
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddSerToRun();
+        }
+
+        
+        private void AddFinalActiveConfs()
+        {
+            ((MainClass)f).GenConfsGrid.Rows.Clear();
+            for (int i = 0; i < SettingConfigList.RowCount; i++)
+            {
+                if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
+                {
+                    DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[eSet.RowIndex].Clone();
+                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString();//short name
+                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();//full name
+                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;//use
+                    rowToAdd.Cells[3].Value = 0;//mpi
+
+                    ((MainClass)f).GenConfsGrid.Rows.Add(rowToAdd);
+
+                }
+               
+
+            }
+            ((MainClass)f).ConfigList.Rows[eSet.RowIndex].Cells[2].Value = 1;
+        }
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+           
+
+            if (checkBox1.Checked)
+            {
+                AddFinalActiveConfs();
+            }
+            else 
+            {
+                if (SettingConfigList.RowCount != 0)
+                {
+                    DialogResult m = MessageBox.Show("Применить выбранные конфигурации?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (m == DialogResult.Yes)
+                    {
+                        AddFinalActiveConfs();
+                        this.Close();
+                    }
+                    else if (m == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+         
+            this.Close();
+        }
+
+        private void SettingConfigList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+           
+                if (e.RowIndex < 0)
+                    return;
+
+             
+                if (e.ColumnIndex == 4)
+                {
+                    e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                    var w = Properties.Resources.strelkaRight.Width;
+                    var h = Properties.Resources.strelkaRight.Height;
+                    var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                    var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                    e.Graphics.DrawImage(Properties.Resources.strelkaRight, new Rectangle(x, y, w, h));
+                    e.Handled = true;
+                }
+            
         }
     }
 }

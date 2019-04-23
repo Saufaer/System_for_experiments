@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+23.04.2019 17:37:03
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-03]_23.04.19_{1}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Ed_m.xml
+</confPath>
+
+ </exp0>
+
+ <exp1>
+
+<date>
+23.04.2019 17:37:03
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-03]_23.04.19_{2}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_0.xml
+</confPath>
+
+ </exp1>
+
+ <exp2>
+
+<date>
+23.04.2019 17:37:04
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-04]_23.04.19_{3}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_1.xml
+</confPath>
+
+ </exp2>
+
+ <exp3>
+
+<date>
+23.04.2019 17:37:04
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-04]_23.04.19_{4}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_2.xml
+</confPath>
+
+ </exp3>
+
+ <exp4>
+
+<date>
+23.04.2019 17:37:05
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-05]_23.04.19_{5}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_3.xml
+</confPath>
+
+ </exp4>
+
+ <exp5>
+
+<date>
+23.04.2019 17:37:05
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-05]_23.04.19_{6}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_4.xml
+</confPath>
+
+ </exp5>
+
+ <exp6>
+
+<date>
+23.04.2019 17:37:08
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-08]_23.04.19_{7}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_0\gen_Ed_m_0_5.xml
+</confPath>
+
+ </exp6>
+
+ <exp7>
+
+<date>
+23.04.2019 17:37:08
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-08]_23.04.19_{8}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_1\gen_Ed_m_1_0.xml
+</confPath>
+
+ </exp7>
+
+ <exp8>
+
+<date>
+23.04.2019 17:37:09
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-09]_23.04.19_{10}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_1\gen_Ed_m_1_2.xml
+</confPath>
+
+ </exp8>
+
+ <exp9>
+
+<date>
+23.04.2019 17:37:09
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-09]_23.04.19_{9}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_1\gen_Ed_m_1_1.xml
+</confPath>
+
+ </exp9>
+
+ <exp10>
+
+<date>
+23.04.2019 17:37:11
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[17-37-03]_23.04.19{1}\[17-37-11]_23.04.19_{11}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Series\Ed_m\Ed_m_1\gen_Ed_m_1_3.xml
+</confPath>
+
+ </exp10>
+
+</journal>
+<?include somedata?>

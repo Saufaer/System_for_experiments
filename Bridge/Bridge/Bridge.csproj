@@ -151,6 +151,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StrelkaUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Strelka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\strelkaRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

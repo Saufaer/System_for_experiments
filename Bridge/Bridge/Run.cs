@@ -158,6 +158,18 @@ namespace Bridge
                 
 
             }
+
+            for (int i = 0; i < GenConfsGrid.RowCount; i++)
+            {
+                if (Convert.ToInt32(GenConfsGrid.Rows[i].Cells[2].Value) == 1)
+                {
+                    ActiveConfs.Add(GenConfsGrid.Rows[i].Cells[1].Value.ToString());
+                    MpiList.Add(Convert.ToBoolean(GenConfsGrid.Rows[i].Cells[3].Value));
+
+                }
+
+
+            }
             ComboSize = 0;
             comboT = 0;
             foreach (String SingleConf in ActiveConfs)
@@ -512,9 +524,83 @@ namespace Bridge
             }
             
         }
+        private void GridConfAllCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
 
+            if (GridConfAllCheckBox1.Checked)
+            {
 
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[2].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[2].Value = 0;
+                }
+            }
+        }
 
+        private void MPIAllCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (MPIAllCheckBox1.Checked)
+            {
+
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[3].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ConfigList.Rows.Count; i++)
+                {
+                    ConfigList.Rows[i].Cells[3].Value = 0;
+                }
+            }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkBox1.Checked)
+            {
+
+                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
+                {
+                    GenConfsGrid.Rows[i].Cells[2].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
+                {
+                    GenConfsGrid.Rows[i].Cells[2].Value = 0;
+                }
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+
+                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
+                {
+                    GenConfsGrid.Rows[i].Cells[3].Value = 1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
+                {
+                    GenConfsGrid.Rows[i].Cells[3].Value = 0;
+                }
+            }
+        }
         public DataGridViewCellEventArgs cell_e = null;
         private void ConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
@@ -531,6 +617,22 @@ namespace Bridge
                 }
                 if(cell_e.ColumnIndex == 4)
                 {
+
+                    DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+                    DirectoryInfo[] dirs = dir.GetDirectories();
+                    foreach (DirectoryInfo file in dirs)
+                    {
+                        if (Directory.Exists(file.FullName))
+                        {
+                            Directory.Delete(file.FullName, true);
+                        }
+                        
+                    }
+                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+                    {
+                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series"));
+                    }
+                     GenConfsGrid.Rows.Clear();
                     SettingsRun(_e);
                 }
             }
@@ -544,6 +646,7 @@ namespace Bridge
             using (SettingsRun Settings = new SettingsRun(_e, ConfigFullName))
             {
                  Settings.ShowDialog();
+                metroTabControl1.SelectTab(Generate);
             }
         }
 
@@ -575,6 +678,44 @@ namespace Bridge
             }
         }
 
+        private void ConfigList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
 
+           
+            if (e.ColumnIndex == 4)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = Properties.Resources.StrelkaUp.Width;
+                var h = Properties.Resources.StrelkaUp.Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.StrelkaUp, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+
+        private void GenConfsGrid_CellClick(object sender, DataGridViewCellEventArgs _e)
+        {
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
+            {
+                Set_cell_e = _e;
+
+                if ((Set_cell_e.ColumnIndex == 2) || (Set_cell_e.ColumnIndex == 3))
+                {
+                    if (Convert.ToInt32(GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value) == 0)
+                        GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value = 1;
+                    else
+                        GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value = 0;
+                }
+
+            }
+
+
+        }
     }
 }
