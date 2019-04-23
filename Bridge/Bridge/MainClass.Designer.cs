@@ -75,6 +75,9 @@
             this.TextBoxChosenXML = new MetroFramework.Controls.MetroTextBox();
             this.ResultsButton = new MetroFramework.Controls.MetroButton();
             this.GridJournal = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.ButtonSaveAs = new MetroFramework.Controls.MetroButton();
@@ -111,9 +114,6 @@
             this.CheckBoxCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UseMpiCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.MoreBut = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.MpiPanel1.SuspendLayout();
@@ -183,7 +183,7 @@
             this.MainTabControl.Controls.Add(this.metroTabPage4);
             this.MainTabControl.Location = new System.Drawing.Point(23, 63);
             this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 1;
+            this.MainTabControl.SelectedIndex = 0;
             this.MainTabControl.Size = new System.Drawing.Size(1505, 740);
             this.MainTabControl.TabIndex = 25;
             this.MainTabControl.UseSelectable = true;
@@ -769,6 +769,27 @@
             this.GridJournal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseClick);
             this.GridJournal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseDoubleClick);
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Дата проведения";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 180;
+            // 
+            // expPath
+            // 
+            this.expPath.HeaderText = "ExpPath";
+            this.expPath.Name = "expPath";
+            this.expPath.ReadOnly = true;
+            this.expPath.Visible = false;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Имя серии";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 250;
+            // 
             // metroTabPage4
             // 
             this.metroTabPage4.Controls.Add(this.metroPanel4);
@@ -1335,7 +1356,7 @@
             // 
             // CheckBoxCol
             // 
-            this.CheckBoxCol.HeaderText = "Включить в серию";
+            this.CheckBoxCol.HeaderText = "Выбрано к запуску";
             this.CheckBoxCol.Name = "CheckBoxCol";
             this.CheckBoxCol.ReadOnly = true;
             this.CheckBoxCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1350,31 +1371,11 @@
             // 
             // MoreBut
             // 
-            this.MoreBut.HeaderText = "Настройка";
+            this.MoreBut.HeaderText = "Генератор";
             this.MoreBut.Name = "MoreBut";
             this.MoreBut.ReadOnly = true;
+            this.MoreBut.Text = "open";
             this.MoreBut.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Дата проведения";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 180;
-            // 
-            // expPath
-            // 
-            this.expPath.HeaderText = "ExpPath";
-            this.expPath.Name = "expPath";
-            this.expPath.ReadOnly = true;
-            this.expPath.Visible = false;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Имя серии";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 250;
             // 
             // MainClass
             // 
@@ -1478,14 +1479,14 @@
         private System.Windows.Forms.CheckBox MPIAllCheckBox1;
         private MetroFramework.Controls.MetroButton StopButton;
         private MetroFramework.Controls.MetroTextBox ProcessTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expPath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn AllPath;
         private System.Windows.Forms.DataGridViewCheckBoxColumn CheckBoxCol;
         private System.Windows.Forms.DataGridViewCheckBoxColumn UseMpiCheck;
         private System.Windows.Forms.DataGridViewButtonColumn MoreBut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }
 

@@ -120,7 +120,7 @@ namespace Bridge
 
         }
 
-        public void CreateSerialSettingConf()
+        public string CreateSerialSettingConf()
         {
             string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
@@ -141,7 +141,14 @@ namespace Bridge
                 }
             }
 
-           
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename)))
+            {
+                Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename), true);
+            }
+            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename)))
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename));
+            }
             for (int i = 0; i < bigSubstr.Count; i++)
             {
                 StopFlag.Clear();
@@ -158,17 +165,19 @@ namespace Bridge
                         break;
                     }
                 }
-                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i)))
+              
+
+                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
-                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i), true);
+                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i), true);
                 }
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i)))
+                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "_" + i));
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Serials", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
                 }
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\" + ShortConfFilename+"_" + i + "_" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
             }
@@ -176,6 +185,7 @@ namespace Bridge
             StopFlag.Clear();
             IsSerFlag.Clear();
             WordsList.Clear();
+            return ShortConfFilename;
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
@@ -184,9 +194,9 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
             }
-            CreateSerialSettingConf();
-
-            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Serials");
+           string _ShortConfFilename = CreateSerialSettingConf();
+            SettingConfigList.Rows.Clear();
+           DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Serials\\"+ _ShortConfFilename);
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo file in dirs)
             {
@@ -205,24 +215,60 @@ namespace Bridge
                         rowToAdd.Cells[1].Value = fileName[i];
                         rowToAdd.Cells[2].Value = 1;
                         rowToAdd.Cells[3].Value = 0;
-                        ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
+                        SettingConfigList.Rows.Add(rowToAdd);
+                        // ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
 
-                     // ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
-                      //  ((MainClass)f).ConfigList.Rows[((MainClass)f).ConfigList.Rows.Count-1].Visible = false;
-                        
+                        // ((MainClass)f).ConfigList.Rows.Insert(0, rowToAdd);
+                        //  ((MainClass)f).ConfigList.Rows[((MainClass)f).ConfigList.Rows.Count-1].Visible = false;
+
                     }
                 }
                
             }
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < SettingConfigList.RowCount; i++)
+            {
+                if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
+                {
+                    DataGridViewRow rowToAdd = (DataGridViewRow)SettingConfigList.Rows[i].Clone();
+                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString() + ".xml";
+                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();
+                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;
+                    rowToAdd.Cells[3].Value = SettingConfigList.Rows[i].Cells[3].Value;
+                    ((MainClass)f).ConfigList.Rows.Add(rowToAdd);
+
+                }
 
 
-            
+            }
+        }
+        
+        private void SettingConfigList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
+        {
+           
+        }
+        public DataGridViewCellEventArgs cell_e = null;
+        private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
+        {
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
+            {
+                cell_e = _e;
 
-
-
-
-
-
+                if ((cell_e.ColumnIndex == 2) || (cell_e.ColumnIndex == 3))
+                {
+                    if (Convert.ToInt32(SettingConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
+                        SettingConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
+                    else
+                        SettingConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
+                }
+                if (cell_e.ColumnIndex == 4)
+                {
+                    //  SettingsRun(_e);
+                }
+            }
         }
     }
 }
