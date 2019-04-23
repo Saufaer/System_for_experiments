@@ -63,20 +63,32 @@ namespace Bridge
                             {
                                 string[] readText = System.IO.File.ReadAllLines(confP);
                                 string ConfPath = readText[0];
-
-                                if (File.Exists(ConfPath))
+                                
+                                if (ConfPath.Contains("\\Series\\"))
                                 {
-                                    String ConfigName = new DirectoryInfo(ConfPath).Name;
-                                    AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                                    SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ConfPath, ConfigName);
+                                    string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfPath);
+                                    AddExpRecord(k, "Confuguration is generation", f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                    SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ShortConfFilename, ShortConfFilename);
                                     k++;
                                 }
                                 else
                                 {
-                                    AddExpRecord(k, "Confuguration not found", f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                                    SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Файл не найден");
-                                    k++;
+                                    if (File.Exists(ConfPath))
+                                    {
+                                        String ConfigName = new DirectoryInfo(ConfPath).Name;
+                                        AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                        SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ConfPath, ConfigName);
+                                        k++;
+                                    }
+                                    else
+                                    {
+                                        AddExpRecord(k, "Confuguration not found", f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                        SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "not", "Файл не найден");
+                                        k++;
+                                    }
                                 }
+
+                                
                             }
                             else
                             {

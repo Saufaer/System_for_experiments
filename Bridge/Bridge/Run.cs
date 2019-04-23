@@ -617,7 +617,10 @@ namespace Bridge
                 }
                 if(cell_e.ColumnIndex == 4)
                 {
-
+                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+                    {
+                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series"));
+                    }
                     DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
                     DirectoryInfo[] dirs = dir.GetDirectories();
                     foreach (DirectoryInfo file in dirs)
@@ -628,10 +631,7 @@ namespace Bridge
                         }
                         
                     }
-                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
-                    {
-                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series"));
-                    }
+                  
                      GenConfsGrid.Rows.Clear();
                     SettingsRun(_e);
                 }

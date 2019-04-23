@@ -177,7 +177,7 @@ namespace Bridge
                 }
                     for (int j = 0; j < bigSubstr[i].Length; j++)
                     {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\gen_" + ShortConfFilename+"_" + i + "_" + j + ".xml";
+                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\[gen]_" + ShortConfFilename+"_" + i + "_" + j + ".xml";
                         SerialWritter(SerialConfigPath, j, StopFlag);
                     }
             }

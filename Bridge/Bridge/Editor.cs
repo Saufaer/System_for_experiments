@@ -69,7 +69,7 @@ namespace Bridge
                         if (Table.Rows[k].Cells[j].Value != null)
                         {
                         if(Table.Rows[k].Cells[j].Value.ToString().IndexOf(_TextBoxSearch.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                           // if (InfoTable.Rows[k].Cells[j].Value.ToString().Contains(TextBoxSearch.Text))
+                           
                             {
                                 count++;
                                 break;

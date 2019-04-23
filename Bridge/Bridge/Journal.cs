@@ -17,20 +17,11 @@ namespace Bridge
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
         public DataGridViewCellMouseEventArgs e = null;
-
-      
-
         public void UpdateExpJournal()
         {
             string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
             if (Directory.Exists(expPath))
             {
-                //string journalPath = expPath + "\\Journal.xml";
-                //File.WriteAllText(journalPath, string.Empty);
-                //string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<journal>\n";
-                //string end = "\n</journal>\n<?include somedata?>\n";
-                //System.IO.File.AppendAllText(journalPath, start);
-
                 GridJournal.Rows.Clear();
                 string SeriesPath = Directory.GetCurrentDirectory() + "\\Experiments";
                 if (Directory.Exists(SeriesPath) && Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
@@ -44,7 +35,7 @@ namespace Bridge
                         k++;
                     }
                 
-                    GridJournal.CurrentCell = GridJournal[0, 0];
+                   // GridJournal.CurrentCell = GridJournal[0, 0];
                     GridJournal.Rows[0].Cells[0].Selected = false;
                 }
             }
@@ -78,11 +69,9 @@ namespace Bridge
         }
         private void RunComboFin_Click(object sender, EventArgs e)
         {
-
             CreateTempConfigs();
             if (ComboSize != 0)
             {
-
                   RunComboFin.Enabled = false;
                 TextMpiComm.Enabled = false;
                 ButtonChoseTargetXML.Enabled = false;
@@ -95,10 +84,6 @@ namespace Bridge
                 TextBoxChosenXML.Enabled = false;
                 ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
             }
-
-
         }
-        
-
     }
 }

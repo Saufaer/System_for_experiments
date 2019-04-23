@@ -112,16 +112,20 @@ namespace Bridge
             {
                 File.Delete(TempXML);
             }
-            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            foreach (DirectoryInfo file in dirs)
-            {
-                if (Directory.Exists(file.FullName))
+            if(Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
                 {
-                    Directory.Delete(file.FullName, true);
-                }
+                DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+                DirectoryInfo[] dirs = dir.GetDirectories();
+                foreach (DirectoryInfo file in dirs)
+                {
+                    if (Directory.Exists(file.FullName))
+                    {
+                        Directory.Delete(file.FullName, true);
+                    }
 
+                }
             }
+           
         }
 
         private void SearchButton2_Click(object sender, EventArgs e)

@@ -64,14 +64,25 @@ namespace Bridge
             }
 
             String CONFpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[3].Value);
-
-            if (File.Exists(CONFpath))
+            if (CONFpath.Contains("[gen]_"))
             {
                 ConfName.Clear();
                 ConfName.Text = CONFpath;
                 textBoxConf.Clear();
-                textBoxConf.Lines = File.ReadAllLines(CONFpath);
+                textBoxConf.Text = "Файл является генерацией от базового";
             }
+            else
+            {
+                if (File.Exists(CONFpath))
+                {
+                    ConfName.Clear();
+                    ConfName.Text = CONFpath;
+                    textBoxConf.Clear();
+                    textBoxConf.Lines = File.ReadAllLines(CONFpath);
+                }
+            }
+                
+
             try
             {
             
