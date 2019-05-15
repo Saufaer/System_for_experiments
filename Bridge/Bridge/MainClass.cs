@@ -11,6 +11,8 @@ using System.IO;
 using System.Diagnostics;
 namespace Bridge
 {
+    
+
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
         public String gConfig_path = "";
@@ -141,5 +143,21 @@ namespace Bridge
 
        
     }
-
+    public static class Exten
+    {
+        public static IEnumerable<IEnumerable<T>> CartesianProduct<T>(this IEnumerable<IEnumerable<T>> sequences)
+        {
+            // базовый случай:
+            IEnumerable<IEnumerable<T>> result = new[] { Enumerable.Empty<T>() };
+            foreach (var sequence in sequences)
+            {
+                var s = sequence; // не замыкаем на переменную цикла    // рекурсивный случай: используем SelectMany для создания нового произведения на основе исходного произведения
+                result =
+                  from seq in result
+                  from item in s
+                  select seq.Concat(new[] { item });
+            }
+            return result;
+        }
+    }
 }

@@ -15,8 +15,14 @@ using System.Threading;
 
 namespace Bridge
 {
+    
+       
+
     public partial class SettingsRun : MetroFramework.Forms.MetroForm
     {
+
+  
+
         public DataGridViewCellEventArgs eSet = null;
         public string ConfigFullName = "";
         public SettingsRun(DataGridViewCellEventArgs _e, string _ConfigFullName)
@@ -119,7 +125,7 @@ namespace Bridge
 
 
         }
-
+       
         public string CreateSeriesettingConf()
         {
             string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
@@ -149,6 +155,27 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename));
             }
+
+
+            var product = Exten.CartesianProduct(WordsList);
+            List<string[]> asList = product.Select(innerEnumerable => innerEnumerable.ToArray()).ToList();
+            metroTextBox1.Clear();
+            for (int i = 0; i < asList.Count; i++)
+            {
+                 
+                metroTextBox1.Text += " {";
+                for (int j = 0; j < asList[i].Length; j++)
+                {
+                    metroTextBox1.Text += asList[i][j]+" ";
+                        }
+                metroTextBox1.Text += "} "+ Environment.NewLine;
+            }
+
+            
+
+
+
+
             for (int i = 0; i < bigSubstr.Count; i++)
             {
                 StopFlag.Clear();
@@ -185,11 +212,17 @@ namespace Bridge
             StopFlag.Clear();
             IsSerFlag.Clear();
             WordsList.Clear();
+
+
+
+          
             return ShortConfFilename;
+
+
         }
-       
         
-   
+
+
         public DataGridViewCellEventArgs cell_e = null;
         private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
