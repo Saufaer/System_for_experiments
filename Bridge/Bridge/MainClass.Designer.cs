@@ -128,6 +128,7 @@
             this.par = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ComboBoxProgName = new MetroFramework.Controls.MetroComboBox();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
+            this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.MpiPanel1.SuspendLayout();
@@ -199,9 +200,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MainTabControl.Controls.Add(this.metroTabPage3);
             this.MainTabControl.Controls.Add(this.metroTabPage4);
+            this.MainTabControl.Controls.Add(this.metroTabPage5);
             this.MainTabControl.Location = new System.Drawing.Point(23, 63);
             this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.SelectedIndex = 1;
             this.MainTabControl.Size = new System.Drawing.Size(1505, 740);
             this.MainTabControl.TabIndex = 25;
             this.MainTabControl.UseSelectable = true;
@@ -1112,7 +1114,7 @@
             this.EditorTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.EditorTabControl.Location = new System.Drawing.Point(530, 55);
             this.EditorTabControl.Name = "EditorTabControl";
-            this.EditorTabControl.SelectedIndex = 1;
+            this.EditorTabControl.SelectedIndex = 0;
             this.EditorTabControl.Size = new System.Drawing.Size(962, 663);
             this.EditorTabControl.TabIndex = 32;
             this.EditorTabControl.UseSelectable = true;
@@ -1556,6 +1558,20 @@
             this.WriteConf.UseSelectable = true;
             this.WriteConf.Click += new System.EventHandler(this.WriteConf_Click);
             // 
+            // metroTabPage5
+            // 
+            this.metroTabPage5.HorizontalScrollbarBarColor = true;
+            this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage5.HorizontalScrollbarSize = 10;
+            this.metroTabPage5.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage5.Name = "metroTabPage5";
+            this.metroTabPage5.Size = new System.Drawing.Size(1497, 698);
+            this.metroTabPage5.TabIndex = 2;
+            this.metroTabPage5.Text = "Задача";
+            this.metroTabPage5.VerticalScrollbarBarColor = true;
+            this.metroTabPage5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage5.VerticalScrollbarSize = 10;
+            // 
             // MainClass
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1681,6 +1697,7 @@
         private MetroFramework.Controls.MetroTabPage Generate;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage5;
     }
 }
 

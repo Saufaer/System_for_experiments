@@ -86,7 +86,6 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Sys
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\System.Runtime.xml
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\System.Threading.Tasks.xml
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.App.config
-D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.MainClass.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Properties.Resources.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Results.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csproj.GenerateResource.cache
@@ -98,3 +97,4 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\bin\Debug\Bri
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.csprojAssemblyReference.cache
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Series.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.SettingsRun.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.MainClass.resources

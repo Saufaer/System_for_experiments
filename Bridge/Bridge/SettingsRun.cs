@@ -15,8 +15,14 @@ using System.Threading;
 
 namespace Bridge
 {
+    
+       
+
     public partial class SettingsRun : MetroFramework.Forms.MetroForm
     {
+
+  
+
         public DataGridViewCellEventArgs eSet = null;
         public string ConfigFullName = "";
         public SettingsRun(DataGridViewCellEventArgs _e, string _ConfigFullName)
@@ -84,7 +90,7 @@ namespace Bridge
             }
         }
 
-        public void SerialWritter(string _SerialConfigPath,int k, List<bool> _StopFlag)
+        public void SerialWritter(string _SerialConfigPath, int k, ref List<string[]> CList)
         {
             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
             string program_name = " <Prog>" + ((MainClass)f).gProgram_name + "</Prog>\n";
@@ -100,16 +106,8 @@ namespace Bridge
                 string tagParFin = "</key" + i + ">\n";
 
                 string tagValSt = "   <par" + i + ">";
-                string value = "";
-                if (_StopFlag[i])
-                {
-                     value = WordsList[i][k];//SettingsConfigTable[1, i].Value.ToString();
-                }
-                else
-                {
-                    value = WordsList[i][0];
-                }
 
+                string value = CList[k][i];
 
                 string tagValFin = "</par" + i + ">\n";
 
@@ -120,27 +118,12 @@ namespace Bridge
 
         }
 
-        public string CreateSeriesettingConf()
+       
+        public string CreateSeriesSettingConf()
         {
             string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
-            List<string[]> bigSubstr = new List<string[]>();
-            
-            List<bool> IsSerFlag = new List<bool>();//все расширения
-            List<bool> StopFlag = new List<bool>();//текущее для одной серии
-            for (int i = 0; i < WordsList.Count; i++)
-            {
-                if (WordsList[i].Length > 1)
-                {
-                    bigSubstr.Add(WordsList[i]);
-                    IsSerFlag.Add(true);
-                }
-                else
-                {
-                    IsSerFlag.Add(false);
-                }
-            }
-          
+           
             if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
             {
                 Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename), true);
@@ -149,47 +132,43 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename));
             }
-            for (int i = 0; i < bigSubstr.Count; i++)
-            {
-                StopFlag.Clear();
-                for (int k = 0; k < WordsList.Count; k++)
-                {
-                    StopFlag.Add(false);
-                }
-                for (int l = 0; l < WordsList.Count; l++)
-                {
-                    if (IsSerFlag[l])
-                    {
-                        StopFlag[l] = true;
-                        IsSerFlag[l] = false;
-                        break;
-                    }
-                }
-              
 
+            var product = Exten.CartesianProduct(WordsList);
+            List<string[]> CarList = product.Select(innerEnumerable => innerEnumerable.ToArray()).ToList();
+            metroTextBox1.Clear();
+            for (int i = 0; i < CarList.Count; i++)
+            {
+
+                metroTextBox1.Text += " {";
+                for (int j = 0; j < CarList[i].Length; j++)
+                {
+                    metroTextBox1.Text += CarList[i][j] + " ";
+                }
+                metroTextBox1.Text += "} " + Environment.NewLine;
+            }
+
+            for (int i = 0; i < CarList.Count; i++)
+            {
                 if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
                     Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i), true);
                 }
                 if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
                 {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
                 }
-                    for (int j = 0; j < bigSubstr[i].Length; j++)
-                    {
-                        string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\[gen]_" + ShortConfFilename+"_" + i + "_" + j + ".xml";
-                        SerialWritter(SerialConfigPath, j, StopFlag);
-                    }
+                string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\[gen]_" + ShortConfFilename + "_" + i +  ".xml";
+                SerialWritter(SerialConfigPath, i, ref CarList);
             }
-            bigSubstr.Clear();
-            StopFlag.Clear();
-            IsSerFlag.Clear();
+
             WordsList.Clear();
+
             return ShortConfFilename;
+
         }
-       
         
-   
+
+
         public DataGridViewCellEventArgs cell_e = null;
         private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
@@ -221,7 +200,7 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
             }
-            string _ShortConfFilename = CreateSeriesettingConf();
+            string _ShortConfFilename = CreateSeriesSettingConf();
             SettingConfigList.Rows.Clear();
             DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + _ShortConfFilename);
             DirectoryInfo[] dirs = dir.GetDirectories();
