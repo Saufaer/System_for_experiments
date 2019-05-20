@@ -47,6 +47,10 @@ namespace Bridge
                     SavedConfsList.Rows.Add();
                     SavedConfsList.Rows[n].Cells[0].Value = System.IO.Path.GetFileNameWithoutExtension(@f.FullName);
                     SavedConfsList.Rows[n].Cells[1].Value = f.FullName;
+
+                    SavedConfsList.Rows[n].Cells[2].Value = 0;
+                    SavedConfsList.Rows[n].Cells[3].Value = "+";
+                    SavedConfsList.Rows[n].Cells[4].Value = "-";
                 }
             }
            
