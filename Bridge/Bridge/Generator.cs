@@ -124,9 +124,17 @@ namespace Bridge
         }
 
        
-        public string CreateSeriesSettingConf(string nameTempl)
+        public string CreateSeriesSettingConf(string nameTempl,bool UseAllTemplName)
         {
-            string ShortConfFilename = nameTempl + System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
+            string ShortConfFilename = "";
+            if (!UseAllTemplName)
+            {
+                ShortConfFilename = nameTempl + System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
+            }
+            else
+            {
+                 ShortConfFilename = nameTempl + metroTextBox2.Text;
+            }
             ReadStrValues();
             string DirPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp", ShortConfFilename);
             if (Directory.Exists(DirPath))
@@ -235,6 +243,7 @@ namespace Bridge
 
                     string FullDirPath = Path.GetDirectoryName(SettingConfigList.Rows[i].Cells[1].Value.ToString());
                     string shortName = System.IO.Path.GetFileNameWithoutExtension(FullDirPath) + ".xml";
+
                     string lastDir =   Path.GetFileName(FullDirPath );
 
                     string[] words = FullDirPath.Split('\\');
@@ -243,21 +252,29 @@ namespace Bridge
                     {
                         back += words[j]+"\\";
                     }
-                   
 
+
+                    if (Directory.Exists(SavedPath + "\\" + back))
+                    {
+                        Directory.Delete(SavedPath + "\\" + back,true);
+                    }
 
                     if (!Directory.Exists(SavedPath +"\\"+ back))
                     {
                         Directory.CreateDirectory(SavedPath + "\\" + back);
                     }
+
                     if(File.Exists(Path.Combine(SavedPath, back + "\\" + shortName)))
                     {
                         File.Delete(Path.Combine(SavedPath, back + "\\" + shortName));
                     }
-                    File.Copy(SettingConfigList.Rows[i].Cells[1].Value.ToString(), Path.Combine(SavedPath, back + "\\"+ shortName ));
-                  
-                    
+                    File.Copy(SettingConfigList.Rows[i].Cells[1].Value.ToString(), Path.Combine(SavedPath, back + "\\" + shortName));
 
+                    if (File.Exists(Path.Combine(SavedPath, back + "\\" + "GenList.txt")))
+                    {
+                        File.Delete(Path.Combine(SavedPath, back + "\\" + "GenList.txt"));
+                    }
+                    File.Copy(FullDirPath + "\\"+ "GenList.txt", Path.Combine(SavedPath, back + "\\" + "GenList.txt"));
 
                 }
             }
@@ -296,7 +313,7 @@ namespace Bridge
             {
                 Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
             }
-            string _ShortConfFilename = CreateSeriesSettingConf(metroTextBox1.Text);
+            string _ShortConfFilename = CreateSeriesSettingConf(metroTextBox1.Text, checkBox2.Checked);
             SettingConfigList.Rows.Clear();
             DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename);
             DirectoryInfo[] dirs = dir.GetDirectories();
