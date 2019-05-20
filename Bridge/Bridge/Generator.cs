@@ -21,8 +21,8 @@ namespace Bridge
     public partial class Generator : MetroFramework.Forms.MetroForm
     {
 
-  
 
+        
         public DataGridViewCellEventArgs eSet = null;
         public string ConfigFullName = "";
         public Generator(DataGridViewCellEventArgs _e, string _ConfigFullName)
@@ -31,9 +31,10 @@ namespace Bridge
             eSet = _e;
             ConfigFullName = _ConfigFullName;
             CreateSettingsTable(SettingsConfigTable,ConfigFullName);
+            metroComboBox1.SelectedIndex = 0;
         }
         System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
-
+        
         public void CreateSettingsTable(MetroFramework.Controls.MetroGrid Table ,string _ConfigFullName)
         {
                  if (File.Exists(_ConfigFullName))
@@ -400,7 +401,29 @@ namespace Bridge
                 }
             
         }
+        private void CreateTemplName()
+        {
+            if (metroTexBox2.Text != "")
+            {
+                string UserFileName = "";
+                string[] words = metroComboBox1.SelectedItem.ToString().Split('*');
+                UserFileName += words[0];
+                UserFileName += metroTexBox2.Text;
+                UserFileName += words[1] + "_";
 
-      
+                metroTextBox1.Text = UserFileName;
+            }
+            else
+            { MetroFramework.MetroMessageBox.Show(this, "Пустое имя в шаблоне", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CreateTemplName();
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CreateTemplName();
+        }
     }
 }
