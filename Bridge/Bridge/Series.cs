@@ -63,13 +63,25 @@ namespace Bridge
                             {
                                 string[] readText = System.IO.File.ReadAllLines(confP);
                                 string ConfPath = readText[0];
-                                
+
                                 if (ConfPath.Contains("\\Series\\"))
                                 {
-                                    string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfPath);
-                                    AddExpRecord(k, "Confuguration is generation", f.FullName + "\\Log.txt", f.CreationTime.ToString());
-                                    SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ShortConfFilename, ShortConfFilename);
-                                    k++;
+                                    if (ConfPath.Contains("\\Series\\Saved\\"))
+                                    {
+                                        string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfPath);
+                                        AddExpRecord(k, ConfPath, f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                        SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, ConfPath, ShortConfFilename);
+                                        k++;
+
+
+                                    }
+                                    if (ConfPath.Contains("\\Series\\Temp\\"))
+                                    {
+                                        string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfPath);
+                                        AddExpRecord(k, "TEMP_GEN", f.FullName + "\\Log.txt", f.CreationTime.ToString());
+                                        SeriesGridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name, "TEMP_GEN", ShortConfFilename);
+                                        k++;
+                                    }
                                 }
                                 else
                                 {

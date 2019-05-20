@@ -303,7 +303,7 @@ namespace Bridge
                 MetroFramework.MetroMessageBox.Show(this, "Параметр и его значение должны быть указаны.", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void SaveAs()
+        public void ConfSaveAs()
         {
             if (File.Exists(gConfig_path))
             {

@@ -64,12 +64,25 @@ namespace Bridge
             }
 
             String CONFpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[3].Value);
-            if (CONFpath.Contains("[gen]_"))
+            if (CONFpath == "TEMP_GEN")
             {
-                ConfName.Clear();
-                ConfName.Text = CONFpath;
-                textBoxConf.Clear();
-                textBoxConf.Text = "Файл является генерацией от базового";
+               
+                    ConfName.Clear();
+                    ConfName.Text = CONFpath;
+                    textBoxConf.Clear();
+                    textBoxConf.Text = "Generated configuration not saved";
+                
+            }
+            if (CONFpath.Contains("\\Series\\Saved\\"))
+            {
+                    if (File.Exists(CONFpath))
+                    {
+                        ConfName.Clear();
+                        ConfName.Text = CONFpath;
+                        textBoxConf.Clear();
+                        textBoxConf.Lines = File.ReadAllLines(CONFpath);
+                    }
+
             }
             else
             {

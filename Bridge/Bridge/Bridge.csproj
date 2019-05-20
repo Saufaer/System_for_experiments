@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeepRunSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeepRunSetting.Designer.cs">
+      <DependentUpon>DeepRunSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +115,15 @@
     <Compile Include="Series.Designer.cs">
       <DependentUpon>Series.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsRun.cs">
+    <Compile Include="Generator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingsRun.Designer.cs">
-      <DependentUpon>SettingsRun.cs</DependentUpon>
+    <Compile Include="Generator.Designer.cs">
+      <DependentUpon>Generator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DeepRunSetting.resx">
+      <DependentUpon>DeepRunSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainClass.resx">
       <DependentUpon>MainClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,8 +143,8 @@
     <EmbeddedResource Include="Series.resx">
       <DependentUpon>Series.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsRun.resx">
-      <DependentUpon>SettingsRun.cs</DependentUpon>
+    <EmbeddedResource Include="Generator.resx">
+      <DependentUpon>Generator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
