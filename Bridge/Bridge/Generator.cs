@@ -18,14 +18,14 @@ namespace Bridge
     
        
 
-    public partial class SettingsRun : MetroFramework.Forms.MetroForm
+    public partial class Generator : MetroFramework.Forms.MetroForm
     {
 
   
 
         public DataGridViewCellEventArgs eSet = null;
         public string ConfigFullName = "";
-        public SettingsRun(DataGridViewCellEventArgs _e, string _ConfigFullName)
+        public Generator(DataGridViewCellEventArgs _e, string _ConfigFullName)
         {
             InitializeComponent();
             eSet = _e;
@@ -33,10 +33,9 @@ namespace Bridge
             CreateSettingsTable(SettingsConfigTable,ConfigFullName);
         }
         System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
+
         public void CreateSettingsTable(MetroFramework.Controls.MetroGrid Table ,string _ConfigFullName)
         {
-            
-
                  if (File.Exists(_ConfigFullName))
             {
                 try
@@ -65,7 +64,6 @@ namespace Bridge
                 catch
                 {
                     MetroFramework.MetroMessageBox.Show(this, "Некорректный XML файл.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 }
             }
             else
@@ -75,18 +73,24 @@ namespace Bridge
             
         }
         public List<string[]> WordsList = new List<string[]>();
-        
- public void ReadStrValues()
+        public List<string> BigSubList = new List<string>();
+
+
+
+        public void ReadStrValues()
         {
             string str = "";
-           
+            string par = "";
             for(int j=0;j< SettingsConfigTable.Rows.Count-1;j++)
             {
                 str = SettingsConfigTable.Rows[j].Cells[1].Value.ToString();
-
+                par = SettingsConfigTable.Rows[j].Cells[0].Value.ToString();
                 string[] words = str.Split(';');
                 WordsList.Add(words);
-          
+                if(words.Length>1)
+                {
+                    BigSubList.Add(par);
+                }
             }
         }
 
@@ -119,55 +123,148 @@ namespace Bridge
         }
 
        
-        public string CreateSeriesSettingConf()
+        public string CreateSeriesSettingConf(string nameTempl)
         {
-            string ShortConfFilename = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
+            string ShortConfFilename = nameTempl + System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             ReadStrValues();
-           
-            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
+            string DirPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp", ShortConfFilename);
+            if (Directory.Exists(DirPath))
             {
-                Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename), true);
+                Directory.Delete(DirPath, true);
             }
-            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename)))
+            if (!Directory.Exists(DirPath))
             {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename));
+                Directory.CreateDirectory(DirPath);
             }
 
             var product = Exten.CartesianProduct(WordsList);
             List<string[]> CarList = product.Select(innerEnumerable => innerEnumerable.ToArray()).ToList();
-            metroTextBox1.Clear();
+            //metroTextBox1.Clear();
+            //for (int i = 0; i < CarList.Count; i++)
+            //{
+
+            //    metroTextBox1.Text += " {";
+            //    for (int j = 0; j < CarList[i].Length; j++)
+            //    {
+            //        metroTextBox1.Text += CarList[i][j] + " ";
+            //    }
+            //    metroTextBox1.Text += "} " + Environment.NewLine;
+            //}
+
             for (int i = 0; i < CarList.Count; i++)
             {
-
-                metroTextBox1.Text += " {";
-                for (int j = 0; j < CarList[i].Length; j++)
+                string subDirPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp", ShortConfFilename + "\\" + ShortConfFilename + "_" + i);
+                if (Directory.Exists(subDirPath))
                 {
-                    metroTextBox1.Text += CarList[i][j] + " ";
+                    Directory.Delete(subDirPath, true);
                 }
-                metroTextBox1.Text += "} " + Environment.NewLine;
-            }
-
-            for (int i = 0; i < CarList.Count; i++)
-            {
-                if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
+                if (!Directory.Exists(subDirPath))
                 {
-                    Directory.Delete(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i), true);
+                    Directory.CreateDirectory(subDirPath);
                 }
-                if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i)))
-                {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series", ShortConfFilename + "\\" + ShortConfFilename + "_" + i));
-                }
-                string SerialConfigPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + ShortConfFilename + "\\" + ShortConfFilename + "_" + i + "\\[gen]_" + ShortConfFilename + "_" + i +  ".xml";
+                string SerialConfigPath = subDirPath + "\\" + ShortConfFilename + "_" + i +  ".xml";
                 SerialWritter(SerialConfigPath, i, ref CarList);
+                WriteGenComb(ShortConfFilename, i);
             }
 
+            BigSubList.Clear();
             WordsList.Clear();
 
             return ShortConfFilename;
 
         }
-        
+        private void WriteGenComb(string _ShortConfFilename,int i)
+        {
+            string DirPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename + "\\" + _ShortConfFilename + "_" + i;
+            string FilePath = DirPath + "\\" + _ShortConfFilename + "_" + i + ".xml";
+            if (Directory.Exists(DirPath)&&File.Exists(FilePath))
+            {
+                try
+                {
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(FilePath);
+                    foreach (DataRow item in ds.Tables["exe"].Rows)
+                    {
+                        int n = -1;
+                        string body = "";
+                        foreach (object cell in item.ItemArray)
+                        {
+                            n++;
+                            if (n < (item.ItemArray.Length / 2))
+                            {
 
+                                for(int j = 0;j< BigSubList.Count;j++)
+                                {
+                                    if (item["key" + n].ToString()==(BigSubList[j]))
+                                    {
+                                        body += item["key" + n].ToString() +" = "+item["par" + n].ToString() + Environment.NewLine;
+                                    }
+                                }
+                            }
+                        }
+                        System.IO.File.AppendAllText(DirPath + "\\" + "GenList.txt", body);
+                        body = "";
+                    }
+                   
+                }
+                catch
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Некорректный XML файл.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "XML файл не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+        }
+
+        private void SaveGen()
+        {
+            string SavedPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Saved";
+            if (!Directory.Exists(SavedPath))
+            {
+                Directory.CreateDirectory(SavedPath);
+            }
+
+            for (int i = 0; i < SettingConfigList.RowCount; i++)
+            {
+                if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
+                {
+
+                    string FullDirPath = Path.GetDirectoryName(SettingConfigList.Rows[i].Cells[1].Value.ToString());
+                    string shortName = System.IO.Path.GetFileNameWithoutExtension(FullDirPath) + ".xml";
+                    string lastDir =   Path.GetFileName(FullDirPath );
+
+                    string[] words = FullDirPath.Split('\\');
+                    string back = "";
+                    for (int j = words.Length-2;j< words.Length;j++)
+                    {
+                        back += words[j]+"\\";
+                    }
+                   
+
+
+                    if (!Directory.Exists(SavedPath +"\\"+ back))
+                    {
+                        Directory.CreateDirectory(SavedPath + "\\" + back);
+                    }
+                    if(File.Exists(Path.Combine(SavedPath, back + "\\" + shortName)))
+                    {
+                        File.Delete(Path.Combine(SavedPath, back + "\\" + shortName));
+                    }
+                    File.Copy(SettingConfigList.Rows[i].Cells[1].Value.ToString(), Path.Combine(SavedPath, back + "\\"+ shortName ));
+                  
+                    
+
+
+                }
+            }
+        }
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            SaveGen();
+        }
 
         public DataGridViewCellEventArgs cell_e = null;
         private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
@@ -185,9 +282,7 @@ namespace Bridge
                 }
                 if (cell_e.ColumnIndex == 4)
                 {
-
                     CreateSettingsTable(metroGrid1, SettingConfigList.CurrentRow.Cells[1].Value.ToString());
-                   
                 }
             }
         }
@@ -196,13 +291,13 @@ namespace Bridge
         {
             
             ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
             {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
             }
-            string _ShortConfFilename = CreateSeriesSettingConf();
+            string _ShortConfFilename = CreateSeriesSettingConf(metroTextBox1.Text);
             SettingConfigList.Rows.Clear();
-            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\" + _ShortConfFilename);
+            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename);
             DirectoryInfo[] dirs = dir.GetDirectories();
             foreach (DirectoryInfo file in dirs)
             {
@@ -305,5 +400,7 @@ namespace Bridge
                 }
             
         }
+
+      
     }
 }

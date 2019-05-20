@@ -69,7 +69,7 @@ namespace Bridge
                 ConfName.Clear();
                 ConfName.Text = CONFpath;
                 textBoxConf.Clear();
-                textBoxConf.Text = "Файл является генерацией от базового";
+                textBoxConf.Text = "file is generated from base";
             }
             else
             {

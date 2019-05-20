@@ -104,7 +104,7 @@ namespace Bridge
 
         private void ButtonSaveAs_Click(object sender, EventArgs e)
         {
-            SaveAs();
+            ConfSaveAs();
             OpenXML(false);
         }
 
@@ -114,9 +114,9 @@ namespace Bridge
             {
                 File.Delete(TempXML);
             }
-            if(Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+            if(Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
                 {
-                DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+                DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
                 DirectoryInfo[] dirs = dir.GetDirectories();
                 foreach (DirectoryInfo file in dirs)
                 {

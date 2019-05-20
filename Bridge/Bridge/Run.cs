@@ -617,11 +617,11 @@ namespace Bridge
                 }
                 if(cell_e.ColumnIndex == 4)
                 {
-                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series"))
+                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
                     {
-                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series"));
+                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"));
                     }
-                    DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series");
+                    DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
                     DirectoryInfo[] dirs = dir.GetDirectories();
                     foreach (DirectoryInfo file in dirs)
                     {
@@ -643,7 +643,7 @@ namespace Bridge
         {
             string ConfigFullName = ConfigList.Rows[_e.RowIndex].Cells[1].Value.ToString();
         
-            using (SettingsRun Settings = new SettingsRun(_e, ConfigFullName))
+            using (Generator Settings = new Generator(_e, ConfigFullName))
             {
                  Settings.ShowDialog();
                 metroTabControl1.SelectTab(Generate);
