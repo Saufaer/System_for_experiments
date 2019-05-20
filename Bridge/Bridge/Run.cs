@@ -646,12 +646,12 @@ namespace Bridge
             using (Generator Settings = new Generator(_e, ConfigFullName))
             {
                  Settings.ShowDialog();
-                metroTabControl1.SelectTab(Generate);
+               // metroTabControl1.SelectTab(Generate);
             }
         }
 
 
-
+       
         private void ChoseDirConfBut_Click(object sender, EventArgs e)
         {
            
@@ -688,12 +688,12 @@ namespace Bridge
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                var w = Properties.Resources.StrelkaUp.Width;
-                var h = Properties.Resources.StrelkaUp.Height;
+                var w = Properties.Resources.strelkaRight.Width;
+                var h = Properties.Resources.strelkaRight.Height;
                 var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.StrelkaUp, new Rectangle(x, y, w, h));
+                e.Graphics.DrawImage(Properties.Resources.strelkaRight, new Rectangle(x, y, w, h));
                 e.Handled = true;
             }
         }
@@ -712,10 +712,14 @@ namespace Bridge
                     else
                         GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value = 0;
                 }
-
             }
+        }
 
 
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            DeepRunSetting DeepS =new DeepRunSetting();
+            DeepS.ShowDialog();
         }
     }
 }

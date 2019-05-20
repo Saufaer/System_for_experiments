@@ -38,7 +38,7 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-            metroTabControl1.SelectTab(Base);
+          //  metroTabControl1.SelectTab(Base);
         }
 
 
@@ -141,7 +141,8 @@ namespace Bridge
         }
         public DataGridViewCellEventArgs Set_cell_e = null;
 
-       
+
+      
     }
     public static class Exten
     {

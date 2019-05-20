@@ -98,3 +98,4 @@ D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bri
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Series.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.MainClass.resources
 D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.Generator.resources
+D:\Учёба 2019\НАУКА\System_for_experiments\Bridge\Bridge\obj\Debug\Bridge.DeepRunSetting.resources

@@ -70,7 +70,7 @@ namespace Bridge
                     ConfName.Clear();
                     ConfName.Text = CONFpath;
                     textBoxConf.Clear();
-                    textBoxConf.Text = "Gen conf not saved";
+                    textBoxConf.Text = "Generated configuration not saved";
                 
             }
             if (CONFpath.Contains("\\Series\\Saved\\"))
