@@ -121,6 +121,7 @@
     <Compile Include="Generator.Designer.cs">
       <DependentUpon>Generator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Сlassification.cs" />
     <EmbeddedResource Include="DeepRunSetting.resx">
       <DependentUpon>DeepRunSetting.cs</DependentUpon>
     </EmbeddedResource>
