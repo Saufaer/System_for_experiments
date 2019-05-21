@@ -308,8 +308,38 @@ namespace Bridge
             this.Close();
         }
 
-        
+        private void SavedConfsList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
 
-       
+            if((e.RowIndex!=-1)&&(e.ColumnIndex==0))
+            {
+
+            
+            string GenListpath = SavedConfsList.Rows[e.RowIndex].Cells[1].Value.ToString();
+            if(File.Exists(GenListpath + "\\FullGenList.txt"))
+            {
+                string body = File.ReadAllText(GenListpath + "\\FullGenList.txt");
+                SavedConfsList.Rows[e.RowIndex].Cells[0].ToolTipText = body;
+            }
+            }
+
+
+
+        }
+
+        private void metroGrid1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((e.RowIndex != -1) && (e.ColumnIndex == 0))
+            {
+
+
+                string GenListpath = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                if (File.Exists(GenListpath + "\\GenList.txt"))
+                {
+                    string body = File.ReadAllText(GenListpath + "\\GenList.txt");
+                    metroGrid1.Rows[e.RowIndex].Cells[0].ToolTipText = body;
+                }
+            }
+        }
     }
 }

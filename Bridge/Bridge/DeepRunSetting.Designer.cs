@@ -119,6 +119,7 @@
             this.SavedConfsList.Size = new System.Drawing.Size(545, 437);
             this.SavedConfsList.TabIndex = 57;
             this.SavedConfsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SavedConfsList_CellClick);
+            this.SavedConfsList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SavedConfsList_CellMouseEnter);
             // 
             // metroGrid1
             // 
@@ -176,6 +177,7 @@
             this.metroGrid1.Size = new System.Drawing.Size(491, 437);
             this.metroGrid1.TabIndex = 58;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
+            this.metroGrid1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellMouseEnter);
             // 
             // metroGrid2
             // 
@@ -361,7 +363,7 @@
             this.CheckBoxCol.ReadOnly = true;
             this.CheckBoxCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CheckBoxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CheckBoxCol.Width = 50;
+            this.CheckBoxCol.Width = 55;
             // 
             // But
             // 
@@ -402,7 +404,7 @@
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 50;
+            this.dataGridViewCheckBoxColumn1.Width = 55;
             // 
             // dataGridViewButtonColumn1
             // 

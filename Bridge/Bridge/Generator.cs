@@ -166,7 +166,24 @@ namespace Bridge
                 string SerialConfigPath = subDirPath + "\\" + ShortConfFilename + "_" + i +  ".xml";
                 SerialWritter(SerialConfigPath, i, ref CarList);
                 WriteGenComb(ShortConfFilename, i);
+
+
+                
+
             }
+            string FullGenListPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + ShortConfFilename + "\\" + "FullGenList.txt";
+            string fullGenBody = "";
+            string str = "";
+            string par = "";
+            for (int j = 0; j < SettingsConfigTable.Rows.Count - 1; j++)
+            {
+                str = SettingsConfigTable.Rows[j].Cells[1].Value.ToString();
+                par = SettingsConfigTable.Rows[j].Cells[0].Value.ToString();
+
+                fullGenBody += par + " = " + str + Environment.NewLine;
+
+            }
+            System.IO.File.AppendAllText(FullGenListPath, fullGenBody);
 
             BigSubList.Clear();
             WordsList.Clear();
@@ -176,6 +193,8 @@ namespace Bridge
         }
         private void WriteGenComb(string _ShortConfFilename,int i)
         {
+            
+
             string DirPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename + "\\" + _ShortConfFilename + "_" + i;
             string FilePath = DirPath + "\\" + _ShortConfFilename + "_" + i + ".xml";
             if (Directory.Exists(DirPath)&&File.Exists(FilePath))
@@ -222,10 +241,20 @@ namespace Bridge
 
         private void SaveGen()
         {
+            if(SettingConfigList.RowCount!=0)
+            {
+
+           
+
             string SavedPath = Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Saved";
             if (!Directory.Exists(SavedPath))
             {
                 Directory.CreateDirectory(SavedPath);
+            }
+            string[] PreWords = Path.GetDirectoryName(SettingConfigList.Rows[0].Cells[1].Value.ToString()).Split('\\');
+            if (Directory.Exists(SavedPath + "\\" + PreWords[PreWords.Length - 2]))
+            {
+                Directory.Delete(SavedPath + "\\" + PreWords[PreWords.Length - 2], true);
             }
 
             for (int i = 0; i < SettingConfigList.RowCount; i++)
@@ -236,7 +265,9 @@ namespace Bridge
                     string FullDirPath = Path.GetDirectoryName(SettingConfigList.Rows[i].Cells[1].Value.ToString());
                     string shortName = System.IO.Path.GetFileNameWithoutExtension(FullDirPath) + ".xml";
 
-                    string lastDir =   Path.GetFileName(FullDirPath );
+                    string lastDir =   Path.GetFileName(FullDirPath);
+                    
+
 
                     string[] words = FullDirPath.Split('\\');
                     string back = "";
@@ -244,7 +275,7 @@ namespace Bridge
                     {
                         back += words[j]+"\\";
                     }
-
+                    
 
                     if (Directory.Exists(SavedPath + "\\" + back))
                     {
@@ -268,7 +299,22 @@ namespace Bridge
                     }
                     File.Copy(FullDirPath + "\\"+ "GenList.txt", Path.Combine(SavedPath, back + "\\" + "GenList.txt"));
 
+
+
+                    string[] GenWords = FullDirPath.Split('\\');
+                    string GenBack = "";
+                    for (int j = 0; j < GenWords.Length - 1; j++)
+                    {
+                        GenBack += GenWords[j] + "\\";
+                    }
+
+                    if (File.Exists(Path.Combine(SavedPath, GenWords[GenWords.Length - 2] + "\\" + "FullGenList.txt")))
+                    {
+                        File.Delete(Path.Combine(SavedPath, GenWords[GenWords.Length - 2] + "\\" + "FullGenList.txt"));
+                    }
+                    File.Copy(GenBack + "\\" + "FullGenList.txt", Path.Combine(SavedPath, GenWords[GenWords.Length - 2] + "\\" + "FullGenList.txt"));
                 }
+            }
             }
         }
         private void metroButton2_Click(object sender, EventArgs e)
@@ -336,34 +382,6 @@ namespace Bridge
             AddSerToRun();
         }
 
-        
-        //private void AddFinalActiveConfs()
-        //{
-        //    bool Isdone = false;
-        //    for (int i = 0; i < SettingConfigList.RowCount; i++)
-        //    {
-        //        if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
-        //        {
-
-        //            for(int j = 0; j < ((MainClass)f).GenConfsGrid.RowCount; j++)
-        //            {
-        //                if(((MainClass)f).GenConfsGrid.Rows[j].Cells[1].Value == SettingConfigList.Rows[i].Cells[1].Value)
-        //                {
-        //                    Isdone = true;
-        //                }
-        //            }
-        //            if(!Isdone)
-        //            {
-        //                ((MainClass)f).GenConfsGrid.Rows.Add(
-        //                SettingConfigList.Rows[i].Cells[0].Value.ToString(),
-        //                SettingConfigList.Rows[i].Cells[1].Value.ToString(),
-        //                SettingConfigList.Rows[i].Cells[2].Value,
-        //                0);
-        //            }
-        //            Isdone = false;
-        //        }
-        //    }
-        //}
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
 
