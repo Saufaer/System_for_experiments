@@ -177,7 +177,17 @@ namespace Bridge
 
                 string tagValFin = "</par" + i + ">\n";
 
-                body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                if ((parameter_name == "-Separator") && ((value == ";") || (value == ".")))
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Недоступное значение Separator \"" + value + "\"", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    value = "_";
+                }
+                
+                
+                    body += tagParSt + parameter_name + tagParFin + tagValSt + value + tagValFin;
+                
+
+               
             }
             System.IO.File.AppendAllText(_gConfig_path, start + program_name + body + end);
       
@@ -191,12 +201,10 @@ namespace Bridge
                 {
                     if (File.Exists(gConfig_path))
                     {
-                     
-                            System.IO.File.WriteAllText(@gConfig_path, string.Empty);
-                            Writter(gConfig_path);
-                        
-                        TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
-                        TextBoxPath.Text = gConfig_path;
+                     System.IO.File.WriteAllText(@gConfig_path, string.Empty);
+                     Writter(gConfig_path);
+                     TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
+                     TextBoxPath.Text = gConfig_path;
                     }
                     EditorTabControl.SelectedIndex = 0;
                     if (ConfigTable.Rows.Count > 1)
@@ -294,6 +302,12 @@ namespace Bridge
         {
             String value = ValueTextBox.Text;
             String parameter = ParNameTextBox.Text;
+            if ((parameter == "-Separator") && ((value == ";")||(value == ".")))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Недоступное значение Separator \""+value+"\"", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                value = "_";
+                ValueTextBox.Text = "_";
+            }
             if ((value != "") && (parameter != ""))
             {
                 ConfigTable.Rows.Add(parameter, value);
