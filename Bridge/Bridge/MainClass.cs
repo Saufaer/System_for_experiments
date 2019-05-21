@@ -79,7 +79,28 @@ namespace Bridge
         //SearchInfo
         private void SearchInfo_Click(object sender, EventArgs e)
         {
-            Search(InfoTable, TextBoxSearch, SearchResLabel);
+            int index = metroTabControl1.SelectedIndex;
+            if(index == 0)
+            {
+                Search(metroGrid3, TextBoxSearch, SearchResLabel);
+            }
+            if (index == 1)
+            {
+                Search(metroGrid1, TextBoxSearch, SearchResLabel);
+            }
+            if (index == 2)
+            {
+                Search(metroGrid2, TextBoxSearch, SearchResLabel);
+            }
+            if (index == 3)
+            {
+                Search(InfoTable, TextBoxSearch, SearchResLabel);
+            }
+            if (index == 4)
+            {
+                Search(metroGrid4, TextBoxSearch, SearchResLabel);
+            }
+            
         }
 
 
