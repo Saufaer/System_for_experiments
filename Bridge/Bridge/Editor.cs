@@ -37,6 +37,59 @@ namespace Bridge
             _InfoTable.Rows[0].Cells[0].Selected = false;
         }
 
+        private void metroGrid3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                ParNameTextBox.Text = Convert.ToString(metroGrid3.Rows[e.RowIndex].Cells[0].Value);
+                ValueTextBox.Text = Convert.ToString(metroGrid3.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid3_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                AddLinkToConf();
+            }
+        }
+
+        private void metroGrid1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                ParNameTextBox.Text = Convert.ToString(metroGrid1.Rows[e.RowIndex].Cells[0].Value);
+                ValueTextBox.Text = Convert.ToString(metroGrid1.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                AddLinkToConf();
+            }
+        }
+
+        private void metroGrid2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                ParNameTextBox.Text = Convert.ToString(metroGrid2.Rows[e.RowIndex].Cells[0].Value);
+                ValueTextBox.Text = Convert.ToString(metroGrid2.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                AddLinkToConf();
+            }
+        }
+
+       
+
         private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if((e.ColumnIndex != -1)&&(e.RowIndex != -1))
@@ -48,6 +101,23 @@ namespace Bridge
         }
 
         private void InfoTable_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                AddLinkToConf();
+            }
+        }
+
+        private void metroGrid4_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                ParNameTextBox.Text = Convert.ToString(metroGrid4.Rows[e.RowIndex].Cells[0].Value);
+                ValueTextBox.Text = Convert.ToString(metroGrid4.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid4_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
