@@ -7,35 +7,9 @@ namespace Bridge
 {
     public class Сlassification
     {
-        public String[] TaskParameterArr;
-        public String[] TaskValidValuesArr;
-        public String[] TaskDefaultValuesArr;
-        public String[] TaskDescriptionArr;
 
-        public String[] MethodParameterArr;
-        public String[] MethodValidValuesArr;
-        public String[] MethodDefaultValuesArr;
-        public String[] MethodDescriptionArr;
-
-        public String[] ParallelParameterArr;
-        public String[] ParallelValidValuesArr;
-        public String[] ParallelDefaultValuesArr;
-        public String[] ParallelDescriptionArr;
-
-
-        public String[] SolverParameterArr;
-        public String[] SolverValidValuesArr;
-        public String[] SolverDefaultValuesArr;
-        public String[] SolverDescriptionArr;
-
-        public String[] OtherParameterArr;
-        public String[] OtherValidValuesArr;
-        public String[] OtherDefaultValuesArr;
-        public String[] OtherDescriptionArr;
-
-
-     public Tuple<String, String, String, String>[] Other =
-{
+        public Tuple<String, String, String, String>[] Other =
+   {
     Tuple.Create("-Separator", "любая строка без пробелов, не может быть \".\" и \";\"", "_" , "разделитель элементов массива"),
     Tuple.Create("-HELP","не имеет(без аргумента)"," ","указывает, нужно ли выводить справку"),
     Tuple.Create("-StepPrintMessages",">0","1000","через сколько итераций печатать \r\n в консоли сообщение \r\nо текущем количестве итераций"),
@@ -80,7 +54,6 @@ namespace Bridge
     Tuple.Create("-IsSetDevice", "0|1 или false|true","false", "назначать каждому процессу свое устройство (ускоритель)"),
     Tuple.Create("-deviceIndex", ">=0","-1", "Индекс используемого \r\nустройства (ускорителей),\r\n если -1 используется \r\nпервые deviceCount устройств"),
     Tuple.Create("-ProcRank",">=0", "0", "Номер MPI процесса,\r\n вычисляется автоматически (нельзя задать)")
-
 };
         public Tuple<String, String, String, String>[] Method =
 {
@@ -95,8 +68,6 @@ namespace Bridge
     Tuple.Create("-MapInLevel", "непустой массив из чисел > 0", "1_1_1_1", "число разверток \r\nна каждом уровне дерева процессов\r\n размер: NumOfProcLevels"),
     Tuple.Create("-MapProcInLevel", "непустой массив из чисел > 0", "1_1_1_1","число процессов \r\nна каждом уровне дерева процессов,\r\n использующих множественную развертку\r\n размер - NumOfProcLevels\r\n последний уровень по разверткам не параллелится\r\n* число процессов обрабатывающие разные \r\n развертки на уровне (узле дерева распараллеливания)\r\n*если один корень то MapInLevel[0]*ProcNum=MapInLevel[0]\r\n*определяет число соседей"),
     Tuple.Create("-MaxNumOfPoints", "непустой массив из чисел > 0", "7000000_1000000_1000000_1000000", "максимальное число итераций\r\n для процессов на каждом уровне")
-    
-
 };
         public Tuple<String, String, String, String>[] Task =
 {
@@ -110,7 +81,7 @@ namespace Bridge
     Tuple.Create("-GKLS_global_radius",">0", "0.33", "радиус глобального минимизатора")
 };
         public Сlassification()
-        {}
+        { }
 
     }
 }

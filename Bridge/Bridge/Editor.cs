@@ -15,25 +15,26 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public void InitTable()
+        public void InitTable(MetroFramework.Controls.MetroGrid _InfoTable, Tuple<String, String, String, String>[] Array)
         {
             int size = 57;
-
-            InfoTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+         
+            size = Array.Length;
+            _InfoTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             for (int k = 0; k < 4; k++)
             {
-                InfoTable.Columns[k].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                _InfoTable.Columns[k].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }
 
             for (int i = 0; i < size; i++)
             {
-                InfoTable.Rows.Add(InfoData.ParameterArr[i], InfoData.ValidValuesArr[i], InfoData.DefaultValuesArr[i], InfoData.DescriptionArr[i]);
 
+                // InfoTable.Rows.Add(InfoData.ParameterArr[i], InfoData.ValidValuesArr[i], InfoData.DefaultValuesArr[i], InfoData.DescriptionArr[i]);
+                _InfoTable.Rows.Add(Array[i].Item1, Array[i].Item2, Array[i].Item3, Array[i].Item4);
             }
             EditorTabControl.SelectedIndex = 0;
-
-            InfoTable.CurrentCell = InfoTable[0, 0];
-            InfoTable.Rows[0].Cells[0].Selected = false;
+            _InfoTable.CurrentCell = _InfoTable[0, 0];
+            _InfoTable.Rows[0].Cells[0].Selected = false;
         }
 
         private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

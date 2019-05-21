@@ -29,8 +29,12 @@ namespace Bridge
         public MainClass()
         {
             InitializeComponent();
-
-            InitTable();
+            Сlassification classif = new Сlassification();
+            InitTable(InfoTable, classif.Task);
+            InitTable(metroGrid1, classif.Method);
+            InitTable(metroGrid2, classif.Parallel);
+            InitTable(metroGrid3, classif.Solver);
+            InitTable(metroGrid4, classif.Other);
 
             ComboBoxProgName.SelectedItem = "examin.exe";
 
@@ -38,7 +42,7 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-          //  metroTabControl1.SelectTab(Base);
+        
         }
 
 
