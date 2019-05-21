@@ -24,6 +24,7 @@ namespace Bridge
             InitializeComponent();
             LoadSavedConfs();
             InitCheckList();
+            
         }
         private void InitCheckList()
         {
@@ -47,13 +48,15 @@ namespace Bridge
                     SavedConfsList.Rows.Add();
                     SavedConfsList.Rows[n].Cells[0].Value = System.IO.Path.GetFileNameWithoutExtension(@f.FullName);
                     SavedConfsList.Rows[n].Cells[1].Value = f.FullName;
+                    SavedConfsList.Rows[n].Cells[3].Value = "+";
+                    SavedConfsList.Rows[n].Cells[4].Value = "-";
                 }
             }
            
         }
         private DataGridViewCellEventArgs cell_e = null;
         private int CurrRow = -1;
-        private int CurrCell = -1;
+        
     
      
         
@@ -106,7 +109,8 @@ namespace Bridge
                 }
                 if (cell_e.ColumnIndex == 3)
                 {
-                    CurrCell = 2;
+                    metroGrid1.ScrollBars = ScrollBars.Both;
+                    
                     CurrRow = SavedConfsList.CurrentRow.Index;
 
 
@@ -159,27 +163,33 @@ namespace Bridge
                     {
                         CheckList[CurrRow] = true;
                     }
-
+        
                 }
 
                 if (cell_e.ColumnIndex == 4)
                 {
+                    metroGrid1.ClearSelection();
+                    metroGrid1.ScrollBars = ScrollBars.None;
+
                     if (metroGrid1.Rows.Count != 0)
                     {
                         for (int i = metroGrid1.Rows.Count-1; i >= 0; i--)
                         {
                             if ((int)metroGrid1.Rows[i].Cells[4].Value == SavedConfsList.CurrentRow.Index)
                             {
-                                  
+
+                                metroGrid1.FirstDisplayedScrollingRowIndex = metroGrid1.Rows.Count -1;
                                 metroGrid1.Rows.RemoveAt(i);
                                 n--;
-                                CheckList[SavedConfsList.CurrentRow.Index] = false ;
-
+                                CheckList[SavedConfsList.CurrentRow.Index] = false;
                             }
                         }
+                       
                         
                     }
+                    metroGrid1.ScrollBars = ScrollBars.Both;
                 }
+
 
             }
         }
@@ -211,8 +221,9 @@ namespace Bridge
                     if (File.Exists(files[0]))
                     {
                         ds.ReadXml(files[0]);
-                    
-                       
+                        metroTextBox1.Text = files[0];
+
+
                     foreach (DataRow item in ds.Tables["exe"].Rows)
                     {
                         int k = -1;
@@ -235,9 +246,6 @@ namespace Bridge
         }
         private void AddActiveSavedGenConfs()
         {
-
-
-
             bool Isdone = false;
             for (int i = 0; i < metroGrid1.RowCount; i++)
             {
@@ -299,5 +307,9 @@ namespace Bridge
 
             this.Close();
         }
+
+        
+
+       
     }
 }

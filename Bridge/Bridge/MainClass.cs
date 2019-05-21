@@ -145,6 +145,8 @@ namespace Bridge
         {
             GenConfsGrid.Rows.Clear();
         }
+
+      
     }
     public static class Exten
     {

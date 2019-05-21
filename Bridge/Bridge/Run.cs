@@ -233,8 +233,10 @@ namespace Bridge
             TextBoxChosenDirXML.Enabled = true;
             TextBoxChosenProgram.Enabled = true;
             TextBoxChosenXML.Enabled = true;
-
-            
+            metroButton2.Enabled = true;
+            metroButton1.Enabled = true;
+            ResultsButton.Enabled = true;
+            SearchButton2.Enabled = true;
             for (int i = 0; i < ComboSize; i++)
             {
                 if (File.Exists(TempComboXML[i]))
@@ -316,8 +318,8 @@ namespace Bridge
                 
             }
             UpdateExpJournal();
-            
 
+            
             RunComboFin.Enabled = true;
                 TextMpiComm.Enabled = true;
                 ButtonChoseTargetXML.Enabled = true;
@@ -328,8 +330,12 @@ namespace Bridge
                 TextBoxChosenDirXML.Enabled = true;
                 TextBoxChosenProgram.Enabled = true;
                 TextBoxChosenXML.Enabled = true;
+            metroButton2.Enabled = true;
+            metroButton1.Enabled = true;
+            ResultsButton.Enabled = true;
+            SearchButton2.Enabled = true;
 
-                Results.Clear();
+            Results.Clear();
                 TempComboXML.Clear();
                 ActiveConfs.Clear();
                 MpiList.Clear();

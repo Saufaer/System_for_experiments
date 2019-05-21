@@ -61,9 +61,9 @@ namespace Bridge
         {
             if (e != null)
             {
-                using (Results Res = new Results(e))
+                using (Series Ser = new Series(e))
                 {
-                    Res.ShowDialog();
+                    Ser.ShowDialog();
                 }
             }
         }
@@ -82,6 +82,10 @@ namespace Bridge
                 TextBoxChosenDirXML.Enabled = false;
                 TextBoxChosenProgram.Enabled = false;
                 TextBoxChosenXML.Enabled = false;
+                metroButton2.Enabled = false;
+                metroButton1.Enabled = false;
+                ResultsButton.Enabled = false;
+                SearchButton2.Enabled = false;
                 ComboFinRun(ComboSize, ActiveConfs, TempComboXML);
             }
         }
