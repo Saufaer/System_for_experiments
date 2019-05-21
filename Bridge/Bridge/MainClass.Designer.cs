@@ -58,6 +58,7 @@
             this.TextMpiComm = new MetroFramework.Controls.MetroTextBox();
             this.ProgressBarJour = new MetroFramework.Controls.MetroProgressBar();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -385,6 +386,7 @@
             this.metroPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel3.Controls.Add(this.metroButton2);
             this.metroPanel3.Controls.Add(this.metroButton1);
             this.metroPanel3.Controls.Add(this.checkBox2);
             this.metroPanel3.Controls.Add(this.checkBox1);
@@ -409,14 +411,25 @@
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
             // 
+            // metroButton2
+            // 
+            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton2.Location = new System.Drawing.Point(542, 109);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(163, 29);
+            this.metroButton2.TabIndex = 83;
+            this.metroButton2.Text = "Очистить";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
+            // 
             // metroButton1
             // 
             this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.metroButton1.Location = new System.Drawing.Point(542, 39);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(160, 64);
+            this.metroButton1.Size = new System.Drawing.Size(163, 64);
             this.metroButton1.TabIndex = 82;
-            this.metroButton1.Text = "Генерации";
+            this.metroButton1.Text = "Добавить генерации \r\nк запуску";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
@@ -561,9 +574,9 @@
             // 
             // 
             this.TextBoxChosenDirXML.CustomButton.Image = null;
-            this.TextBoxChosenDirXML.CustomButton.Location = new System.Drawing.Point(270, 2);
+            this.TextBoxChosenDirXML.CustomButton.Location = new System.Drawing.Point(236, 1);
             this.TextBoxChosenDirXML.CustomButton.Name = "";
-            this.TextBoxChosenDirXML.CustomButton.Size = new System.Drawing.Size(59, 59);
+            this.TextBoxChosenDirXML.CustomButton.Size = new System.Drawing.Size(97, 97);
             this.TextBoxChosenDirXML.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.TextBoxChosenDirXML.CustomButton.TabIndex = 1;
             this.TextBoxChosenDirXML.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -580,7 +593,7 @@
             this.TextBoxChosenDirXML.SelectionLength = 0;
             this.TextBoxChosenDirXML.SelectionStart = 0;
             this.TextBoxChosenDirXML.ShortcutsEnabled = true;
-            this.TextBoxChosenDirXML.Size = new System.Drawing.Size(332, 64);
+            this.TextBoxChosenDirXML.Size = new System.Drawing.Size(334, 99);
             this.TextBoxChosenDirXML.TabIndex = 72;
             this.TextBoxChosenDirXML.UseSelectable = true;
             this.TextBoxChosenDirXML.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1657,6 +1670,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn UseMpiCheck;
         private System.Windows.Forms.DataGridViewButtonColumn MoreBut;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }
 

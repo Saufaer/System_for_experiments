@@ -141,8 +141,10 @@ namespace Bridge
         }
         public DataGridViewCellEventArgs Set_cell_e = null;
 
-
-      
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            GenConfsGrid.Rows.Clear();
+        }
     }
     public static class Exten
     {

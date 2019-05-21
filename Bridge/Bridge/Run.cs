@@ -629,10 +629,10 @@ namespace Bridge
                         {
                             Directory.Delete(file.FullName, true);
                         }
-                        
+
                     }
                   
-                     GenConfsGrid.Rows.Clear();
+                    // GenConfsGrid.Rows.Clear();
                     SettingsRun(_e);
                 }
             }

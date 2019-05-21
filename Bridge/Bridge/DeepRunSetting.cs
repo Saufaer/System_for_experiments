@@ -233,35 +233,71 @@ namespace Bridge
                 }
             }
         }
-        
-        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
-        private void metroButton1_Click(object sender, EventArgs e)
+        private void AddActiveSavedGenConfs()
         {
-            ((MainClass)f).GenConfsGrid.Rows.Clear();
-            ((MainClass)f).GenConfsGrid.Rows.Add();
-         
-            
+
+
+
+            bool Isdone = false;
             for (int i = 0; i < metroGrid1.RowCount; i++)
             {
                 if (Convert.ToInt32(metroGrid1.Rows[i].Cells[2].Value) == 1)
                 {
-                    //DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
-
-
-                    DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).GenConfsGrid.Rows[0].Clone();
-
-                    rowToAdd.Cells[0].Value = metroGrid1.Rows[i].Cells[0].Value.ToString();//short name
-                    rowToAdd.Cells[1].Value = metroGrid1.Rows[i].Cells[5].Value.ToString();//full name
-                    rowToAdd.Cells[2].Value = metroGrid1.Rows[i].Cells[2].Value;//use
-                    rowToAdd.Cells[3].Value = 0;//mpi
-
-                    ((MainClass)f).GenConfsGrid.Rows.Add(rowToAdd);
+                    for (int j = 0; j < ((MainClass)f).GenConfsGrid.RowCount; j++)
+                    {
+                        if (((MainClass)f).GenConfsGrid.Rows[j].Cells[1].Value.ToString() == metroGrid1.Rows[i].Cells[5].Value.ToString())
+                        {
+                            
+                            Isdone = true;
+                        }
+                    }
+                    if (!Isdone)
+                    {
+                        ((MainClass)f).GenConfsGrid.Rows.Add(
+                        metroGrid1.Rows[i].Cells[0].Value,
+                        metroGrid1.Rows[i].Cells[5].Value,
+                        metroGrid1.Rows[i].Cells[2].Value,
+                        0);
+                    }
+                    Isdone = false;
                 }
 
 
             }
-            ((MainClass)f).GenConfsGrid.Rows.RemoveAt(0);
+            
+        }
 
+
+        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            AddActiveSavedGenConfs();
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                AddActiveSavedGenConfs();
+            }
+            else
+            {
+                if (metroGrid1.RowCount != 0)
+                {
+                    DialogResult m = MessageBox.Show("Применить выбранные конфигурации?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (m == DialogResult.Yes)
+                    {
+                        AddActiveSavedGenConfs();
+                        this.Close();
+                    }
+                    else if (m == DialogResult.No)
+                    {
+                        this.Close();
+                    }
+                }
+            }
+
+            this.Close();
         }
     }
 }

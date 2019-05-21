@@ -15,14 +15,8 @@ using System.Threading;
 
 namespace Bridge
 {
-    
-       
-
     public partial class Generator : MetroFramework.Forms.MetroForm
     {
-
-
-        
         public DataGridViewCellEventArgs eSet = null;
         public string ConfigFullName = "";
         public Generator(DataGridViewCellEventArgs _e, string _ConfigFullName)
@@ -323,17 +317,14 @@ namespace Bridge
                 {
                     if (File.Exists(fileName[i]))
                     {
-
                         string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
                        
                         DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
-                      
                         rowToAdd.Cells[0].Value = Shortname + ".xml";//short name
                         rowToAdd.Cells[1].Value = fileName[i];//full name
                         rowToAdd.Cells[2].Value = 1;//use
                         rowToAdd.Cells[3].Value = 0;//mpi
                         SettingConfigList.Rows.Add(rowToAdd);
-
                     }
                 }
 
@@ -346,43 +337,49 @@ namespace Bridge
         }
 
         
-        private void AddFinalActiveConfs()
-        {
-            ((MainClass)f).GenConfsGrid.Rows.Clear();
-            for (int i = 0; i < SettingConfigList.RowCount; i++)
-            {
-                if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
-                {
-                    DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[eSet.RowIndex].Clone();
-                    rowToAdd.Cells[0].Value = SettingConfigList.Rows[i].Cells[0].Value.ToString();//short name
-                    rowToAdd.Cells[1].Value = SettingConfigList.Rows[i].Cells[1].Value.ToString();//full name
-                    rowToAdd.Cells[2].Value = SettingConfigList.Rows[i].Cells[2].Value;//use
-                    rowToAdd.Cells[3].Value = 0;//mpi
+        //private void AddFinalActiveConfs()
+        //{
+        //    bool Isdone = false;
+        //    for (int i = 0; i < SettingConfigList.RowCount; i++)
+        //    {
+        //        if (Convert.ToInt32(SettingConfigList.Rows[i].Cells[2].Value) == 1)
+        //        {
 
-                    ((MainClass)f).GenConfsGrid.Rows.Add(rowToAdd);
-
-                }
-               
-
-            }
-            ((MainClass)f).ConfigList.Rows[eSet.RowIndex].Cells[2].Value = 1;
-        }
+        //            for(int j = 0; j < ((MainClass)f).GenConfsGrid.RowCount; j++)
+        //            {
+        //                if(((MainClass)f).GenConfsGrid.Rows[j].Cells[1].Value == SettingConfigList.Rows[i].Cells[1].Value)
+        //                {
+        //                    Isdone = true;
+        //                }
+        //            }
+        //            if(!Isdone)
+        //            {
+        //                ((MainClass)f).GenConfsGrid.Rows.Add(
+        //                SettingConfigList.Rows[i].Cells[0].Value.ToString(),
+        //                SettingConfigList.Rows[i].Cells[1].Value.ToString(),
+        //                SettingConfigList.Rows[i].Cells[2].Value,
+        //                0);
+        //            }
+        //            Isdone = false;
+        //        }
+        //    }
+        //}
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
-           
+
 
             if (checkBox1.Checked)
             {
-                AddFinalActiveConfs();
+                SaveGen();
             }
-            else 
+            else
             {
                 if (SettingConfigList.RowCount != 0)
                 {
-                    DialogResult m = MessageBox.Show("Применить выбранные конфигурации?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult m = MessageBox.Show("Сохранить выбранные конфигурации?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (m == DialogResult.Yes)
                     {
-                        AddFinalActiveConfs();
+                        SaveGen();
                         this.Close();
                     }
                     else if (m == DialogResult.No)
@@ -391,7 +388,7 @@ namespace Bridge
                     }
                 }
             }
-         
+
             this.Close();
         }
 
