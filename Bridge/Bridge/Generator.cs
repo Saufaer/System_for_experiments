@@ -32,6 +32,10 @@ namespace Bridge
             ConfigFullName = _ConfigFullName;
             CreateSettingsTable(SettingsConfigTable,ConfigFullName);
             metroComboBox1.SelectedIndex = 0;
+            metroTextBox3.Text = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
+            CreateTemplName();
+            checkBox2.Checked = true;
+            checkBox3.Checked = true;
         }
         System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
         
@@ -127,14 +131,8 @@ namespace Bridge
         public string CreateSeriesSettingConf(string nameTempl,bool UseAllTemplName)
         {
             string ShortConfFilename = "";
-            if (!UseAllTemplName)
-            {
-                ShortConfFilename = nameTempl + System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
-            }
-            else
-            {
-                 ShortConfFilename = nameTempl + metroTextBox2.Text;
-            }
+            ShortConfFilename =  metroTextBox1.Text;
+            
             ReadStrValues();
             string DirPath = Path.Combine(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp", ShortConfFilename);
             if (Directory.Exists(DirPath))
@@ -420,18 +418,27 @@ namespace Bridge
         }
         private void CreateTemplName()
         {
-            if (metroTexBox2.Text != "")
+            if (metroTextBox3.Text != "")
             {
                 string UserFileName = "";
                 string[] words = metroComboBox1.SelectedItem.ToString().Split('*');
-                UserFileName += words[0];
-                UserFileName += metroTexBox2.Text;
-                UserFileName += words[1] + "_";
-
+                if(checkBox3.Checked)
+                {
+                    UserFileName += words[0];
+                    UserFileName += metroTextBox2.Text;
+                    UserFileName += words[1] + "_";
+                }
+                if (checkBox2.Checked)
+                {
+                    UserFileName += metroTextBox3.Text;
+                }
+                   
                 metroTextBox1.Text = UserFileName;
             }
             else
-            { MetroFramework.MetroMessageBox.Show(this, "Пустое имя в шаблоне", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Пустое имя в шаблоне", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -439,6 +446,16 @@ namespace Bridge
         }
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CreateTemplName();
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            CreateTemplName();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             CreateTemplName();
         }

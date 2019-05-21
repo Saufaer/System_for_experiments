@@ -1,0 +1,91 @@
+
+DOUBLE PRECISION
+
+Need MPI processes - 1
+Separator = _
+IsPrintHelpWithoutArguments = false
+IsStartWithoutArguments = true
+ConfigPath = 
+HELP = false
+IsPlot = true
+IsCalculateNumPoint = false
+NumPoints = 1
+StepPrintMessages = 1000
+TypeMethod = StandartMethod
+TypeCalculation = OMP
+TypeProcess = SynchronousProcess
+NumThread = 1
+SizeInBlock = 32
+IsPrintFile = true
+Dimension = 2
+r = 5.000000
+rEps = 0.010000
+rs = 5.000000
+Eps = 0.010000_0.010000_0.010000_0.010000
+Comment = 000
+Epsilon = 0.010000
+M = 1.000000
+m = 10
+deviceCount = -1
+MapType = mpBase
+NumOfTaskLevels = 1
+DimInTaskLevel = 2_0_0_0
+ChildInProcLevel = 0_0_0_0
+MapInLevel = 1_1_1_1
+MapProcInLevel = 1_1_1_1
+MaxNumOfPoints = 7000000_1000000_1000000_1000000
+IsSetDevice = false
+deviceIndex = -1
+localVerificationType = None
+localMix = 0
+localAlpha = 15
+sepS = Off
+rndS = false
+libPath = grishagin.dll
+libConfigPath = 
+stopCondition = Accuracy
+iterPointsSavePath = hhh.dat
+printAdvancedInfo = false
+disablePrintParameters = false
+logFileNamePrefix = examin_log
+calculationsArray = -1_-1
+TypeSolver = SingleSearch
+DimInTask = 0_0_0_0
+Lamda = -1.000000
+rLamda = -1
+numberOfLamda = 50
+isCriteriaScaling = false
+itrEps = 0
+isLoadFirstPointFromFile = false
+FirstPointFilePath = 
+ProcRank = 0
+Separator = _
+IsPrintHelpWithoutArguments = false
+IsStartWithoutArguments = true
+ConfigPath = 
+Dimension = 2
+IsPrintParameters = false
+NumberOfDiscreteVariable = 0
+IsMultInt = true
+function_number = 1
+
+
+process 0, iteration 1000 
+
+ProcLevel = 0
+Iteration = 1165 
+Point = 1165 
+min = -13.484726 
+x[0] = 0.606934 
+x[1] = 0.409668 
+
+Value difference  = 0.029753 
+Coordinates max difference = 0.003882 
+Global optimum FOUND!
+
+NumberOfTrials = 1164
+Number of calculations function 0 of = 1164
+
+Solve time = 0.062358
+
+
