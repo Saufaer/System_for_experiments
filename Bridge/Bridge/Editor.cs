@@ -258,6 +258,11 @@ namespace Bridge
             {
                 MetroFramework.MetroMessageBox.Show(this, "XML файл не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            if (TextBoxPath.Text != "")
+            {
+                WriteConf.Enabled = true;
+                AddLink.Enabled = true;
+            }
         }
 
         public void Writter(String _gConfig_path)
@@ -327,6 +332,11 @@ namespace Bridge
             {
                 MetroFramework.MetroMessageBox.Show(this, "XML файл не выбран", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            if (TextBoxPath.Text != "")
+            {
+                WriteConf.Enabled = true;
+                AddLink.Enabled = true;
+            }
         }
 
         public void CreateXML()
@@ -354,6 +364,11 @@ namespace Bridge
                 TextBoxXML.Lines = File.ReadAllLines(gConfig_path);
                 TextBoxPath.Text = gConfig_path;
                 ConfigTable.Rows.Clear();
+            }
+            if (TextBoxPath.Text != "")
+            {
+                WriteConf.Enabled = true;
+                AddLink.Enabled = true;
             }
         }
 
@@ -383,6 +398,12 @@ namespace Bridge
             TextBoxXML.Lines = File.ReadAllLines(FinalPath);
             TextBoxPath.Text = FinalPath;
             ConfigTable.Rows.Clear();
+
+            if (TextBoxPath.Text != "")
+            {
+                WriteConf.Enabled = true;
+                AddLink.Enabled = true;
+            }
         }
 
         public void DeleteXML()
@@ -400,6 +421,12 @@ namespace Bridge
             else
             {
                 MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (TextBoxPath.Text == "")
+            {
+                WriteConf.Enabled = false;
+                AddLink.Enabled = false;
             }
         }
 
@@ -428,28 +455,35 @@ namespace Bridge
             {
               
                 SaveFileDialog SF = new SaveFileDialog();
-                SF.FileName = gConfig_path;
+
+                
                 SF.FileName = "";
                 SF.Filter = "xml files (*.xml)|*.xml";
                 if (SF.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    if (SF.FileName != "")
                     {
-                        if (File.Exists(gConfig_path))
+                        File.Delete(SF.FileName);
+                    }
+                        try
                         {
-                          
+                            if (File.Exists(gConfig_path))
+                            {
+
                                 gConfig_path = SF.FileName;
-                                
+
                                 Writter(gConfig_path);
-                            
+
+                            }
+                            MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
                         }
-                        MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
+                        catch
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    catch
-                    {
-                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                    
+                
             }
             else
             {

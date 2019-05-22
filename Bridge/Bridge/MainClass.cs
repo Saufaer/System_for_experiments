@@ -43,14 +43,16 @@ namespace Bridge
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
             metroButton3.Enabled = false;
+
+            if (TextBoxPath.Text == "")
+            {
+                WriteConf.Enabled = false;
+                AddLink.Enabled = false;
+            }
         }
 
 
-        //Open
-        private void OpenXMLbutton_Click(object sender, EventArgs e)
-        {
-            OpenXML(true);
-        }
+
 
         //Write
         private void WriteConf_Click(object sender, EventArgs e)
@@ -58,17 +60,8 @@ namespace Bridge
             WriteConfing();
         }
 
-        //Create
-        private void Create_Click(object sender, EventArgs e)
-        {
-            CreateXML();
-        }
+      
 
-        //Delete
-        private void Delete_Click(object sender, EventArgs e)
-        {
-            DeleteXML();
-        }
 
         //Add link
         private void AddLink_Click(object sender, EventArgs e)
@@ -122,16 +115,9 @@ namespace Bridge
             ChoseProgram();
         }
 
-        private void CreateXMLDefault_Click(object sender, EventArgs e)
-        {
-            CreateXMLDefault();
-        }
+      
 
-        private void ButtonSaveAs_Click(object sender, EventArgs e)
-        {
-            ConfSaveAs();
-            OpenXML(false);
-        }
+       
 
         private void MainClass_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -178,6 +164,39 @@ namespace Bridge
         private void metroButton3_Click(object sender, EventArgs e)
         {
             ChoseFile();
+        }
+
+      
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenXML(true);
+        }
+
+        private void NewToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CreateXML();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CreateXMLDefault();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            DeleteXML();
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfSaveAs();
+            OpenXML(false);
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            metroContextMenu1.Show(metroButton4, 0, metroButton4.Height);
         }
     }
     public static class Exten
