@@ -1,3 +1,0 @@
-
-DOUBLE PRECISION
-Error during problem initialization

@@ -79,6 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigItem.cs" />
+    <Compile Include="ConfigItemType.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="DeepRunSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +127,7 @@
     <Compile Include="Сlassification.cs" />
     <EmbeddedResource Include="DeepRunSetting.resx">
       <DependentUpon>DeepRunSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainClass.resx">
       <DependentUpon>MainClass.cs</DependentUpon>

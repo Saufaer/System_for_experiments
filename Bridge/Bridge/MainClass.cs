@@ -18,6 +18,8 @@ namespace Bridge
         public String gConfig_path = "";
         public String gProgram_name = "examin.exe";
 
+        public String gTaskConfig_path = "";
+
         public String gChosenXML = "";
         public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
         public String gTempChosenXML = "";
@@ -195,6 +197,32 @@ namespace Bridge
         private void metroButton4_Click(object sender, EventArgs e)
         {
             metroContextMenu1.Show(metroButton4, 0, metroButton4.Height);
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            metroContextMenu2.Show(metroButton5, 0, metroButton5.Height);
+        }
+
+        private void Open1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTaskXML(true);
+        }
+
+        private void Create1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // CreateXML();
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // ConfSaveAs();
+           // OpenXML(false);
+        }
+
+        private void DelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // DeleteXML();
         }
     }
     public static class Exten

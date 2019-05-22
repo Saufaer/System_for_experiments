@@ -11,6 +11,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+
+using System.Xml.Linq;
 namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
@@ -209,6 +211,110 @@ namespace Bridge
            
         }
 
+
+        public static void AddConfig(Configuration config, string name)
+        {
+            Stream myStream = null;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.FileName = name;
+            myStream = openFileDialog.OpenFile();
+
+            StreamReader read = new StreamReader(myStream);
+            string xml = read.ReadToEnd();
+            read.Close();
+
+            XDocument doc = XDocument.Parse(xml);
+            XElement[] mxe = doc.Root.Elements().ToArray();
+            for (int i = 0; i < mxe.Length; i++)
+            {
+                config.Add(mxe[i]);
+            }
+        }
+        public void OpenTaskXML(bool needDialog)
+        {
+            if (needDialog)
+            {
+                OpenFileDialog OPF = new OpenFileDialog();
+                OPF.InitialDirectory = Directory.GetCurrentDirectory();//"c:\\";
+                OPF.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+                OPF.FilterIndex = 1;
+                OPF.RestoreDirectory = true;
+                if (OPF.ShowDialog() == DialogResult.OK)
+                {
+                    gTaskConfig_path = OPF.FileName;
+                }
+            }
+
+            if (File.Exists(gTaskConfig_path))
+            {
+                try
+                {
+                    metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
+                    metroTextBox5.Text = gTaskConfig_path;
+
+                    Configuration conf = new Configuration();
+                    conf.Name = Path.GetFileName(gTaskConfig_path);
+                    conf.Comment = Configuration.XMLConfiguration;
+                    AddConfig(conf, gTaskConfig_path);
+
+
+
+
+
+                    for (int i = 0; i < conf.GetItems().Count; i++)
+                            {
+
+                       
+                        metroGrid10.Rows.Add(conf.GetItems()[i].Name, conf.GetItems()[i].Value);
+                       
+                       
+                        
+                            }
+                        
+                    
+                    
+                   
+
+
+                    //metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
+                    //metroTextBox5.Text = gTaskConfig_path;
+                    //metroGrid10.Rows.Clear();
+                    //DataSet ds = new DataSet();
+                    //ds.ReadXml(gTaskConfig_path);
+
+                    //foreach (DataRow item in ds.Tables["config"].Rows)
+                    //{
+                    //    int n = -1;
+                    //    foreach (object cell in item.ItemArray)
+                    //    {
+                    //        n++;
+
+                    //        if (n < (item.ItemArray.Length))
+                    //        {
+                    //            metroGrid10.Rows.Add();
+
+                    //            metroGrid10.Rows[n].Cells[1].Value = cell.ToString();
+                    //        }
+
+                    //    }
+
+                    //}
+                }
+                catch
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Некорректный XML файл.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "XML файл не найден.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (metroTextBox5.Text != "")
+            {
+                metroButton8.Enabled = true;
+                metroButton9.Enabled = true;
+            }
+        }
         public void OpenXML(bool needDialog)
         {
             if (needDialog)
