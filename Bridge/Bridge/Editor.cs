@@ -211,7 +211,6 @@ namespace Bridge
            
         }
 
-
         public static void AddConfig(Configuration config, string name)
         {
             Stream myStream = null;
@@ -236,9 +235,11 @@ namespace Bridge
             {
                 OpenFileDialog OPF = new OpenFileDialog();
                 OPF.InitialDirectory = Directory.GetCurrentDirectory();
-                OPF.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
-                OPF.FilterIndex = 1;
-                OPF.RestoreDirectory = true;
+               OPF.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+                //OPF.FilterIndex = 1;
+                //OPF.RestoreDirectory = true;
+
+                
                 if (OPF.ShowDialog() == DialogResult.OK)
                 {
                     gTaskConfig_path = OPF.FileName;
@@ -249,6 +250,7 @@ namespace Bridge
             {
                 try
                 {
+                    metroGrid10.Rows.Clear();
                     metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
                     metroTextBox5.Text = gTaskConfig_path;
 
@@ -282,7 +284,8 @@ namespace Bridge
             if (needDialog)
             {
                 OpenFileDialog OPF = new OpenFileDialog();
-                if(Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+               
+                if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
                 {
                     OPF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
                 }
@@ -339,6 +342,43 @@ namespace Bridge
             }
         }
 
+        public void TaskWritter(String _gTaskConfig_path)
+        {
+
+            string start = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config>";
+            string body = "";
+            string end = "\n</config>\n";
+            string Start_parameter_name = "";
+            string value = "";
+            string Fin_parameter_name = "";
+
+            Dictionary<string, string> A = new Dictionary<string, string>();
+
+
+            for (int i = 0; i < metroGrid10.Rows.Count - 1; i++)
+            {
+                if (A.ContainsKey(metroGrid10[0, i].Value.ToString()))
+                {
+                    A[metroGrid10[0, i].Value.ToString()] = metroGrid10[1, i].Value.ToString();
+                }
+                else
+                {
+                    A.Add(metroGrid10[0, i].Value.ToString(), metroGrid10[1, i].Value.ToString());
+                }
+            }
+            foreach (KeyValuePair<string, string> keyValue in A)
+            {
+                Start_parameter_name = "\n  <" + keyValue.Key + ">";
+
+                value = keyValue.Value;
+
+                Fin_parameter_name = "</" + keyValue.Key + ">";
+
+                body += Start_parameter_name + value + Fin_parameter_name;
+            }
+            System.IO.File.AppendAllText(_gTaskConfig_path, start + body + end);
+           
+        }
         public void Writter(String _gConfig_path)
         {
             
@@ -377,6 +417,42 @@ namespace Bridge
       
 
         }
+
+        public void TaskWriteConfing()
+        {
+            if (gTaskConfig_path != "")
+            {
+                try
+                {
+                    if (File.Exists(gTaskConfig_path))
+                    {
+                        System.IO.File.WriteAllText(@gTaskConfig_path, string.Empty);
+                        TaskWritter(gTaskConfig_path);
+                        metroTextBox1.Lines= File.ReadAllLines(gTaskConfig_path);
+                        metroTextBox5.Text = gTaskConfig_path;
+                    }
+                    metroTabControl2.SelectedIndex = 0;
+                    if (metroGrid10.Rows.Count > 1)
+                    {
+                        MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
+                    }
+
+                }
+                catch
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Невозможно изменить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "XML файл не выбран", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (metroTextBox5.Text != "")
+            {
+                metroButton8.Enabled = true;
+                metroButton9.Enabled = true;
+            }
+        }
         public void WriteConfing()
         {
             if (gConfig_path != "")
@@ -413,11 +489,45 @@ namespace Bridge
             }
         }
 
-        public void CreateXML()
+        public void CreateTaskXML()
         {
             Stream myStream;
             SaveFileDialog SF = new SaveFileDialog();
             SF.Filter = "xml files (*.xml)|*.xml";
+            SF.InitialDirectory = Directory.GetCurrentDirectory();
+            SF.FilterIndex = 2;
+            SF.RestoreDirectory = true;
+
+            if (SF.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = SF.OpenFile()) != null)
+                {
+                    myStream.Close();
+                }
+                gTaskConfig_path = SF.FileName;
+
+                string start = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<config>";
+                string body = "";
+                string end = "\n</config>\n";
+                System.IO.File.AppendAllText(gTaskConfig_path, start+ body + end);
+
+                metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
+                metroTextBox5.Text = gTaskConfig_path;
+                metroGrid10.Rows.Clear();
+            }
+            if (metroTextBox5.Text != "")
+            {
+                metroButton8.Enabled = true;
+                metroButton9.Enabled = true;
+            }
+        }
+        public void CreateXML()
+        {
+            Stream myStream;
+            SaveFileDialog SF = new SaveFileDialog();
+
+            SF.Filter = "xml files (*.xml)|*.xml";
+            SF.InitialDirectory = Directory.GetCurrentDirectory();
             SF.FilterIndex = 2;
             SF.RestoreDirectory = true;
 
@@ -445,7 +555,6 @@ namespace Bridge
                 AddLink.Enabled = true;
             }
         }
-
         public void CreateXMLDefault()
         {
 
@@ -480,6 +589,29 @@ namespace Bridge
             }
         }
 
+        public void DeleteTaskXML()
+        {
+            if (gTaskConfig_path != "")
+            {
+                if (File.Exists(gTaskConfig_path))
+                {
+                    File.Delete(gTaskConfig_path);
+                    metroTextBox1.Text= "";
+                    metroTextBox5.Text = "";
+                    metroGrid10.Rows.Clear();
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (metroTextBox5.Text == "")
+            {
+                metroButton8.Enabled = false;
+                metroButton9.Enabled = false;
+            }
+        }
         public void DeleteXML()
         {
             if (gConfig_path != "")
@@ -503,7 +635,7 @@ namespace Bridge
                 AddLink.Enabled = false;
             }
         }
-
+     
         public void AddLinkToConf()
         {
             String value = ValueTextBox.Text;
@@ -523,39 +655,77 @@ namespace Bridge
                 MetroFramework.MetroMessageBox.Show(this, "Параметр и его значение должны быть указаны.", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void ConfSaveAs()
+
+        public void TaskConfSaveAs()
         {
-            if (File.Exists(gConfig_path))
+            if (File.Exists(gTaskConfig_path))
             {
-              
                 SaveFileDialog SF = new SaveFileDialog();
 
-                
                 SF.FileName = "";
                 SF.Filter = "xml files (*.xml)|*.xml";
+                SF.InitialDirectory = Directory.GetCurrentDirectory();
                 if (SF.ShowDialog() == DialogResult.OK)
                 {
                     if (SF.FileName != "")
                     {
                         File.Delete(SF.FileName);
                     }
-                        try
+                    try
+                    {
+                        if (File.Exists(gTaskConfig_path))
                         {
-                            if (File.Exists(gConfig_path))
-                            {
 
-                                gConfig_path = SF.FileName;
+                            gTaskConfig_path = SF.FileName;
 
-                                Writter(gConfig_path);
+                            TaskWritter(gTaskConfig_path);
 
-                            }
-                            MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
                         }
-                        catch
-                        {
-                            MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
                     }
+                    catch
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Нет выбранного XML файла", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void ConfSaveAs()
+        {
+            if (File.Exists(gConfig_path))
+            {
+                SaveFileDialog SF = new SaveFileDialog();
+
+                SF.FileName = "";
+                SF.Filter = "xml files (*.xml)|*.xml";
+                SF.InitialDirectory = Directory.GetCurrentDirectory();
+                if (SF.ShowDialog() == DialogResult.OK)
+                {
+                    if (SF.FileName != "")
+                    {
+                        File.Delete(SF.FileName);
+                    }
+                    try
+                    {
+                        if (File.Exists(gConfig_path))
+                        {
+
+                            gConfig_path = SF.FileName;
+
+                            Writter(gConfig_path);
+
+                        }
+                        MessageBox.Show(this, "XML файл успешно сохранен.", "Выполнено.");
+                    }
+                    catch
+                    {
+                        MetroFramework.MetroMessageBox.Show(this, "Невозможно сохранить XML файл.", "Ошибка.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                     
                 
             }

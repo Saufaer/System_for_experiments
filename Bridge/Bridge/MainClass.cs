@@ -211,18 +211,23 @@ namespace Bridge
 
         private void Create1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // CreateXML();
+            CreateTaskXML();
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // ConfSaveAs();
-           // OpenXML(false);
+            TaskConfSaveAs();
+            OpenTaskXML(false);
         }
 
         private void DelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // DeleteXML();
+            DeleteTaskXML();
+        }
+
+        private void metroButton9_Click(object sender, EventArgs e)
+        {
+            TaskWriteConfing();
         }
     }
     public static class Exten

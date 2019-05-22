@@ -2042,7 +2042,7 @@
             this.metroTabControl2.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl2.Location = new System.Drawing.Point(534, 3);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 1;
+            this.metroTabControl2.SelectedIndex = 0;
             this.metroTabControl2.Size = new System.Drawing.Size(962, 700);
             this.metroTabControl2.TabIndex = 42;
             this.metroTabControl2.UseSelectable = true;
@@ -2510,6 +2510,7 @@
             this.metroButton9.TabIndex = 39;
             this.metroButton9.Text = "Записать";
             this.metroButton9.UseSelectable = true;
+            this.metroButton9.Click += new System.EventHandler(this.metroButton9_Click);
             // 
             // metroContextMenu1
             // 
