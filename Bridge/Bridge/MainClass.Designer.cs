@@ -57,7 +57,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LabelConf = new MetroFramework.Controls.MetroLabel();
-            this.LabelProgName = new MetroFramework.Controls.MetroLabel();
             this.Run = new MetroFramework.Controls.MetroButton();
             this.MainTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
@@ -111,7 +110,6 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.EditorTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.TextBoxXML = new MetroFramework.Controls.MetroTextBox();
@@ -161,7 +159,6 @@
             this.ConfigTable = new MetroFramework.Controls.MetroGrid();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.par = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComboBoxProgName = new MetroFramework.Controls.MetroComboBox();
             this.WriteConf = new MetroFramework.Controls.MetroButton();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.metroContextMenu1 = new MetroFramework.Controls.MetroContextMenu(this.components);
@@ -210,16 +207,6 @@
             this.LabelConf.TabIndex = 15;
             this.LabelConf.Text = "Конфигурация";
             // 
-            // LabelProgName
-            // 
-            this.LabelProgName.AutoSize = true;
-            this.LabelProgName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.LabelProgName.Location = new System.Drawing.Point(3, 43);
-            this.LabelProgName.Name = "LabelProgName";
-            this.LabelProgName.Size = new System.Drawing.Size(168, 19);
-            this.LabelProgName.TabIndex = 16;
-            this.LabelProgName.Text = "Программа-исполнитель";
-            // 
             // Run
             // 
             this.Run.FontSize = MetroFramework.MetroButtonSize.Medium;
@@ -239,7 +226,7 @@
             this.MainTabControl.Controls.Add(this.metroTabPage3);
             this.MainTabControl.Controls.Add(this.metroTabPage4);
             this.MainTabControl.Controls.Add(this.metroTabPage5);
-            this.MainTabControl.Location = new System.Drawing.Point(23, 63);
+            this.MainTabControl.Location = new System.Drawing.Point(23, 37);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 1;
             this.MainTabControl.Size = new System.Drawing.Size(1505, 740);
@@ -1058,13 +1045,10 @@
             // metroTabPage4
             // 
             this.metroTabPage4.Controls.Add(this.metroButton4);
-            this.metroTabPage4.Controls.Add(this.metroLabel3);
             this.metroTabPage4.Controls.Add(this.EditorTabControl);
             this.metroTabPage4.Controls.Add(this.TextBoxPath);
-            this.metroTabPage4.Controls.Add(this.LabelProgName);
             this.metroTabPage4.Controls.Add(this.ConfigTable);
             this.metroTabPage4.Controls.Add(this.LabelConf);
-            this.metroTabPage4.Controls.Add(this.ComboBoxProgName);
             this.metroTabPage4.Controls.Add(this.WriteConf);
             this.metroTabPage4.HorizontalScrollbarBarColor = true;
             this.metroTabPage4.HorizontalScrollbarHighlightOnWheel = false;
@@ -1089,16 +1073,6 @@
             this.metroButton4.UseSelectable = true;
             this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(546, 3);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(101, 19);
-            this.metroLabel3.TabIndex = 33;
-            this.metroLabel3.Text = "Расположение";
-            // 
             // EditorTabControl
             // 
             this.EditorTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1107,10 +1081,10 @@
             this.EditorTabControl.Controls.Add(this.metroTabPage1);
             this.EditorTabControl.Controls.Add(this.metroTabPage2);
             this.EditorTabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
-            this.EditorTabControl.Location = new System.Drawing.Point(530, 55);
+            this.EditorTabControl.Location = new System.Drawing.Point(534, 3);
             this.EditorTabControl.Name = "EditorTabControl";
             this.EditorTabControl.SelectedIndex = 1;
-            this.EditorTabControl.Size = new System.Drawing.Size(962, 663);
+            this.EditorTabControl.Size = new System.Drawing.Size(962, 700);
             this.EditorTabControl.TabIndex = 32;
             this.EditorTabControl.UseSelectable = true;
             // 
@@ -1122,7 +1096,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(954, 621);
+            this.metroTabPage1.Size = new System.Drawing.Size(954, 658);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Содержимое файла";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -1131,16 +1105,15 @@
             // 
             // TextBoxXML
             // 
-            this.TextBoxXML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextBoxXML.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // 
             // 
             this.TextBoxXML.CustomButton.Image = null;
-            this.TextBoxXML.CustomButton.Location = new System.Drawing.Point(343, 1);
+            this.TextBoxXML.CustomButton.Location = new System.Drawing.Point(303, 2);
             this.TextBoxXML.CustomButton.Name = "";
-            this.TextBoxXML.CustomButton.Size = new System.Drawing.Size(593, 593);
+            this.TextBoxXML.CustomButton.Size = new System.Drawing.Size(631, 631);
             this.TextBoxXML.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.TextBoxXML.CustomButton.TabIndex = 1;
             this.TextBoxXML.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1158,7 +1131,7 @@
             this.TextBoxXML.SelectionLength = 0;
             this.TextBoxXML.SelectionStart = 0;
             this.TextBoxXML.ShortcutsEnabled = true;
-            this.TextBoxXML.Size = new System.Drawing.Size(937, 595);
+            this.TextBoxXML.Size = new System.Drawing.Size(937, 636);
             this.TextBoxXML.TabIndex = 18;
             this.TextBoxXML.UseSelectable = true;
             this.TextBoxXML.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1179,7 +1152,7 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(954, 621);
+            this.metroTabPage2.Size = new System.Drawing.Size(954, 658);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Редактирование";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -1198,6 +1171,8 @@
             // 
             // metroTabControl1
             // 
+            this.metroTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.metroTabControl1.Controls.Add(this.Solver);
             this.metroTabControl1.Controls.Add(this.Method);
             this.metroTabControl1.Controls.Add(this.Parallel);
@@ -1205,8 +1180,8 @@
             this.metroTabControl1.Controls.Add(this.Other);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 84);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
-            this.metroTabControl1.Size = new System.Drawing.Size(951, 548);
+            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.Size = new System.Drawing.Size(951, 603);
             this.metroTabControl1.TabIndex = 47;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -1218,7 +1193,7 @@
             this.Solver.HorizontalScrollbarSize = 10;
             this.Solver.Location = new System.Drawing.Point(4, 38);
             this.Solver.Name = "Solver";
-            this.Solver.Size = new System.Drawing.Size(943, 506);
+            this.Solver.Size = new System.Drawing.Size(943, 561);
             this.Solver.TabIndex = 5;
             this.Solver.Text = " Параметры решателя";
             this.Solver.VerticalScrollbarBarColor = true;
@@ -1277,7 +1252,7 @@
             this.metroGrid3.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.metroGrid3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid3.Size = new System.Drawing.Size(937, 500);
+            this.metroGrid3.Size = new System.Drawing.Size(947, 549);
             this.metroGrid3.TabIndex = 37;
             this.metroGrid3.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid3_CellMouseClick);
             this.metroGrid3.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid3_CellMouseDoubleClick);
@@ -1318,7 +1293,7 @@
             this.Method.HorizontalScrollbarSize = 10;
             this.Method.Location = new System.Drawing.Point(4, 38);
             this.Method.Name = "Method";
-            this.Method.Size = new System.Drawing.Size(943, 506);
+            this.Method.Size = new System.Drawing.Size(943, 531);
             this.Method.TabIndex = 1;
             this.Method.Text = "Параметры метода";
             this.Method.VerticalScrollbarBarColor = true;
@@ -1377,7 +1352,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(937, 500);
+            this.metroGrid1.Size = new System.Drawing.Size(947, 519);
             this.metroGrid1.TabIndex = 37;
             this.metroGrid1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid1_CellMouseClick);
             this.metroGrid1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid1_CellMouseDoubleClick);
@@ -1418,7 +1393,7 @@
             this.Parallel.HorizontalScrollbarSize = 10;
             this.Parallel.Location = new System.Drawing.Point(4, 38);
             this.Parallel.Name = "Parallel";
-            this.Parallel.Size = new System.Drawing.Size(943, 506);
+            this.Parallel.Size = new System.Drawing.Size(943, 561);
             this.Parallel.TabIndex = 2;
             this.Parallel.Text = "Параметры схемы распараллеливания";
             this.Parallel.VerticalScrollbarBarColor = true;
@@ -1477,7 +1452,7 @@
             this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(937, 503);
+            this.metroGrid2.Size = new System.Drawing.Size(947, 549);
             this.metroGrid2.TabIndex = 37;
             this.metroGrid2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid2_CellMouseClick);
             this.metroGrid2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid2_CellMouseDoubleClick);
@@ -1518,7 +1493,7 @@
             this.Task.HorizontalScrollbarSize = 10;
             this.Task.Location = new System.Drawing.Point(4, 38);
             this.Task.Name = "Task";
-            this.Task.Size = new System.Drawing.Size(943, 506);
+            this.Task.Size = new System.Drawing.Size(943, 561);
             this.Task.TabIndex = 0;
             this.Task.Text = "Параметры задачи";
             this.Task.VerticalScrollbarBarColor = true;
@@ -1577,7 +1552,7 @@
             this.InfoTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.InfoTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.InfoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InfoTable.Size = new System.Drawing.Size(937, 500);
+            this.InfoTable.Size = new System.Drawing.Size(947, 549);
             this.InfoTable.TabIndex = 36;
             this.InfoTable.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InfoTable_CellMouseClick);
             this.InfoTable.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InfoTable_CellMouseDoubleClick);
@@ -1618,7 +1593,7 @@
             this.Other.HorizontalScrollbarSize = 10;
             this.Other.Location = new System.Drawing.Point(4, 38);
             this.Other.Name = "Other";
-            this.Other.Size = new System.Drawing.Size(943, 506);
+            this.Other.Size = new System.Drawing.Size(943, 561);
             this.Other.TabIndex = 6;
             this.Other.Text = "Прочие параметры";
             this.Other.VerticalScrollbarBarColor = true;
@@ -1677,7 +1652,7 @@
             this.metroGrid4.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.metroGrid4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid4.Size = new System.Drawing.Size(937, 500);
+            this.metroGrid4.Size = new System.Drawing.Size(947, 549);
             this.metroGrid4.TabIndex = 37;
             this.metroGrid4.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid4_CellMouseClick);
             this.metroGrid4.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid4_CellMouseDoubleClick);
@@ -1880,16 +1855,16 @@
             // 
             // 
             this.TextBoxPath.CustomButton.Image = null;
-            this.TextBoxPath.CustomButton.Location = new System.Drawing.Point(453, 1);
+            this.TextBoxPath.CustomButton.Location = new System.Drawing.Point(275, 1);
             this.TextBoxPath.CustomButton.Name = "";
-            this.TextBoxPath.CustomButton.Size = new System.Drawing.Size(45, 45);
+            this.TextBoxPath.CustomButton.Size = new System.Drawing.Size(69, 69);
             this.TextBoxPath.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.TextBoxPath.CustomButton.TabIndex = 1;
             this.TextBoxPath.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.TextBoxPath.CustomButton.UseSelectable = true;
             this.TextBoxPath.CustomButton.Visible = false;
             this.TextBoxPath.Lines = new string[0];
-            this.TextBoxPath.Location = new System.Drawing.Point(653, 3);
+            this.TextBoxPath.Location = new System.Drawing.Point(183, 0);
             this.TextBoxPath.MaxLength = 32767;
             this.TextBoxPath.Multiline = true;
             this.TextBoxPath.Name = "TextBoxPath";
@@ -1900,7 +1875,7 @@
             this.TextBoxPath.SelectionLength = 0;
             this.TextBoxPath.SelectionStart = 0;
             this.TextBoxPath.ShortcutsEnabled = true;
-            this.TextBoxPath.Size = new System.Drawing.Size(499, 47);
+            this.TextBoxPath.Size = new System.Drawing.Size(345, 71);
             this.TextBoxPath.TabIndex = 30;
             this.TextBoxPath.UseSelectable = true;
             this.TextBoxPath.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1909,9 +1884,8 @@
             // ConfigTable
             // 
             this.ConfigTable.AllowUserToResizeRows = false;
-            this.ConfigTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConfigTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ConfigTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ConfigTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConfigTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -1952,7 +1926,7 @@
             this.ConfigTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.ConfigTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.ConfigTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ConfigTable.Size = new System.Drawing.Size(525, 599);
+            this.ConfigTable.Size = new System.Drawing.Size(525, 619);
             this.ConfigTable.TabIndex = 29;
             // 
             // Key
@@ -1967,27 +1941,12 @@
             this.par.Name = "par";
             this.par.Width = 230;
             // 
-            // ComboBoxProgName
-            // 
-            this.ComboBoxProgName.FontWeight = MetroFramework.MetroComboBoxWeight.Bold;
-            this.ComboBoxProgName.FormattingEnabled = true;
-            this.ComboBoxProgName.ItemHeight = 23;
-            this.ComboBoxProgName.Items.AddRange(new object[] {
-            "examin.exe",
-            "plotter.exe "});
-            this.ComboBoxProgName.Location = new System.Drawing.Point(177, 43);
-            this.ComboBoxProgName.Name = "ComboBoxProgName";
-            this.ComboBoxProgName.Size = new System.Drawing.Size(127, 29);
-            this.ComboBoxProgName.TabIndex = 28;
-            this.ComboBoxProgName.UseSelectable = true;
-            this.ComboBoxProgName.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProgName_SelectedIndexChanged);
-            // 
             // WriteConf
             // 
             this.WriteConf.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.WriteConf.Location = new System.Drawing.Point(327, 43);
+            this.WriteConf.Location = new System.Drawing.Point(3, 42);
             this.WriteConf.Name = "WriteConf";
-            this.WriteConf.Size = new System.Drawing.Size(192, 29);
+            this.WriteConf.Size = new System.Drawing.Size(171, 29);
             this.WriteConf.TabIndex = 26;
             this.WriteConf.Text = "Записать";
             this.WriteConf.UseSelectable = true;
@@ -2102,7 +2061,6 @@
 
         #endregion
         private MetroFramework.Controls.MetroLabel LabelConf;
-        private MetroFramework.Controls.MetroLabel LabelProgName;
         private MetroFramework.Controls.MetroButton Run;
         private MetroFramework.Controls.MetroTabControl MainTabControl;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
@@ -2121,11 +2079,9 @@
         private MetroFramework.Controls.MetroButton AddLink;
         private MetroFramework.Controls.MetroTextBox TextBoxPath;
         public MetroFramework.Controls.MetroGrid ConfigTable;
-        private MetroFramework.Controls.MetroComboBox ComboBoxProgName;
         private MetroFramework.Controls.MetroButton WriteConf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn par;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroButton ButtonChoseTargetXML;
         private MetroFramework.Controls.MetroTextBox TextBoxChosenXML;
         private MetroFramework.Controls.MetroButton ButtonChoseProgram;

@@ -16,7 +16,7 @@ namespace Bridge
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
         public String gConfig_path = "";
-        public String gProgram_name = "";
+        public String gProgram_name = "examin.exe";
 
         public String gChosenXML = "";
         public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
@@ -35,8 +35,6 @@ namespace Bridge
             InitTable(metroGrid2, classif.Parallel);
             InitTable(metroGrid3, classif.Solver);
             InitTable(metroGrid4, classif.Other);
-
-            ComboBoxProgName.SelectedItem = "examin.exe";
 
             UpdateExpJournal();
 

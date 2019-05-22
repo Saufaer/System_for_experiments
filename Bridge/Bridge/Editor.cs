@@ -136,10 +136,7 @@ namespace Bridge
             }
         }
 
-        private void ComboBoxProgName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            gProgram_name = ComboBoxProgName.SelectedItem.ToString();
-        }
+       
         public int i = 0;
         public void Search(MetroFramework.Controls.MetroGrid Table, MetroFramework.Controls.MetroTextBox _TextBoxSearch,MetroFramework.Controls.MetroLabel ResLabel)
         {
