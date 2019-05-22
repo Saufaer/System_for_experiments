@@ -51,6 +51,7 @@ namespace Bridge
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
                 AddLinkToConf();
+              
             }
         }
 
@@ -96,6 +97,15 @@ namespace Bridge
             {
                 ParNameTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[0].Value);
                 ValueTextBox.Text = Convert.ToString(InfoTable.Rows[e.RowIndex].Cells[2].Value);
+
+                if ((ParNameTextBox.Text == "-libPath") || (ParNameTextBox.Text == "-libConfigPath") || (ParNameTextBox.Text == "-FirstPointFilePath"))
+                {
+                    metroButton3.Enabled = true;
+                }
+                else
+                {
+                    metroButton3.Enabled = false;
+                }
             }
            
         }
@@ -105,6 +115,7 @@ namespace Bridge
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
                 AddLinkToConf();
+               
             }
         }
 
@@ -177,6 +188,30 @@ namespace Bridge
             i = 0;
         }
 
+        public void ChoseFile()
+        {
+            string path = "";
+            string PathDir = "";
+            OpenFileDialog OPF = new OpenFileDialog();
+            
+            if (OPF.ShowDialog() == DialogResult.OK)
+            {
+                path = OPF.FileName;
+                PathDir = Path.GetDirectoryName(path);
+                if ((Directory.GetCurrentDirectory() == PathDir))
+                {
+                    ValueTextBox.Text = System.IO.Path.GetFileName(@path);
+                }
+                else
+                {
+                    MetroFramework.MetroMessageBox.Show(this, "Файл должен лежть в одной директории с examin.exe", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+           
+            
+           
+        }
+
         public void OpenXML(bool needDialog)
         {
             if (needDialog)
@@ -217,7 +252,6 @@ namespace Bridge
                 catch
                 {
                     MetroFramework.MetroMessageBox.Show(this, "Некорректный XML файл.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    
                 }
             }
             else

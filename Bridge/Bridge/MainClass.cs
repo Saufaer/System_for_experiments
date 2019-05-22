@@ -42,7 +42,7 @@ namespace Bridge
 
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
-        
+            metroButton3.Enabled = false;
         }
 
 
@@ -171,7 +171,14 @@ namespace Bridge
             GenConfsGrid.Rows.Clear();
         }
 
+      
+
        
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            ChoseFile();
+        }
     }
     public static class Exten
     {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<journal>
+
+ <exp0>
+
+<date>
+22.05.2019 9:59:58
+</date>
+<expPath>
+D:\Учёба 2019\НАУКА\Gen2\System_for_experiments\Bridge\Bridge\bin\Debug\Experiments\Series[09-59-58]_22.05.19{1}\[09-59-58]_22.05.19_{1}\Log.txt
+</expPath>
+ <confPath>
+D:\Учёба 2019\НАУКА\Gen2\System_for_experiments\Bridge\Bridge\bin\Debug\Configurations\Configure[09-59-43]_22.05.19.xml
+</confPath>
+
+ </exp0>
+
+</journal>
+<?include somedata?>
