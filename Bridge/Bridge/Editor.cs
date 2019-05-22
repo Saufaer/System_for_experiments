@@ -235,7 +235,7 @@ namespace Bridge
             if (needDialog)
             {
                 OpenFileDialog OPF = new OpenFileDialog();
-                OPF.InitialDirectory = Directory.GetCurrentDirectory();//"c:\\";
+                OPF.InitialDirectory = Directory.GetCurrentDirectory();
                 OPF.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
                 OPF.FilterIndex = 1;
                 OPF.RestoreDirectory = true;
@@ -257,48 +257,10 @@ namespace Bridge
                     conf.Comment = Configuration.XMLConfiguration;
                     AddConfig(conf, gTaskConfig_path);
 
-
-
-
-
                     for (int i = 0; i < conf.GetItems().Count; i++)
-                            {
-
-                       
+                    {
                         metroGrid10.Rows.Add(conf.GetItems()[i].Name, conf.GetItems()[i].Value);
-                       
-                       
-                        
-                            }
-                        
-                    
-                    
-                   
-
-
-                    //metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
-                    //metroTextBox5.Text = gTaskConfig_path;
-                    //metroGrid10.Rows.Clear();
-                    //DataSet ds = new DataSet();
-                    //ds.ReadXml(gTaskConfig_path);
-
-                    //foreach (DataRow item in ds.Tables["config"].Rows)
-                    //{
-                    //    int n = -1;
-                    //    foreach (object cell in item.ItemArray)
-                    //    {
-                    //        n++;
-
-                    //        if (n < (item.ItemArray.Length))
-                    //        {
-                    //            metroGrid10.Rows.Add();
-
-                    //            metroGrid10.Rows[n].Cells[1].Value = cell.ToString();
-                    //        }
-
-                    //    }
-
-                    //}
+                    }
                 }
                 catch
                 {
@@ -320,6 +282,15 @@ namespace Bridge
             if (needDialog)
             {
                 OpenFileDialog OPF = new OpenFileDialog();
+                if(Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+                {
+                    OPF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
+                }
+                else
+                {
+                    OPF.InitialDirectory = Directory.GetCurrentDirectory();
+                }
+                
                 if (OPF.ShowDialog() == DialogResult.OK)
                 {
                     gConfig_path = OPF.FileName;

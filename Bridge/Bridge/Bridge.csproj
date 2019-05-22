@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigItem.cs" />
-    <Compile Include="ConfigItemType.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DeepRunSetting.cs">
       <SubType>Form</SubType>

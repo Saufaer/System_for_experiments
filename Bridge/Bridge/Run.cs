@@ -484,6 +484,15 @@ namespace Bridge
             }
 
             FolderBrowserDialog FBD = new FolderBrowserDialog();
+           
+            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+            {
+                FBD.SelectedPath = Directory.GetCurrentDirectory() + "\\Configurations";
+            }
+            else
+            {
+                FBD.SelectedPath = Directory.GetCurrentDirectory();
+            }
             if (FBD.ShowDialog() == DialogResult.OK)
             {
                 gChosenDirXML = FBD.SelectedPath;
