@@ -346,9 +346,26 @@ namespace Bridge
                 TempXML = "";
 
     }
-       
+        private void CreateSerTemplName()
+        {
+           
+                string UserFileName = "";
+                string[] words = metroComboBox1.SelectedItem.ToString().Split('*');
+                if (checkBox3.Checked)
+                {
+                    UserFileName += words[0];
+                    UserFileName += metroTextBox6.Text;
+                    UserFileName += words[1] + "_";
+                }
+
+
+            metroTextBox7.Text = UserFileName;
+            
+           
+        }
         public void AddExperiment(String SeriesDate,string res, string _Source_Config_path,bool useMpi,bool SingleStart)
         {
+            String Prefix = metroTextBox7.Text;
             String currentPath = Directory.GetCurrentDirectory();
             
             if (!Directory.Exists(Path.Combine(currentPath, "Experiments")))
@@ -356,12 +373,12 @@ namespace Bridge
                  Directory.CreateDirectory(Path.Combine(currentPath, "Experiments"));
                 
             }
-            if (!Directory.Exists(Path.Combine(currentPath+ "\\Experiments", "Series"+ SeriesDate + "{" + SeriesNumber + "}")))
+            if (!Directory.Exists(Path.Combine(currentPath+ "\\Experiments", Prefix+"Series" + SeriesDate + "{" + SeriesNumber + "}")))
             {
-                Directory.CreateDirectory(Path.Combine(currentPath + "\\Experiments", "Series"+ SeriesDate + "{" + SeriesNumber + "}"));
+                Directory.CreateDirectory(Path.Combine(currentPath + "\\Experiments", Prefix+"Series" + SeriesDate + "{" + SeriesNumber + "}"));
 
             }
-            String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments" + "\\Series"+ SeriesDate+"{" + SeriesNumber + "}";
+            String ExpNewPath = Directory.GetCurrentDirectory() + "\\Experiments" + "\\"+Prefix+"Series"+ SeriesDate+"{" + SeriesNumber + "}";
             String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy")+"_{" + (comboT).ToString() + "}";
             if (!Directory.Exists(Path.Combine(ExpNewPath, date )))
             {

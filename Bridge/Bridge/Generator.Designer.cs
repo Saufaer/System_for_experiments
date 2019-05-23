@@ -466,6 +466,7 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel1.Controls.Add(this.checkBox3);
             this.metroPanel1.Controls.Add(this.checkBox2);
             this.metroPanel1.Controls.Add(this.metroTextBox3);

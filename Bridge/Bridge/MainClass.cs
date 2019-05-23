@@ -49,7 +49,7 @@ namespace Bridge
             TextBoxChosenProgram.Text = gChosenProgram;
             TextBoxChosenDirXML.Text = gChosenDirXML;
             metroButton3.Enabled = false;
-
+            metroComboBox1.SelectedIndex = 0;
             if (TextBoxPath.Text == "")
             {
                 WriteConf.Enabled = false;
@@ -246,9 +246,15 @@ namespace Bridge
             AddLinkToTaskConf();
         }
 
-       
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CreateSerTemplName();
+        }
 
-        
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CreateSerTemplName();
+        }
     }
     public static class Exten
     {
