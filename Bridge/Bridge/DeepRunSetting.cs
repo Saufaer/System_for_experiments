@@ -341,5 +341,25 @@ namespace Bridge
                 }
             }
         }
+
+        private void metroGrid1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+
+            if (e.ColumnIndex == 3)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = Properties.Resources.strelkaRight.Width;
+                var h = Properties.Resources.strelkaRight.Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.strelkaRight, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -448,6 +448,14 @@ namespace Bridge
                 File.Delete(TempXML);
             }
             OpenFileDialog OPF = new OpenFileDialog();
+            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+            {
+                OPF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
+            }
+            else
+            {
+                OPF.InitialDirectory = Directory.GetCurrentDirectory();
+            }
             if (OPF.ShowDialog() == DialogResult.OK)
             {
                 gChosenXML = OPF.FileName;

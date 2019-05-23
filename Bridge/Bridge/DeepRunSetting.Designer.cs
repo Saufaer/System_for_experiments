@@ -38,7 +38,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SavedConfsList = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CheckBoxCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.But = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ParentRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.XmlPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,17 +60,6 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AllPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CheckBoxCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.But = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ParentRow = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.XmlPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SavedConfsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
@@ -121,6 +121,46 @@
             this.SavedConfsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SavedConfsList_CellClick);
             this.SavedConfsList.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SavedConfsList_CellMouseEnter);
             // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Директория";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 230;
+            // 
+            // AllPath
+            // 
+            this.AllPath.HeaderText = "allP";
+            this.AllPath.Name = "AllPath";
+            this.AllPath.ReadOnly = true;
+            this.AllPath.Visible = false;
+            // 
+            // CheckBoxCol
+            // 
+            this.CheckBoxCol.HeaderText = "Выбор";
+            this.CheckBoxCol.Name = "CheckBoxCol";
+            this.CheckBoxCol.ReadOnly = true;
+            this.CheckBoxCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CheckBoxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CheckBoxCol.Width = 55;
+            // 
+            // But
+            // 
+            this.But.HeaderText = "Добавить";
+            this.But.Name = "But";
+            this.But.ReadOnly = true;
+            this.But.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.But.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.But.Text = "+";
+            // 
+            // Remove
+            // 
+            this.Remove.HeaderText = "Удалить";
+            this.Remove.Name = "Remove";
+            this.Remove.ReadOnly = true;
+            this.Remove.Text = "-";
+            this.Remove.Width = 80;
+            // 
             // metroGrid1
             // 
             this.metroGrid1.AllowUserToAddRows = false;
@@ -178,6 +218,55 @@
             this.metroGrid1.TabIndex = 58;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
             this.metroGrid1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellMouseEnter);
+            this.metroGrid1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.metroGrid1_CellPainting);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Конфигурация";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "allP";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 53;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Выбор";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 55;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "Просмотр";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // ParentRow
+            // 
+            this.ParentRow.HeaderText = "parent";
+            this.ParentRow.Name = "ParentRow";
+            this.ParentRow.ReadOnly = true;
+            this.ParentRow.Visible = false;
+            this.ParentRow.Width = 72;
+            // 
+            // XmlPath
+            // 
+            this.XmlPath.HeaderText = "xml";
+            this.XmlPath.Name = "XmlPath";
+            this.XmlPath.ReadOnly = true;
+            this.XmlPath.Visible = false;
+            this.XmlPath.Width = 53;
             // 
             // metroGrid2
             // 
@@ -341,94 +430,6 @@
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Директория";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 230;
-            // 
-            // AllPath
-            // 
-            this.AllPath.HeaderText = "allP";
-            this.AllPath.Name = "AllPath";
-            this.AllPath.ReadOnly = true;
-            this.AllPath.Visible = false;
-            // 
-            // CheckBoxCol
-            // 
-            this.CheckBoxCol.HeaderText = "Выбор";
-            this.CheckBoxCol.Name = "CheckBoxCol";
-            this.CheckBoxCol.ReadOnly = true;
-            this.CheckBoxCol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CheckBoxCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CheckBoxCol.Width = 55;
-            // 
-            // But
-            // 
-            this.But.HeaderText = "Добавить";
-            this.But.Name = "But";
-            this.But.ReadOnly = true;
-            this.But.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.But.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.But.Text = "+";
-            // 
-            // Remove
-            // 
-            this.Remove.HeaderText = "Удалить";
-            this.Remove.Name = "Remove";
-            this.Remove.ReadOnly = true;
-            this.Remove.Text = "-";
-            this.Remove.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Конфигурация";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "allP";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 53;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Выбор";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 55;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.HeaderText = "Просмотр";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // ParentRow
-            // 
-            this.ParentRow.HeaderText = "parent";
-            this.ParentRow.Name = "ParentRow";
-            this.ParentRow.ReadOnly = true;
-            this.ParentRow.Visible = false;
-            this.ParentRow.Width = 72;
-            // 
-            // XmlPath
-            // 
-            this.XmlPath.HeaderText = "xml";
-            this.XmlPath.Name = "XmlPath";
-            this.XmlPath.ReadOnly = true;
-            this.XmlPath.Visible = false;
-            this.XmlPath.Width = 53;
             // 
             // DeepRunSetting
             // 

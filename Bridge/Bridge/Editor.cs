@@ -388,7 +388,7 @@ namespace Bridge
             if (needDialog)
             {
                 OpenFileDialog OPF = new OpenFileDialog();
-               
+                OPF.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
                 if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
                 {
                     OPF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
@@ -632,6 +632,14 @@ namespace Bridge
 
             SF.Filter = "xml files (*.xml)|*.xml";
             SF.InitialDirectory = Directory.GetCurrentDirectory();
+            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+            {
+                SF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
+            }
+            else
+            {
+                SF.InitialDirectory = Directory.GetCurrentDirectory();
+            }
             SF.FilterIndex = 2;
             SF.RestoreDirectory = true;
 
@@ -821,6 +829,14 @@ namespace Bridge
                 SF.FileName = "";
                 SF.Filter = "xml files (*.xml)|*.xml";
                 SF.InitialDirectory = Directory.GetCurrentDirectory();
+                if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
+                {
+                    SF.InitialDirectory = Directory.GetCurrentDirectory() + "\\Configurations";
+                }
+                else
+                {
+                    SF.InitialDirectory = Directory.GetCurrentDirectory();
+                }
                 if (SF.ShowDialog() == DialogResult.OK)
                 {
                     if (SF.FileName != "")

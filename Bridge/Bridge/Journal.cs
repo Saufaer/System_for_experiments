@@ -41,10 +41,16 @@ namespace Bridge
             }
         }
 
-      
-        
-       
-       
+
+
+        private void GridJournal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs _e)
+        {
+            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
+            {
+                e = _e;
+            }
+        }
+
         private  void GridJournal_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs _e)
         {
             if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
