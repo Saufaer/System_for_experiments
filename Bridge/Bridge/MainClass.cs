@@ -38,6 +38,12 @@ namespace Bridge
             InitTable(metroGrid3, classif.Solver);
             InitTable(metroGrid4, classif.Other);
 
+            TaskParams TaskClassif = new TaskParams();
+            InitTaskTable(metroGrid8, TaskClassif.problem_With_Constraints);
+            InitTaskTable(metroGrid5, TaskClassif.MCO_solver);
+            InitTaskTable(metroGrid6, TaskClassif.deceptive_problem);
+            InitTaskTable(metroGrid7, TaskClassif.ansys_problem);
+
             UpdateExpJournal();
 
             TextBoxChosenProgram.Text = gChosenProgram;
@@ -48,6 +54,11 @@ namespace Bridge
             {
                 WriteConf.Enabled = false;
                 AddLink.Enabled = false;
+            }
+            if (metroTextBox5.Text == "")
+            {
+                metroButton8.Enabled = false;
+                metroButton9.Enabled = false;
             }
         }
 
@@ -229,6 +240,13 @@ namespace Bridge
         {
             TaskWriteConfing();
         }
+
+        private void metroButton8_Click(object sender, EventArgs e)
+        {
+            AddLinkToTaskConf();
+        }
+
+
     }
     public static class Exten
     {

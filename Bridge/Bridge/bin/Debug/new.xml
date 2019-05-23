@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <function_class>1</function_class>
+  <IsImprovementOfTheObjective>true</IsImprovementOfTheObjective>
+  <BoundarySearchPrecision>1</BoundarySearchPrecision>
+</config>

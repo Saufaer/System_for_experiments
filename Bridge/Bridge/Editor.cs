@@ -17,6 +17,26 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
+        public void InitTaskTable(MetroFramework.Controls.MetroGrid _InfoTable, Tuple<String, String,String>[] Array)
+        {
+            int size = 57;
+
+            size = Array.Length;
+            _InfoTable.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            for (int k = 0; k < 2; k++)
+            {
+                _InfoTable.Columns[k].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+
+            for (int i = 0; i < size; i++)
+            {
+                _InfoTable.Rows.Add(Array[i].Item1, Array[i].Item2,Array[i].Item3);
+            }
+            EditorTabControl.SelectedIndex = 0;
+            _InfoTable.CurrentCell = _InfoTable[0, 0];
+            _InfoTable.Rows[0].Cells[0].Selected = false;
+        }
+
         public void InitTable(MetroFramework.Controls.MetroGrid _InfoTable, Tuple<String, String, String, String>[] Array)
         {
             int size = 57;
@@ -30,8 +50,6 @@ namespace Bridge
 
             for (int i = 0; i < size; i++)
             {
-
-                // InfoTable.Rows.Add(InfoData.ParameterArr[i], InfoData.ValidValuesArr[i], InfoData.DefaultValuesArr[i], InfoData.DescriptionArr[i]);
                 _InfoTable.Rows.Add(Array[i].Item1, Array[i].Item2, Array[i].Item3, Array[i].Item4);
             }
             EditorTabControl.SelectedIndex = 0;
@@ -47,13 +65,14 @@ namespace Bridge
                 ValueTextBox.Text = Convert.ToString(metroGrid3.Rows[e.RowIndex].Cells[2].Value);
             }
         }
-
         private void metroGrid3_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
-                AddLinkToConf();
-              
+                if (TextBoxPath.Text != "")
+                {
+                    AddLinkToConf();
+                }
             }
         }
 
@@ -65,12 +84,14 @@ namespace Bridge
                 ValueTextBox.Text = Convert.ToString(metroGrid1.Rows[e.RowIndex].Cells[2].Value);
             }
         }
-
         private void metroGrid1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
-                AddLinkToConf();
+                if (TextBoxPath.Text != "")
+                {
+                    AddLinkToConf();
+                }
             }
         }
 
@@ -82,16 +103,16 @@ namespace Bridge
                 ValueTextBox.Text = Convert.ToString(metroGrid2.Rows[e.RowIndex].Cells[2].Value);
             }
         }
-
         private void metroGrid2_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
-                AddLinkToConf();
+                if (TextBoxPath.Text != "")
+                {
+                    AddLinkToConf();
+                }
             }
         }
-
-       
 
         private void InfoTable_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -111,13 +132,15 @@ namespace Bridge
             }
            
         }
-
         private void InfoTable_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
-                AddLinkToConf();
                
+                if (TextBoxPath.Text != "")
+                {
+                    AddLinkToConf();
+                }
             }
         }
 
@@ -129,16 +152,97 @@ namespace Bridge
                 ValueTextBox.Text = Convert.ToString(metroGrid4.Rows[e.RowIndex].Cells[2].Value);
             }
         }
-
         private void metroGrid4_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
             {
-                AddLinkToConf();
+                if (TextBoxPath.Text != "")
+                {
+                    AddLinkToConf();
+                }
             }
         }
 
-       
+        private void metroGrid5_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+              
+                if (metroTextBox5.Text != "")
+                {
+                    AddLinkToTaskConf();
+                }
+            }
+        }
+        private void metroGrid5_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                metroTextBox2.Text = Convert.ToString(metroGrid5.Rows[e.RowIndex].Cells[0].Value);
+                metroTextBox3.Text = Convert.ToString(metroGrid5.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid6_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                if (metroTextBox5.Text != "")
+                {
+                    AddLinkToTaskConf();
+                }
+
+            }
+        }
+        private void metroGrid6_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                metroTextBox2.Text = Convert.ToString(metroGrid6.Rows[e.RowIndex].Cells[0].Value);
+                metroTextBox3.Text = Convert.ToString(metroGrid6.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
+        private void metroGrid7_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                if (metroTextBox5.Text != "")
+                {
+                    AddLinkToTaskConf();
+                }
+
+            }
+        }
+        private void metroGrid7_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                metroTextBox2.Text = Convert.ToString(metroGrid7.Rows[e.RowIndex].Cells[0].Value);
+                metroTextBox3.Text = Convert.ToString(metroGrid7.Rows[e.RowIndex].Cells[2].Value); ;
+            }
+        }
+
+        private void metroGrid8_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                if (metroTextBox5.Text != "")
+                {
+                    AddLinkToTaskConf();
+                }
+
+            }
+        }
+        private void metroGrid8_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if ((e.ColumnIndex != -1) && (e.RowIndex != -1))
+            {
+                metroTextBox2.Text = Convert.ToString(metroGrid8.Rows[e.RowIndex].Cells[0].Value);
+                metroTextBox3.Text = Convert.ToString(metroGrid8.Rows[e.RowIndex].Cells[2].Value);
+            }
+        }
+
         public int i = 0;
         public void Search(MetroFramework.Controls.MetroGrid Table, MetroFramework.Controls.MetroTextBox _TextBoxSearch,MetroFramework.Controls.MetroLabel ResLabel)
         {
@@ -431,7 +535,7 @@ namespace Bridge
                         metroTextBox1.Lines= File.ReadAllLines(gTaskConfig_path);
                         metroTextBox5.Text = gTaskConfig_path;
                     }
-                    metroTabControl2.SelectedIndex = 0;
+                   
                     if (metroGrid10.Rows.Count > 1)
                     {
                         MessageBox.Show(this, "XML файл успешно изменен.", "Выполнено.");
@@ -635,7 +739,21 @@ namespace Bridge
                 AddLink.Enabled = false;
             }
         }
-     
+
+        public void AddLinkToTaskConf()
+        {
+            String value = metroTextBox3.Text;
+            String parameter = metroTextBox2.Text;
+            
+            if ((value != "") && (parameter != ""))
+            {
+                metroGrid10.Rows.Add(parameter, value);
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Параметр и его значение должны быть указаны.", "Оповещение.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         public void AddLinkToConf()
         {
             String value = ValueTextBox.Text;
