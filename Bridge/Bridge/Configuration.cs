@@ -9,25 +9,25 @@ using System.IO;
 
 namespace Bridge
 {
-    public class SetConfig
-    {
-        public List<ConfigItem> list { get; set; }
-        public List<List<object>> set { get; set; }
+    //public class SetConfig
+    //{
+    //    public List<ConfigItem> list { get; set; }
+    //    public List<List<object>> set { get; set; }
 
-        public string GetVal(int i, ConfigItem item)
-        {
-            string result = "";
-            for (int j = 0; j < list.Count; j++)
-            {
-                if (list[j].Name == item.Name)
-                {
-                    result = set[i][j].ToString();
-                    break;
-                }
-            }
-            return result;
-        }
-    }
+    //    public string GetVal(int i, ConfigItem item)
+    //    {
+    //        string result = "";
+    //        for (int j = 0; j < list.Count; j++)
+    //        {
+    //            if (list[j].Name == item.Name)
+    //            {
+    //                result = set[i][j].ToString();
+    //                break;
+    //            }
+    //        }
+    //        return result;
+    //    }
+    //}
 
     public class Configuration
     {
