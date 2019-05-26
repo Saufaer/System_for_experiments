@@ -30,8 +30,6 @@ namespace Bridge
 
         private void PrintTables()
         {
-
-
             String EXpath = Convert.ToString(((Series)f).SeriesGridJournal.Rows[e.RowIndex].Cells[1].Value);
             string EXfilePath = EXpath + "\\Log.txt";
             if (File.Exists(EXfilePath))

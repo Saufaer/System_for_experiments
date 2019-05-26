@@ -16,18 +16,20 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public String TempXML = "";
-        public String MpiCommand = "";
+        private String TempXML = "";
+        private String MpiCommand = "";
+        
+        private List<string> Results = new List<string>();
+        private List<string> ActiveConfs = new List<string>();
+        private List<string> TempComboXML = new List<string>();
 
-        public List<string> Results = new List<string>();
-        public List<string> ActiveConfs = new List<string>();
-        public List<string> TempComboXML = new List<string>();
-
-        public List<bool> MpiList = new List<bool>();
-        public int ComboSize = 0;
-        public int comboT = 0;
-        public bool Stop = false;
-        public void SetMpiRun(bool _UseMpi, bool _SingleStart)
+        private List<bool> MpiList = new List<bool>();
+        private int ComboSize = 0;
+        private int comboT = 0;
+        private bool Stop = false;
+        private Process PR;
+        
+        private void SetMpiRun(bool _UseMpi, bool _SingleStart)
         {
             if (_SingleStart)
             {
@@ -48,12 +50,7 @@ namespace Bridge
             }
             }
         }
-
-
-
-        public Process PR;
-
-        public void SingleStartFunc(ProcessStartInfo _psi, String _Source_Config_path, bool UseMpi)
+        private void SingleStartFunc(ProcessStartInfo _psi, String _Source_Config_path, bool UseMpi)
         {
             StopButton.Enabled = true;
             PR = new Process();
@@ -62,13 +59,11 @@ namespace Bridge
             PR.Start();
             string result = PR.StandardOutput.ReadToEnd();
             String date = DateTime.Now.ToString("[HH-mm-ss]_dd.MM.yy") + "_{" + (comboT).ToString() + "}";
-            AddExperiment(date,result, _Source_Config_path, UseMpi,true);
-              UpdateExpJournal();
-
-           
+            AddExperiment(date, result, _Source_Config_path, UseMpi, true);
+            UpdateExpJournal();
             StopButton.Enabled = false;
         }
-        public async void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
+        private async void Run_exp(String _Temp_Config_path, String _Source_Config_path, String _ChosenProgram, bool UseMpi,bool SingleStart)
         {
             
             String _Config_path = _Temp_Config_path;
@@ -141,10 +136,7 @@ namespace Bridge
                 MetroFramework.MetroMessageBox.Show(this, "Не выбран XML или EXE ", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
-
-        public void CreateTempConfigs()
+        private void CreateTempConfigs()
         {
            
             for (int i = 0; i < ConfigList.RowCount; i++)
@@ -193,9 +185,7 @@ namespace Bridge
             }
 
         }
-       
-
-       private void StopFunc()
+        private void StopFunc()
         {
             if (PR != null)
             {
@@ -206,7 +196,7 @@ namespace Bridge
                 }
                 catch
                 {
-//это значит, что процесс уже завершился, но ни кто не успел это отследить
+
                 } 
             }
             Process[] ProcessesExamin = System.Diagnostics.Process.GetProcessesByName("examin");
@@ -266,22 +256,13 @@ namespace Bridge
 
             }
         }
-
-        private void StopButton_Click(object sender, EventArgs e)
-        {
-            StopFunc();
-        }
-        
-        
-   
-    public void AWFunc(String date,int i, List<string> ActiveConfs, List<string> TempComboXML)
+        private void AWFunc(String date,int i, List<string> ActiveConfs, List<string> TempComboXML)
         {
             Run_exp(TempComboXML[i], ActiveConfs[i], gChosenProgram, MpiList[i], false);
            
             AddExperiment(date, Results[i], ActiveConfs[i], MpiList[i],false);
         }
-
-        public async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
+        private async void ComboFinRun(int k, List<string> ActiveConfs, List<string> TempComboXML)
         {
             SeriesNumber++;
             StopButton.Enabled = true;
@@ -363,7 +344,7 @@ namespace Bridge
             
            
         }
-        public void AddExperiment(String SeriesDate,string res, string _Source_Config_path,bool useMpi,bool SingleStart)
+        private void AddExperiment(String SeriesDate,string res, string _Source_Config_path,bool useMpi,bool SingleStart)
         {
             String Prefix = metroTextBox7.Text;
             String currentPath = Directory.GetCurrentDirectory();
@@ -455,10 +436,7 @@ namespace Bridge
           
 
         }
-
-
-
-        public void ChoseXML()
+        private void ChoseXML()
         {
             if (File.Exists(TempXML))
             {
@@ -500,8 +478,7 @@ namespace Bridge
                 }
             }
         }
-
-        public void ChoseDirXML()
+        private void ChoseDirXML()
         {
             if (File.Exists(TempXML))
             {
@@ -564,122 +541,7 @@ namespace Bridge
             }
             
         }
-        private void GridConfAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (GridConfAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[2].Value = 0;
-                }
-            }
-        }
-
-        private void MPIAllCheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (MPIAllCheckBox1.Checked)
-            {
-
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ConfigList.Rows.Count; i++)
-                {
-                    ConfigList.Rows[i].Cells[3].Value = 0;
-                }
-            }
-        }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (checkBox1.Checked)
-            {
-
-                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
-                {
-                    GenConfsGrid.Rows[i].Cells[2].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
-                {
-                    GenConfsGrid.Rows[i].Cells[2].Value = 0;
-                }
-            }
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox2.Checked)
-            {
-
-                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
-                {
-                    GenConfsGrid.Rows[i].Cells[3].Value = 1;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < GenConfsGrid.Rows.Count; i++)
-                {
-                    GenConfsGrid.Rows[i].Cells[3].Value = 0;
-                }
-            }
-        }
-        public DataGridViewCellEventArgs cell_e = null;
-        private void ConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
-        {
-            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
-            {
-                cell_e = _e;
-
-                if ((cell_e.ColumnIndex == 2)|| (cell_e.ColumnIndex == 3))
-                {
-                    if (Convert.ToInt32(ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value) == 0)
-                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 1;
-                    else
-                        ConfigList.CurrentRow.Cells[cell_e.ColumnIndex].Value = 0;
-                }
-                if(cell_e.ColumnIndex == 4)
-                {
-                    if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
-                    {
-                        Directory.CreateDirectory((Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"));
-                    }
-                    DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
-                    DirectoryInfo[] dirs = dir.GetDirectories();
-                    foreach (DirectoryInfo file in dirs)
-                    {
-                        if (Directory.Exists(file.FullName))
-                        {
-                            Directory.Delete(file.FullName, true);
-                        }
-
-                    }
-                  
-                    // GenConfsGrid.Rows.Clear();
-                    SettingsRun(_e);
-                }
-            }
-
-        }
-
-        public void SettingsRun(DataGridViewCellEventArgs _e)
+        private void SettingsRun(DataGridViewCellEventArgs _e)
         {
             string ConfigFullName = ConfigList.Rows[_e.RowIndex].Cells[1].Value.ToString();
         
@@ -689,16 +551,7 @@ namespace Bridge
                // metroTabControl1.SelectTab(Generate);
             }
         }
-
-
-       
-        private void ChoseDirConfBut_Click(object sender, EventArgs e)
-        {
-           
-            ChoseDirXML();
-        }
-
-        public void ChoseProgram()
+        private void ChoseProgram()
         {
             OpenFileDialog OPF = new OpenFileDialog();
             if (OPF.ShowDialog() == DialogResult.OK)
@@ -717,49 +570,28 @@ namespace Bridge
                 }
             }
         }
-
-        private void ConfigList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void UpdateExpJournal()
         {
-            if (e.RowIndex < 0)
-                return;
-
-           
-            if (e.ColumnIndex == 4)
+            string expPath = Directory.GetCurrentDirectory() + "\\Experiments";
+            if (Directory.Exists(expPath))
             {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-
-                var w = Properties.Resources.strelkaRight.Width;
-                var h = Properties.Resources.strelkaRight.Height;
-                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
-                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
-
-                e.Graphics.DrawImage(Properties.Resources.strelkaRight, new Rectangle(x, y, w, h));
-                e.Handled = true;
-            }
-        }
-
-
-        private void GenConfsGrid_CellClick(object sender, DataGridViewCellEventArgs _e)
-        {
-            if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
-            {
-                Set_cell_e = _e;
-
-                if ((Set_cell_e.ColumnIndex == 2) || (Set_cell_e.ColumnIndex == 3))
+                GridJournal.Rows.Clear();
+                string SeriesPath = Directory.GetCurrentDirectory() + "\\Experiments";
+                if (Directory.Exists(SeriesPath) && Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations"))
                 {
-                    if (Convert.ToInt32(GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value) == 0)
-                        GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value = 1;
-                    else
-                        GenConfsGrid.CurrentRow.Cells[Set_cell_e.ColumnIndex].Value = 0;
+                    int k = 0;
+                    DirectoryInfo dir = new DirectoryInfo(SeriesPath);
+                    DirectoryInfo[] dirs = dir.GetDirectories();
+                    foreach (DirectoryInfo f in dirs)
+                    {
+                        GridJournal.Rows.Add(f.CreationTime, f.FullName, f.Name);
+                        k++;
+                    }
+
+                    // GridJournal.CurrentCell = GridJournal[0, 0];
+                    GridJournal.Rows[0].Cells[0].Selected = false;
                 }
             }
-        }
-
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            DeepRunSetting DeepS =new DeepRunSetting();
-            DeepS.ShowDialog();
         }
     }
 }
