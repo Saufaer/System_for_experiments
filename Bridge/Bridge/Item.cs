@@ -9,16 +9,16 @@ using System.IO;
 
 namespace Bridge
 {
-    public class ConfigItem
+    public class Item
     {
 
         protected string name;
         protected string value;
         protected XElement xmlElement;
 
-        public Configuration config { get; set; }
+        public TaskConf config { get; set; }
 
-        public ConfigItem()
+        public Item()
         {
             name = "";
             value = "";

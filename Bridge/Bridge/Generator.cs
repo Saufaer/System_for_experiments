@@ -17,23 +17,26 @@ namespace Bridge
 {
     public partial class Generator : MetroFramework.Forms.MetroForm
     {
-        public DataGridViewCellEventArgs eSet = null;
-        public string ConfigFullName = "";
+        private DataGridViewCellEventArgs eSet = null;
+        private DataGridViewCellEventArgs cell_e = null;
+        private string ConfigFullName = "";
+        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
+        private List<string[]> WordsList = new List<string[]>();
+        private List<string> BigSubList = new List<string>();
+
         public Generator(DataGridViewCellEventArgs _e, string _ConfigFullName)
         {
             InitializeComponent();
             eSet = _e;
             ConfigFullName = _ConfigFullName;
-            CreateSettingsTable(SettingsConfigTable,ConfigFullName);
+            CreateSettingsTable(SettingsConfigTable, ConfigFullName);
             metroComboBox1.SelectedIndex = 0;
             metroTextBox3.Text = System.IO.Path.GetFileNameWithoutExtension(@ConfigFullName);
             CreateTemplName();
             checkBox2.Checked = true;
             checkBox3.Checked = true;
         }
-        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
-        
-        public void CreateSettingsTable(MetroFramework.Controls.MetroGrid Table ,string _ConfigFullName)
+        private void CreateSettingsTable(MetroFramework.Controls.MetroGrid Table ,string _ConfigFullName)
         {
                  if (File.Exists(_ConfigFullName))
             {
@@ -71,12 +74,7 @@ namespace Bridge
             }
             
         }
-        public List<string[]> WordsList = new List<string[]>();
-        public List<string> BigSubList = new List<string>();
-
-
-
-        public void ReadStrValues()
+        private void ReadStrValues()
         {
             string str = "";
             string par = "";
@@ -92,8 +90,7 @@ namespace Bridge
                 }
             }
         }
-
-        public void SerialWritter(string _SerialConfigPath, int k, ref List<string[]> CList)
+        private void SerialWritter(string _SerialConfigPath, int k, ref List<string[]> CList)
         {
             string start = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<exe>\n";
             string program_name = " <Prog>" + ((MainClass)f).gProgram_name + "</Prog>\n";
@@ -120,9 +117,7 @@ namespace Bridge
 
 
         }
-
-       
-        public string CreateSeriesSettingConf(string nameTempl,bool UseAllTemplName)
+        private string CreateSeriesSettingConf(string nameTempl,bool UseAllTemplName)
         {
             string ShortConfFilename = "";
             ShortConfFilename =  metroTextBox1.Text;
@@ -238,7 +233,6 @@ namespace Bridge
             }
            
         }
-
         private void SaveGen()
         {
             if(SettingConfigList.RowCount!=0)
@@ -317,12 +311,68 @@ namespace Bridge
             }
             }
         }
+        private void AddSerToRun()
+        {
+
+            ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
+            }
+            string _ShortConfFilename = CreateSeriesSettingConf(metroTextBox1.Text, checkBox2.Checked);
+            SettingConfigList.Rows.Clear();
+            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            foreach (DirectoryInfo file in dirs)
+            {
+
+                string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    if (File.Exists(fileName[i]))
+                    {
+                        string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
+
+                        DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
+                        rowToAdd.Cells[0].Value = Shortname + ".xml";//short name
+                        rowToAdd.Cells[1].Value = fileName[i];//full name
+                        rowToAdd.Cells[2].Value = 1;//use
+                        rowToAdd.Cells[3].Value = 0;//mpi
+                        SettingConfigList.Rows.Add(rowToAdd);
+                    }
+                }
+
+            }
+        }
+        private void CreateTemplName()
+        {
+            if (metroTextBox3.Text != "")
+            {
+                string UserFileName = "";
+                string[] words = metroComboBox1.SelectedItem.ToString().Split('*');
+                if (checkBox3.Checked)
+                {
+                    UserFileName += words[0];
+                    UserFileName += metroTextBox2.Text;
+                    UserFileName += words[1] + "_";
+                }
+                if (checkBox2.Checked)
+                {
+                    UserFileName += metroTextBox3.Text;
+                }
+
+                metroTextBox1.Text = UserFileName;
+            }
+            else
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Пустое имя в шаблоне", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void metroButton2_Click(object sender, EventArgs e)
         {
             SaveGen();
         }
-
-        public DataGridViewCellEventArgs cell_e = null;
         private void SettingConfigList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
             if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
@@ -342,46 +392,10 @@ namespace Bridge
                 }
             }
         }
-      
-        private void AddSerToRun()
-        {
-            
-            ((MainClass)f).ReadConfsInDir(((MainClass)f).TextBoxChosenDirXML.Text);
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp"))
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp");
-            }
-            string _ShortConfFilename = CreateSeriesSettingConf(metroTextBox1.Text, checkBox2.Checked);
-            SettingConfigList.Rows.Clear();
-            DirectoryInfo dir = new DirectoryInfo(Directory.GetCurrentDirectory() + "\\Configurations\\Series\\Temp\\" + _ShortConfFilename);
-            DirectoryInfo[] dirs = dir.GetDirectories();
-            foreach (DirectoryInfo file in dirs)
-            {
-
-                string[] fileName = System.IO.Directory.GetFiles(file.FullName, "*.xml");
-                for (int i = 0; i < fileName.Length; i++)
-                {
-                    if (File.Exists(fileName[i]))
-                    {
-                        string Shortname = System.IO.Path.GetFileNameWithoutExtension(@fileName[i]);
-                       
-                        DataGridViewRow rowToAdd = (DataGridViewRow)((MainClass)f).ConfigList.Rows[0].Clone();
-                        rowToAdd.Cells[0].Value = Shortname + ".xml";//short name
-                        rowToAdd.Cells[1].Value = fileName[i];//full name
-                        rowToAdd.Cells[2].Value = 1;//use
-                        rowToAdd.Cells[3].Value = 0;//mpi
-                        SettingConfigList.Rows.Add(rowToAdd);
-                    }
-                }
-
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             AddSerToRun();
         }
-
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
 
@@ -409,7 +423,6 @@ namespace Bridge
 
             this.Close();
         }
-
         private void SettingConfigList_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
            
@@ -431,45 +444,18 @@ namespace Bridge
                 }
             
         }
-        private void CreateTemplName()
-        {
-            if (metroTextBox3.Text != "")
-            {
-                string UserFileName = "";
-                string[] words = metroComboBox1.SelectedItem.ToString().Split('*');
-                if(checkBox3.Checked)
-                {
-                    UserFileName += words[0];
-                    UserFileName += metroTextBox2.Text;
-                    UserFileName += words[1] + "_";
-                }
-                if (checkBox2.Checked)
-                {
-                    UserFileName += metroTextBox3.Text;
-                }
-                   
-                metroTextBox1.Text = UserFileName;
-            }
-            else
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Пустое имя в шаблоне", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
         private void button2_Click(object sender, EventArgs e)
         {
             CreateTemplName();
         }
-
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             CreateTemplName();
         }
-
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             CreateTemplName();
         }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             CreateTemplName();

@@ -29,34 +29,34 @@ namespace Bridge
     //    }
     //}
 
-    public class Configuration
+    public class TaskConf
     {
-        protected List<ConfigItem> items;
+        protected List<Item> items;
         public string Name { get; set; }
         public string Comment { get; set; }
 
         public static string XMLConfiguration = "XML";
 
-        public Configuration()
+        public TaskConf()
         {
-            items = new List<ConfigItem>();
+            items = new List<Item>();
             Name = "";
         }
 
-        public List<ConfigItem> GetItems()
+        public List<Item> GetItems()
         {
             return items;
         }
 
         public void Add(XElement element)
         {
-            ConfigItem item = new ConfigItem();
+            Item item = new Item();
             item.XMLElement = element;
             item.config = this;
             items.Add(item);
         }
 
-        public void Add(ConfigItem item)
+        public void Add(Item item)
         {
             bool f = false;
             for (int i = 0; i < items.Count; i++)

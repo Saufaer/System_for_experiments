@@ -146,7 +146,6 @@ namespace Bridge
             }
         }
 
-
         public void AddExpRecord(int num, string confPath, string LogPath, string date)
         {
             string SeriesFullName = ((MainClass)f).GridJournal.Rows[eSer.RowIndex].Cells[1].Value.ToString();

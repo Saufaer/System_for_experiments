@@ -605,7 +605,7 @@ namespace Bridge
             IEnumerable<IEnumerable<T>> result = new[] { Enumerable.Empty<T>() };
             foreach (var sequence in sequences)
             {
-                var s = sequence; // не замыкаем на переменную цикла    // рекурсивный случай: используем SelectMany для создания нового произведения на основе исходного произведения
+                var s = sequence;
                 result =
                   from seq in result
                   from item in s

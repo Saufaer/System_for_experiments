@@ -56,13 +56,41 @@ namespace Bridge
         }
         private DataGridViewCellEventArgs cell_e = null;
         private int CurrRow = -1;
-        
-    
-     
-        
-
-
+        private DataGridViewCellEventArgs cell_e1 = null;
         int n = -1;
+        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
+
+        private void AddActiveSavedGenConfs()
+        {
+            bool Isdone = false;
+            for (int i = 0; i < metroGrid1.RowCount; i++)
+            {
+                if (Convert.ToInt32(metroGrid1.Rows[i].Cells[2].Value) == 1)
+                {
+                    for (int j = 0; j < ((MainClass)f).GenConfsGrid.RowCount; j++)
+                    {
+                        if (((MainClass)f).GenConfsGrid.Rows[j].Cells[1].Value.ToString() == metroGrid1.Rows[i].Cells[5].Value.ToString())
+                        {
+
+                            Isdone = true;
+                        }
+                    }
+                    if (!Isdone)
+                    {
+                        ((MainClass)f).GenConfsGrid.Rows.Add(
+                        metroGrid1.Rows[i].Cells[0].Value,
+                        metroGrid1.Rows[i].Cells[5].Value,
+                        metroGrid1.Rows[i].Cells[2].Value,
+                        0);
+                    }
+                    Isdone = false;
+                }
+
+
+            }
+
+        }
+
         private void SavedConfsList_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
             if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
@@ -193,7 +221,6 @@ namespace Bridge
 
             }
         }
-        private DataGridViewCellEventArgs cell_e1 = null;
         private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs _e)
         {
             if ((_e.ColumnIndex != -1) && (_e.RowIndex != -1))
@@ -244,44 +271,10 @@ namespace Bridge
                 }
             }
         }
-        private void AddActiveSavedGenConfs()
-        {
-            bool Isdone = false;
-            for (int i = 0; i < metroGrid1.RowCount; i++)
-            {
-                if (Convert.ToInt32(metroGrid1.Rows[i].Cells[2].Value) == 1)
-                {
-                    for (int j = 0; j < ((MainClass)f).GenConfsGrid.RowCount; j++)
-                    {
-                        if (((MainClass)f).GenConfsGrid.Rows[j].Cells[1].Value.ToString() == metroGrid1.Rows[i].Cells[5].Value.ToString())
-                        {
-                            
-                            Isdone = true;
-                        }
-                    }
-                    if (!Isdone)
-                    {
-                        ((MainClass)f).GenConfsGrid.Rows.Add(
-                        metroGrid1.Rows[i].Cells[0].Value,
-                        metroGrid1.Rows[i].Cells[5].Value,
-                        metroGrid1.Rows[i].Cells[2].Value,
-                        0);
-                    }
-                    Isdone = false;
-                }
-
-
-            }
-            
-        }
-
-
-        System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
         private void metroButton1_Click(object sender, EventArgs e)
         {
             AddActiveSavedGenConfs();
         }
-
         private void metroButton2_Click(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -307,7 +300,6 @@ namespace Bridge
 
             this.Close();
         }
-
         private void SavedConfsList_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -326,7 +318,6 @@ namespace Bridge
 
 
         }
-
         private void metroGrid1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if ((e.RowIndex != -1) && (e.ColumnIndex == 0))
@@ -341,7 +332,6 @@ namespace Bridge
                 }
             }
         }
-
         private void metroGrid1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0)
