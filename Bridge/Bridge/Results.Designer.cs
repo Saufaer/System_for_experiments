@@ -275,9 +275,9 @@
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.Location = new System.Drawing.Point(1175, 88);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(147, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(167, 25);
             this.metroLabel3.TabIndex = 55;
-            this.metroLabel3.Text = "Файл optim.dat";
+            this.metroLabel3.Text = "Точки испытаний";
             // 
             // pictureBox1
             // 

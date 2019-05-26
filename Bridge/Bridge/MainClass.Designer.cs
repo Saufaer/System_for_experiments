@@ -84,17 +84,19 @@
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroTextBox7 = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.TextBoxChosenProgram = new MetroFramework.Controls.MetroTextBox();
+            this.TextMpiComm = new MetroFramework.Controls.MetroTextBox();
             this.ButtonChoseProgram = new MetroFramework.Controls.MetroButton();
             this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
             this.ProcessTextBox = new MetroFramework.Controls.MetroTextBox();
             this.ProgressBarJour = new MetroFramework.Controls.MetroProgressBar();
             this.StopButton = new MetroFramework.Controls.MetroButton();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.TextMpiComm = new MetroFramework.Controls.MetroTextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.GenConfsGrid = new MetroFramework.Controls.MetroGrid();
@@ -230,8 +232,7 @@
             this.Create1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroPanel6.SuspendLayout();
@@ -313,6 +314,7 @@
             // 
             // metroTabPage3
             // 
+            this.metroTabPage3.Controls.Add(this.metroLabel14);
             this.metroTabPage3.Controls.Add(this.metroPanel6);
             this.metroTabPage3.Controls.Add(this.metroPanel4);
             this.metroTabPage3.Controls.Add(this.metroPanel5);
@@ -495,6 +497,15 @@
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
             // 
+            // metroLabel4
+            // 
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.Location = new System.Drawing.Point(423, 3);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(227, 33);
+            this.metroLabel4.TabIndex = 49;
+            this.metroLabel4.Text = "Параметр запуска MPI: mpiexec -n";
+            // 
             // TextBoxChosenProgram
             // 
             // 
@@ -525,6 +536,40 @@
             this.TextBoxChosenProgram.UseSelectable = true;
             this.TextBoxChosenProgram.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TextBoxChosenProgram.WaterMarkFont = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // TextMpiComm
+            // 
+            // 
+            // 
+            // 
+            this.TextMpiComm.CustomButton.Image = null;
+            this.TextMpiComm.CustomButton.Location = new System.Drawing.Point(23, 1);
+            this.TextMpiComm.CustomButton.Name = "";
+            this.TextMpiComm.CustomButton.Size = new System.Drawing.Size(31, 31);
+            this.TextMpiComm.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TextMpiComm.CustomButton.TabIndex = 1;
+            this.TextMpiComm.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TextMpiComm.CustomButton.UseSelectable = true;
+            this.TextMpiComm.CustomButton.Visible = false;
+            this.TextMpiComm.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.TextMpiComm.Lines = new string[] {
+        "1"};
+            this.TextMpiComm.Location = new System.Drawing.Point(656, 3);
+            this.TextMpiComm.MaxLength = 32767;
+            this.TextMpiComm.Multiline = true;
+            this.TextMpiComm.Name = "TextMpiComm";
+            this.TextMpiComm.PasswordChar = '\0';
+            this.TextMpiComm.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextMpiComm.SelectedText = "";
+            this.TextMpiComm.SelectionLength = 0;
+            this.TextMpiComm.SelectionStart = 0;
+            this.TextMpiComm.ShortcutsEnabled = true;
+            this.TextMpiComm.Size = new System.Drawing.Size(55, 33);
+            this.TextMpiComm.TabIndex = 48;
+            this.TextMpiComm.Text = "1";
+            this.TextMpiComm.UseSelectable = true;
+            this.TextMpiComm.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TextMpiComm.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // ButtonChoseProgram
             // 
@@ -637,6 +682,28 @@
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
             // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel11.Location = new System.Drawing.Point(541, 141);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(99, 25);
+            this.metroLabel11.TabIndex = 85;
+            this.metroLabel11.Text = "Генерации";
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.Location = new System.Drawing.Point(10, 141);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(206, 25);
+            this.metroLabel10.TabIndex = 84;
+            this.metroLabel10.Text = "Базовые конфигурации";
+            // 
             // metroButton2
             // 
             this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
@@ -658,49 +725,6 @@
             this.metroButton1.Text = "Добавить генерации \r\nк запуску";
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(423, 3);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(227, 33);
-            this.metroLabel4.TabIndex = 49;
-            this.metroLabel4.Text = "Параметр запуска MPI: mpiexec -n";
-            // 
-            // TextMpiComm
-            // 
-            // 
-            // 
-            // 
-            this.TextMpiComm.CustomButton.Image = null;
-            this.TextMpiComm.CustomButton.Location = new System.Drawing.Point(23, 1);
-            this.TextMpiComm.CustomButton.Name = "";
-            this.TextMpiComm.CustomButton.Size = new System.Drawing.Size(31, 31);
-            this.TextMpiComm.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.TextMpiComm.CustomButton.TabIndex = 1;
-            this.TextMpiComm.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.TextMpiComm.CustomButton.UseSelectable = true;
-            this.TextMpiComm.CustomButton.Visible = false;
-            this.TextMpiComm.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.TextMpiComm.Lines = new string[] {
-        "1"};
-            this.TextMpiComm.Location = new System.Drawing.Point(656, 3);
-            this.TextMpiComm.MaxLength = 32767;
-            this.TextMpiComm.Multiline = true;
-            this.TextMpiComm.Name = "TextMpiComm";
-            this.TextMpiComm.PasswordChar = '\0';
-            this.TextMpiComm.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextMpiComm.SelectedText = "";
-            this.TextMpiComm.SelectionLength = 0;
-            this.TextMpiComm.SelectionStart = 0;
-            this.TextMpiComm.ShortcutsEnabled = true;
-            this.TextMpiComm.Size = new System.Drawing.Size(55, 33);
-            this.TextMpiComm.TabIndex = 48;
-            this.TextMpiComm.Text = "1";
-            this.TextMpiComm.UseSelectable = true;
-            this.TextMpiComm.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.TextMpiComm.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // checkBox2
             // 
@@ -1219,7 +1243,7 @@
             this.GridJournal.EnableHeadersVisualStyles = false;
             this.GridJournal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.GridJournal.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.GridJournal.Location = new System.Drawing.Point(1019, 93);
+            this.GridJournal.Location = new System.Drawing.Point(1019, 118);
             this.GridJournal.Name = "GridJournal";
             this.GridJournal.ReadOnly = true;
             this.GridJournal.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -1233,7 +1257,7 @@
             this.GridJournal.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.GridJournal.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GridJournal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridJournal.Size = new System.Drawing.Size(482, 605);
+            this.GridJournal.Size = new System.Drawing.Size(482, 580);
             this.GridJournal.TabIndex = 45;
             this.GridJournal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseClick);
             this.GridJournal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.GridJournal_CellMouseDoubleClick);
@@ -2921,27 +2945,16 @@
             this.DelToolStripMenuItem.Text = "Удалить";
             this.DelToolStripMenuItem.Click += new System.EventHandler(this.DelToolStripMenuItem_Click);
             // 
-            // metroLabel10
+            // metroLabel14
             // 
-            this.metroLabel10.AutoSize = true;
-            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel10.Location = new System.Drawing.Point(10, 141);
-            this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(206, 25);
-            this.metroLabel10.TabIndex = 84;
-            this.metroLabel10.Text = "Базовые конфигурации";
-            // 
-            // metroLabel11
-            // 
-            this.metroLabel11.AutoSize = true;
-            this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel11.Location = new System.Drawing.Point(541, 141);
-            this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(99, 25);
-            this.metroLabel11.TabIndex = 85;
-            this.metroLabel11.Text = "Генерации";
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel14.Location = new System.Drawing.Point(1019, 90);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(206, 25);
+            this.metroLabel14.TabIndex = 86;
+            this.metroLabel14.Text = "Журнал экспериментов";
             // 
             // MainClass
             // 
@@ -2954,6 +2967,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainClass_FormClosed);
             this.MainTabControl.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
+            this.metroTabPage3.PerformLayout();
             this.metroPanel6.ResumeLayout(false);
             this.metroPanel6.PerformLayout();
             this.metroPanel4.ResumeLayout(false);
@@ -3166,6 +3180,7 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox7;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
     }
 }
 
