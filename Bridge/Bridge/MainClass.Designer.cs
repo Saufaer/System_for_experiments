@@ -76,6 +76,7 @@
             this.Run = new MetroFramework.Controls.MetroButton();
             this.MainTabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.metroTextBox6 = new MetroFramework.Controls.MetroTextBox();
@@ -232,7 +233,6 @@
             this.Create1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.MainTabControl.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroPanel6.SuspendLayout();
@@ -307,7 +307,7 @@
             this.MainTabControl.Controls.Add(this.metroTabPage5);
             this.MainTabControl.Location = new System.Drawing.Point(23, 37);
             this.MainTabControl.Name = "MainTabControl";
-            this.MainTabControl.SelectedIndex = 0;
+            this.MainTabControl.SelectedIndex = 1;
             this.MainTabControl.Size = new System.Drawing.Size(1505, 740);
             this.MainTabControl.TabIndex = 25;
             this.MainTabControl.UseSelectable = true;
@@ -334,6 +334,17 @@
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel14
+            // 
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel14.Location = new System.Drawing.Point(1019, 90);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(206, 25);
+            this.metroLabel14.TabIndex = 86;
+            this.metroLabel14.Text = "Журнал экспериментов";
             // 
             // metroPanel6
             // 
@@ -2944,17 +2955,6 @@
             this.DelToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.DelToolStripMenuItem.Text = "Удалить";
             this.DelToolStripMenuItem.Click += new System.EventHandler(this.DelToolStripMenuItem_Click);
-            // 
-            // metroLabel14
-            // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel14.Location = new System.Drawing.Point(1019, 90);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(206, 25);
-            this.metroLabel14.TabIndex = 86;
-            this.metroLabel14.Text = "Журнал экспериментов";
             // 
             // MainClass
             // 

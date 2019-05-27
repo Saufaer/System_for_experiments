@@ -22,8 +22,8 @@ namespace Bridge
         private List<string> Results = new List<string>();
         private List<string> ActiveConfs = new List<string>();
         private List<string> TempComboXML = new List<string>();
-
         private List<bool> MpiList = new List<bool>();
+
         private int ComboSize = 0;
         private int comboT = 0;
         private bool Stop = false;

@@ -11,29 +11,23 @@ namespace Bridge
 {
     public class Item
     {
-
         protected string name;
         protected string value;
         protected XElement xmlElement;
-
         public TaskConf config { get; set; }
-
         public Item()
         {
             name = "";
             value = "";
             xmlElement = null;
         }
-
         public string Name
         {
             get
             {
                 return name;
             }
-           
         }
-
         public string Value
         {
             get
@@ -43,7 +37,6 @@ namespace Bridge
             set
             {
                 this.value = value;
-              
                 if (xmlElement != null)
                 {
                     xmlElement.Value = value;
@@ -64,7 +57,6 @@ namespace Bridge
                 Value = xmlElement.Value;
             }
         }
-
     }
 }
 

@@ -13,18 +13,18 @@ namespace Bridge
 {
     public partial class MainClass : MetroFramework.Forms.MetroForm
     {
-        public String gConfig_path = "";
+        private String gConfig_path = "";
         public String gProgram_name = "examin.exe";
-        public String gTaskConfig_path = "";
-        public String gChosenXML = "";
-        public String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
-        public String gTempChosenXML = "";
-        public String gChosenProgram = "examin.exe";
-        public int SeriesNumber = 0 ;
-        public DataGridViewCellEventArgs Set_cell_e = null;
-        public DataGridViewCellEventArgs cell_e = null;
-        public DataGridViewCellMouseEventArgs e = null;
-        public Info InfoData = new Info();
+        private String gTaskConfig_path = "";
+        private String gChosenXML = "";
+        private String gChosenDirXML = Directory.GetCurrentDirectory() + "\\" + "Configurations";
+        private String gTempChosenXML = "";
+        private String gChosenProgram = "examin.exe";
+        private int SeriesNumber = 0 ;
+        private DataGridViewCellEventArgs Set_cell_e = null;
+        private DataGridViewCellEventArgs cell_e = null;
+        private DataGridViewCellMouseEventArgs e = null;
+      
 
         public MainClass()
         {

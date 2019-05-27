@@ -125,7 +125,7 @@ namespace Bridge
             
            
         }
-        private static void AddConfig(Configuration config, string name)
+        private static void AddConfig(TaskConf config, string name)
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -168,9 +168,9 @@ namespace Bridge
                     metroTextBox1.Lines = File.ReadAllLines(gTaskConfig_path);
                     metroTextBox5.Text = gTaskConfig_path;
 
-                    Configuration conf = new Configuration();
+                    TaskConf conf = new TaskConf();
                     conf.Name = Path.GetFileName(gTaskConfig_path);
-                    conf.Comment = Configuration.XMLConfiguration;
+                    conf.Comment = TaskConf.XMLConfiguration;
                     AddConfig(conf, gTaskConfig_path);
 
                     for (int i = 0; i < conf.GetItems().Count; i++)

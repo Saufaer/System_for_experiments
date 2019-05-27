@@ -30,9 +30,6 @@ namespace Bridge
         }
         System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["MainClass"];
         
-
-
-
         public void PrintJournalSeries()
         {
             string SeriesFullName = ((MainClass)f).GridJournal.Rows[eSer.RowIndex].Cells[1].Value.ToString();

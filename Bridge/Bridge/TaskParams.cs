@@ -16,7 +16,7 @@ namespace Bridge
     Tuple.Create("constraintNums","массив целых чисел (сепаратор \"_\")","2_3"),
     Tuple.Create("function_number","целое число","10"),
     Tuple.Create("ParetoFile", "строка (путь)"," ")
-   
+
 };
         public Tuple<String, String, String>[] deceptive_problem =
   {
@@ -35,7 +35,7 @@ namespace Bridge
     Tuple.Create("defaultname","строка"," "),
     Tuple.Create("dimension", "целое число","1"),
     Tuple.Create("numOutputParams","целое число","1")
-   
+
 };
 
         public Tuple<String, String, String>[] problem_With_Constraints =

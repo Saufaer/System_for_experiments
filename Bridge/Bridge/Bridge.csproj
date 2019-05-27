@@ -79,8 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigItem.cs" />
-    <Compile Include="Configuration.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="TaskConf.cs" />
     <Compile Include="DeepRunSetting.cs">
       <SubType>Form</SubType>
     </Compile>
